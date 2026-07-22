@@ -1,6 +1,7 @@
 extends Control
 
 @onready var templete_button
+@export var  skill_database:skill_obj
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
