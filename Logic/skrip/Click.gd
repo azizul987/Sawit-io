@@ -1,30 +1,62 @@
 extends Area2D
 
-# Tambahkan variabel penanda ini
+# Variabel bawaanmu
 var can_click = true 
 const FONT_KOSTUM = preload("res://temp tekture/font/BPdotsSquareBold.otf")
 
+# Variabel BARU penanda kursor
+var is_hovering = false 
+
 func _ready() -> void:
 	input_pickable = true
+	
+	# Menyalakan sensor deteksi mouse masuk dan keluar dari area poligon
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			
-			# Cek apakah saat ini boleh diklik
 			if can_click:
-				# Langsung ubah jadi false agar tidak bisa diklik beruntun
 				can_click = false 
+				
+				# PANGGIL DI SINI: Langsung ubah kursor jadi tanda silang (CD dimulai)
+				update_kursor()
 				
 				Point.add_point(1)
 				show_plus_effect()
 				
-				# Bikin timer menunggu selama nilai 'cd' di script Point (1 detik)
 				await get_tree().create_timer(Point.cd).timeout
 				
-				# Setelah waktu habis, kembalikan true agar bisa diklik lagi
 				can_click = true
+				
+				# PANGGIL DI SINI: Kembalikan kursor jadi telunjuk (CD beres)
+				update_kursor()
+# ==========================================
+# BLOK FUNGSI BARU UNTUK MENGATUR KURSOR
+# ==========================================
+func _on_mouse_entered():
+	is_hovering = true
+	update_kursor()
 
+func _on_mouse_exited():
+	is_hovering = false
+	# Kembalikan ke kursor panah biasa kalau keluar peta
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW) 
+
+func update_kursor():
+	if is_hovering:
+		if can_click:
+			# Kursor Jari Telunjuk (Siap panen)
+			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+		else:
+			# Kursor Jam Pasir / Loading (Sedang CD)
+			Input.set_default_cursor_shape(Input.CURSOR_WAIT)
+
+# ==========================================
+# BLOK FUNGSI EFEK VISUAL BAWAANMU
+# ==========================================
 func show_plus_effect():
 	var label = Label.new()
 	label.text = "+1"
