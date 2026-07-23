@@ -2,6 +2,7 @@ extends Area2D
 
 # Tambahkan variabel penanda ini
 var can_click = true 
+const FONT_KOSTUM = preload("res://temp tekture/font/BPdotsSquareBold.otf")
 
 func _ready() -> void:
 	input_pickable = true
@@ -28,8 +29,9 @@ func show_plus_effect():
 	var label = Label.new()
 	label.text = "+1"
 	label.z_index = 100
-	label.add_theme_font_size_override("font_size", 28)
-	label.modulate = Color(1, 1, 0, 1)
+	label.add_theme_font_override("font", FONT_KOSTUM)
+	label.add_theme_font_size_override("font_size", 8)
+	label.modulate = Color.WHITE
 
 	get_tree().current_scene.add_child(label)
 

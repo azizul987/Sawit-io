@@ -1,23 +1,26 @@
 [gd_scene format=3 uid="uid://dxkquoqy2ieyg"]
 
 [ext_resource type="Script" uid="uid://gdpchd5siepj" path="res://Logic/skrip/Click.gd" id="1_f6udf"]
+[ext_resource type="Script" uid="uid://dvn5kf0qm1qq8" path="res://Scene/policoly.gd" id="2_2wwxx"]
+[ext_resource type="Script" uid="uid://b5o0songb035l" path="res://Scene/GenPoli.gd" id="2_r34rm"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="2_sblpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlixt"]
 size = Vector2(154.75, 127)
 
 [node name="Main" type="Node2D" unique_id=457701414]
+metadata/_edit_horizontal_guides_ = [2677.7537]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1478407992]
-offset_left = -1372.4685
-offset_top = -1481.8845
-offset_right = 3593.9104
-offset_bottom = 3397.7703
+offset_left = -1720.0
+offset_top = -1679.679
+offset_right = 4740.92
+offset_bottom = 4301.216
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="map" type="Node2D" parent="." unique_id=539465666]
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 
 [node name="PetaSumatera" type="Sprite2D" parent="map" unique_id=774412200]
 visible = false
@@ -32,28 +35,81 @@ color = Color(0.6039216, 0, 0.32941177, 1)
 polygon = PackedVector2Array(12, 10, 3, -1, 3, -5, 12, -2, 18, -8, 23, -11, 23, -20, 29, -25, 39, -21, 44, -23, 53, -21, 63, -21, 63, -11, 66, -6, 72, -6, 72, 5, 79, 8, 83, 9, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Palembang" unique_id=1770322675]
+position = Vector2(290, 235)
+polygon = PackedVector2Array(12, 10, 3, -1, 3, -5, 12, -2, 18, -8, 23, -11, 23, -20, 29, -25, 39, -21, 44, -23, 53, -21, 63, -21, 63, -11, 66, -6, 72, -6, 72, 5, 79, 8, 83, 9, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+script = ExtResource("2_2wwxx")
 
 [node name="Palembang2" type="Area2D" parent="map" unique_id=2005027260]
 position = Vector2(-7, 75)
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Palembang2" unique_id=1814564053]
-position = Vector2(240, 210)
-color = Color(1.92523e-06, 0.27830097, 0.7519887, 0.654902)
-polygon = PackedVector2Array(7, 9, 9, 5, 12, 2, 13, 7, 17, 8, 18, 12, 18, 16)
-uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Palembang2" unique_id=1809446485]
 
-[node name="Main" type="Area2D" parent="map" unique_id=1008839753]
+[node name="4" type="Area2D" parent="map" unique_id=1008839753]
 position = Vector2(-7, 75)
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Main" unique_id=451445263]
+[node name="Polygon2D" type="Polygon2D" parent="map/4" unique_id=451445263]
 position = Vector2(246, 208)
 color = Color(3.946722e-06, 0.5291943, 0.43840313, 0.654902)
-polygon = PackedVector2Array(7, 9, 6, 4, 15, 5, 17, 8, 18, 12, 12, 18, 12, 14, 11, 10)
+polygon = PackedVector2Array(6.209259, 14.172363, 1.1754456, 10.941681, 3.0537415, 7.1851196, 5.952881, 3.9421387, 4.3826447, -2.6694336, 2.0620422, -6.173828, -0.6394501, -10.676819, 10.774017, -9.561798, 21.785019, -7.383789, 25.537643, 6.1503906, 21.730972, 13.763702, 15.199997, 20.400024, 12, 18, 9.02002, 16.159973)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+script = ExtResource("2_r34rm")
+
+[node name="Area2D" type="Area2D" parent="map/4" unique_id=1957909571]
+script = ExtResource("1_f6udf")
+
+[node name="Polygon2D" type="Polygon2D" parent="map/4/Area2D" unique_id=1814564053]
+position = Vector2(249.19017, 217.27747)
+scale = Vector2(0.99999994, 0.99999994)
+color = Color(0.6313726, 0, 0.11764706, 1)
+polygon = PackedVector2Array(0.3955078, 3.3647766, -2.1981049, 1.6929016, -0.9911957, -0.7171631, -0.20185852, -2.2591248, 2.7809296, -5.0590515, 6.075577, -7.5270386, 6.137085, -7.5404053, 1.7456207, 1.1741638)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Main" unique_id=1447588669]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/4/Area2D" unique_id=1007644107]
+position = Vector2(249.19017, 217.27747)
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(0.3955078, 3.3647766, -2.1981049, 1.6929016, -0.9911957, -0.7171631, -0.20185852, -2.2591248, 2.7809296, -5.0590515, 6.075577, -7.5270386, 6.137085, -7.5404053, 1.7456207, 1.1741638)
+script = ExtResource("2_2wwxx")
+
+[node name="Area2D2" type="Area2D" parent="map/4" unique_id=571329373]
+
+[node name="Polygon2D2" type="Polygon2D" parent="map/4/Area2D2" unique_id=1008696285]
+position = Vector2(253.30002, 206.59998)
+scale = Vector2(0.99999976, 0.99999976)
+color = Color(0.1390754, 0.33772147, 0.5499617, 0.5686275)
+polygon = PackedVector2Array(-1.3108368, 5.667389, -2.1707458, 1.5693359, -3.0071564, -1.7967224, -7.7570343, -9.218414, 0.37680054, -8.423981, 1.9545593, 3.1462708)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="Area2D3" type="Area2D" parent="map/4" unique_id=1040300005]
+
+[node name="Polygon2D4" type="Polygon2D" parent="map/4/Area2D3" unique_id=1274764802]
+position = Vector2(257.49808, 207.67746)
+scale = Vector2(0.9999998, 0.9999998)
+color = Color(0.8342242, 0.9857474, 0.9079565, 0.5686275)
+polygon = PackedVector2Array(3.1460876, 5.1457214, -2.245346, 2.0708313, -2.8503418, -2.6915894, -3.6787872, -9.350891, 1.6423035, -8.713684, 10.133652, -7.0892944, 10.300095, -7.0269165, 4.96933, 1.5775146)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="Polygon2D2" type="Polygon2D" parent="map/4/Area2D3" unique_id=1898434610]
+position = Vector2(262.83615, 211.21796)
+scale = Vector2(0.9999998, 0.9999998)
+color = Color(0.6313726, 0, 0.11764706, 0.5686275)
+polygon = PackedVector2Array(0.3955078, 3.3647766, -2.1372528, 1.6172485, -0.2680664, -2.3428955, 4.9465485, -10.513214, 5.017502, -10.380157, 8.668716, 2.9501038, 6.8680573, 6.5514526, 3.3539276, 5.472992)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="Polygon2D3" type="Polygon2D" parent="map/4/Area2D3" unique_id=497778157]
+position = Vector2(251.99998, 218.99997)
+scale = Vector2(0.9999998, 0.9999998)
+color = Color(0.48960435, 0.7499166, 0, 0.5686275)
+polygon = PackedVector2Array(5.492798, 6.562683, -2.392746, 1.6251221, -0.9911957, -0.7171631, -0.2680664, -2.3428955, 3.3268127, -9.272217, 9.09761, -5.905731, 8.970413, 0.11642456)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="Area2D4" type="Area2D" parent="map/4" unique_id=534878090]
+
+[node name="Polygon2D2" type="Polygon2D" parent="map/4/Area2D4" unique_id=1948464681]
+position = Vector2(259.95657, 224.24567)
+scale = Vector2(0.9999998, 0.9999998)
+color = Color(0.8076491, 9.241105e-06, 0.5288728, 0.5686275)
+polygon = PackedVector2Array(1.4820862, 4.004059, -2.4584656, 1.3880005, -1.2209625, -0.9446106, -0.43971252, -2.5047913, 1.1172485, -5.3520813, 1.1062012, -11.159058, 6.201248, -7.611664, 9.686523, -6.448395, 7.80661, -2.5610657, 6.468384, -1.1273499)
+uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
 [node name="Tempelte" type="Area2D" parent="map" unique_id=1404920364]
 position = Vector2(257, 272.2)
@@ -153,5 +209,5 @@ position = Vector2(1242, 1458)
 shape = SubResource("RectangleShape2D_rlixt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649]
-position = Vector2(1244, 1468)
-zoom = Vector2(4, 4)
+position = Vector2(2450, 2904.5454)
+zoom = Vector2(5, 5)
