@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqnxbheqigscs" path="res://Logic/skrip/skiil_canvas.gd" id="1_s5cxk"]
 [ext_resource type="Resource" uid="uid://bn4e8dblux23k" path="res://Logic/Data Templete/Data/ress/Skill_Database.tres" id="2_ic3gc"]
+[ext_resource type="Script" uid="uid://bqudad3ilt7jf" path="res://Ui/SkillTreeCma.gd" id="3_nr7s1"]
 
 [node name="Skill Tree" type="Node2D" unique_id=409050271]
 
@@ -32,6 +33,15 @@ skill_database = ExtResource("2_ic3gc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=425701706]
 zoom = Vector2(1.4, 1.4)
+script = ExtResource("3_nr7s1")
 
 [node name="Helper" type="Marker2D" parent="." unique_id=1620060842]
 position = Vector2(128, 97)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=559907910]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2038492782]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100"

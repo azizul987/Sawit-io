@@ -77,6 +77,7 @@ func _draw() -> void	:
 			)
 
 func _on_skill_button_pressedd(skil_id):
+	Point.remove_point(2)
 	print(skil_id)
 	for data in skill_database.skills:
 		if data == null:
