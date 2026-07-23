@@ -5,3 +5,4 @@ extends  Resource
 @export var skill_name:String
 @export var max_level:int
 @export var  tree_position:Vector2
+@export var required_skill_ids: Array[String] = []

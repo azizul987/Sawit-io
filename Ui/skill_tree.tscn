@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dyxdkyunbknd3"]
+
+[ext_resource type="Script" uid="uid://dqnxbheqigscs" path="res://Logic/skrip/skiil_canvas.gd" id="1_s5cxk"]
+[ext_resource type="Resource" uid="uid://bn4e8dblux23k" path="res://Logic/Data Templete/Data/ress/Skill_Database.tres" id="2_ic3gc"]
+
+[node name="Skill Tree" type="Node2D" unique_id=409050271]
+
+[node name="Canvas" type="ColorRect" parent="." unique_id=866420056]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -577.0
+offset_top = -320.0
+offset_right = 576.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkiilCanvas" type="Control" parent="Canvas" unique_id=814954028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5cxk")
+skill_database = ExtResource("2_ic3gc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=425701706]
+
+[node name="Helper" type="Marker2D" parent="." unique_id=1620060842]
+position = Vector2(128, 97)

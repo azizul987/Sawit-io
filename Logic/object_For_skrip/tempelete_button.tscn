@@ -2,17 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://djoaahgypiibf" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png" id="1_2fr6c"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40n5u"]
+
 [node name="Tempelete_Button" type="Control" unique_id=523493943]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="Image" type="TextureButton" parent="." unique_id=1743989087]
+material = SubResource("ShaderMaterial_40n5u")
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
