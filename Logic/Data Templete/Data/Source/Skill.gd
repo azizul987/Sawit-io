@@ -6,3 +6,6 @@ extends  Resource
 @export var max_level:int
 @export var  tree_position:Vector2
 @export var required_skill_ids: Array[String] = []
+@export var  is_open:bool
+@export var cost:Array[int]
+@export var level:int
