@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyxdkyunbknd3"]
 
 [ext_resource type="Script" uid="uid://dqnxbheqigscs" path="res://Logic/skrip/skiil_canvas.gd" id="1_s5cxk"]
-[ext_resource type="Resource" uid="uid://bn4e8dblux23k" path="res://Logic/Data Templete/Data/ress/Skill_Database.tres" id="2_ic3gc"]
+[ext_resource type="Resource" uid="uid://twdxijt27d5j" path="res://Logic/Data Templete/Data/ress/Skill_Database_place.tres" id="2_uc1hk"]
 [ext_resource type="Script" uid="uid://bqudad3ilt7jf" path="res://Ui/SkillTreeCma.gd" id="3_nr7s1"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="4_uc1hk"]
 
@@ -30,7 +30,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s5cxk")
-skill_database = ExtResource("2_ic3gc")
+skill_database = ExtResource("2_uc1hk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=425701706]
 zoom = Vector2(1.4, 1.4)

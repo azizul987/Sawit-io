@@ -1,0 +1,258 @@
+[gd_resource type="Resource" script_class="skill_obj" format=3 uid="uid://twdxijt27d5j"]
+
+[ext_resource type="Script" uid="uid://bc3i1ec0fxv2t" path="res://Logic/Data Templete/Data/Source/SkillObj.gd" id="1_ib4hv"]
+[ext_resource type="Script" uid="uid://dmslmeqer2n8d" path="res://Logic/Data Templete/Data/Source/Skill.gd" id="2_ambdn"]
+
+[sub_resource type="Resource" id="Resource_harga_sawit"]
+script = ExtResource("2_ambdn")
+id = "harga_sawit"
+skill_name = "Harga Sawit Stabil"
+max_level = 3
+is_open = true
+cost = Array[int]([20, 50, 100])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_bibit_unggul"]
+script = ExtResource("2_ambdn")
+id = "bibit_unggul"
+skill_name = "Bibit Unggul"
+max_level = 5
+tree_position = Vector2(-160, -70)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([30, 75, 150, 300, 600])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_panen_cepat"]
+script = ExtResource("2_ambdn")
+id = "panen_cepat"
+skill_name = "Panen Cepat"
+max_level = 5
+tree_position = Vector2(-160, 100)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([40, 90, 180, 360, 720])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_pupuk_berimbang"]
+script = ExtResource("2_ambdn")
+id = "pupuk_berimbang"
+skill_name = "Pupuk Berimbang"
+max_level = 5
+tree_position = Vector2(-320, -140)
+required_skill_ids = Array[String](["bibit_unggul"])
+cost = Array[int]([50, 100, 200, 400, 800])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_tenaga_panen"]
+script = ExtResource("2_ambdn")
+id = "tenaga_panen"
+skill_name = "Tenaga Panen Terlatih"
+max_level = 5
+tree_position = Vector2(-320, -20)
+required_skill_ids = Array[String](["bibit_unggul"])
+cost = Array[int]([75, 150, 300, 600, 1200])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_alat_egrek"]
+script = ExtResource("2_ambdn")
+id = "alat_egrek"
+skill_name = "Egrek Modern"
+max_level = 5
+tree_position = Vector2(-480, -20)
+required_skill_ids = Array[String](["tenaga_panen"])
+cost = Array[int]([100, 200, 400, 800, 1600])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_irigasi_kebun"]
+script = ExtResource("2_ambdn")
+id = "irigasi_kebun"
+skill_name = "Irigasi Kebun"
+max_level = 5
+tree_position = Vector2(160, -270)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([50, 125, 250, 500, 1000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_rotasi_panen"]
+script = ExtResource("2_ambdn")
+id = "rotasi_panen"
+skill_name = "Rotasi Panen Teratur"
+max_level = 5
+tree_position = Vector2(320, -270)
+required_skill_ids = Array[String](["irigasi_kebun"])
+cost = Array[int]([80, 160, 320, 640, 1280])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_sensus_pokok"]
+script = ExtResource("2_ambdn")
+id = "sensus_pokok"
+skill_name = "Sensus Pokok Digital"
+max_level = 4
+tree_position = Vector2(480, -270)
+required_skill_ids = Array[String](["rotasi_panen"])
+cost = Array[int]([120, 300, 650, 1300])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_drone_monitoring"]
+script = ExtResource("2_ambdn")
+id = "drone_monitoring"
+skill_name = "Drone Monitoring"
+max_level = 4
+tree_position = Vector2(640, -270)
+required_skill_ids = Array[String](["sensus_pokok"])
+cost = Array[int]([250, 600, 1200, 2400])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_panen_presisi"]
+script = ExtResource("2_ambdn")
+id = "panen_presisi"
+skill_name = "Panen Presisi"
+max_level = 4
+tree_position = Vector2(800, -270)
+required_skill_ids = Array[String](["drone_monitoring"])
+cost = Array[int]([300, 750, 1500, 3000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_pabrik_mini"]
+script = ExtResource("2_ambdn")
+id = "pabrik_mini"
+skill_name = "Pabrik Mini"
+max_level = 5
+tree_position = Vector2(160, -90)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([50, 125, 250, 500, 1000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_sortasi_tbs"]
+script = ExtResource("2_ambdn")
+id = "sortasi_tbs"
+skill_name = "Sortasi TBS"
+max_level = 5
+tree_position = Vector2(320, -90)
+required_skill_ids = Array[String](["pabrik_mini"])
+cost = Array[int]([100, 250, 500, 1000, 2000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_sterilisasi_tbs"]
+script = ExtResource("2_ambdn")
+id = "sterilisasi_tbs"
+skill_name = "Sterilisasi TBS"
+max_level = 5
+tree_position = Vector2(480, -90)
+required_skill_ids = Array[String](["sortasi_tbs"])
+cost = Array[int]([150, 350, 700, 1400, 2800])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_boiler_efisien"]
+script = ExtResource("2_ambdn")
+id = "boiler_efisien"
+skill_name = "Boiler Efisien"
+max_level = 4
+tree_position = Vector2(640, -90)
+required_skill_ids = Array[String](["sterilisasi_tbs"])
+cost = Array[int]([300, 700, 1500, 3000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_otomasi_pabrik"]
+script = ExtResource("2_ambdn")
+id = "otomasi_pabrik"
+skill_name = "Otomasi Pabrik"
+max_level = 4
+tree_position = Vector2(800, -90)
+required_skill_ids = Array[String](["boiler_efisien"])
+cost = Array[int]([500, 1200, 2500, 5000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_jalan_kebun"]
+script = ExtResource("2_ambdn")
+id = "jalan_kebun"
+skill_name = "Jalan Kebun"
+max_level = 5
+tree_position = Vector2(160, 90)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([80, 180, 360, 720, 1440])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_armada_angkut"]
+script = ExtResource("2_ambdn")
+id = "armada_angkut"
+skill_name = "Armada Angkut"
+max_level = 5
+tree_position = Vector2(320, 90)
+required_skill_ids = Array[String](["jalan_kebun"])
+cost = Array[int]([120, 300, 600, 1200, 2400])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_jembatan_timbang"]
+script = ExtResource("2_ambdn")
+id = "jembatan_timbang"
+skill_name = "Jembatan Timbang Digital"
+max_level = 4
+tree_position = Vector2(480, 90)
+required_skill_ids = Array[String](["armada_angkut"])
+cost = Array[int]([250, 600, 1200, 2400])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_kontrak_pabrik"]
+script = ExtResource("2_ambdn")
+id = "kontrak_pabrik"
+skill_name = "Kontrak Pabrik"
+max_level = 4
+tree_position = Vector2(640, 90)
+required_skill_ids = Array[String](["jembatan_timbang"])
+cost = Array[int]([400, 1000, 2000, 4000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_ekspansi_ekspor"]
+script = ExtResource("2_ambdn")
+id = "ekspansi_ekspor"
+skill_name = "Ekspansi Ekspor"
+max_level = 3
+tree_position = Vector2(800, 90)
+required_skill_ids = Array[String](["kontrak_pabrik"])
+cost = Array[int]([750, 2000, 5000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_sertifikasi_ispo"]
+script = ExtResource("2_ambdn")
+id = "sertifikasi_ispo"
+skill_name = "Sertifikasi ISPO"
+max_level = 3
+tree_position = Vector2(160, 270)
+required_skill_ids = Array[String](["harga_sawit"])
+cost = Array[int]([300, 800, 2000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_tandan_kosong"]
+script = ExtResource("2_ambdn")
+id = "tandan_kosong"
+skill_name = "Pemanfaatan Tandan Kosong"
+max_level = 4
+tree_position = Vector2(320, 270)
+required_skill_ids = Array[String](["sertifikasi_ispo"])
+cost = Array[int]([350, 900, 1800, 3600])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_biogas_pome"]
+script = ExtResource("2_ambdn")
+id = "biogas_pome"
+skill_name = "Biogas dari POME"
+max_level = 4
+tree_position = Vector2(480, 270)
+required_skill_ids = Array[String](["tandan_kosong"])
+cost = Array[int]([750, 1800, 3600, 7200])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[sub_resource type="Resource" id="Resource_zero_waste"]
+script = ExtResource("2_ambdn")
+id = "zero_waste"
+skill_name = "Pabrik Zero Waste"
+max_level = 3
+tree_position = Vector2(640, 270)
+required_skill_ids = Array[String](["biogas_pome"])
+cost = Array[int]([1500, 4000, 10000])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
+[resource]
+script = ExtResource("1_ib4hv")
+skills = Array[ExtResource("2_ambdn")]([SubResource("Resource_harga_sawit"), SubResource("Resource_bibit_unggul"), SubResource("Resource_panen_cepat"), SubResource("Resource_pupuk_berimbang"), SubResource("Resource_tenaga_panen"), SubResource("Resource_alat_egrek"), SubResource("Resource_irigasi_kebun"), SubResource("Resource_rotasi_panen"), SubResource("Resource_sensus_pokok"), SubResource("Resource_drone_monitoring"), SubResource("Resource_panen_presisi"), SubResource("Resource_pabrik_mini"), SubResource("Resource_sortasi_tbs"), SubResource("Resource_sterilisasi_tbs"), SubResource("Resource_boiler_efisien"), SubResource("Resource_otomasi_pabrik"), SubResource("Resource_jalan_kebun"), SubResource("Resource_armada_angkut"), SubResource("Resource_jembatan_timbang"), SubResource("Resource_kontrak_pabrik"), SubResource("Resource_ekspansi_ekspor"), SubResource("Resource_sertifikasi_ispo"), SubResource("Resource_tandan_kosong"), SubResource("Resource_biogas_pome"), SubResource("Resource_zero_waste")])
+metadata/_custom_type_script = "uid://bc3i1ec0fxv2t"
