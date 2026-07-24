@@ -10,6 +10,7 @@ var line_progress_by_id: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveManager.load_skill_level(skill_database)
 	generate_skill_buttons()
 	await get_tree().process_frame
 	queue_redraw()
@@ -24,7 +25,8 @@ func _input(event: InputEvent) -> void:
 	if Debug.is_active():
 		if event.is_action_pressed("add_coin"):
 			Point.add_point(100)
-	
+		if event.is_action("delete_save"):
+			SaveManager.delete_current_save()
 func  generate_skill_buttons():
 	buttons_by_id.clear()
 	if skill_database==null:
@@ -104,13 +106,17 @@ func _draw() -> void	:
 			#)
 			_draw_skill_line(start_position, animated_end)
 func _on_skill_button_pressedd(skil_id):
+	SaveManager.save_game()
+	
 	#Point.remove_point(2)
 	var targetSkill:skill=skill_database.get_skill_by_id(skil_id)
+	print("skill level is ",targetSkill.level)
 	#print(skil_id)
 	if targetSkill.cost[targetSkill.level]<=Point.point:
 		Point.remove_point(targetSkill.cost[targetSkill.level])
 		print(targetSkill.level)
 		targetSkill.level+=1
+		SaveManager.save_skill_level(skill_database)
 		for data in skill_database.skills:
 			if data == null:
 				continue
@@ -128,7 +134,7 @@ func _on_skill_button_pressedd(skil_id):
 				unlock_skill_animated(data.id, new_btn)
 		queue_redraw()
 	else:
-		print("uang kurang")
+		#print("uang kurang")
 		print(Point.point)
 		print("kamu perlu ",targetSkill.cost[targetSkill.level])
 		

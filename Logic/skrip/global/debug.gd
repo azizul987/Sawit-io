@@ -1,6 +1,6 @@
 extends Node
 
-var  dev_mode:=false
+var  dev_mode:=true
 var allow_dev_mode:=OS.is_debug_build()
 
 func _input(event: InputEvent) -> void:
