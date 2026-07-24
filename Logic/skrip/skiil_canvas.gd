@@ -21,42 +21,50 @@ func _process(delta: float) -> void:
 
 	queue_redraw()
 	
-func _input(event: InputEvent) -> void:
-	if Debug.is_active():
-		if event.is_action_pressed("add_coin"):
-			Point.add_point(100)
-		if event.is_action("delete_save"):
-			SaveManager.delete_current_save()
-func  generate_skill_buttons():
+
+func generate_skill_buttons():
 	buttons_by_id.clear()
-	if skill_database==null:
+	opened_skill_ids.clear()
+	line_progress_by_id.clear()
+
+	if skill_database == null:
 		print("databasenya lupa wak")
 		return
-	#var urutan = 0
-	for data  in skill_database.skills:
-		if data==null:
+
+	for data in skill_database.skills:
+		if data == null:
 			continue
-		var new_btn=templete_button.instantiate()	
-		#print("berhasil")
+
+		var new_btn = templete_button.instantiate()
 		add_child(new_btn)
+
 		buttons_by_id[data.id] = new_btn
 		new_btn.global_position = data.tree_position
+
 		var image_btn: TextureButton = new_btn.get_node("Image")
-		image_btn.texture_normal=data.Icon
+		image_btn.texture_normal = data.Icon
+		
+		var buy_btn: Button = new_btn.get_node("Buy")
+		if data.level >= data.cost.size():
+			buy_btn.text = "MAX"
+		else:
+			buy_btn.text = str(data.cost[data.level])
 		_start_idle_skill_motion(new_btn, buttons_by_id.size())
+
 		if data.required_skill_ids.is_empty():
-			new_btn.visible = true
+			data.is_open = true
+
+		new_btn.visible = data.is_open
+
+		if data.is_open:
 			line_progress_by_id[data.id] = 1.0
 
 			if not opened_skill_ids.has(data.id):
 				opened_skill_ids.append(data.id)
 		else:
-			new_btn.visible = false
 			line_progress_by_id[data.id] = 0.0
 
-		new_btn.get_node("Button").pressed.connect(_on_skill_button_pressedd.bind(data.id))
-		#urutan += 1
-		
+		new_btn.get_node("Buy").pressed.connect(_on_skill_button_pressedd.bind(data.id))
 func _draw() -> void	:
 	if skill_database == null:
 		return
@@ -106,16 +114,21 @@ func _draw() -> void	:
 			#)
 			_draw_skill_line(start_position, animated_end)
 func _on_skill_button_pressedd(skil_id):
-	SaveManager.save_game()
-	
-	#Point.remove_point(2)
+	var select_btn=buttons_by_id.get(skil_id) as Control
 	var targetSkill:skill=skill_database.get_skill_by_id(skil_id)
-	print("skill level is ",targetSkill.level)
+	#print("skill level is ",targetSkill.level)
+	if targetSkill.level>=targetSkill.cost.size():
+		return
 	#print(skil_id)
 	if targetSkill.cost[targetSkill.level]<=Point.point:
 		Point.remove_point(targetSkill.cost[targetSkill.level])
 		print(targetSkill.level)
-		targetSkill.level+=1
+	if targetSkill.level < targetSkill.cost.size():
+		targetSkill.level += 1
+		if targetSkill.level >= targetSkill.cost.size():
+			select_btn.get_node("Buy").text = "MAX"
+		else:
+			select_btn.get_node("Buy").text = str(targetSkill.cost[targetSkill.level])
 		SaveManager.save_skill_level(skill_database)
 		for data in skill_database.skills:
 			if data == null:
@@ -125,18 +138,20 @@ func _on_skill_button_pressedd(skil_id):
 		
 				if new_btn == null:
 					continue
-
+				
 				new_btn.visible = true
+				data.is_open=true
 				if opened_skill_ids.has(data.id):
 					continue
-
 				opened_skill_ids.append(data.id)
 				unlock_skill_animated(data.id, new_btn)
 		queue_redraw()
+		SaveManager.save_skill_level(skill_database)
 	else:
 		#print("uang kurang")
-		print(Point.point)
-		print("kamu perlu ",targetSkill.cost[targetSkill.level])
+		#print(Point.point)
+		#print("kamu perlu ",targetSkill.cost[targetSkill.level])
+		pass
 		
 
 
@@ -240,6 +255,3 @@ func _draw_skill_line(start_pos: Vector2, end_pos: Vector2) -> void:
 
 	draw_polyline(points, Color(0.0, 0.234, 0.097, 0.55), 7.0, true)
 	draw_polyline(points, Color(0.242, 0.394, 0.139, 0.95), 3.0, true)
-
-	draw_circle(start_pos, 4.0, Color(1.0, 0.65, 0.25, 0.9))
-	draw_circle(end_pos, 4.0, Color(1.0, 0.65, 0.25, 0.9))

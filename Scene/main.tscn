@@ -11,9 +11,9 @@ metadata/_edit_horizontal_guides_ = [2677.7537]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1478407992]
 offset_left = -1720.0
-offset_top = -1679.679
+offset_top = -1676.5244
 offset_right = 4740.92
-offset_bottom = 4301.216
+offset_bottom = 4304.37
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -151,15 +151,14 @@ script = ExtResource("2_r34rm")
 [node name="Area2D" type="Area2D" parent="map/Sumatera Selatan/4" unique_id=1957909571]
 script = ExtResource("1_f6udf")
 terbuka_default = true
-warna_terbuka = Color(0.65655077, 0, 0.13124874, 1)
+warna_terbuka = Color(0.47796237, 0.2652294, 0.031023638, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/4/Area2D" unique_id=1814564053]
 position = Vector2(249.2012, 217.29884)
 scale = Vector2(0.99999994, 0.99999994)
-color = Color(0.6313726, 0, 0.11764706, 1)
+color = Color(0.47843137, 0.26666668, 0.03137255, 1)
 polygon = PackedVector2Array(0.3955078, 3.3647766, -2.1981049, 1.6929016, -0.9911957, -0.7171631, -0.20185852, -2.2591248, 2.7716522, -5.393799, 6.0511627, -7.548828, 6.0808563, -7.5371094, 6.1003876, -7.523834, 1.7456207, 1.1741638)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
-metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/4/Area2D" unique_id=1007644107]
 visible = false
@@ -211,6 +210,7 @@ polygon = PackedVector2Array(1.4820862, 4.004059, -2.4584656, 1.3880005, -1.2209
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649]
+visible = false
 position = Vector2(2450, 2904.5454)
 zoom = Vector2(5, 5)
 

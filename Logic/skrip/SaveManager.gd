@@ -53,17 +53,16 @@ func load_game() -> void:
 func save_skill_level(skill_database: skill_obj) -> void:
 	var data := read_save_data()
 	var skill_levels := {}
-
+	var skill_isopens :={}
 	for skill_data in skill_database.skills:
 		if skill_data == null:
 			continue
-
 		skill_levels[skill_data.id] = skill_data.level
-
+		skill_isopens[skill_data.id]=skill_data.is_open
 	data["skills"] = skill_levels
-
+	data["isopens"]=skill_isopens
 	write_save_data(data)
-	#print("Skill level saved")
+	print("Skill level saved")
 
 
 func load_skill_level(skill_database: skill_obj) -> void:
@@ -74,14 +73,15 @@ func load_skill_level(skill_database: skill_obj) -> void:
 		return
 
 	var skill_levels = data["skills"]
-
+	var skill_isopen=data["isopens"]
 	for skill_data in skill_database.skills:
 		if skill_data == null:
 			continue
 
-		if skill_levels.has(skill_data.id):
+		if skill_levels.has(skill_data.id): 
 			skill_data.level = int(skill_levels[skill_data.id])
-
+		if skill_isopen.has(skill_data.id):
+			skill_data.is_open = bool(skill_isopen[skill_data.id])
 	#print("Skill level loaded")
 	
 func delete_current_save() -> void:

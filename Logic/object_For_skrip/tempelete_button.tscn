@@ -18,7 +18,7 @@ bg_color = Color(0.15361926, 0.6581189, 3.85046e-07, 1)
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Button" type="Button" parent="." unique_id=358664584]
+[node name="Buy" type="Button" parent="." unique_id=358664584]
 z_index = 3
 layout_mode = 0
 offset_left = -3.0

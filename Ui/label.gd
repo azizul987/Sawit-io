@@ -41,3 +41,9 @@ func _on_texture_button_pressed() -> void:
 		get_tree().change_scene_to_file("res://Scene/main.tscn")
 	
 	
+func _input(event: InputEvent) -> void:
+	if Debug.is_active():
+		if event.is_action_pressed("add_coin"):
+			Point.add_point(100)
+		if event.is_action("delete_save"):
+			SaveManager.delete_current_save()

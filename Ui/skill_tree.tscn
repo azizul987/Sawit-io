@@ -17,6 +17,7 @@ offset_right = 576.0
 offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="SkiilCanvas" type="Control" parent="Canvas" unique_id=814954028]
 layout_mode = 1
@@ -40,3 +41,15 @@ script = ExtResource("3_nr7s1")
 position = Vector2(128, 97)
 
 [node name="UiMain" parent="." unique_id=1805602719 instance=ExtResource("4_uc1hk")]
+
+[node name="Backround" type="CanvasLayer" parent="." unique_id=905221689]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Backround" unique_id=1250424143]
+z_index = -3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23189703, 0.11572885, 0.072132416, 1)
