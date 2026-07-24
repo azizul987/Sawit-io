@@ -4,7 +4,7 @@ extends Node
 var point =100
 var cd=1
 func add_point(value):
-	point += value
+	point += value 
 	print("Point sekarang: ", point)
 
 func remove_point(value): 

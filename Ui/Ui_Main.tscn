@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cxv7ow360bpqu"]
+
+[ext_resource type="Script" uid="uid://blbpjm0f72dxi" path="res://Ui/label.gd" id="1_vcfie"]
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_lr6hm"]
+[ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
+[ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
+
+[node name="UiMain" type="Control" unique_id=1805602719]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vcfie")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=318238762]
+
+[node name="Point" type="Label" parent="CanvasLayer" unique_id=1156495602]
+anchors_preset = -1
+anchor_left = 0.019405723
+anchor_top = 0.035923753
+anchor_right = 0.09364517
+anchor_bottom = 0.10495499
+theme_override_fonts/font = ExtResource("2_lr6hm")
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillTree" type="Control" parent="CanvasLayer" unique_id=1328300958]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
+layout_mode = 0
+offset_left = 1020.1288
+offset_top = 23.278591
+offset_right = 1123.7651
+offset_bottom = 126.91495
+texture_normal = ExtResource("3_k7e2i")
+texture_pressed = ExtResource("4_6dpwe")
+stretch_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/SkillTree/TextureButton" to="." method="_on_texture_button_pressed"]
