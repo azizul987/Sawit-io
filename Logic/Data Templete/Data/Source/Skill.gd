@@ -9,3 +9,4 @@ extends  Resource
 @export var  is_open:bool
 @export var cost:Array[int]
 @export var level:int
+@export var Icon:Texture2D=preload("res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png")

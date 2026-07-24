@@ -13,6 +13,12 @@ func _ready() -> void:
 	generate_skill_buttons()
 	await get_tree().process_frame
 	queue_redraw()
+
+func _process(delta: float) -> void:
+	if buttons_by_id.is_empty():
+		return
+
+	queue_redraw()
 	
 func _input(event: InputEvent) -> void:
 	if Debug.is_active():
@@ -24,16 +30,18 @@ func  generate_skill_buttons():
 	if skill_database==null:
 		print("databasenya lupa wak")
 		return
-	var urutan = 0
+	#var urutan = 0
 	for data  in skill_database.skills:
 		if data==null:
 			continue
-		var new_btn=templete_button.instantiate()
+		var new_btn=templete_button.instantiate()	
 		#print("berhasil")
 		add_child(new_btn)
 		buttons_by_id[data.id] = new_btn
 		new_btn.global_position = data.tree_position
-
+		var image_btn: TextureButton = new_btn.get_node("Image")
+		image_btn.texture_normal=data.Icon
+		_start_idle_skill_motion(new_btn, buttons_by_id.size())
 		if data.required_skill_ids.is_empty():
 			new_btn.visible = true
 			line_progress_by_id[data.id] = 1.0
@@ -45,12 +53,11 @@ func  generate_skill_buttons():
 			line_progress_by_id[data.id] = 0.0
 
 		new_btn.get_node("Button").pressed.connect(_on_skill_button_pressedd.bind(data.id))
-		urutan += 1
+		#urutan += 1
 		
 func _draw() -> void	:
 	if skill_database == null:
 		return
-
 	for data in skill_database.skills:
 		if data == null:
 			continue
@@ -76,7 +83,7 @@ func _draw() -> void	:
 			if start_button.visible == false:
 				continue
 			
-			var image: Control = start_button.get_node("Image")
+			var image: TextureButton = start_button.get_node("Image")
 			var start_position = image.get_global_rect().get_center() - global_position
 
 			var progress: float = float(
@@ -87,15 +94,15 @@ func _draw() -> void	:
 				end_position,
 				progress
 			)
-
-			draw_line(
-				start_position,
-				animated_end,
-				Color.BROWN,
-				3.0,
-				true
-			)
-
+#
+			#draw_line(
+				#start_position,
+				#animated_end,
+				#Color.BLACK,
+				#2.5,
+				#true
+			#)
+			_draw_skill_line(start_position, animated_end)
 func _on_skill_button_pressedd(skil_id):
 	#Point.remove_point(2)
 	var targetSkill:skill=skill_database.get_skill_by_id(skil_id)
@@ -174,3 +181,59 @@ func unlock_skill_animated(
 		1.0,
 		0.25
 	).set_delay(0.20)
+
+
+func _start_idle_skill_motion(target: Control, delay_index: int) -> void:
+	if Engine.is_editor_hint():
+		return
+
+	await get_tree().process_frame
+
+	var base_pos := target.position
+
+	var arah := 1.0
+	if delay_index % 2 == 0:
+		arah = -1.0
+
+	var gerak := Vector2(4.0 * arah, -3.0)
+
+	var tween := create_tween()
+	tween.set_loops()
+
+	tween.tween_interval(float(delay_index % 5) * 0.08)
+
+	tween.tween_property(
+		target,
+		"position",
+		base_pos + gerak,
+		0.7
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		target,
+		"position",
+		base_pos,
+		0.7
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+
+func _draw_skill_line(start_pos: Vector2, end_pos: Vector2) -> void:
+	var points := PackedVector2Array()
+
+	var mid := (start_pos + end_pos) * 0.5
+	var control := mid + Vector2(0, -35)
+
+	for i in range(16):
+		var t := float(i) / 15.0
+
+		var a := start_pos.lerp(control, t)
+		var b := control.lerp(end_pos, t)
+		var p := a.lerp(b, t)
+
+		points.append(p)
+
+	draw_polyline(points, Color(0.0, 0.234, 0.097, 0.55), 7.0, true)
+	draw_polyline(points, Color(0.242, 0.394, 0.139, 0.95), 3.0, true)
+
+	draw_circle(start_pos, 4.0, Color(1.0, 0.65, 0.25, 0.9))
+	draw_circle(end_pos, 4.0, Color(1.0, 0.65, 0.25, 0.9))

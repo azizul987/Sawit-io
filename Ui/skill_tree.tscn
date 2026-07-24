@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqnxbheqigscs" path="res://Logic/skrip/skiil_canvas.gd" id="1_s5cxk"]
 [ext_resource type="Resource" uid="uid://twdxijt27d5j" path="res://Logic/Data Templete/Data/ress/Skill_Database_place.tres" id="2_uc1hk"]
 [ext_resource type="Script" uid="uid://bqudad3ilt7jf" path="res://Ui/SkillTreeCma.gd" id="3_nr7s1"]
-[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="4_uc1hk"]
+[ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="4_uc1hk"]
 
 [node name="Skill Tree" type="Node2D" unique_id=409050271]
 
@@ -39,12 +39,4 @@ script = ExtResource("3_nr7s1")
 [node name="Helper" type="Marker2D" parent="." unique_id=1620060842]
 position = Vector2(128, 97)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=559907910]
-
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=2038492782]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_uc1hk")
-theme_override_font_sizes/font_size = 16
-text = "100"
+[node name="UiMain" parent="." unique_id=1805602719 instance=ExtResource("4_uc1hk")]

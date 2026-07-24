@@ -22,6 +22,7 @@ anchor_left = 0.019405723
 anchor_top = 0.035923753
 anchor_right = 0.09364517
 anchor_bottom = 0.10495499
+theme_override_colors/font_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 40
 text = "100"

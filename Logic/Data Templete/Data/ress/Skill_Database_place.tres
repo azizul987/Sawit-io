@@ -2,6 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bc3i1ec0fxv2t" path="res://Logic/Data Templete/Data/Source/SkillObj.gd" id="1_ib4hv"]
 [ext_resource type="Script" uid="uid://dmslmeqer2n8d" path="res://Logic/Data Templete/Data/Source/Skill.gd" id="2_ambdn"]
+[ext_resource type="Texture2D" uid="uid://c0xhqcmcbti51" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons1.png" id="3_nqfhb"]
+[ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="4_pope5"]
+[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="5_w66aa"]
+[ext_resource type="Texture2D" uid="uid://cu44coj7x3hy2" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons13.png" id="6_37qqy"]
+[ext_resource type="Texture2D" uid="uid://c8ddcn0pq7267" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons18.png" id="7_0wu8a"]
+[ext_resource type="Texture2D" uid="uid://8hk7k7yyqpwx" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons20.png" id="8_tc5kj"]
+[ext_resource type="Texture2D" uid="uid://bmi318mg4i1sq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons26.png" id="9_bsqyu"]
+[ext_resource type="Texture2D" uid="uid://bnn4d5r1duo1i" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons2.png" id="10_w2ctt"]
+[ext_resource type="Texture2D" uid="uid://b6r5cklrqv7yl" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons19.png" id="11_2byg6"]
+[ext_resource type="Texture2D" uid="uid://c6s4grq3gugei" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons37.png" id="12_lmut8"]
+[ext_resource type="Texture2D" uid="uid://8ro1gbno4fbu" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons48.png" id="13_kie7o"]
+[ext_resource type="Texture2D" uid="uid://cjhljqdq86cv4" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons53.png" id="14_2dolq"]
+[ext_resource type="Texture2D" uid="uid://c53i8bldjhtv7" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons49.png" id="15_0wmww"]
+[ext_resource type="Texture2D" uid="uid://diyd5jkwxp8y2" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons38.png" id="16_ly4tn"]
+[ext_resource type="Texture2D" uid="uid://13r5bqavlhff" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons28.png" id="17_k02as"]
+[ext_resource type="Texture2D" uid="uid://bcksh2lciiehk" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons24.png" id="18_qqw2d"]
+[ext_resource type="Texture2D" uid="uid://bnwluolbaqn8y" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons12.png" id="19_0h6sc"]
+[ext_resource type="Texture2D" uid="uid://djoaahgypiibf" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png" id="20_whekj"]
+[ext_resource type="Texture2D" uid="uid://6ajntesx10my" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons11.png" id="21_kdkjo"]
 
 [sub_resource type="Resource" id="Resource_harga_sawit"]
 script = ExtResource("2_ambdn")
@@ -10,6 +29,7 @@ skill_name = "Harga Sawit Stabil"
 max_level = 3
 is_open = true
 cost = Array[int]([20, 50, 100])
+Icon = ExtResource("3_nqfhb")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_bibit_unggul"]
@@ -20,6 +40,7 @@ max_level = 5
 tree_position = Vector2(-160, -70)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([30, 75, 150, 300, 600])
+Icon = ExtResource("4_pope5")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_panen_cepat"]
@@ -30,6 +51,7 @@ max_level = 5
 tree_position = Vector2(-160, 100)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([40, 90, 180, 360, 720])
+Icon = ExtResource("5_w66aa")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_pupuk_berimbang"]
@@ -40,6 +62,7 @@ max_level = 5
 tree_position = Vector2(-320, -140)
 required_skill_ids = Array[String](["bibit_unggul"])
 cost = Array[int]([50, 100, 200, 400, 800])
+Icon = ExtResource("6_37qqy")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_tenaga_panen"]
@@ -50,6 +73,7 @@ max_level = 5
 tree_position = Vector2(-320, -20)
 required_skill_ids = Array[String](["bibit_unggul"])
 cost = Array[int]([75, 150, 300, 600, 1200])
+Icon = ExtResource("7_0wu8a")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_alat_egrek"]
@@ -60,6 +84,7 @@ max_level = 5
 tree_position = Vector2(-480, -20)
 required_skill_ids = Array[String](["tenaga_panen"])
 cost = Array[int]([100, 200, 400, 800, 1600])
+Icon = ExtResource("8_tc5kj")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_irigasi_kebun"]
@@ -70,6 +95,7 @@ max_level = 5
 tree_position = Vector2(160, -270)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([50, 125, 250, 500, 1000])
+Icon = ExtResource("9_bsqyu")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_rotasi_panen"]
@@ -80,6 +106,7 @@ max_level = 5
 tree_position = Vector2(320, -270)
 required_skill_ids = Array[String](["irigasi_kebun"])
 cost = Array[int]([80, 160, 320, 640, 1280])
+Icon = ExtResource("10_w2ctt")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_sensus_pokok"]
@@ -90,6 +117,7 @@ max_level = 4
 tree_position = Vector2(480, -270)
 required_skill_ids = Array[String](["rotasi_panen"])
 cost = Array[int]([120, 300, 650, 1300])
+Icon = ExtResource("11_2byg6")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_drone_monitoring"]
@@ -100,6 +128,7 @@ max_level = 4
 tree_position = Vector2(640, -270)
 required_skill_ids = Array[String](["sensus_pokok"])
 cost = Array[int]([250, 600, 1200, 2400])
+Icon = ExtResource("12_lmut8")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_panen_presisi"]
@@ -110,6 +139,7 @@ max_level = 4
 tree_position = Vector2(800, -270)
 required_skill_ids = Array[String](["drone_monitoring"])
 cost = Array[int]([300, 750, 1500, 3000])
+Icon = ExtResource("13_kie7o")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_pabrik_mini"]
@@ -120,6 +150,7 @@ max_level = 5
 tree_position = Vector2(160, -90)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([50, 125, 250, 500, 1000])
+Icon = ExtResource("14_2dolq")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_sortasi_tbs"]
@@ -130,6 +161,7 @@ max_level = 5
 tree_position = Vector2(320, -90)
 required_skill_ids = Array[String](["pabrik_mini"])
 cost = Array[int]([100, 250, 500, 1000, 2000])
+Icon = ExtResource("15_0wmww")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_sterilisasi_tbs"]
@@ -140,6 +172,7 @@ max_level = 5
 tree_position = Vector2(480, -90)
 required_skill_ids = Array[String](["sortasi_tbs"])
 cost = Array[int]([150, 350, 700, 1400, 2800])
+Icon = ExtResource("16_ly4tn")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_boiler_efisien"]
@@ -150,6 +183,7 @@ max_level = 4
 tree_position = Vector2(640, -90)
 required_skill_ids = Array[String](["sterilisasi_tbs"])
 cost = Array[int]([300, 700, 1500, 3000])
+Icon = ExtResource("17_k02as")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_otomasi_pabrik"]
@@ -160,6 +194,7 @@ max_level = 4
 tree_position = Vector2(800, -90)
 required_skill_ids = Array[String](["boiler_efisien"])
 cost = Array[int]([500, 1200, 2500, 5000])
+Icon = ExtResource("18_qqw2d")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_jalan_kebun"]
@@ -170,6 +205,7 @@ max_level = 5
 tree_position = Vector2(160, 90)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([80, 180, 360, 720, 1440])
+Icon = ExtResource("11_2byg6")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_armada_angkut"]
@@ -180,6 +216,7 @@ max_level = 5
 tree_position = Vector2(320, 90)
 required_skill_ids = Array[String](["jalan_kebun"])
 cost = Array[int]([120, 300, 600, 1200, 2400])
+Icon = ExtResource("19_0h6sc")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_jembatan_timbang"]
@@ -190,6 +227,7 @@ max_level = 4
 tree_position = Vector2(480, 90)
 required_skill_ids = Array[String](["armada_angkut"])
 cost = Array[int]([250, 600, 1200, 2400])
+Icon = ExtResource("5_w66aa")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_kontrak_pabrik"]
@@ -210,6 +248,7 @@ max_level = 3
 tree_position = Vector2(800, 90)
 required_skill_ids = Array[String](["kontrak_pabrik"])
 cost = Array[int]([750, 2000, 5000])
+Icon = ExtResource("21_kdkjo")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_sertifikasi_ispo"]
@@ -220,6 +259,7 @@ max_level = 3
 tree_position = Vector2(160, 270)
 required_skill_ids = Array[String](["harga_sawit"])
 cost = Array[int]([300, 800, 2000])
+Icon = ExtResource("7_0wu8a")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_tandan_kosong"]
@@ -230,6 +270,7 @@ max_level = 4
 tree_position = Vector2(320, 270)
 required_skill_ids = Array[String](["sertifikasi_ispo"])
 cost = Array[int]([350, 900, 1800, 3600])
+Icon = ExtResource("18_qqw2d")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_biogas_pome"]
@@ -240,6 +281,7 @@ max_level = 4
 tree_position = Vector2(480, 270)
 required_skill_ids = Array[String](["tandan_kosong"])
 cost = Array[int]([750, 1800, 3600, 7200])
+Icon = ExtResource("21_kdkjo")
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_zero_waste"]
