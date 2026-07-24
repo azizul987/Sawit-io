@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bevyfhtavokcv"]
 
 [ext_resource type="Texture2D" uid="uid://djoaahgypiibf" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png" id="1_2fr6c"]
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_tcc8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fr6c"]
 bg_color = Color(0, 0, 0, 1)
@@ -25,6 +26,7 @@ offset_left = -3.0
 offset_top = 20.0
 offset_right = 28.0
 offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_tcc8u")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fr6c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tcc8u")

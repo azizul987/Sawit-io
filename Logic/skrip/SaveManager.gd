@@ -37,7 +37,11 @@ func save_game() -> void:
 	var data := read_save_data()
 
 	data["point"] = Point.point
-
+	data["skill_tree_camera"]={
+		"x":Point.skill_tree_camera.x,
+		"y":Point.skill_tree_camera.y,
+		"z":Point.skill_tree_camera.z
+	}
 	write_save_data(data)
 	#print("Point saved")
 
@@ -46,7 +50,16 @@ func load_game() -> void:
 	var data := read_save_data()
 
 	Point.point = int(data.get("point", 10000))
-
+	var cam_data:Dictionary=data.get("skill_tree_camera",{
+		"x":0.0,
+		"y":0.0,
+		"z":1.4
+	})
+	Point.skill_tree_camera=Vector3(
+		float(cam_data.get("x")),
+		float(cam_data.get("y")),
+		float(cam_data.get("z"))
+	)
 	#print("Point loaded:", Point.point)
 
 

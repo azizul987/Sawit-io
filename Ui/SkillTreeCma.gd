@@ -8,7 +8,9 @@ extends Camera2D
 var is_dragging := false
 
 func _ready() -> void:
-	enabled = true
+	position.x=Point.skill_tree_camera.x
+	position.y=Point.skill_tree_camera.y
+	zoom=Vector2(Point.skill_tree_camera.z,Point.skill_tree_camera.z)
 
 func _process(delta: float) -> void:
 	var direction := Vector2.ZERO
@@ -38,11 +40,17 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_dragging = event.pressed
+			
 
 	if event is InputEventMouseMotion and is_dragging:
 		position -= event.relative / zoom.x
+		Point.skill_tree_camera.x=position.x
+		Point.skill_tree_camera.y=position.y
+		SaveManager.save_game()
 
 func zoom_camera(value):
 	var new_zoom = zoom.x + value
 	new_zoom = clamp(new_zoom, min_zoom, max_zoom)
 	zoom = Vector2(new_zoom, new_zoom)
+	Point.skill_tree_camera.z=zoom.x 
+	SaveManager.save_game()
