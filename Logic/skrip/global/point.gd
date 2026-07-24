@@ -1,7 +1,7 @@
 extends Node
 
 
-var point =100
+var point =10011
 var cd=1
 func add_point(value):
 	point += value 
