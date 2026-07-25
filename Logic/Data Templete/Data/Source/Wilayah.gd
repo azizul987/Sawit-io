@@ -15,7 +15,6 @@ enum TipeWilayah {
 @export_group("Pembelian")
 @export var harga: int = 1000
 @export var terbuka_default: bool = false
-
 @export_group("Tampilan")
 @export var warna_terbuka: Color = Color("#7a4408")
 @export var warna_terkunci: Color = Color.GRAY

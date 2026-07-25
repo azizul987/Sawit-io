@@ -149,4 +149,5 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 	return polygon.global_transform * center_local
 
 func _on_skill_button_pressedd(wilayah):
-	print("wilayah ",wilayah.data.id_wilayah)
+	wilayah.data.terbuka_default=true
+	wilayah.perbarui_tampilan()
