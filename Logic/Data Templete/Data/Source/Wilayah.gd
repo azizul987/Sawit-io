@@ -1,4 +1,4 @@
-class_name Area
+class_name Wilayah
 extends Resource
 enum TipeWilayah {
 	PROVINSI,

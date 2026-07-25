@@ -1,14 +1,13 @@
-class_name Wilayah
 extends Area2D
 
-signal wilayah_diklik(wilayah: Wilayah)
-signal wilayah_terkunci(wilayah: Wilayah)
+signal wilayah_diklik(wilayah)
+signal wilayah_terkunci(wilayah)
 
 const FONT_KOSTUM = preload(
 	"res://temp tekture/font/BPdotsSquareBold.otf"
 )
 
-@export var data: Area
+@export var data: Wilayah
 
 var can_click: bool = true
 var is_hovering: bool = false
@@ -17,6 +16,8 @@ var is_hovering: bool = false
 
 
 func _ready() -> void:
+	add_to_group("wilayah")
+
 	input_pickable = true
 
 	mouse_entered.connect(_on_mouse_entered)
@@ -109,7 +110,7 @@ func update_kursor() -> void:
 		Input.set_default_cursor_shape(Input.CURSOR_WAIT)
 
 
-func show_plus_effect(jumlah_poin: int) -> void:
+func show_plus_effect(jumlah_poin: float) -> void:
 	var label := Label.new()
 
 	label.text = "+%.1f" % jumlah_poin
