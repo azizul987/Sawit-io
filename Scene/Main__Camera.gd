@@ -1,16 +1,10 @@
 extends Camera2D
 
 @export var move_speed := 500.0
-<<<<<<< Updated upstream
 @export var zoom_speed := 0.25
 @export var min_zoom := 0.1
 @export var max_zoom := 10
 
-=======
-@export var zoom_speed := 0.1
-@export var min_zoom := 5.2
-@export var max_zoom := 2
->>>>>>> Stashed changes
 var is_dragging := false
 
 

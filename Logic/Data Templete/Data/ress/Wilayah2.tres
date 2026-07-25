@@ -7,5 +7,5 @@ script = ExtResource("1_hxgrw")
 id_wilayah = &"2"
 nama_wilayah = "Wilayah_2"
 tipe_wilayah = 2
-warna_terkunci = Color(0.00011236942, 0.0054461234, 0.0066736504, 1)
+warna_terkunci = Color(2.887845e-06, 0.8345327, 0.9561133, 1)
 metadata/_custom_type_script = "uid://b231hp4nl4apw"
