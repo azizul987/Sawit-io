@@ -120,3 +120,32 @@ func delete_current_save() -> void:
 		print("Save slot", current_slot, "berhasil dihapus")
 	else:
 		print("Save slot", current_slot, "memang belum ada")
+
+func get_all_used_slots() -> Array[int]:
+	var slots: Array[int] = []
+	var dir := DirAccess.open("user://")
+	if dir == null:
+		return slots
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+	while file_name != "":
+		if file_name.begins_with("save_slot_") and file_name.ends_with(".json"):
+			var num_str := file_name.trim_prefix("save_slot_").trim_suffix(".json")
+			if num_str.is_valid_int():
+				slots.append(int(num_str))
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	slots.sort()
+	return slots
+
+func get_next_available_slot() -> int:
+	var used_slots := get_all_used_slots()
+	var next_slot := 1
+	while used_slots.has(next_slot):
+		next_slot += 1
+	return next_slot
+
+func delete_slot(slot: int) -> void:
+	var path := "user://save_slot_%d.json" % slot
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)

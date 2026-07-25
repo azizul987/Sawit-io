@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://c8jqomxx4ldm0"]
+
+[ext_resource type="Script" uid="uid://b2lrd72cb72u2" path="res://Scene/main_menui.gd" id="1_0h56x"]
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_k3gr3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h56x"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_k3gr3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Menu_Awal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Menu_Awal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_0h56x"]
+resource_name = "menu_hide"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Menu_Awal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.06666669, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Menu_Awal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, -600)]
+}
+
+[sub_resource type="Animation" id="Animation_3r8ox"]
+resource_name = "menu_show"
+length = 0.53333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Menu_Awal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Menu_Awal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06, 0.46),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(0, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w84f2"]
+_data = {
+&"RESET": SubResource("Animation_k3gr3"),
+&"menu_hide": SubResource("Animation_0h56x"),
+&"menu_show": SubResource("Animation_3r8ox")
+}
+
+[node name="MainMenu" type="Node2D" unique_id=240010447]
+script = ExtResource("1_0h56x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363850231]
+
+[node name="SaveMenu" type="Control" parent="CanvasLayer" unique_id=857662195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/SaveMenu" unique_id=893012227]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -237.11581
+offset_right = 168.0
+offset_bottom = 237.11581
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveMenu/ScrollContainer" unique_id=2035582607]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 11
+
+[node name="Add" type="Button" parent="CanvasLayer/SaveMenu" unique_id=1660065971]
+custom_minimum_size = Vector2(305, 31)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = -15.5
+offset_right = 151.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tambah"
+
+[node name="Menu_Awal" type="Control" parent="CanvasLayer" unique_id=370296056]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 600.0
+offset_bottom = 599.99927
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu_Awal" unique_id=1614987110]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.80371
+offset_top = -38.041138
+offset_right = 86.80371
+offset_bottom = 38.041138
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0h56x")
+text = "Mulai"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]
+libraries/ = SubResource("AnimationLibrary_w84f2")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1829199323]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="button_up" from="CanvasLayer/Menu_Awal/Button" to="." method="hide_menu_awal"]
