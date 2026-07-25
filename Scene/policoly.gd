@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends CollisionPolygon2D
 
 func _ready() -> void:
