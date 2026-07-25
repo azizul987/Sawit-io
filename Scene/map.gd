@@ -68,21 +68,11 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	var polygon := wilayah.get_node_or_null("Polygon2D") as Polygon2D
 	if polygon == null:
 		return
-
-	var button := wilayah.get_node_or_null("ButtonWilayah") as Button
-	if button == null:
-		button = btn_templete.instantiate() as Button
-		button.name = "ButtonWilayah"
-		wilayah.add_child(button)
-
-		button.pressed.connect(
-			func():
-				print("Button wilayah diklik: ", wilayah.name)
-		)
+		
+	var button := btn_templete.instantiate() as Button
+	wilayah.add_child(button)
 
 	var data: Wilayah = wilayah.get("data")
-
-	# --- FONT TETAP (font_size_default), YANG BERUBAH CUMA SCALE BUTTON-NYA ---
 	var skala: float = data.skala_button if data != null else 1.0
 
 	button.text = ambil_nama_wilayah(wilayah)
@@ -90,14 +80,11 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	button.clip_text = false
 	button.focus_mode = Control.FOCUS_NONE
 	button.add_theme_font_size_override("font_size", font_size_default)
-
-	# Hitung ukuran minimum berdasarkan teks di font size default
 	button.custom_minimum_size = Vector2.ZERO
 	button.size = button.get_minimum_size()
-
-	# Scale berpusat di tengah button (bukan pojok kiri-atas)
 	button.pivot_offset = button.size * 0.5
 	button.scale = Vector2(skala, skala)
+	button.pressed.connect(_on_skill_button_pressedd.bind(wilayah))
 
 	var center_global := ambil_center_polygon_global(polygon)
 	var ukuran_setelah_scale := button.size * skala
@@ -160,3 +147,6 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 	var center_local := total / titik.size()
 
 	return polygon.global_transform * center_local
+
+func _on_skill_button_pressedd(wilayah):
+	print("wilayah ",wilayah.data.id_wilayah)
