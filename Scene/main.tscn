@@ -4,18 +4,12 @@
 [ext_resource type="Script" uid="uid://dvn5kf0qm1qq8" path="res://Scene/policoly.gd" id="2_2wwxx"]
 [ext_resource type="Script" uid="uid://b5o0songb035l" path="res://Scene/GenPoli.gd" id="2_r34rm"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="2_sblpm"]
+[ext_resource type="Resource" uid="uid://n1ai2teu4848" path="res://Logic/Data Templete/Data/ress/Lawang.tres" id="5_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="5_3amdw"]
+[ext_resource type="Script" uid="uid://dwkfvo7lurs2s" path="res://Scene/Main__Camera.gd" id="6_ow1sv"]
 
 [node name="Main" type="Node2D" unique_id=457701414]
 metadata/_edit_horizontal_guides_ = [2677.7537]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1478407992]
-offset_left = -1720.0
-offset_top = -1676.5244
-offset_right = 4740.92
-offset_bottom = 4304.37
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
 
 [node name="map" type="Node2D" parent="." unique_id=539465666]
 scale = Vector2(10, 10)
@@ -61,8 +55,7 @@ script = ExtResource("2_r34rm")
 
 [node name="Area2D" type="Area2D" parent="map/Sumatera Selatan/4" unique_id=1957909571]
 script = ExtResource("1_f6udf")
-terbuka_default = true
-warna_terbuka = Color(0.47796237, 0.2652294, 0.031023638, 1)
+data = ExtResource("5_1xcnr")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/4/Area2D" unique_id=1814564053]
 position = Vector2(249.2012, 217.29884)
@@ -217,9 +210,9 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Temp" unique_id=1789589549]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649]
-visible = false
 position = Vector2(2450, 2904.5454)
 zoom = Vector2(5, 5)
+script = ExtResource("6_ow1sv")
 
 [node name="UiMain" parent="." unique_id=1805602719 instance=ExtResource("5_3amdw")]
 offset_left = 2106.4722
