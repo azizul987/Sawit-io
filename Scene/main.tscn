@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://7xqdmxfx278f" path="res://Logic/Data Templete/Data/ress/Wilayah2.tres" id="7_c2iwn"]
 [ext_resource type="Resource" uid="uid://bro64h6u8ho16" path="res://Logic/Data Templete/Data/ress/Wilayah3.tres" id="8_3pt4j"]
 [ext_resource type="Resource" uid="uid://bnskm3qucgb6k" path="res://Logic/Data Templete/Data/ress/jambi.tres" id="9_7y4ci"]
+[ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
 
 [node name="Main" type="Node2D" unique_id=457701414]
 metadata/_edit_horizontal_guides_ = [2677.7537]
@@ -285,3 +286,11 @@ offset_left = 2106.4722
 offset_top = 3848.118
 offset_right = 2106.4722
 offset_bottom = 3848.118
+
+[node name="Button" parent="." unique_id=2045411329 instance=ExtResource("12_mxd2g")]
+visible = false
+offset_left = 7449.047
+offset_top = 5981.9995
+offset_right = 7719.047
+offset_bottom = 6113.9995
+theme_override_font_sizes/font_size = 1500

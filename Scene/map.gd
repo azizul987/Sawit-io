@@ -10,7 +10,6 @@ var btn_templete = preload("res://Logic/object_For_skrip/button.tscn")
 var daftar_wilayah: Array = []
 
 # Dipakai HANYA kalau wilayah tidak punya data Resource sama sekali (fallback darurat)
-@export var ukuran_button_default: Vector2 = Vector2(60, 24)
 @export var font_size_default: int = 12
 
 
@@ -18,7 +17,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 
 	ambil_semua_wilayah()
-	perbarui_semua_border()
+	# perbarui_semua_border() # dimatikan sementara, gak dipakai
 	buat_semua_button_wilayah()
 
 
@@ -83,21 +82,26 @@ func buat_button_wilayah(wilayah: Node) -> void:
 
 	var data: Wilayah = wilayah.get("data")
 
-	# --- UKURAN & FONT DIAMBIL LANGSUNG DARI RESOURCE ---
-	var ukuran_final: Vector2 = data.ukuran_button if data != null else ukuran_button_default
-	var font_size: int = data.font_size_button if data != null else font_size_default
+	# --- FONT TETAP (font_size_default), YANG BERUBAH CUMA SCALE BUTTON-NYA ---
+	var skala: float = data.skala_button if data != null else 1.0
 
 	button.text = ambil_nama_wilayah(wilayah)
-	button.size = ukuran_final
-	button.custom_minimum_size = ukuran_final
 	button.top_level = true
-	button.clip_text = true
+	button.clip_text = false
 	button.focus_mode = Control.FOCUS_NONE
-	button.add_theme_font_size_override("font_size", font_size)
+	button.add_theme_font_size_override("font_size", font_size_default)
+
+	# Hitung ukuran minimum berdasarkan teks di font size default
+	button.custom_minimum_size = Vector2.ZERO
+	button.size = button.get_minimum_size()
+
+	# Scale berpusat di tengah button (bukan pojok kiri-atas)
+	button.pivot_offset = button.size * 0.5
+	button.scale = Vector2(skala, skala)
 
 	var center_global := ambil_center_polygon_global(polygon)
-	button.global_position = center_global - button.size * 0.5
-
+	var ukuran_setelah_scale := button.size * skala
+	button.global_position = center_global - ukuran_setelah_scale * 0.5
 
 func ambil_nama_wilayah(wilayah: Node) -> String:
 	var data = wilayah.get("data")

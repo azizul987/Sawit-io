@@ -21,5 +21,4 @@ enum TipeWilayah {
 @export var warna_terkunci: Color = Color.GRAY
 
 @export_group("Button")
-@export var ukuran_button: Vector2 = Vector2(60, 24)
-@export var font_size_button: int = 12
+@export var skala_button: float = 1.0

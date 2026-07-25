@@ -7,4 +7,5 @@ script = ExtResource("1_4li0b")
 id_wilayah = &"jambi"
 nama_wilayah = "jambii"
 warna_terkunci = Color(0.22790954, 0.22790971, 0.22790965, 1)
+font_size_button = 500
 metadata/_custom_type_script = "uid://b231hp4nl4apw"
