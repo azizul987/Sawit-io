@@ -9,6 +9,7 @@ var is_dragging := false
 
 
 func _ready() -> void:
+	SaveManager.load_game()
 	position = Vector2(
 		Point.main_tree_camera.x,
 		Point.main_tree_camera.y

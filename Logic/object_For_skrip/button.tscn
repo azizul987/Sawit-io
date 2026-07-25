@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bt3fmc0j87d68"]
+
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_hd1ne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y4ci"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+anti_aliasing = false
+
+[node name="Button" type="Button" unique_id=2045411329]
+offset_right = 62.166992
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("1_hd1ne")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7y4ci")
+text = "100"

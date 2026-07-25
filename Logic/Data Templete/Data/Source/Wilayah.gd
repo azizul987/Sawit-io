@@ -1,5 +1,6 @@
 class_name Wilayah
 extends Resource
+
 enum TipeWilayah {
 	PROVINSI,
 	KABUPATEN,
@@ -18,3 +19,7 @@ enum TipeWilayah {
 @export_group("Tampilan")
 @export var warna_terbuka: Color = Color("#7a4408")
 @export var warna_terkunci: Color = Color.GRAY
+
+@export_group("Button")
+@export var ukuran_button: Vector2 = Vector2(60, 24)
+@export var font_size_button: int = 12

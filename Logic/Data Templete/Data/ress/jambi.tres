@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Wilayah" format=3 uid="uid://bnskm3qucgb6k"]
+
+[ext_resource type="Script" uid="uid://b231hp4nl4apw" path="res://Logic/Data Templete/Data/Source/Wilayah.gd" id="1_4li0b"]
+
+[resource]
+script = ExtResource("1_4li0b")
+id_wilayah = &"jambi"
+nama_wilayah = "jambii"
+warna_terkunci = Color(0.22790954, 0.22790971, 0.22790965, 1)
+metadata/_custom_type_script = "uid://b231hp4nl4apw"
