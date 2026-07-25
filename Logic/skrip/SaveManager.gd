@@ -42,6 +42,11 @@ func save_game() -> void:
 		"y":Point.skill_tree_camera.y,
 		"z":Point.skill_tree_camera.z
 	}
+	data["main_camera"]={
+		"x":Point.main_tree_camera.x,
+		"y":Point.main_tree_camera.y,
+		"z":Point.main_tree_camera.z
+	}
 	write_save_data(data)
 	#print("Point saved")
 
@@ -59,6 +64,16 @@ func load_game() -> void:
 		float(cam_data.get("x")),
 		float(cam_data.get("y")),
 		float(cam_data.get("z"))
+	)
+	var cam_data1=data.get("main_camera",{
+		"x":0.0,
+		"y":0.0,
+		"z":1.4
+	})
+	Point.main_tree_camera=Vector3(
+		float(cam_data1.get("x")),
+		float(cam_data1.get("y")),
+		float(cam_data1.get("z"))
 	)
 	#print("Point loaded:", Point.point)
 

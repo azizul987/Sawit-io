@@ -15,7 +15,7 @@
 metadata/_edit_horizontal_guides_ = [2677.7537]
 
 [node name="map" type="Node2D" parent="." unique_id=539465666]
-scale = Vector2(10, 10)
+scale = Vector2(30, 30)
 script = ExtResource("1_75buv")
 
 [node name="PetaSumatera" type="Sprite2D" parent="map" unique_id=774412200]
@@ -82,6 +82,12 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
+
+[node name="Button" type="Button" parent="map/Sumatera Selatan/4/Wilayah 1" unique_id=1229863461]
+offset_left = 246.16013
+offset_top = 211.91728
+offset_right = 254.16013
+offset_bottom = 219.91728
 
 [node name="Area2D" type="Area2D" parent="map/Sumatera Selatan/4" unique_id=1040300005]
 
