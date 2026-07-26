@@ -5,7 +5,6 @@ extends Control
 
 
 func _ready() -> void:
-	if Debug.dev_mode:
 		SaveManager.load_game()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

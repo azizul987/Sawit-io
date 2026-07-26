@@ -178,8 +178,4 @@ text = "Mulai"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]
 libraries/ = SubResource("AnimationLibrary_w84f2")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1829199323]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [connection signal="button_up" from="CanvasLayer/Menu_Awal/Button" to="." method="hide_menu_awal"]

@@ -54,7 +54,7 @@ func save_game() -> void:
 func load_game() -> void:
 	var data := read_save_data()
 
-	Point.point = int(data.get("point", 10000))
+	Point.point = int(data.get("point", 0))
 	var cam_data:Dictionary=data.get("skill_tree_camera",{
 		"x":0.0,
 		"y":0.0,

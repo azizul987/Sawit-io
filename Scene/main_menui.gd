@@ -9,6 +9,7 @@ func _ready() -> void:
 	show_menu_awal()
 	add_button.pressed.connect(_on_add_button_pressed)
 	_refresh_slots()
+	$CanvasLayer/SaveMenu.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +22,9 @@ func show_menu_awal():
 func hide_menu_awal():
 	$AnimationPlayer.play("menu_hide")
 	await $AnimationPlayer.animation_finished
-	visible = false
+	#visible = false-
+	#await $AnimationPlayer.animation_finished
+	$CanvasLayer/SaveMenu.show()
 
 func _refresh_slots():
 	for child in slot_container.get_children():
