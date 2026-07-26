@@ -47,3 +47,7 @@ func _input(event: InputEvent) -> void:
 			Point.add_point(100)
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
+
+
+func _on_exit_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/MainMenui.tscn")

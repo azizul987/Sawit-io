@@ -16,10 +16,9 @@ var is_hovering: bool = false
 
 @onready var polygon: Polygon2D = $Polygon2D
 
-@onready var border: Line2D = $Line2D
 
 @export var warna_border: Color = Color.BLACK
-@export var tebal_border: float = 2.0
+#@export var tebal_border: float = 2.0
 
 func _ready() -> void:
 	add_to_group("wilayah")
@@ -150,22 +149,3 @@ func show_plus_effect(jumlah_poin: float) -> void:
 
 	await tween.finished
 	label.queue_free()
-
-func perbarui_border() -> void:
-	if polygon == null or border == null:
-		return
-
-	var titik := polygon.polygon
-
-	if titik.size() < 2:
-		return
-
-	border.clear_points()
-
-	for p in titik:
-		border.add_point(p)
-
-	border.add_point(titik[0])
-
-	border.default_color = warna_border
-	border.width = tebal_border

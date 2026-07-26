@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="2_sblpm"]
 [ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="5_3amdw"]
 [ext_resource type="Script" uid="uid://dwkfvo7lurs2s" path="res://Logic/skrip/Main__Camera.gd" id="6_ow1sv"]
+[ext_resource type="Resource" uid="uid://bro64h6u8ho16" path="res://Logic/Data Templete/Data/ress/Wilayah3.tres" id="8_3pt4j"]
 [ext_resource type="Resource" uid="uid://bnskm3qucgb6k" path="res://Logic/Data Templete/Data/ress/jambi.tres" id="9_7y4ci"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
 
@@ -35,7 +36,6 @@ polygon = PackedVector2Array(12, 10, 3, -1, 3, -5, 12, -2, 18, -8, 23, -11, 23, 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Palembang" unique_id=1770322675]
 position = Vector2(290, 235)
-polygon = PackedVector2Array(12, 10, 3, -1, 3, -5, 12, -2, 18, -8, 23, -11, 23, -20, 29, -25, 39, -21, 44, -23, 53, -21, 63, -21, 63, -11, 66, -6, 72, -6, 72, 5, 79, 8, 83, 9, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 script = ExtResource("2_2wwxx")
 
 [node name="Kab1" type="Area2D" parent="map/Sumatera Selatan" unique_id=395595941]
@@ -73,6 +73,10 @@ position = Vector2(-23.165512, -21.17147)
 polygon = PackedVector2Array(7.0156403, 10.957428, 4.878891, 1.9076843, 7.440445, -5.652237, 8.52449, -10.147247, 8.374298, -14.491013, 8.616272, -14.3793335, 15, 5, 17, 8, 18, 12, 11.895554, 18.066711, 9.895401, 15.165924)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Kab3/wilayah1" unique_id=1690361228]
+position = Vector2(-23.165512, -21.17147)
+script = ExtResource("2_2wwxx")
+
 [node name="wilayah2" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=616659808]
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah2" unique_id=1791644703]
@@ -80,6 +84,10 @@ position = Vector2(-21.053255, -44.68124)
 color = Color(0.36078432, 0.5921569, 0.85882354, 0.6392157)
 polygon = PackedVector2Array(6.26326, 9.015976, 6, 4, 6.107773, 2.769043, 12.243515, 3.7958374, 14.697815, 4.146454, 16.705109, 8.193237, 18.0634, 10.974594, 18.733414, 12.2357025, 12, 18, 9.752274, 18.986847, 7.9143524, 13.459442, 6.5015564, 9.130875)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Kab3/wilayah2" unique_id=1569542935]
+position = Vector2(-21.053255, -44.68124)
+script = ExtResource("2_2wwxx")
 
 [node name="wilayah4" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=1790428628]
 
@@ -89,13 +97,23 @@ color = Color(0.7037332, 0.4605049, 0.8359963, 0.6392157)
 polygon = PackedVector2Array(4.6631317, 9.453049, 3.1838074, 4.856674, 5.463196, 3.8662872, 8.874542, 0.927475, 12.163727, -1.887558, 15.042267, 3.8251495, 17.072586, 7.785446, 18.460526, 10.64064, 19.184921, 12.027359, 12, 18, 8.776138, 19.256638, 8.336426, 17.408798, 6.3090363, 14.430679, 5.814316, 12.96907)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Kab3/wilayah4" unique_id=1349080813]
+position = Vector2(-14.484863, -30.558308)
+script = ExtResource("2_2wwxx")
+
 [node name="wilayah3" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=2091517361]
+script = ExtResource("1_f6udf")
+data = ExtResource("8_3pt4j")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah3" unique_id=739170342]
 position = Vector2(-15.758724, -1.7891316)
 color = Color(0.36078432, 0.5921569, 0.85882354, 0.6392157)
 polygon = PackedVector2Array(1.2738647, 13.01001, 3.204239, 9.024139, 6.163254, 5.9565125, 5.4044037, 1.9934692, 6.107773, 2.769043, 12.243515, 3.7958374, 14.697815, 4.146454, 16.705109, 8.193237, 18.0634, 10.974594, 23.185104, 15.046326, 15.638672, 22.306671, 12.389191, 20.07135, 6.231949, 16.220764)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Kab3/wilayah3" unique_id=604545295]
+position = Vector2(-15.758724, -1.7891316)
+script = ExtResource("2_2wwxx")
 
 [node name="wilayah5" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=828479247]
 position = Vector2(2.4980145, -11.301661)
@@ -105,6 +123,10 @@ position = Vector2(-15.758724, -1.7891316)
 color = Color(0.45076042, 0.62900233, 0.5085317, 0.6392157)
 polygon = PackedVector2Array(1.9903259, 9.9888, 8.087418, 3.919342, 7.623337, 1.7973938, 12.243515, 3.7958374, 14.697815, 4.146454, 16.705109, 8.193237, 18.0634, 10.974594, 23.185104, 15.046326, 15.638672, 22.306671, 12.0551605, 15.522888, 3.6039276, 14.091583, 2.9163795, 13.307332, 2.906128, 13.296722, 2.9042969, 13.279266, 2.3587189, 10.523529)
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Sumatera Selatan/Kab3/wilayah5" unique_id=1575548263]
+position = Vector2(-15.758724, -1.7891316)
+script = ExtResource("2_2wwxx")
 
 [node name="Tempelte" type="Area2D" parent="map" unique_id=1404920364]
 visible = false
@@ -173,9 +195,8 @@ polygon = PackedVector2Array(-19.842072, -28.672882, -21.77739, -36.438736, -22.
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Jambi" unique_id=351092447]
-position = Vector2(251.99997, 218.99994)
-scale = Vector2(0.99999976, 0.99999976)
-polygon = PackedVector2Array(5.492798, 6.562683, -2.392746, 1.6251221, -0.9911957, -0.7171631, -0.1772461, -2.283844, 3.3268127, -9.272217, 9.09761, -5.905731, 8.970413, 0.11642456)
+position = Vector2(-10.799999, -16.399998)
+scale = Vector2(1, 1.0103091)
 script = ExtResource("2_2wwxx")
 
 [node name="Line2D" type="Line2D" parent="map/Jambi" unique_id=20731257]

@@ -9,4 +9,5 @@ nama_wilayah = "Wilayah_1"
 tipe_wilayah = 2
 harga = 0
 terbuka_default = true
+skala_button = 4.0
 metadata/_custom_type_script = "uid://b231hp4nl4apw"
