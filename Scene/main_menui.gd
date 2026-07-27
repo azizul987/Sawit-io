@@ -47,7 +47,8 @@ func _on_add_button_pressed():
 
 func _on_slot_load(slot_num: int):
 	SaveManager.set_slot(slot_num)
-	get_tree().change_scene_to_file("res://Scene/main.tscn")  # scene tujuan yang udah punya logic load sendiri
+	SaveManager.load_game()
+	get_tree().change_scene_to_file("res://Scene/main.tscn")  
 
 func _on_slot_delete(slot_num: int):
 	SaveManager.delete_slot(slot_num)

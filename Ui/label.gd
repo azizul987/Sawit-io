@@ -5,8 +5,7 @@ extends Control
 
 
 func _ready() -> void:
-	if Debug.is_active():
-		SaveManager.load_game()
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	skor.text=str(Point.point)
@@ -50,4 +49,5 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_exit_pressed() -> void:
+	SaveManager.save_game()
 	get_tree().change_scene_to_file("res://Scene/MainMenui.tscn")

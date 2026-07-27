@@ -90,8 +90,58 @@ func save_skill_level(skill_database: skill_obj) -> void:
 	data["skills"] = skill_levels
 	data["isopens"]=skill_isopens
 	write_save_data(data)
-	print("Skill level saved")
+	#print("Skill level saved")
+	
+func save_status_wilayah(daftar_wilayah: Array) -> void:
+	var save_data: Dictionary = read_save_data()
+	var status_wilayah: Dictionary = {}
 
+	for node_wilayah in daftar_wilayah:
+		if not is_instance_valid(node_wilayah):
+			continue
+
+		var data_wilayah: Wilayah = node_wilayah.get("data") as Wilayah
+
+		if data_wilayah == null:
+			continue
+
+		if data_wilayah.id_wilayah == &"":
+			push_warning(
+				"Wilayah %s tidak memiliki id_wilayah"
+				% node_wilayah.name
+			)
+			continue
+
+		status_wilayah[str(data_wilayah.id_wilayah)] = \
+			data_wilayah.terbuka_default
+
+	save_data["wilayah"] = status_wilayah
+	write_save_data(save_data)
+	
+func load_status_wilayah(daftar_wilayah: Array) -> void:
+	var save_data: Dictionary = read_save_data()
+	var status_wilayah: Dictionary = save_data.get("wilayah", {})
+
+	for node_wilayah in daftar_wilayah:
+		if not is_instance_valid(node_wilayah):
+			continue
+
+		var data_wilayah: Wilayah = node_wilayah.get("data") as Wilayah
+
+		if data_wilayah == null:
+			continue
+
+		var id: String = str(data_wilayah.id_wilayah)
+
+		if not status_wilayah.has(id):
+			continue
+
+		data_wilayah.terbuka_default = bool(
+			status_wilayah[id]
+		)
+
+		if node_wilayah.has_method("perbarui_tampilan"):
+			node_wilayah.perbarui_tampilan()
 
 func load_skill_level(skill_database: skill_obj) -> void:
 	var data := read_save_data()
