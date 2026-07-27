@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://b2lrd72cb72u2" path="res://Scene/main_menui.gd" id="1_0h56x"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_k3gr3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r8ox"]
+bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h56x"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -130,21 +133,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 11
 
-[node name="Add" type="Button" parent="CanvasLayer/SaveMenu" unique_id=1660065971]
+[node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer" unique_id=1660065971]
 custom_minimum_size = Vector2(305, 31)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.5
-offset_top = -15.5
-offset_right = 151.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 text = "Tambah"
+
+[node name="Kembali" type="Button" parent="CanvasLayer/SaveMenu" unique_id=690110870]
+layout_mode = 0
+offset_left = 488.1963
+offset_top = 569.11584
+offset_right = 630.1963
+offset_bottom = 618.81586
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_3r8ox")
+text = "Kembali"
 
 [node name="Menu_Awal" type="Control" parent="CanvasLayer" unique_id=370296056]
 modulate = Color(1, 1, 1, 0)
@@ -178,4 +181,5 @@ text = "Mulai"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]
 libraries/ = SubResource("AnimationLibrary_w84f2")
 
+[connection signal="pressed" from="CanvasLayer/SaveMenu/Kembali" to="." method="_on_kembali_pressed"]
 [connection signal="button_up" from="CanvasLayer/Menu_Awal/Button" to="." method="hide_menu_awal"]

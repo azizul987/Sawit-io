@@ -3,7 +3,7 @@ extends Node2D
 const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn")
 
 @onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer
-@onready var add_button =$CanvasLayer/SaveMenu/Add
+@onready var add_button =$CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer/Add
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show_menu_awal()
@@ -26,11 +26,22 @@ func hide_menu_awal():
 	#await $AnimationPlayer.animation_finished
 	$CanvasLayer/SaveMenu.show()
 
-func _refresh_slots():
+func _refresh_slots() -> void:
 	for child in slot_container.get_children():
+		if child == add_button:
+			continue
+
+		slot_container.remove_child(child)
 		child.queue_free()
+
 	for slot_num in SaveManager.get_all_used_slots():
 		_create_slot_ui(slot_num)
+
+	# Pindahkan tombol Add ke posisi paling bawah.
+	slot_container.move_child(
+		add_button,
+		slot_container.get_child_count() - 1
+	)
 
 func _create_slot_ui(slot_num: int):
 	var slot_ui = SAVE_SLOT_SCENE.instantiate()
@@ -53,3 +64,7 @@ func _on_slot_load(slot_num: int):
 func _on_slot_delete(slot_num: int):
 	SaveManager.delete_slot(slot_num)
 	_refresh_slots()
+
+func _on_kembali_pressed() -> void:
+	$CanvasLayer/SaveMenu.hide()
+	show_menu_awal()

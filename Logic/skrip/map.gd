@@ -115,14 +115,9 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 	return polygon.global_transform * center_local
 
 func _on_skill_button_pressedd(wilayah):
-	var data_wilayah: Wilayah = wilayah.get("data") as Wilayah
-
-	if data_wilayah == null:
-		return
+	var data_wilayah: Wilayah = wilayah.data as Wilayah
 
 	data_wilayah.terbuka_default = true
-
-	if wilayah.has_method("perbarui_tampilan"):
-		wilayah.perbarui_tampilan()
+	wilayah.perbarui_tampilan()
 
 	SaveManager.save_status_wilayah(daftar_wilayah)
