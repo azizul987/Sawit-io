@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Control
 
 @onready var templete_button=preload("res://Logic/object_For_skrip/tempelete_button.tscn")
@@ -116,20 +116,18 @@ func _draw() -> void	:
 func _on_skill_button_pressedd(skil_id):
 	var select_btn=buttons_by_id.get(skil_id) as Control
 	var targetSkill:skill=skill_database.get_skill_by_id(skil_id)
-	#print("skill level is ",targetSkill.level)
 	if targetSkill.level>=targetSkill.cost.size():
 		return
 	#print(skil_id)
 	if targetSkill.cost[targetSkill.level]<=Point.point:
 		Point.remove_point(targetSkill.cost[targetSkill.level])
-		print(targetSkill.level)
-	if targetSkill.level < targetSkill.cost.size():
-		targetSkill.level += 1
-		if targetSkill.level >= targetSkill.cost.size():
-			select_btn.get_node("Buy").text = "MAX"
-		else:
-			select_btn.get_node("Buy").text = str(targetSkill.cost[targetSkill.level])
-		SaveManager.save_skill_level(skill_database)
+		if targetSkill.level < targetSkill.cost.size():
+			targetSkill.level += 1
+			if targetSkill.level >= targetSkill.cost.size():
+				select_btn.get_node("Buy").text = "MAX"
+			else:
+				select_btn.get_node("Buy").text = str(targetSkill.cost[targetSkill.level])
+		#SaveManager.save_skill_level(skill_database)
 		for data in skill_database.skills:
 			if data == null:
 				continue
@@ -147,6 +145,7 @@ func _on_skill_button_pressedd(skil_id):
 				unlock_skill_animated(data.id, new_btn)
 		queue_redraw()
 		SaveManager.save_skill_level(skill_database)
+		SaveManager.save_game()
 	else:
 		#print("uang kurang")
 		#print(Point.point)

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dvn5kf0qm1qq8" path="res://Logic/skrip/policoly.gd" id="2_2wwxx"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="2_sblpm"]
 [ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="5_3amdw"]
+[ext_resource type="Resource" uid="uid://n1ai2teu4848" path="res://Logic/Data Templete/Data/ress/Wilayah1.tres" id="5_3pt4j"]
 [ext_resource type="Script" uid="uid://dwkfvo7lurs2s" path="res://Logic/skrip/Main__Camera.gd" id="6_ow1sv"]
 [ext_resource type="Resource" uid="uid://bro64h6u8ho16" path="res://Logic/Data Templete/Data/ress/Wilayah3.tres" id="8_3pt4j"]
 [ext_resource type="Resource" uid="uid://bnskm3qucgb6k" path="res://Logic/Data Templete/Data/ress/jambi.tres" id="9_7y4ci"]
@@ -67,6 +68,8 @@ polygon = PackedVector2Array(-5.525894, -1.8538513, -2.4879456, -10.904587, -1.9
 uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -21, 63, -21, 63, -11, 66, -6, 79, 8, 84, 18, 84, 22, 79, 26, 74, 33, 49, 36, 42, 41, 36, 41, 32, 27)
 
 [node name="wilayah1" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=1038290269]
+script = ExtResource("1_f6udf")
+data = ExtResource("5_3pt4j")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah1" unique_id=1278172691]
 position = Vector2(-23.165512, -21.17147)

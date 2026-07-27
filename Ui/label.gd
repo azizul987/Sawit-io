@@ -5,7 +5,7 @@ extends Control
 
 
 func _ready() -> void:
-	pass
+	SaveManager.load_game()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	skor.text=str(Point.point)
@@ -33,11 +33,28 @@ func print_scene_name() -> void:
 
 
 func _on_texture_button_pressed() -> void:
-	#if is_in_scene("")
-	if get_tree().current_scene.name=="Main":
-		get_tree().change_scene_to_file("res://Ui/skill_tree.tscn")
+	var current_scene := get_tree().current_scene
+
+	if current_scene == null:
+		return
+
+	var current_path := current_scene.scene_file_path
+	var target_path: String
+
+	if current_path == "res://Scene/main.tscn":
+		target_path = "res://Ui/skill_tree.tscn"
+	elif current_path == "res://Ui/skill_tree.tscn":
+		target_path = "res://Scene/main.tscn"
 	else:
-		get_tree().change_scene_to_file("res://Scene/main.tscn")
+		push_error("Scene tidak dikenali: " + current_path)
+		return
+
+	SaveManager.save_game()
+
+	var error := get_tree().change_scene_to_file(target_path)
+
+	if error != OK:
+		push_error("Gagal membuka scene: " + target_path)
 	
 	
 func _input(event: InputEvent) -> void:

@@ -34,14 +34,20 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	var polygon := wilayah.get_node_or_null("Polygon2D") as Polygon2D
 	if polygon == null:
 		return
+	
+	var data: Wilayah = wilayah.get("data")
+	if data == null:
+		return
+
+	if data.terbuka_default:
+		return
 		
 	var button := btn_templete.instantiate() as Button
 	wilayah.add_child(button)
 
-	var data: Wilayah = wilayah.get("data")
 	var skala: float = data.skala_button if data != null else 1.0
 
-	button.text = ambil_nama_wilayah(wilayah)
+	button.text =str(wilayah.data.harga)
 	button.top_level = true
 	button.clip_text = false
 	button.focus_mode = Control.FOCUS_NONE
@@ -50,24 +56,11 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	button.size = button.get_minimum_size()
 	button.pivot_offset = button.size * 0.5
 	button.scale = Vector2(skala, skala)
-	button.pressed.connect(_on_skill_button_pressedd.bind(wilayah))
+	button.pressed.connect(_on_skill_button_pressedd.bind(wilayah,button))
 
 	var center_global := ambil_center_polygon_global(polygon)
 	var ukuran_setelah_scale := button.size * skala
 	button.global_position = center_global - ukuran_setelah_scale * 0.5
-
-func ambil_nama_wilayah(wilayah: Node) -> String:
-	var data = wilayah.get("data")
-
-	if data == null:
-		return wilayah.name
-
-	var nama = data.get("nama_wilayah")
-
-	if nama == null or nama == "":
-		return wilayah.name
-
-	return str(nama)
 
 
 func ambil_center_polygon_global(polygon: Polygon2D) -> Vector2:
@@ -114,10 +107,11 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 
 	return polygon.global_transform * center_local
 
-func _on_skill_button_pressedd(wilayah):
-	var data_wilayah: Wilayah = wilayah.data as Wilayah
-
-	data_wilayah.terbuka_default = true
-	wilayah.perbarui_tampilan()
-
-	SaveManager.save_status_wilayah(daftar_wilayah)
+func _on_skill_button_pressedd(wilayah:Node,button:Button):
+	var data_wilayah: Wilayah = wilayah.data
+	if  data_wilayah.harga<=Point.point:
+		data_wilayah.terbuka_default = true
+		wilayah.perbarui_tampilan()
+		SaveManager.save_status_wilayah(daftar_wilayah)
+		button.queue_free()
+	#wilayah.chilasd hapus button harag ya 
