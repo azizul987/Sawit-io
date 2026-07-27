@@ -52,8 +52,7 @@ func _create_slot_ui(slot_num: int):
 
 func _on_add_button_pressed():
 	var new_slot := SaveManager.get_next_available_slot()
-	SaveManager.set_slot(new_slot)
-	SaveManager.save_game()
+	SaveManager.create_new_slot(new_slot)
 	_refresh_slots()
 
 func _on_slot_load(slot_num: int):

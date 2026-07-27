@@ -9,6 +9,11 @@ func set_slot(slot: int) -> void:
 	#print("Slot aktif:", current_slot)
 
 
+func create_new_slot(slot: int) -> void:
+	current_slot = slot
+	write_save_data({"point": 0})
+
+
 func get_save_path() -> String:
 	return "user://save_slot_%d.json" % current_slot
 
@@ -66,9 +71,9 @@ func load_game() -> void:
 		float(cam_data.get("z"))
 	)
 	var cam_data1=data.get("main_camera",{
-		"x":0.0,
-		"y":0.0,
-		"z":1.4
+		"x":7347.983,
+		"y":8094.0,
+		"z":1
 	})
 	Point.main_tree_camera=Vector3(
 		float(cam_data1.get("x")),
@@ -133,33 +138,27 @@ func load_status_wilayah(daftar_wilayah: Array) -> void:
 
 		var id: String = str(data_wilayah.id_wilayah)
 
-		if not status_wilayah.has(id):
-			continue
-
-		data_wilayah.terbuka_default = bool(
-			status_wilayah[id]
-		)
+		if status_wilayah.has(id):
+			data_wilayah.terbuka_default = bool(status_wilayah[id])
+		elif not data_wilayah.resource_path.is_empty():
+			var clean_res := ResourceLoader.load(data_wilayah.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as Wilayah
+			if clean_res != null:
+				data_wilayah.terbuka_default = clean_res.terbuka_default
 
 		if node_wilayah.has_method("perbarui_tampilan"):
 			node_wilayah.perbarui_tampilan()
 
 func load_skill_level(skill_database: skill_obj) -> void:
 	var data := read_save_data()
+	var skill_levels: Dictionary = data.get("skills", {})
+	var skill_isopen: Dictionary = data.get("isopens", {})
 
-	if not data.has("skills"):
-		#print("Belum ada data skill")
-		return
-
-	var skill_levels = data["skills"]
-	var skill_isopen=data["isopens"]
 	for skill_data in skill_database.skills:
 		if skill_data == null:
 			continue
 
-		if skill_levels.has(skill_data.id): 
-			skill_data.level = int(skill_levels[skill_data.id])
-		if skill_isopen.has(skill_data.id):
-			skill_data.is_open = bool(skill_isopen[skill_data.id])
+		skill_data.level = int(skill_levels.get(skill_data.id, 0))
+		skill_data.is_open = bool(skill_isopen.get(skill_data.id, skill_data.required_skill_ids.is_empty()))
 	#print("Skill level loaded")
 	
 func delete_current_save() -> void:

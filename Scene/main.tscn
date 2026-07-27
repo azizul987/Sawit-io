@@ -241,7 +241,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="map/Temp" unique_id=1789589549]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649]
-position = Vector2(2450, 2904.5454)
+position = Vector2(7347.9834, 8093.9995)
 zoom = Vector2(5, 5)
 script = ExtResource("6_ow1sv")
 
