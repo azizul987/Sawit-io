@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
 [ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
 [ext_resource type="Texture2D" uid="uid://luaruaa52acv" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons4.png" id="5_rkw7e"]
+[ext_resource type="Texture2D" uid="uid://c0xhqcmcbti51" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons1.png" id="6_qoxqm"]
+[ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
+[ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
+[ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
 
 [node name="UiMain" type="Control" unique_id=1805602719]
 layout_mode = 3
@@ -23,6 +27,10 @@ anchor_left = 0.019405723
 anchor_top = 0.035923753
 anchor_right = 0.09364517
 anchor_bottom = 0.10495499
+offset_left = 537.6446
+offset_top = 1.7214088
+offset_right = 537.64465
+offset_bottom = 1.721405
 theme_override_colors/font_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 40
@@ -39,22 +47,92 @@ offset_bottom = 40.0
 
 [node name="Change _Mode" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
 layout_mode = 0
-offset_left = 1020.1288
-offset_top = 23.278591
-offset_right = 1123.7651
-offset_bottom = 126.91495
+offset_left = 14.0
+offset_top = 528.0
+offset_right = 117.63635
+offset_bottom = 631.63635
 texture_normal = ExtResource("3_k7e2i")
 texture_pressed = ExtResource("4_6dpwe")
 stretch_mode = 0
 
 [node name="Exit" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=1425474892]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 541.0
-offset_right = 107.75701
-offset_bottom = 629.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 103.75701
+offset_bottom = 116.0
 texture_normal = ExtResource("5_rkw7e")
 stretch_mode = 0
+
+[node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
+layout_mode = 1
+anchor_left = 0.6484375
+anchor_top = 0.012345679
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_wbkow")
+upgrade_database = ExtResource("7_wbkow")
+upgrade_button_scene = ExtResource("7_raqhj")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpdateMenu" unique_id=1445823402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = 152.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpdateMenu/ScrollContainer" unique_id=2138028305]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpdateMenu" unique_id=941773606]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 18.0
+offset_right = 406.0
+offset_bottom = 78.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="UpdateMenu/HBoxContainer" unique_id=480799398]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("6_qoxqm")
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="UpdateMenu/HBoxContainer" unique_id=1605117621]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("6_qoxqm")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="UpdateMenu/HBoxContainer" unique_id=475751486]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("6_qoxqm")
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="UpdateMenu/HBoxContainer" unique_id=399836918]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("6_qoxqm")
+stretch_mode = 0
+
+[node name="Merek" type="Label" parent="UpdateMenu" unique_id=381793057]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 94.0
+offset_right = 360.0
+offset_bottom = 141.0
+text = "UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SkillTree/Exit" to="." method="_on_exit_pressed"]

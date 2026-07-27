@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://yafkb03mfrdh"]
+
+[ext_resource type="Script" uid="uid://vt368nue1bln" path="res://Ui/updatebtn.gd" id="1_fo7bx"]
+[ext_resource type="Texture2D" uid="uid://bnn4d5r1duo1i" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons2.png" id="2_1gh37"]
+
+[node name="Updatebtn" type="Button" unique_id=1619997399]
+custom_minimum_size = Vector2(412, 80)
+script = ExtResource("1_fo7bx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=938833588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=151813277]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Icon" type="TextureButton" parent="HBoxContainer/MarginContainer" unique_id=1897968863]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("2_1gh37")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1354535279]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nama" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=993452087]
+layout_mode = 2
+text = "Jumlah Sawit"
+
+[node name="Harga" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2089461872]
+layout_mode = 2
+text = "5"
+
+[node name="Level" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1322363543]
+layout_mode = 2
+text = "0/1000"

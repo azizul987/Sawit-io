@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="UpgradeDatabase" format=3 uid="uid://dg02w7l0srhat"]
+
+[ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_erwtg"]
+[ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_own6j"]
+[ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="3_own6j"]
+[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="4_hf23s"]
+
+[sub_resource type="Resource" id="Resource_hf23s"]
+script = ExtResource("2_own6j")
+upgrade_name = "Tes 1"
+icon = ExtResource("3_own6j")
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[sub_resource type="Resource" id="Resource_1pppr"]
+script = ExtResource("2_own6j")
+upgrade_name = "Tes 2"
+icon = ExtResource("4_hf23s")
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[resource]
+script = ExtResource("1_erwtg")
+upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_hf23s"), SubResource("Resource_1pppr")])
+metadata/_custom_type_script = "uid://b2qs3ham6ojqe"
