@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
+[ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 
 [node name="UiMain" type="Control" unique_id=1805602719]
 layout_mode = 3
@@ -80,6 +81,26 @@ grow_vertical = 2
 script = ExtResource("6_wbkow")
 upgrade_database = ExtResource("7_wbkow")
 upgrade_button_scene = ExtResource("7_raqhj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UpdateMenu" unique_id=1704199337]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -226.0
+offset_right = 186.5
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_4a1h5")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpdateMenu" unique_id=1445823402]
 layout_mode = 1
