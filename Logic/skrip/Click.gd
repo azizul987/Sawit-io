@@ -126,6 +126,9 @@ func show_plus_effect(jumlah_poin: float) -> void:
 	label.add_theme_font_override("font", FONT_KOSTUM)
 	label.add_theme_font_size_override("font_size", 8)
 
+	var z: float = 1.0 / get_viewport().get_camera_2d().zoom.x
+	label.scale = Vector2(z, z)
+
 	get_tree().current_scene.add_child(label)
 
 	label.global_position = get_global_mouse_position()
@@ -136,7 +139,7 @@ func show_plus_effect(jumlah_poin: float) -> void:
 	tween.tween_property(
 		label,
 		"global_position",
-		label.global_position + Vector2(0, -50),
+		label.global_position + Vector2(0, -50 * z),
 		0.6
 	)
 

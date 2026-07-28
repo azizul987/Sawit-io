@@ -23,12 +23,7 @@ SaveManager="*uid://dbxybk6q0cit3"
 
 [display]
 
-window/size/viewport_width=1152
-window/size/viewport_height=648
-window/size/resizable=true
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
-window/stretch/scale_mode="fractional"
 
 [file_customization]
 
