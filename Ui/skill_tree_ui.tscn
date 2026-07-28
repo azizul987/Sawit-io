@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cxvneabfihjsg"]
+
+[ext_resource type="Script" uid="uid://b4pvsgxfo61ay" path="res://Ui/skill_tree_ui.gd" id="1_621cv"]
+[ext_resource type="PackedScene" uid="uid://dyxdkyunbknd3" path="res://Ui/skill_tree.tscn" id="1_dqm5e"]
+[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="3_dwmuj"]
+
+[node name="SkillTreeUi" type="Control" unique_id=1429291990]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_621cv")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=90200876]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.368
+offset_top = -214.26306
+offset_right = 381.812
+offset_bottom = 223.21667
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1072955079]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+size = Vector2i(769, 437)
+render_target_update_mode = 4
+
+[node name="Skill Tree" parent="SubViewportContainer/SubViewport" unique_id=409050271 instance=ExtResource("1_dqm5e")]
+
+[node name="Exit" type="TextureButton" parent="." unique_id=293348174]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 363.41245
+offset_top = -232.50015
+offset_right = 403.41245
+offset_bottom = -192.50015
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_dwmuj")
+stretch_mode = 0
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -66,16 +66,20 @@ stretch_mode = 0
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
-anchor_left = 0.6484375
-anchor_top = 0.012345679
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -328.0
+offset_right = 570.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_wbkow")
 upgrade_database = ExtResource("7_wbkow")
 upgrade_button_scene = ExtResource("7_raqhj")
-metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpdateMenu" unique_id=1445823402]
 layout_mode = 1

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dqnxbheqigscs" path="res://Logic/skrip/skiil_canvas.gd" id="1_s5cxk"]
 [ext_resource type="Resource" uid="uid://twdxijt27d5j" path="res://Logic/Data Templete/Data/ress/Skill_Database_place.tres" id="2_uc1hk"]
 [ext_resource type="Script" uid="uid://bqudad3ilt7jf" path="res://Ui/SkillTreeCma.gd" id="3_nr7s1"]
-[ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="4_uc1hk"]
 
 [node name="Skill Tree" type="Node2D" unique_id=409050271]
+texture_filter = 1
 
 [node name="Canvas" type="ColorRect" parent="." unique_id=866420056]
 anchors_preset = 15
@@ -39,8 +39,6 @@ script = ExtResource("3_nr7s1")
 
 [node name="Helper" type="Marker2D" parent="." unique_id=1620060842]
 position = Vector2(128, 97)
-
-[node name="UiMain" parent="." unique_id=1805602719 instance=ExtResource("4_uc1hk")]
 
 [node name="Backround" type="CanvasLayer" parent="." unique_id=905221689]
 layer = -10

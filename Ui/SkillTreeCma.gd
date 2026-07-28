@@ -13,6 +13,8 @@ func _ready() -> void:
 	zoom=Vector2(Point.skill_tree_camera.z,Point.skill_tree_camera.z)
 
 func _process(delta: float) -> void:
+	if not Point.is_skill_tree_open:
+		return
 	var direction := Vector2.ZERO
 
 	if Input.is_action_pressed("ui_right"):
@@ -37,6 +39,10 @@ func _process(delta: float) -> void:
 		zoom_camera(zoom_speed)
 
 func _input(event):
+	if not Point.is_skill_tree_open:
+		is_dragging = false
+		return
+
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_dragging = event.pressed

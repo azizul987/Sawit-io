@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="sawit io"
-run/main_scene="uid://c8jqomxx4ldm0"
+run/main_scene="uid://cxvneabfihjsg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Point="*uid://cx0xu5apa8db3"
 Debug="*uid://ckwrku1l76rkv"
 SaveManager="*uid://dbxybk6q0cit3"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [file_customization]
 
