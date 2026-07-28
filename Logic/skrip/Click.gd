@@ -113,7 +113,7 @@ func show_plus_effect(jumlah_poin: float) -> void:
 	label.modulate = Color.WHITE
 
 	label.add_theme_font_override("font", FONT_KOSTUM)
-	label.add_theme_font_size_override("font_size", 24)
+	label.add_theme_font_size_override("font_size", randi_range(20,50))
 
 	var z: float = 1.0 / get_viewport().get_camera_2d().zoom.x
 	label.scale = Vector2(z, z)
