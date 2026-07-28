@@ -79,19 +79,8 @@ func _input_event(
 
 		return
 
-	if not can_click:
-		return
-
-	can_click = false
-	update_kursor()
-
 	Point.add_point(Point.point_per_click)
 	show_plus_effect(Point.point_per_click)
-
-	await get_tree().create_timer(Point.cd).timeout
-
-	can_click = true
-	update_kursor()
 
 
 func _on_mouse_entered() -> void:
@@ -124,14 +113,14 @@ func show_plus_effect(jumlah_poin: float) -> void:
 	label.modulate = Color.WHITE
 
 	label.add_theme_font_override("font", FONT_KOSTUM)
-	label.add_theme_font_size_override("font_size", 8)
+	label.add_theme_font_size_override("font_size", 24)
 
 	var z: float = 1.0 / get_viewport().get_camera_2d().zoom.x
 	label.scale = Vector2(z, z)
 
 	get_tree().current_scene.add_child(label)
 
-	label.global_position = get_global_mouse_position()
+	label.global_position = get_global_mouse_position() + Vector2(randf_range(-15, 15), randf_range(-10, 5)) * z
 
 	var tween := create_tween()
 	tween.set_parallel(true)

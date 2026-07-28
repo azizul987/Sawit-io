@@ -198,3 +198,14 @@ func delete_slot(slot: int) -> void:
 	var path := "user://save_slot_%d.json" % slot
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+
+func save_upgrades(db: UpgradeDatabase) -> void:
+	var d := read_save_data(); var u := {}
+	for up in db.upgrades: if up: u[up.upgrade_name] = {"level": up.current_level, "price": up.price}
+	d["upgrades"] = u; write_save_data(d)
+
+func load_upgrades(db: UpgradeDatabase) -> void:
+	var u: Dictionary = read_save_data().get("upgrades", {})
+	for up in db.upgrades: if up and u.has(up.upgrade_name):
+		up.current_level = int(u[up.upgrade_name].level)
+		up.price = float(u[up.upgrade_name].price)

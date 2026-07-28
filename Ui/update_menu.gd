@@ -10,9 +10,10 @@ extends Control
 
 	
 func _ready() -> void:
-	generate_upgrade_buttons()
 	if upgrade_database:
+		SaveManager.load_upgrades(upgrade_database)
 		Point.recalculate_stats(upgrade_database.upgrades)
+	generate_upgrade_buttons()
 
 
 func generate_upgrade_buttons() -> void:
@@ -66,6 +67,8 @@ func _on_purchase_requested(
 	button.refresh()
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
+	SaveManager.save_upgrades(upgrade_database)
+	SaveManager.save_game()
 
 	print(
 		"Berhasil Membeli ",
