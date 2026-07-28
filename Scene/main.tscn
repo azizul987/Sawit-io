@@ -261,6 +261,7 @@ offset_left = 10.0
 offset_top = 21.0
 offset_right = 10.0
 offset_bottom = 21.0
+mouse_filter = 0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1167087506]
 

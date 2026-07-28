@@ -7,9 +7,9 @@ signal purchase_requested(
 )
 
 @onready var icon_rect: TextureButton = $HBoxContainer/MarginContainer/Icon
-@onready var name_label: Label =$HBoxContainer/VBoxContainer/Nama
-@onready var level_label: Label = $HBoxContainer/VBoxContainer/Level
-@onready var price_label: Label = $HBoxContainer/VBoxContainer/Harga
+@onready var name_label: Label =$HBoxContainer/MarginContainer2/VBoxContainer/Nama
+@onready var level_label: Label =$HBoxContainer/MarginContainer2/VBoxContainer/Level
+@onready var price_label: Label = $HBoxContainer/MarginContainer2/VBoxContainer/Harga
 
 var data: UpgradeData
 

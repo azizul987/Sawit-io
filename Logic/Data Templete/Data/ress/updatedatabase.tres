@@ -2,22 +2,63 @@
 
 [ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_erwtg"]
 [ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_own6j"]
-[ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="3_own6j"]
-[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="4_hf23s"]
+[ext_resource type="Texture2D" uid="uid://c0xhqcmcbti51" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons1.png" id="3_sabit"]
+[ext_resource type="Texture2D" uid="uid://bnn4d5r1duo1i" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons2.png" id="4_buruh"]
+[ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="5_pupuk"]
+[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="6_traktor"]
+[ext_resource type="Texture2D" uid="uid://luaruaa52acv" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons4.png" id="7_mandor"]
 
-[sub_resource type="Resource" id="Resource_hf23s"]
+[sub_resource type="Resource" id="Resource_sabit"]
 script = ExtResource("2_own6j")
-upgrade_name = "Tes 1"
-icon = ExtResource("3_own6j")
+upgrade_name = "Sabit Tajam"
+price_multiplier = 1.25
+icon = ExtResource("3_sabit")
+effect_value = 2.0
+max_level = 25
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
-[sub_resource type="Resource" id="Resource_1pppr"]
+[sub_resource type="Resource" id="Resource_buruh"]
 script = ExtResource("2_own6j")
-upgrade_name = "Tes 2"
-icon = ExtResource("4_hf23s")
+upgrade_name = "Buruh Panen"
+price = 50.0
+icon = ExtResource("4_buruh")
+effect_type = 2
+effect_value = 3.0
+max_level = 50
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[sub_resource type="Resource" id="Resource_pupuk"]
+script = ExtResource("2_own6j")
+upgrade_name = "Pupuk Berkualitas"
+price = 250.0
+price_multiplier = 1.35
+icon = ExtResource("5_pupuk")
+effect_value = 15.0
+max_level = 30
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[sub_resource type="Resource" id="Resource_traktor"]
+script = ExtResource("2_own6j")
+upgrade_name = "Traktor Kebun"
+price = 1200.0
+price_multiplier = 1.4
+icon = ExtResource("6_traktor")
+effect_type = 2
+effect_value = 30.0
+max_level = 50
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[sub_resource type="Resource" id="Resource_mandor"]
+script = ExtResource("2_own6j")
+upgrade_name = "Mandor Ahli"
+price = 5000.0
+price_multiplier = 1.5
+icon = ExtResource("7_mandor")
+effect_type = 1
+effect_value = 25.0
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [resource]
 script = ExtResource("1_erwtg")
-upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_hf23s"), SubResource("Resource_1pppr")])
+upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_sabit"), SubResource("Resource_buruh"), SubResource("Resource_pupuk"), SubResource("Resource_traktor"), SubResource("Resource_mandor")])
 metadata/_custom_type_script = "uid://b2qs3ham6ojqe"

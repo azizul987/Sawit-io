@@ -4,9 +4,6 @@ extends Control
 @export var upgrade_database: UpgradeDatabase
 @export var upgrade_button_scene: PackedScene
 
-@export_category("Player")
-@export var player_money: float = 1000.0
-
 @onready var upgrade_container: VBoxContainer = (
 	$ScrollContainer/VBoxContainer
 )
@@ -14,6 +11,8 @@ extends Control
 	
 func _ready() -> void:
 	generate_upgrade_buttons()
+	if upgrade_database:
+		Point.recalculate_stats(upgrade_database.upgrades)
 
 
 func generate_upgrade_buttons() -> void:
@@ -53,11 +52,11 @@ func _on_purchase_requested(
 	if upgrade_data.is_max_level():
 		return
 
-	if player_money < upgrade_data.price:
-		print("Uang tidak cukup.")
+	if Point.point < upgrade_data.price:
+		print("Poin Sawit tidak cukup! Butuh: ", upgrade_data.price, " | Poin sekarang: ", Point.point)
 		return
 
-	player_money -= upgrade_data.price
+	Point.remove_point(upgrade_data.price)
 
 	var upgrade_success: bool = upgrade_data.upgrade()
 
@@ -65,14 +64,16 @@ func _on_purchase_requested(
 		return
 
 	button.refresh()
+	# Hitung ulang seluruh stats efek pasca upgrade!
+	Point.recalculate_stats(upgrade_database.upgrades)
 
 	print(
-		"Membeli ",
+		"Berhasil Membeli ",
 		upgrade_data.upgrade_name,
 		" | Level: ",
 		upgrade_data.current_level,
 		"/",
 		upgrade_data.max_level,
-		" | Sisa uang: ",
-		player_money
+		" | Sisa Poin: ",
+		Point.point
 	)

@@ -13,6 +13,7 @@
 
 [node name="UiMain" type="Control" unique_id=1805602719]
 layout_mode = 3
+mouse_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,6 +43,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SkillTree" type="Control" parent="CanvasLayer" unique_id=1328300958]
 layout_mode = 3
+mouse_filter = 2
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -67,6 +69,7 @@ stretch_mode = 0
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
+mouse_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -84,15 +87,16 @@ upgrade_button_scene = ExtResource("7_raqhj")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UpdateMenu" unique_id=1704199337]
 layout_mode = 1
+mouse_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -255.5
-offset_top = -226.0
-offset_right = 186.5
-offset_bottom = 262.0
+offset_left = -136.5
+offset_top = -300.0
+offset_right = 203.5
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_4a1h5")
@@ -107,16 +111,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = 152.0
-offset_right = -2.0
+offset_left = 113.0
+offset_top = 99.0
+offset_right = -31.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpdateMenu/ScrollContainer" unique_id=2138028305]
 layout_mode = 2
 
+[node name="Updatebtn" parent="UpdateMenu/ScrollContainer/VBoxContainer" unique_id=1619997399 instance=ExtResource("7_raqhj")]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UpdateMenu" unique_id=941773606]
+visible = false
 layout_mode = 0
 offset_left = 1.0
 offset_top = 18.0
@@ -150,11 +159,20 @@ texture_normal = ExtResource("6_qoxqm")
 stretch_mode = 0
 
 [node name="Merek" type="Label" parent="UpdateMenu" unique_id=381793057]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 94.0
-offset_right = 360.0
-offset_bottom = 141.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -274.0
+offset_right = 119.5
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_lr6hm")
+theme_override_font_sizes/font_size = 32
 text = "UPGRADE"
 horizontal_alignment = 1
 vertical_alignment = 1
