@@ -28,7 +28,8 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://Logic/": "orange"
+"res://Logic/": "orange",
+"res://Logic/Data Templete/Data/ress/wilayah/": "red"
 }
 
 [input]

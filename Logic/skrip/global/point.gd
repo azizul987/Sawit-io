@@ -10,7 +10,12 @@ var cd = 1
 var skill_tree_camera: Vector3
 var main_tree_camera: Vector3
 var is_skill_tree_open: bool = false
-
+enum TipeWilayah_dibuka_list  {
+	PROVINSI,
+	KABUPATEN,
+	KECAMATAN
+}
+var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMATAN
 
 func _process(delta: float) -> void:
 	if auto_point_per_sec > 0.0:

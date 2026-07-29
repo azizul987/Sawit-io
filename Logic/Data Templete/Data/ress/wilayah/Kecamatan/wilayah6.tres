@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Wilayah" format=3 uid="uid://buu8q68cfnc4t"]
+
+[ext_resource type="Script" uid="uid://b231hp4nl4apw" path="res://Logic/Data Templete/Data/Source/Wilayah.gd" id="1_oam3v"]
+
+[resource]
+script = ExtResource("1_oam3v")
+id_wilayah = &"5"
+nama_wilayah = "wilayah 5"
+tipe_wilayah = 2
+harga = 8000
+metadata/_custom_type_script = "uid://b231hp4nl4apw"

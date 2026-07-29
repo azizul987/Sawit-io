@@ -16,8 +16,8 @@ enum TipeWilayah {
 @export var harga: int = 1000
 @export var terbuka_default: bool = false
 @export_group("Tampilan")
-@export var warna_terbuka: Color = Color("#7a4408")
-@export var warna_terkunci: Color = Color.GRAY
+@export var warna_terbuka: Color = Color("#ffff")
+@export var warna_terkunci: Color = Color("#292929")
 
 @export_group("Button")
-@export var skala_button: float = 1.0
+@export var skala_button: float = 2.0
