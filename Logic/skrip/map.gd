@@ -12,14 +12,18 @@ var daftar_wilayah: Array = []
 # Dipakai HANYA kalau wilayah tidak punya data Resource sama sekali (fallback darurat)
 @export var font_size_default: int = 12
 
-
+enum TipeWilayah_dibuka_list  {
+	PROVINSI,
+	KABUPATEN,
+	KECAMATAN
+}
+var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMATAN
 func _ready() -> void:
 	await get_tree().process_frame
-
 	ambil_semua_wilayah()
+	buat_semua_button_wilayah() 
 	SaveManager.load_status_wilayah(daftar_wilayah)
-	buat_semua_button_wilayah()
-
+	print(Point.TipeWilayahArray.z)
 
 func ambil_semua_wilayah() -> void:
 	daftar_wilayah = get_tree().get_nodes_in_group("wilayah")
@@ -107,11 +111,22 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 
 	return polygon.global_transform * center_local
 
+func cek_status_tipe_wilayah(tipe):
+	if tipe==0:
+		Point.TipeWilayahArray.x+=1
+	elif tipe==1:
+		Point.TipeWilayahArray.y+=1
+	else:
+		Point.TipeWilayahArray.z+=1
+	SaveManager.save_game()
+	
 func _on_skill_button_pressedd(wilayah:Node,button:Button):
 	var data_wilayah: Wilayah = wilayah.data
 	if  data_wilayah.harga<=Point.point:
+		var tipe=data_wilayah.tipe_wilayah
+		cek_status_tipe_wilayah(tipe)
 		data_wilayah.terbuka_default = true
 		wilayah.perbarui_tampilan()
 		SaveManager.save_status_wilayah(daftar_wilayah)
 		button.queue_free()
-	#wilayah.chilasd hapus button harag ya 
+	

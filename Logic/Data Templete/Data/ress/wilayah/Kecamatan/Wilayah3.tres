@@ -8,7 +8,5 @@ id_wilayah = &"3"
 nama_wilayah = "Wilayah_3"
 tipe_wilayah = 2
 harga = 299
-warna_terbuka = Color(1, 1, 1, 1)
-warna_terkunci = Color(0.16078432, 0.16078432, 0.16078432, 1)
 skala_button = 5.0
 metadata/_custom_type_script = "uid://b231hp4nl4apw"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxkquoqy2ieyg"]
 
 [ext_resource type="Script" uid="uid://b7gcgmxtouwdw" path="res://Logic/skrip/map.gd" id="1_75buv"]
-[ext_resource type="Script" uid="uid://gdpchd5siepj" path="res://Logic/skrip/Click.gd" id="1_f6udf"]
+[ext_resource type="Script" uid="uid://gdpchd5siepj" path="res://Logic/skrip/wilayahskrip.gd" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://dvn5kf0qm1qq8" path="res://Logic/skrip/policoly.gd" id="2_2wwxx"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="2_sblpm"]
 [ext_resource type="Resource" uid="uid://d3o6h533paj6p" path="res://Logic/Data Templete/Data/ress/wilayah/kab/palembang.tres" id="4_2ix4a"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://n1ai2teu4848" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah1.tres" id="5_3pt4j"]
 [ext_resource type="Resource" uid="uid://bro64h6u8ho16" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah3.tres" id="5_mxd2g"]
 [ext_resource type="Resource" uid="uid://7xqdmxfx278f" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah2.tres" id="6_7y4ci"]
+[ext_resource type="Resource" uid="uid://2m4jgjk5pa36" path="res://Logic/Data Templete/Data/ress/wilayah/kab/kab1.tres" id="6_jbas8"]
 [ext_resource type="Script" uid="uid://dwkfvo7lurs2s" path="res://Logic/skrip/Main__Camera.gd" id="6_ow1sv"]
 [ext_resource type="Resource" uid="uid://cshnyv0v3va0d" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah4.tres" id="8_0sxm5"]
 [ext_resource type="Resource" uid="uid://b2p08dyoiykop" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/wilayah5.tres" id="9_6njx3"]
@@ -55,7 +56,7 @@ script = ExtResource("2_2wwxx")
 position = Vector2(307.40002, 267.77536)
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("1_f6udf")
-data = ExtResource("5_0y2cb")
+data = ExtResource("6_jbas8")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab1" unique_id=635075800]
 position = Vector2(-10.799999, -16.200005)

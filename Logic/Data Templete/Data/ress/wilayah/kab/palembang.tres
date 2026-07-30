@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_6svlf")
+id_wilayah = &"palembang"
+nama_wilayah = "palembang"
+tipe_wilayah = 1
 harga = 60000
 skala_button = 7.0
 metadata/_custom_type_script = "uid://b231hp4nl4apw"

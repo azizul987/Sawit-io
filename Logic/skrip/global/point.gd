@@ -7,15 +7,12 @@ var point_per_click: float = 2.5
 var auto_point_per_sec: float = 0.0
 var auto_accumulator: float = 0.0
 var cd = 1
-var skill_tree_camera: Vector3
+var skill_tree_camera: Vector3=Vector3(0,0,1.4)
 var main_tree_camera: Vector3
 var is_skill_tree_open: bool = false
-enum TipeWilayah_dibuka_list  {
-	PROVINSI,
-	KABUPATEN,
-	KECAMATAN
-}
-var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMATAN
+
+var TipeWilayahArray:Vector3i#[prov,kab,kec]
+
 
 func _process(delta: float) -> void:
 	if auto_point_per_sec > 0.0:

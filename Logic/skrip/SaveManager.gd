@@ -52,6 +52,11 @@ func save_game() -> void:
 		"y":Point.main_tree_camera.y,
 		"z":Point.main_tree_camera.z
 	}
+	data["tipe_wilayah"]={
+		"x":Point.TipeWilayahArray.x,
+		"y":Point.TipeWilayahArray.y,
+		"z":Point.TipeWilayahArray.z
+	}
 	write_save_data(data)
 	#print("Point saved")
 
@@ -80,7 +85,17 @@ func load_game() -> void:
 		float(cam_data1.get("y")),
 		float(cam_data1.get("z"))
 	)
-	#print("Point loaded:", Point.point)
+	
+	var tipewilayah=data.get("tipe_wilayah",{
+		"x":0,
+		"y":0,
+		"z":1
+	})
+	Point.TipeWilayahArray=Vector3i(
+		int(tipewilayah.get("x")),#prov
+		int(tipewilayah.get("y")),
+		int(tipewilayah.get("z"))
+		)
 
 
 func save_skill_level(skill_database: skill_obj) -> void:

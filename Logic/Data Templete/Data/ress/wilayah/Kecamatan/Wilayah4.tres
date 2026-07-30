@@ -7,6 +7,4 @@ script = ExtResource("1_gmtc8")
 id_wilayah = &"4"
 nama_wilayah = "wilayah 4"
 tipe_wilayah = 2
-warna_terbuka = Color(1, 1, 1, 1)
-warna_terkunci = Color(0.16078432, 0.16078432, 0.16078432, 1)
 metadata/_custom_type_script = "uid://b231hp4nl4apw"
