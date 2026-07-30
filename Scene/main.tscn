@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://cvatssn43ip5n" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/wilayah7.tres" id="11_2ix4a"]
 [ext_resource type="PackedScene" uid="uid://cxvneabfihjsg" path="res://Ui/skill_tree_ui.tscn" id="11_7y4ci"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
+[ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://sawit.tscn" id="18_p2wc2"]
 
 [node name="Main" type="Node2D" unique_id=457701414]
 metadata/_edit_horizontal_guides_ = [2677.7537]
@@ -333,6 +334,9 @@ offset_top = 5981.9995
 offset_right = 7719.047
 offset_bottom = 6113.9995
 theme_override_font_sizes/font_size = 1500
+
+[node name="sawit" parent="." unique_id=471696647 instance=ExtResource("18_p2wc2")]
+position = Vector2(7295, 8113)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=538535160]
 

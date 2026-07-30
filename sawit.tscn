@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://rt1bn0tgf0y3"]
+
+[ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="1_kkdw4"]
+[ext_resource type="Script" uid="uid://c42xmdmd6orqj" path="res://sawit.gd" id="1_n3x0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3x0p"]
+atlas = ExtResource("1_kkdw4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_368x5"]
+atlas = ExtResource("1_kkdw4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51l7"]
+atlas = ExtResource("1_kkdw4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lu4n"]
+atlas = ExtResource("1_kkdw4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnuuc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3x0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_368x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lu4n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfyop"]
+radius = 13.0
+height = 26.0
+
+[node name="sawit" type="Area2D" unique_id=471696647]
+script = ExtResource("1_n3x0p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358429148]
+sprite_frames = SubResource("SpriteFrames_lnuuc")
+autoplay = "default"
+frame_progress = 0.75166714
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53657342]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_sfyop")
