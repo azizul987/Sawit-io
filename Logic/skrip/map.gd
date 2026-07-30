@@ -21,9 +21,8 @@ var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMAT
 func _ready() -> void:
 	await get_tree().process_frame
 	ambil_semua_wilayah()
-	buat_semua_button_wilayah() 
 	SaveManager.load_status_wilayah(daftar_wilayah)
-	print(Point.TipeWilayahArray.z)
+	buat_semua_button_wilayah() 
 
 func ambil_semua_wilayah() -> void:
 	daftar_wilayah = get_tree().get_nodes_in_group("wilayah")
