@@ -11,6 +11,7 @@ enum EffectType {
 
 @export_category("Upgrade Information")
 @export var upgrade_name: String = "Upgrade Baru"
+@export_multiline var description: String = "Deskripsi upgrade skill ini."
 @export var price: float = 10.0
 @export var price_multiplier: float = 1.3 # Harga naik 1.3x lipat tiap beli
 @export var icon: Texture2D

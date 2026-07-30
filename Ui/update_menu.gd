@@ -7,9 +7,13 @@ extends Control
 @onready var upgrade_container: VBoxContainer = (
 	$ScrollContainer/VBoxContainer
 )
+@onready var desc_panel: PanelContainer = $"../CenterContainer/Desc"
+@onready var desc_label: RichTextLabel = $"../CenterContainer/Desc/MarginContainer/RichTextLabel"
 
-	
+
 func _ready() -> void:
+	if desc_panel:
+		desc_panel.hide()
 	if upgrade_database:
 		SaveManager.load_upgrades(upgrade_database)
 		Point.recalculate_stats(upgrade_database.upgrades)
@@ -38,6 +42,15 @@ func generate_upgrade_buttons() -> void:
 
 		button.purchase_requested.connect(
 			_on_purchase_requested
+		)
+		button.mouse_entered.connect(func():
+			if desc_label and desc_panel:
+				desc_label.text = upgrade_data.description
+				desc_panel.show()
+		)
+		button.mouse_exited.connect(func():
+			if desc_panel:
+				desc_panel.hide()
 		)
 
 

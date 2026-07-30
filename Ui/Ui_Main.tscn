@@ -11,14 +11,21 @@
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="UiMain" type="Control" unique_id=1805602719]
 layout_mode = 3
-mouse_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_vcfie")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=318238762]
@@ -43,17 +50,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SkillTree" type="Control" parent="CanvasLayer" unique_id=1328300958]
 layout_mode = 3
-mouse_filter = 2
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Change _Mode" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 528.0
-offset_right = 117.63635
-offset_bottom = 631.63635
+offset_left = 666.0
+offset_top = 513.0
+offset_right = 769.63635
+offset_bottom = 616.63635
 texture_normal = ExtResource("3_k7e2i")
 texture_pressed = ExtResource("4_6dpwe")
 stretch_mode = 0
@@ -69,7 +76,6 @@ stretch_mode = 0
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
-mouse_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,13 +87,13 @@ offset_right = 570.0
 offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("6_wbkow")
 upgrade_database = ExtResource("7_wbkow")
 upgrade_button_scene = ExtResource("7_raqhj")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UpdateMenu" unique_id=1704199337]
 layout_mode = 1
-mouse_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -174,6 +180,43 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 32
 text = "UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=229135863]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = 139.0
+offset_right = -216.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Desc" type="PanelContainer" parent="CenterContainer" unique_id=415056165]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4a1h5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Desc" unique_id=327196860]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Desc/MarginContainer" unique_id=1029098873]
+custom_minimum_size = Vector2(316, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_lr6hm")
+theme_override_fonts/bold_font = ExtResource("2_lr6hm")
+bbcode_enabled = true
+text = "Testng TEsting"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
