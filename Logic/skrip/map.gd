@@ -135,3 +135,9 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		cek_syarat_buka()
 		button.queue_free()
 	
+func spawn_pohon() -> void:
+	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
+	if not wil.is_empty():
+		var pohon = preload("res://sawit.tscn").instantiate()
+		pohon.position = ambil_center_polygon_global(wil.pick_random().get_node("Polygon2D")) + Vector2(randf_range(-250, 250), randf_range(-250, 250))
+		get_parent().add_child(pohon)

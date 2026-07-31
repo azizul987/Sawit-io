@@ -7,6 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="5_pupuk"]
 [ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="6_traktor"]
 [ext_resource type="Texture2D" uid="uid://luaruaa52acv" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons4.png" id="7_mandor"]
+[ext_resource type="Texture2D" uid="uid://cn836tqwbkocd" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons3.png" id="8_pohon"]
+
+[sub_resource type="Resource" id="Resource_pohonsawit"]
+script = ExtResource("2_own6j")
+upgrade_name = "Pohon Sawit"
+description = "Menanam pohon sawit baru di wilayah yang telah terbuka! Menghasilkan [color=yellow]+1 Poin Sawit[/color] otomatis setiap detik!"
+price = 15.0
+price_multiplier = 1.3
+icon = ExtResource("8_pohon")
+effect_type = 2
+effect_value = 1.0
+current_level = 1
+max_level = 50
+metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_sabit"]
 script = ExtResource("2_own6j")
@@ -65,5 +79,5 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [resource]
 script = ExtResource("1_erwtg")
-upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_sabit"), SubResource("Resource_buruh"), SubResource("Resource_pupuk"), SubResource("Resource_traktor"), SubResource("Resource_mandor")])
+upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_pohonsawit"), SubResource("Resource_sabit"), SubResource("Resource_buruh"), SubResource("Resource_pupuk"), SubResource("Resource_traktor"), SubResource("Resource_mandor")])
 metadata/_custom_type_script = "uid://b2qs3ham6ojqe"

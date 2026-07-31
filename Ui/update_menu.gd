@@ -18,6 +18,12 @@ func _ready() -> void:
 		SaveManager.load_upgrades(upgrade_database)
 		Point.recalculate_stats(upgrade_database.upgrades)
 	generate_upgrade_buttons()
+	await get_tree().process_frame; await get_tree().process_frame
+	var map = get_tree().current_scene.get_node_or_null("map")
+	if upgrade_database and map:
+		for u in upgrade_database.upgrades:
+			if u and u.upgrade_name == "Pohon Sawit":
+				for i in range(u.current_level - 1): map.spawn_pohon()
 
 
 func generate_upgrade_buttons() -> void:
@@ -78,6 +84,9 @@ func _on_purchase_requested(
 		return
 
 	button.refresh()
+	if upgrade_data.upgrade_name == "Pohon Sawit":
+		var map = get_tree().current_scene.get_node_or_null("map")
+		if map: map.spawn_pohon()
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)
