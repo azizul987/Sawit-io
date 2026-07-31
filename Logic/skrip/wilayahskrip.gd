@@ -37,13 +37,15 @@ func sudah_terbuka() -> bool:
 
 
 func perbarui_tampilan() -> void:
-	if polygon == null or data == null:
+	if data == null:
 		return
 
-	if sudah_terbuka():
-		polygon.color = data.warna_terbuka
-	else:
-		polygon.color = data.warna_terkunci
+	var warna: Color = data.warna_terbuka if sudah_terbuka() else data.warna_terkunci
+	
+	# Warnai SEMUA Polygon2D di dalam wilayah ini (mendukung wilayah dengan >1 polygon/pulau)
+	for child in get_children():
+		if child is Polygon2D:
+			child.color = warna
 
 
 func _input_event(

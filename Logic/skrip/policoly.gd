@@ -7,20 +7,21 @@ func _ready() -> void:
 
 func samakan_bentuk_polygon() -> void:
 	var parent = get_parent()
+	var polygons: Array[Polygon2D] = []
+	var collisions: Array[CollisionPolygon2D] = []
 	
-	# Cari semua "saudara" (child dari parent yang sama)
+	# Kumpulkan semua Polygon2D dan CollisionPolygon2D
 	for child in parent.get_children():
-		# Jika menemukan node Polygon2D
 		if child is Polygon2D:
-			# 1. Copy susunan titiknya (bentuk)
-			self.polygon = child.polygon
-			
-			# 2. Copy posisi tepatnya di layar
-			self.position = child.position
-			
-			# 3. Copy rotasi dan skala (biar 100% sama persis ukurannya)
-			self.rotation = child.rotation
-			self.scale = child.scale
-			
-			# Hentikan pencarian setelah ketemu satu
-			break
+			polygons.append(child)
+		elif child is CollisionPolygon2D:
+			collisions.append(child)
+	
+	# Pasangkan CollisionPolygon2D ke-N dengan Polygon2D ke-N
+	var my_index = collisions.find(self)
+	if my_index != -1 and my_index < polygons.size():
+		var target = polygons[my_index]
+		self.polygon = target.polygon
+		self.position = target.position
+		self.rotation = target.rotation
+		self.scale = target.scale

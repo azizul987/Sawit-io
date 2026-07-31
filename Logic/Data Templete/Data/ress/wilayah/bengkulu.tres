@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Wilayah" format=3 uid="uid://t6i0ny27kqco"]
+
+[ext_resource type="Script" uid="uid://b231hp4nl4apw" path="res://Logic/Data Templete/Data/Source/Wilayah.gd" id="1_4li0b"]
+
+[resource]
+script = ExtResource("1_4li0b")
+id_wilayah = &"bengkulu"
+nama_wilayah = "Bengkulu"
+harga = 10000000
+skala_button = 10.0
+metadata/_custom_type_script = "uid://b231hp4nl4apw"
