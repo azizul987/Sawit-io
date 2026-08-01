@@ -24,6 +24,14 @@ enum EffectType {
 @export var current_level: int = 0
 @export var max_level: int = 10
 
+@export_category("Requirement")
+@export var required_upgrade: UpgradeData
+@export var required_level: int = 0
+
+
+func is_unlocked() -> bool:
+	return required_upgrade == null or required_upgrade.current_level >= required_level
+
 
 func can_upgrade() -> bool:
 	return current_level < max_level

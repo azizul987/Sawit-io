@@ -393,6 +393,7 @@ antialiased = true
 position = Vector2(7347.9834, 8093.9995)
 zoom = Vector2(5, 5)
 script = ExtResource("6_ow1sv")
+batas_zoom_out = Array[float]([0.03, 0.25, 0.5])
 
 [node name="Button" parent="." unique_id=2045411329 instance=ExtResource("12_mxd2g")]
 visible = false

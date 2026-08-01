@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://sawit.tscn" id="3_a0ht3"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
+[ext_resource type="PackedScene" uid="uid://ixfjwv7jcibd" path="res://Logic/object_For_skrip/SaveSlotItem.tscn" id="5_y1wp1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w84f2"]
 texture = ExtResource("2_3r8ox")
@@ -193,23 +194,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = -237.11581
+offset_left = -220.0
+offset_top = -260.11581
 offset_right = 168.0
 offset_bottom = 194.98462
 grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveMenu/ScrollContainer" unique_id=2035582607]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SaveMenu/ScrollContainer" unique_id=538194012]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer" unique_id=2035582607]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer" unique_id=1660065971]
-custom_minimum_size = Vector2(305, 31)
+[node name="SaveSlot" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1419727540 instance=ExtResource("5_y1wp1")]
+layout_mode = 2
+
+[node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1660065971]
+custom_minimum_size = Vector2(336.145, 31)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_k3gr3")

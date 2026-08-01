@@ -2,8 +2,8 @@ extends Node2D
 
 const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn")
 
-@onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer
-@onready var add_button =$CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer/Add
+@onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer
+@onready var add_button = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer/Add
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show_menu_awal()

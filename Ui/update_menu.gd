@@ -38,7 +38,7 @@ func generate_upgrade_buttons() -> void:
 		return
 
 	for upgrade_data: UpgradeData in upgrade_database.upgrades:
-		if upgrade_data == null:
+		if upgrade_data == null or not upgrade_data.is_unlocked():
 			continue
 
 		var button: UpgradeButton = upgrade_button_scene.instantiate()
@@ -84,6 +84,9 @@ func _on_purchase_requested(
 		return
 
 	button.refresh()
+	var total_unlocked := 0
+	for u in upgrade_database.upgrades: if u and u.is_unlocked(): total_unlocked += 1
+	if total_unlocked != upgrade_container.get_child_count(): generate_upgrade_buttons()
 	if upgrade_data.upgrade_name == "Pohon Sawit":
 		var map = get_tree().current_scene.get_node_or_null("map")
 		if map: map.spawn_pohon()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cvqeqgjrb21wm" path="res://Logic/object_For_skrip/save_slot_item.gd" id="1_k685f"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="3_iurdf"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="3_q5v11"]
+[ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="5_8adp4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iurdf"]
 bg_color = Color(0.34509805, 0.19215687, 0.14901961, 1)
@@ -13,6 +14,21 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_q5v11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtimm"]
+atlas = ExtResource("5_8adp4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjfu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtimm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SaveSlot" type="PanelContainer" unique_id=1419727540]
 custom_minimum_size = Vector2(244, 137)
@@ -48,12 +64,25 @@ theme_override_constants/separation = 31
 
 [node name="Delete" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=1762003973]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6whm3")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("3_q5v11")
 text = "Delete"
 
 [node name="Load" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=1075046711]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6whm3")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("3_iurdf")
 text = "Load"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=12003656]
+position = Vector2(-37.25528, -11.176582)
+rotation = -0.5235988
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hjfu6")
+centered = false
+
+[node name="Control" type="Control" parent="." unique_id=802436756]
+layout_mode = 2
+size_flags_stretch_ratio = 11.5
