@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo64klwetfcw"]
+
+[ext_resource type="Script" path="res://Scene/pause.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_font"]
+[ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="3_default"]
+[ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="4_warning"]
+[ext_resource type="StyleBox" uid="uid://cm3w2qy1pb8xt" path="res://styles/panel_style.tres" id="5_panel"]
+
+[node name="Pause" type="Control" unique_id=1963674684]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=74829104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=948291845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=293817362]
+custom_minimum_size = Vector2(320, 360)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=849182347]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=384918274]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=482910293]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.765652, 0.959401, 0.419124, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+text = "JEDA GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=829103847]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=582910283]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_default")
+text = "Lanjut"
+
+[node name="Save" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=693820193]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_default")
+text = "Simpan Game"
+
+[node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=748291028]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_warning")
+text = "Menu Utama"
