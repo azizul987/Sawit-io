@@ -44,15 +44,14 @@ radius = 13.0
 height = 26.0
 
 [node name="sawit" type="Area2D" unique_id=471696647]
+scale = Vector2(2, 2)
 script = ExtResource("1_n3x0p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358429148]
 sprite_frames = SubResource("SpriteFrames_lnuuc")
 autoplay = "default"
-frame_progress = 0.87348616
+frame_progress = 0.20006245
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53657342]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_sfyop")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1126015816]

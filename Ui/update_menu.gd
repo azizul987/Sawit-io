@@ -73,7 +73,7 @@ func _on_purchase_requested(
 		return
 
 	if Point.point < upgrade_data.price:
-		print("Poin Sawit tidak cukup! Butuh: ", upgrade_data.price, " | Poin sekarang: ", Point.point)
+		#print("Poin Sawit tidak cukup! Butuh: ", upgrade_data.price, " | Poin sekarang: ", Point.point)
 		return
 
 	Point.remove_point(upgrade_data.price)
@@ -91,14 +91,3 @@ func _on_purchase_requested(
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)
 	SaveManager.save_game()
-
-	print(
-		"Berhasil Membeli ",
-		upgrade_data.upgrade_name,
-		" | Level: ",
-		upgrade_data.current_level,
-		"/",
-		upgrade_data.max_level,
-		" | Sisa Poin: ",
-		Point.point
-	)

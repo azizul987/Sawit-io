@@ -2,15 +2,20 @@
 
 [ext_resource type="Script" uid="uid://b2lrd72cb72u2" path="res://Scene/main_menui.gd" id="1_0h56x"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_k3gr3"]
+[ext_resource type="Texture2D" uid="uid://d2glovla5olm7" path="res://Asset/backround.png" id="2_3r8ox"]
+[ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://sawit.tscn" id="3_a0ht3"]
+[ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
+[ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r8ox"]
-bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w84f2"]
+texture = ExtResource("2_3r8ox")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h56x"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="FontVariation" id="FontVariation_judul"]
+base_font = ExtResource("1_k3gr3")
+spacing_space = -15
 
 [sub_resource type="Animation" id="Animation_k3gr3"]
-length = 0.001
+length = 0.93333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0h56x"]
 resource_name = "menu_hide"
-length = 0.6
+length = 0.53333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +63,10 @@ tracks/1/path = NodePath("CanvasLayer/Menu_Awal:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.49),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.48333332, 0.49),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 100), Vector2(0, -600)]
+"values": [Vector2(576, 324), Vector2(576, 324), Vector2(0, -600)]
 }
 
 [sub_resource type="Animation" id="Animation_3r8ox"]
@@ -86,10 +91,10 @@ tracks/1/path = NodePath("CanvasLayer/Menu_Awal:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.06, 0.46),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.46, 0.47),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 600), Vector2(0, 50)]
+"values": [Vector2(576, 324), Vector2(576, 324), Vector2(576, 324)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w84f2"]
@@ -101,6 +106,51 @@ _data = {
 
 [node name="MainMenu" type="Node2D" unique_id=240010447]
 script = ExtResource("1_0h56x")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=831222627]
+
+[node name="Panel" type="Panel" parent="CanvasLayer2" unique_id=53171871]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_w84f2")
+
+[node name="sawit" parent="CanvasLayer2" unique_id=471696647 instance=ExtResource("3_a0ht3")]
+position = Vector2(1021.4305, 514.3623)
+
+[node name="sawit2" parent="CanvasLayer2" unique_id=1617112919 instance=ExtResource("3_a0ht3")]
+position = Vector2(987.33044, 436.26227)
+
+[node name="sawit3" parent="CanvasLayer2" unique_id=1692125915 instance=ExtResource("3_a0ht3")]
+position = Vector2(987.33044, 436.26227)
+
+[node name="sawit4" parent="CanvasLayer2" unique_id=364316824 instance=ExtResource("3_a0ht3")]
+position = Vector2(927.9305, 390.0623)
+
+[node name="sawit5" parent="CanvasLayer2" unique_id=462797899 instance=ExtResource("3_a0ht3")]
+position = Vector2(910.3305, 314.1623)
+
+[node name="sawit6" parent="CanvasLayer2" unique_id=859531573 instance=ExtResource("3_a0ht3")]
+position = Vector2(898.918, 242.83435)
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=587695198]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.76855
+offset_top = -274.1277
+offset_right = 139.23145
+offset_bottom = -51.127686
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7656522, 0.9594006, 0.41912422, 1)
+theme_override_fonts/font = SubResource("FontVariation_judul")
+theme_override_font_sizes/font_size = 125
+text = "Sawit Io"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363850231]
 
@@ -124,39 +174,54 @@ anchor_bottom = 0.5
 offset_left = -168.0
 offset_top = -237.11581
 offset_right = 168.0
-offset_bottom = 237.11581
+offset_bottom = 194.98462
 grow_horizontal = 2
 grow_vertical = 2
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveMenu/ScrollContainer" unique_id=2035582607]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 11
+alignment = 1
 
 [node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/VBoxContainer" unique_id=1660065971]
 custom_minimum_size = Vector2(305, 31)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Tambah"
 
 [node name="Kembali" type="Button" parent="CanvasLayer/SaveMenu" unique_id=690110870]
-layout_mode = 0
-offset_left = 488.1963
-offset_top = 569.11584
-offset_right = 630.1963
-offset_bottom = 618.81586
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = 223.0
+offset_right = 52.5
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_3r8ox")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("5_43fsk")
 text = "Kembali"
 
 [node name="Menu_Awal" type="Control" parent="CanvasLayer" unique_id=370296056]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 600.0
-offset_bottom = 599.99927
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = 276.0
+offset_right = -576.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -167,15 +232,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.80371
-offset_top = -38.041138
-offset_right = 86.80371
-offset_bottom = 38.041138
+offset_left = -48.0
+offset_top = -14.5
+offset_right = 48.0
+offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_0h56x")
+theme_override_styles/normal = ExtResource("5_a0ht3")
 text = "Mulai"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]

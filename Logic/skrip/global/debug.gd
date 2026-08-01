@@ -8,7 +8,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("toggle_dev_mode"):
 		dev_mode=!dev_mode
-		print("DEV MODE IS ",dev_mode)
+		#print("DEV MODE IS ",dev_mode)
 
 func is_active():
 	return dev_mode and  allow_dev_mode

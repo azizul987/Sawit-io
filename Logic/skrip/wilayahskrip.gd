@@ -70,11 +70,11 @@ func _input_event(
 	if not sudah_terbuka():
 		wilayah_terkunci.emit(self)
 
-		print(
-			data.nama_wilayah,
-			" masih terkunci. Harga: ",
-			data.harga
-		)
+		#print(
+			#data.nama_wilayah,
+			#" masih terkunci. Harga: ",
+			#data.harga
+		#)
 
 		return
 

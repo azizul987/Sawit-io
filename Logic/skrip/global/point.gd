@@ -73,14 +73,11 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 	point_per_click = total_click_add * total_click_mult
 	auto_point_per_sec = total_auto_add * total_auto_mult
 
-	print("=== STATS RECALCULATED ===")
-	print("Point Per Click: ", point_per_click)
-	print("Auto Sawit / Sec: ", auto_point_per_sec)
 
 
 func _input(event: InputEvent) -> void:
 	if Debug.is_active():
 		if event.is_action_pressed("add_coin"):
-			Point.add_point(100)
+			Point.add_point(10000000)
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
