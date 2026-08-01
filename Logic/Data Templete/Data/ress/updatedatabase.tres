@@ -15,7 +15,6 @@ upgrade_name = "Pohon Sawit"
 description = "Menanam pohon sawit baru di wilayah yang telah terbuka! Menghasilkan [color=yellow]+1 Poin Sawit[/color] setiap klik!"
 price = 15.0
 icon = ExtResource("8_pohon")
-effect_type = 0
 max_level = 50
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 

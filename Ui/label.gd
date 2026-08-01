@@ -10,7 +10,7 @@ func _ready() -> void:
 	SaveManager.load_game()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	skor.text=str(Point.point)
+	skor.text=Point.format_num(Point.point)
 	
 
 func print_scene_name() -> void:

@@ -81,3 +81,14 @@ func _input(event: InputEvent) -> void:
 			Point.add_point(10000000)
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
+
+
+func format_num(val: float) -> String:
+	var n: float = float(int(val))
+	var s: Array[String] = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
+	var i: int = 0
+	while n >= 1000.0 and i < s.size() - 1:
+		n /= 1000.0; i += 1
+	if i == 0: return str(int(n))
+	var t: String = "%.1f" % n
+	return (str(int(n)) if t.ends_with(".0") else t) + s[i]
