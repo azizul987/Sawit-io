@@ -4,14 +4,8 @@
 [ext_resource type="Script" uid="uid://cvqeqgjrb21wm" path="res://Logic/object_For_skrip/save_slot_item.gd" id="1_k685f"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="3_iurdf"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="3_q5v11"]
+[ext_resource type="StyleBox" uid="uid://d2k1l8v0m9pwa" path="res://styles/slot_card.tres" id="4_slot_card"]
 [ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="5_8adp4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iurdf"]
-bg_color = Color(0.34509805, 0.19215687, 0.14901961, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_q5v11"]
 
@@ -38,12 +32,13 @@ anchor_bottom = 0.21142034
 offset_right = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_iurdf")
+theme_override_styles/panel = ExtResource("4_slot_card")
 script = ExtResource("1_k685f")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=107499074]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.765652, 0.959401, 0.419124, 1)
 theme_override_fonts/font = ExtResource("1_6whm3")
 theme_override_font_sizes/font_size = 32
 text = "Nama Slot"
