@@ -1,6 +1,6 @@
 extends Control
 
-@onready var  skor=$CanvasLayer/Point
+@onready var  skor=$CanvasLayer/Control/Point
 @onready var skillshow=$"CanvasLayer/SkillTree/Change _Mode"
 # Called when the node enters the scene tree for the first time.
 

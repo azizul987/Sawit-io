@@ -16,7 +16,6 @@ description = "Menanam pohon sawit baru di wilayah yang telah terbuka! Menghasil
 price = 15.0
 icon = ExtResource("8_pohon")
 effect_type = 2
-current_level = 1
 max_level = 50
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 

@@ -23,7 +23,7 @@ func _ready() -> void:
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
 			if u and u.upgrade_name == "Pohon Sawit":
-				for i in range(u.current_level - 1): map.spawn_pohon()
+				for i in range(u.current_level): map.spawn_pohon()
 
 
 func generate_upgrade_buttons() -> void:

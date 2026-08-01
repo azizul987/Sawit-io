@@ -11,11 +11,44 @@ func set_slot(slot: int) -> void:
 
 func create_new_slot(slot: int) -> void:
 	current_slot = slot
-	write_save_data({"point": 0})
+	write_save_data({"point": 20})
 
 
 func get_save_path() -> String:
 	return "user://save_slot_%d.json" % current_slot
+
+
+func get_all_slots() -> Array:
+	var slots := []
+	for i in range(1, 100):
+		var file_path = "user://save_slot_%d.json" % i
+		if FileAccess.file_exists(file_path):
+			var data := get_save_data(i)
+			data["slot"] = i
+			slots.append(data)
+	return slots
+
+
+func get_save_data(slot: int) -> Dictionary:
+	var path := "user://save_slot_%d.json" % slot
+	if not FileAccess.file_exists(path):
+		return {}
+
+	var file := FileAccess.open(path, FileAccess.READ)
+	var content := file.get_as_text()
+	var json := JSON.new()
+	var err := json.parse(content)
+	if err != OK:
+		return {}
+
+	var result := json.get_data()
+	if result is Dictionary:
+		return result
+	return {}
+
+
+func get_active_slot_display_text() -> String:
+	return "Slot %d" % current_slot
 
 
 func read_save_data() -> Dictionary:
@@ -40,8 +73,8 @@ func write_save_data(data: Dictionary) -> void:
 
 func save_game() -> void:
 	var data := read_save_data()
-
 	data["point"] = Point.point
+
 	data["skill_tree_camera"]={
 		"x":Point.skill_tree_camera.x,
 		"y":Point.skill_tree_camera.y,
@@ -57,6 +90,7 @@ func save_game() -> void:
 		"y":Point.TipeWilayahArray.y,
 		"z":Point.TipeWilayahArray.z
 	}
+	
 	write_save_data(data)
 	#print("Point saved")
 
@@ -221,6 +255,12 @@ func save_upgrades(db: UpgradeDatabase) -> void:
 
 func load_upgrades(db: UpgradeDatabase) -> void:
 	var u: Dictionary = read_save_data().get("upgrades", {})
-	for up in db.upgrades: if up and u.has(up.upgrade_name):
-		up.current_level = int(u[up.upgrade_name].level)
-		up.price = float(u[up.upgrade_name].price)
+	var c := ResourceLoader.load(db.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as UpgradeDatabase
+	for i in db.upgrades.size():
+		var up := db.upgrades[i]; if not up: continue
+		if u.has(up.upgrade_name):
+			up.current_level = int(u[up.upgrade_name].level)
+			up.price = float(u[up.upgrade_name].price)
+		elif c and c.upgrades[i]:
+			up.current_level = c.upgrades[i].current_level
+			up.price = c.upgrades[i].price
