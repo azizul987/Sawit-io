@@ -112,10 +112,10 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 	return polygon.global_transform * center_local
 
 func cek_syarat_buka():
-	if(Point.TipeWilayahArray.z>=7):
-		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.KABUPATEN
-	elif(Point.TipeWilayahArray.y>=4):
+	if(Point.TipeWilayahArray.y>=3):
 		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.PROVINSI
+	elif(Point.TipeWilayahArray.z>=7):
+		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.KABUPATEN
 	Point.tipe_wilayah_terbuka = int(tipe_wilayah_terbuka)
 func cek_status_tipe_wilayah(tipe):
 	if tipe==0:
