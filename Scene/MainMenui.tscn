@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://sawit.tscn" id="3_a0ht3"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
+[ext_resource type="StyleBox" uid="uid://cm3w2qy1pb8xt" path="res://styles/panel_style.tres" id="5_panel_style"]
 [ext_resource type="PackedScene" uid="uid://ixfjwv7jcibd" path="res://Logic/object_For_skrip/SaveSlotItem.tscn" id="5_y1wp1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w84f2"]
@@ -233,6 +234,21 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SavePanel" type="Panel" parent="CanvasLayer/SaveMenu" unique_id=918273645]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -275.0
+offset_right = 230.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_panel_style")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/SaveMenu" unique_id=893012227]
 layout_mode = 1
 anchors_preset = 8
@@ -275,20 +291,21 @@ theme_override_styles/normal = ExtResource("5_a0ht3")
 text = "Tambah"
 
 [node name="Kembali" type="Button" parent="CanvasLayer/SaveMenu" unique_id=690110870]
+custom_minimum_size = Vector2(200, 42)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -52.5
-offset_top = 223.0
-offset_right = 52.5
-offset_bottom = 245.0
+offset_left = -100.0
+offset_top = 210.0
+offset_right = 100.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")
 text = "Kembali"
 
@@ -308,28 +325,47 @@ offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Menu_Awal" unique_id=1614987110]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu_Awal" unique_id=938201948]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -14.5
-offset_right = 48.0
-offset_bottom = 14.5
+offset_left = -120.0
+offset_top = -81.0
+offset_right = 120.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Mulai" type="Button" parent="CanvasLayer/Menu_Awal/VBoxContainer" unique_id=1614987110]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_a0ht3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_43fsk")
-theme_override_styles/hover = SubResource("StyleBoxFlat_y1wp1")
 text = "Mulai"
+
+[node name="Pengaturan" type="Button" parent="CanvasLayer/Menu_Awal/VBoxContainer" unique_id=482019283]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_a0ht3")
+text = "Pengaturan"
+
+[node name="Keluar" type="Button" parent="CanvasLayer/Menu_Awal/VBoxContainer" unique_id=748291054]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_43fsk")
+text = "Keluar"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]
 libraries/ = SubResource("AnimationLibrary_w84f2")
 
 [connection signal="pressed" from="CanvasLayer/SaveMenu/Kembali" to="." method="_on_kembali_pressed"]
-[connection signal="button_up" from="CanvasLayer/Menu_Awal/Button" to="." method="hide_menu_awal"]
+[connection signal="button_up" from="CanvasLayer/Menu_Awal/VBoxContainer/Mulai" to="." method="hide_menu_awal"]

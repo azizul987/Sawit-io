@@ -4,28 +4,46 @@ const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn"
 
 @onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer
 @onready var add_button = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer/Add
+@onready var kembali_button: Button = $CanvasLayer/SaveMenu/Kembali
+
+@onready var mulai_button: Button = $CanvasLayer/Menu_Awal/VBoxContainer/Mulai
+@onready var pengaturan_button: Button = $CanvasLayer/Menu_Awal/VBoxContainer/Pengaturan
+@onready var keluar_button: Button = $CanvasLayer/Menu_Awal/VBoxContainer/Keluar
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show_menu_awal()
 	add_button.pressed.connect(_on_add_button_pressed)
+	pengaturan_button.pressed.connect(_on_pengaturan_pressed)
+	keluar_button.pressed.connect(_on_keluar_pressed)
 	_refresh_slots()
 	$CanvasLayer/SaveMenu.hide()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 func show_menu_awal():
 	$CanvasLayer/Menu_Awal.visible = true
 	$AnimationPlayer.play("menu_show")
 
 func hide_menu_awal():
+	_animate_button_click(mulai_button)
 	$AnimationPlayer.play("menu_hide")
 	await $AnimationPlayer.animation_finished
 	$CanvasLayer/Menu_Awal.hide()
 	$CanvasLayer/SaveMenu.modulate = Color(1, 1, 1, 0)
 	$CanvasLayer/SaveMenu.show()
 	$AnimationPlayer.play("save_show")
+
+func _on_pengaturan_pressed() -> void:
+	_animate_button_click(pengaturan_button)
+	print("Menu Pengaturan belum tersedia.")
+
+func _on_keluar_pressed() -> void:
+	_animate_button_click(keluar_button)
+	await get_tree().create_timer(0.15).timeout
+	get_tree().quit()
 
 func _refresh_slots(animated_slot: int = -1) -> void:
 	for child in slot_container.get_children():
@@ -60,11 +78,7 @@ func _create_slot_ui(slot_num: int, animate: bool = false):
 		tween.tween_property(slot_ui, "scale", Vector2(1.0, 1.0), 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func _on_add_button_pressed():
-	add_button.pivot_offset = add_button.size / 2.0
-	var btn_tween = create_tween()
-	btn_tween.tween_property(add_button, "scale", Vector2(0.9, 0.9), 0.08)
-	btn_tween.tween_property(add_button, "scale", Vector2(1.0, 1.0), 0.12).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
-	
+	_animate_button_click(add_button)
 	var new_slot := SaveManager.get_next_available_slot()
 	SaveManager.create_new_slot(new_slot)
 	_refresh_slots(new_slot)
@@ -95,7 +109,16 @@ func _on_slot_delete(slot_num: int, slot_ui: Control):
 	_refresh_slots()
 
 func _on_kembali_pressed() -> void:
+	_animate_button_click(kembali_button)
 	$AnimationPlayer.play("save_hide")
 	await $AnimationPlayer.animation_finished
 	$CanvasLayer/SaveMenu.hide()
 	show_menu_awal()
+
+func _animate_button_click(btn: Button) -> void:
+	if not is_instance_valid(btn):
+		return
+	btn.pivot_offset = btn.size / 2.0
+	var tween = create_tween()
+	tween.tween_property(btn, "scale", Vector2(0.9, 0.9), 0.07)
+	tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
