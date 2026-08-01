@@ -41,7 +41,7 @@ func get_save_data(slot: int) -> Dictionary:
 	if err != OK:
 		return {}
 
-	var result := json.get_data()
+	var result = json.get_data()
 	if result is Dictionary:
 		return result
 	return {}
