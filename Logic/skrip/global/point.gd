@@ -12,6 +12,7 @@ var main_tree_camera: Vector3
 var is_skill_tree_open: bool = false
 
 var TipeWilayahArray:Vector3i#[prov,kab,kec]
+var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
 
 func _process(delta: float) -> void:

@@ -22,6 +22,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	ambil_semua_wilayah()
 	SaveManager.load_status_wilayah(daftar_wilayah)
+	cek_syarat_buka()
 	buat_semua_button_wilayah() 
 
 func ambil_semua_wilayah() -> void:
@@ -115,6 +116,7 @@ func cek_syarat_buka():
 		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.KABUPATEN
 	elif(Point.TipeWilayahArray.y>=4):
 		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.PROVINSI
+	Point.tipe_wilayah_terbuka = int(tipe_wilayah_terbuka)
 func cek_status_tipe_wilayah(tipe):
 	if tipe==0:
 		Point.TipeWilayahArray.x+=1
