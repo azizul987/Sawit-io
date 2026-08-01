@@ -82,7 +82,3 @@ rotation = -0.5235988
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hjfu6")
 centered = false
-
-[node name="Control" type="Control" parent="." unique_id=802436756]
-layout_mode = 2
-size_flags_stretch_ratio = 11.5

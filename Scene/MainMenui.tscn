@@ -63,6 +63,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 600)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/SaveMenu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0h56x"]
 resource_name = "menu_hide"
@@ -120,11 +132,45 @@ tracks/1/keys = {
 "values": [Vector2(576, 324), Vector2(576, 324), Vector2(576, 324)]
 }
 
+[sub_resource type="Animation" id="Animation_shide"]
+resource_name = "save_hide"
+length = 0.53333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/SaveMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sshow"]
+resource_name = "save_show"
+length = 0.53333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/SaveMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w84f2"]
 _data = {
 &"RESET": SubResource("Animation_k3gr3"),
 &"menu_hide": SubResource("Animation_0h56x"),
-&"menu_show": SubResource("Animation_3r8ox")
+&"menu_show": SubResource("Animation_3r8ox"),
+&"save_hide": SubResource("Animation_shide"),
+&"save_show": SubResource("Animation_sshow")
 }
 
 [node name="MainMenu" type="Node2D" unique_id=240010447]
