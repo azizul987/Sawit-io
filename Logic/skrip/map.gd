@@ -136,6 +136,10 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		SaveManager.save_status_wilayah(daftar_wilayah)
 		cek_syarat_buka()
 		button.queue_free()
+		
+		var cam := get_viewport().get_camera_2d()
+		if cam and cam.has_method("shake"):
+			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
 	
 func spawn_pohon() -> void:
 	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
@@ -149,3 +153,8 @@ func spawn_pohon() -> void:
 	var pohon = preload("res://sawit.tscn").instantiate()
 	pohon.position = poly.global_transform * (pt + poly.offset)
 	get_parent().add_child(pohon)
+	
+	var cam := get_viewport().get_camera_2d()
+	if cam and cam.has_method("shake"):
+		cam.shake(5.0, 0.15) # Getaran halus saat nanam/spawn sawit
+

@@ -86,3 +86,15 @@ func simpan_posisi_camera() -> void:
 	Point.main_tree_camera.y = position.y
 	Point.main_tree_camera.z = zoom.x
 	SaveManager.save_game()
+
+
+# --- FITUR GETAR LAYAR (SCREEN SHAKE) ---
+func shake(intensity: float = 8.0, duration: float = 0.25) -> void:
+	var tween := create_tween()
+	var step := duration / 5.0
+	for i in range(5):
+		var rand_offset := Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
+		tween.tween_property(self, "offset", rand_offset, step)
+		intensity *= 0.6 # getaran mereda secara alami
+	tween.tween_property(self, "offset", Vector2.ZERO, step)
+
