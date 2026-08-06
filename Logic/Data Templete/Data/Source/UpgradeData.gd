@@ -2,11 +2,14 @@ class_name UpgradeData
 extends Resource
 
 enum EffectType {
-	CLICK_POWER_ADD,        # Tambah poin per klik (contoh: +1.0 per level)
-	CLICK_POWER_MULT,       # Pengganda poin klik (contoh: x1.2 atau +20% per level)
-	AUTO_POINT_PER_SEC,     # Poin otomatis tiap detik / Idle (contoh: +2.5/detik per level)
-	AUTO_POINT_MULT,        # Pengganda poin idle (contoh: x1.5 per level)
-	DISCOUNT_UPGRADE        # Diskon harga beli (contoh: 0.05 untuk diskon 5% per level)
+	CLICK_POWER_ADD,        # 0: Tambah poin per klik / Jumlah Sawit
+	CLICK_POWER_MULT,       # 1: Pengganda poin klik / Eskalasi Harga (contoh: +15% per level)
+	AUTO_POINT_PER_SEC,     # 2: Poin otomatis / Rekrut Buruh (dengan sistem bagi hasil)
+	AUTO_POINT_MULT,        # 3: Pengganda poin idle
+	DISCOUNT_UPGRADE,       # 4: Diskon harga beli
+	WORKER_SPEED_INTEL,     # 5: Work Life Balance (Meningkatkan speed & kepintaran buruh)
+	TERRITORY_MULTIPLIER,   # 6: Agregat Harga (Multiplier harga berdasar wilayah terbuka)
+	CRITICAL_HARVEST        # 7: Sawit Super (Peluang 5% untuk mendapat 10x lipat)
 }
 
 @export_category("Upgrade Information")
