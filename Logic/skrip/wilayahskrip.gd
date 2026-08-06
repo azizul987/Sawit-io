@@ -15,17 +15,17 @@ var is_hovering: bool = false
 
 
 @export var warna_border: Color = Color.BLACK
-#@export var tebal_border: float = 2.0
+@export var skala_uv_tekstur: float = 11.89 # Disamakan dengan skala perulangan wilayah 3
+const TEKSTUR_WILAYAH = preload("res://Asset/wilayah_open.png")
 
 func _ready() -> void:
-	add_to_group("wilayah")
-
-	input_pickable = true
-
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
-
 	perbarui_tampilan()
+	
+	if not Engine.is_editor_hint():
+		add_to_group("wilayah")
+		input_pickable = true
+		mouse_entered.connect(_on_mouse_entered)
+		mouse_exited.connect(_on_mouse_exited)
 	#perbarui_border()
 
 
@@ -42,10 +42,20 @@ func perbarui_tampilan() -> void:
 
 	var warna: Color = data.warna_terbuka if sudah_terbuka() else data.warna_terkunci
 	
-	# Warnai SEMUA Polygon2D di dalam wilayah ini (mendukung wilayah dengan >1 polygon/pulau)
+	# Warnai dan pasang tekstur otomatis pada SEMUA Polygon2D di dalam wilayah ini
 	for child in get_children():
 		if child is Polygon2D:
 			child.color = warna
+			child.texture = TEKSTUR_WILAYAH
+			child.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+			child.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+
+			# Samakan ukuran perulangan dan skala UV dengan wilayah 3 di seluruh peta secara presisi
+			if not child.polygon.is_empty():
+				var uv_baru := PackedVector2Array()
+				for titik in child.polygon:
+					uv_baru.append(titik * skala_uv_tekstur)
+				child.uv = uv_baru
 
 
 func _input_event(
