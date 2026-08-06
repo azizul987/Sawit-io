@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c6vgmp5scevx6"]
+
+[ext_resource type="Script" path="res://buruh.gd" id="1_buruh_scr"]
+[ext_resource type="Texture2D" uid="uid://tmlw2cboo8cw" path="res://Asset/idle.png" id="1_ndl5l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wte12"]
+atlas = ExtResource("1_ndl5l")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qabk"]
+atlas = ExtResource("1_ndl5l")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a87l0"]
+atlas = ExtResource("1_ndl5l")
+region = Rect2(48, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mavo"]
+atlas = ExtResource("1_ndl5l")
+region = Rect2(72, 0, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0b7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wte12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qabk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a87l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mavo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndl5l"]
+radius = 2.3374195
+height = 10.103352
+
+[node name="Buruh" type="CharacterBody2D" unique_id=339722709]
+script = ExtResource("1_buruh_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182272681]
+sprite_frames = SubResource("SpriteFrames_e0b7r")
+frame_progress = 0.86208844
+
+[node name="Area2D" type="Area2D" parent="." unique_id=988995808]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=815192366]
+shape = SubResource("CapsuleShape2D_ndl5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1869664008]
+position = Vector2(-0.67006874, 2.1218843)
+shape = SubResource("CapsuleShape2D_ndl5l")

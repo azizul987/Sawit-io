@@ -6,11 +6,17 @@ const FONT_KOSTUM = preload(
 	"res://temp tekture/font/BPdotsSquareBold.otf"
 )
 
+func _ready() -> void:
+	add_to_group("sawit")
+
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Point.add_point(Point.point_per_click)
-		goyang_pohon()
-		show_plus_effect(Point.point_per_click)
+		panen()
+
+func panen() -> void:
+	Point.add_point(Point.point_per_click)
+	goyang_pohon()
+	show_plus_effect(Point.point_per_click)
 
 func goyang_pohon():
 	var tween = create_tween()
@@ -37,7 +43,7 @@ func show_plus_effect(jumlah_poin: float) -> void:
 
 	get_tree().current_scene.add_child(label)
 
-	label.global_position = get_global_mouse_position() + Vector2(randf_range(-15, 15), randf_range(-10, 5)) * z
+	label.global_position = global_position + Vector2(randf_range(-15, 15), randf_range(-10, 5)) * z
 	var arah_gerak := Vector2(
 	randf_range(-35.0, 35.0),
 	randf_range(-80.0, -40.0)
