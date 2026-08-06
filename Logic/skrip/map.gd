@@ -156,4 +156,7 @@ func spawn_pohon() -> void:
 	
 	var cam := get_viewport().get_camera_2d()
 	if cam and cam.has_method("shake"):
-		cam.shake(5.0, 0.15) # Getaran halus saat nanam/spawn sawit
+		cam.shake(5.0, 0.15) 
+
+func  spawn_buruh():
+	print("testes")

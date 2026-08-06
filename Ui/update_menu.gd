@@ -87,9 +87,12 @@ func _on_purchase_requested(
 	var total_unlocked := 0
 	for u in upgrade_database.upgrades: if u and u.is_unlocked(): total_unlocked += 1
 	if total_unlocked != upgrade_container.get_child_count(): generate_upgrade_buttons()
-	if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit":
+	if upgrade_data.upgrade_name == "Jumlah Sawit":
 		var map = get_tree().current_scene.get_node_or_null("map")
 		if map: map.spawn_pohon()
+	if  upgrade_data.upgrade_name=="Rekrut":
+		var map=get_tree().current_scene.get_node_or_null("map")
+		if map: map.spawn_buruh()
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)
