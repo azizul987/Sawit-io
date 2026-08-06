@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
 bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 corner_radius_top_left = 4

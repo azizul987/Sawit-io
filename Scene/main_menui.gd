@@ -10,14 +10,27 @@ const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn"
 @onready var pengaturan_button: Button = $CanvasLayer/Menu_Awal/VBoxContainer/Pengaturan
 @onready var keluar_button: Button = $CanvasLayer/Menu_Awal/VBoxContainer/Keluar
 
+@onready var settings_menu: Control = $CanvasLayer/SettingsMenu
+@onready var fullscreen_btn: CheckButton = $CanvasLayer/SettingsMenu/VBoxContainer/FullscreenBtn
+@onready var delete_save_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/DeleteSaveBtn
+@onready var settings_kembali_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/KembaliBtn
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show_menu_awal()
 	add_button.pressed.connect(_on_add_button_pressed)
 	pengaturan_button.pressed.connect(_on_pengaturan_pressed)
 	keluar_button.pressed.connect(_on_keluar_pressed)
+	
+	fullscreen_btn.toggled.connect(_on_fullscreen_toggled)
+	delete_save_btn.pressed.connect(_on_delete_save_pressed)
+	settings_kembali_btn.pressed.connect(_on_settings_kembali_pressed)
+	
+	fullscreen_btn.button_pressed = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
 	_refresh_slots()
 	$CanvasLayer/SaveMenu.hide()
+	settings_menu.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -38,7 +51,34 @@ func hide_menu_awal():
 
 func _on_pengaturan_pressed() -> void:
 	_animate_button_click(pengaturan_button)
-	print("Menu Pengaturan belum tersedia.")
+	$AnimationPlayer.play("menu_hide")
+	await $AnimationPlayer.animation_finished
+	$CanvasLayer/Menu_Awal.hide()
+	
+	settings_menu.modulate = Color(1, 1, 1, 0)
+	settings_menu.show()
+	var tween = create_tween()
+	tween.tween_property(settings_menu, "modulate", Color(1, 1, 1, 1), 0.3)
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_delete_save_pressed() -> void:
+	_animate_button_click(delete_save_btn)
+	SaveManager.delete_current_save()
+	# Refresh UI save list in case a save was active or just to be clean
+	_refresh_slots()
+
+func _on_settings_kembali_pressed() -> void:
+	_animate_button_click(settings_kembali_btn)
+	var tween = create_tween()
+	tween.tween_property(settings_menu, "modulate", Color(1, 1, 1, 0), 0.3)
+	await tween.finished
+	settings_menu.hide()
+	show_menu_awal()
 
 func _on_keluar_pressed() -> void:
 	_animate_button_click(keluar_button)
