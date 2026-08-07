@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxdkyunbknd3" path="res://Ui/skill_tree.tscn" id="1_dqm5e"]
 [ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="3_dwmuj"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
+
 [node name="SkillTreeUi" type="Control" unique_id=1429291990]
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +15,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_621cv")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=9876543210]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1286608618]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,12 +29,12 @@ offset_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_4a1h5")
+draw_center = false
 region_rect = Rect2(0, 0, 24, 24)
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
-draw_center = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=90200876]
 texture_filter = 1

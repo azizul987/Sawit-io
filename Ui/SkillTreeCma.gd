@@ -40,8 +40,10 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("focus"):
 		position = Vector2.ZERO
+		zoom = Vector2(1.4, 1.4)
 		Point.skill_tree_camera.x = 0
 		Point.skill_tree_camera.y = 0
+		Point.skill_tree_camera.z = 1.4
 		SaveManager.save_game()
 
 func _input(event):
