@@ -4,16 +4,49 @@
 [ext_resource type="Texture2D" uid="uid://bnn4d5r1duo1i" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons2.png" id="2_1gh37"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="3_1gh37"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo7bx"]
-bg_color = Color(0.1847857, 0.1847857, 0.18478557, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.15, 0.15, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.35, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.2, 0.2, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.7, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.1, 0.1, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Updatebtn" type="Button" unique_id=1619997399]
 custom_minimum_size = Vector2(288, 80)
-theme_override_styles/normal = SubResource("StyleBoxFlat_fo7bx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 script = ExtResource("1_fo7bx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=938833588]
@@ -34,13 +67,14 @@ theme_override_constants/margin_bottom = 10
 [node name="Icon" type="TextureButton" parent="HBoxContainer/MarginContainer" unique_id=1897968863]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+mouse_filter = 2
 texture_normal = ExtResource("2_1gh37")
 stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=300782239]
 layout_mode = 2
 theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_top = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=1354535279]
 layout_mode = 2
@@ -49,6 +83,9 @@ size_flags_horizontal = 3
 [node name="Nama" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=993452087]
 custom_minimum_size = Vector2(170, 16.06)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("3_1gh37")
 text = "Jumlah Sawit"
 horizontal_alignment = 1
@@ -56,12 +93,14 @@ horizontal_alignment = 1
 [node name="Harga" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=2089461872]
 custom_minimum_size = Vector2(0, 15.04)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_fonts/font = ExtResource("3_1gh37")
 text = "5"
 horizontal_alignment = 1
 
 [node name="Level" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1322363543]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
 theme_override_fonts/font = ExtResource("3_1gh37")
 theme_override_font_sizes/font_size = 10
 text = "0/1000"

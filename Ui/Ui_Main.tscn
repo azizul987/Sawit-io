@@ -4,12 +4,19 @@
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_lr6hm"]
 [ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
 [ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
-[ext_resource type="Texture2D" uid="uid://luaruaa52acv" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons4.png" id="5_rkw7e"]
 [ext_resource type="Texture2D" uid="uid://c0xhqcmcbti51" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons1.png" id="6_qoxqm"]
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo7bx"]
+bg_color = Color(0.1847857, 0.1847857, 0.18478557, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
 bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 corner_radius_top_left = 4
@@ -38,21 +45,12 @@ mouse_filter = 2
 
 [node name="Change _Mode" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
 layout_mode = 0
-offset_left = 666.0
-offset_top = 513.0
-offset_right = 769.63635
-offset_bottom = 616.63635
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 128.63635
+offset_bottom = 126.63635
 texture_normal = ExtResource("3_k7e2i")
 texture_pressed = ExtResource("4_6dpwe")
-stretch_mode = 0
-
-[node name="Exit" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=1425474892]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 28.0
-offset_right = 103.75701
-offset_bottom = 116.0
-texture_normal = ExtResource("5_rkw7e")
 stretch_mode = 0
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=2053636521]
@@ -139,6 +137,7 @@ layout_mode = 2
 
 [node name="Updatebtn" parent="UpdateMenu/ScrollContainer/VBoxContainer" unique_id=1619997399 instance=ExtResource("7_raqhj")]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fo7bx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpdateMenu" unique_id=941773606]
 visible = false
@@ -187,6 +186,10 @@ offset_right = 119.5
 offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 32
 text = "UPGRADE"
@@ -231,4 +234,3 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/SkillTree/Exit" to="." method="_on_exit_pressed"]

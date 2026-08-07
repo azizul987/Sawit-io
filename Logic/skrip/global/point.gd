@@ -2,7 +2,7 @@ extends Node
 
 
 var point: float = 0.0
-var rebirth_point: int = 0
+var rebirth_point: int = 1
 var base_point_per_click: float = 2.5
 var point_per_click: float = 2.5
 var auto_point_per_sec: float = 0.0

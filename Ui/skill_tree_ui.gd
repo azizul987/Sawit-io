@@ -8,4 +8,6 @@ func _ready() -> void:
 
 func _on_exit_pressed() -> void:
 	$".".hide()
-	$"../../CanvasLayer/UiMain".skillshow.show()
+	var ui_main = $"../../CanvasLayer/UiMain"
+	ui_main.skillshow.show()
+	ui_main.get_node("UpdateMenu").show()

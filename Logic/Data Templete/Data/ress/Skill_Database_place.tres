@@ -13,13 +13,9 @@ script = ExtResource("2_ambdn")
 id = "center_benih_pertama"
 skill_name = "Benih Pertama"
 max_level = 1
-tree_position = Vector2(0, 0)
-required_skill_ids = Array[String]([])
 is_open = true
 cost = Array[int]([0])
-level = 0
 Icon = ExtResource("3_nqfhb")
-effect_type = 0
 effect_value = 1.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
@@ -30,11 +26,8 @@ skill_name = "Bibit Unggul Permanen"
 max_level = 5
 tree_position = Vector2(-150, -80)
 required_skill_ids = Array[String](["center_benih_pertama"])
-is_open = false
 cost = Array[int]([1, 2, 4, 8, 16])
-level = 0
 Icon = ExtResource("4_pope5")
-effect_type = 0
 effect_value = 10.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
@@ -45,11 +38,8 @@ skill_name = "Panen Ganda"
 max_level = 1
 tree_position = Vector2(-300, -80)
 required_skill_ids = Array[String](["prod_bibit_unggul"])
-is_open = false
 cost = Array[int]([20])
-level = 0
 Icon = ExtResource("5_w66aa")
-effect_type = 0
 effect_value = 1.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
@@ -60,12 +50,9 @@ skill_name = "Diskon Tengkulak"
 max_level = 5
 tree_position = Vector2(150, -80)
 required_skill_ids = Array[String](["center_benih_pertama"])
-is_open = false
 cost = Array[int]([1, 2, 4, 8, 16])
-level = 0
 Icon = ExtResource("6_37qqy")
 effect_type = 4
-effect_value = 5.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_efi_magnet_jangkauan"]
@@ -75,11 +62,8 @@ skill_name = "Magnet Jangkauan Luas"
 max_level = 3
 tree_position = Vector2(300, -80)
 required_skill_ids = Array[String](["efi_diskon_tengkulak"])
-is_open = false
 cost = Array[int]([5, 10, 15])
-level = 0
 Icon = ExtResource("7_0wu8a")
-effect_type = 0
 effect_value = 20.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 

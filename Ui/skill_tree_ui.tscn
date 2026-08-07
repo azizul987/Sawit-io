@@ -38,6 +38,27 @@ render_target_update_mode = 4
 
 [node name="Skill Tree" parent="SubViewportContainer/SubViewport" unique_id=409050271 instance=ExtResource("1_dqm5e")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=485079468]
+layer = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=460238525]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 131.49985
+offset_bottom = 190.49985
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="RebirthPointLabel" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1149707638]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "Rebirth Point: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Exit" type="TextureButton" parent="." unique_id=293348174]
 layout_mode = 1
 anchors_preset = 8

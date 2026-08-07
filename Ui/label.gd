@@ -38,6 +38,7 @@ func _on_texture_button_pressed() -> void:
 	$"../../CanvasLayer2/SkillTreeUi".show()
 	SaveManager.save_game()
 	skillshow.hide()
+	$UpdateMenu.hide()
 
 	
 	
