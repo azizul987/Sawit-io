@@ -2,6 +2,7 @@ extends Node
 
 
 var point: float = 0.0
+var rebirth_point: int = 0
 var base_point_per_click: float = 2.5
 var point_per_click: float = 2.5
 var auto_point_per_sec: float = 0.0
@@ -35,6 +36,14 @@ func remove_point(value):
 	if point < 0:
 		point = 0
 	#print("Point sekarang: ", point)
+
+func add_rebirth_point(value: int):
+	rebirth_point += value
+
+func remove_rebirth_point(value: int):
+	rebirth_point -= value
+	if rebirth_point < 0:
+		rebirth_point = 0
 
 
 # Fungsi raib & sakti untuk menghitung seluruh efek dari Upgrade maupun Skill!

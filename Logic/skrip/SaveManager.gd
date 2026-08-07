@@ -74,6 +74,7 @@ func write_save_data(data: Dictionary) -> void:
 func save_game() -> void:
 	var data := read_save_data()
 	data["point"] = Point.point
+	data["rebirth_point"] = Point.rebirth_point
 
 	data["skill_tree_camera"]={
 		"x":Point.skill_tree_camera.x,
@@ -99,6 +100,7 @@ func load_game() -> void:
 	var data := read_save_data()
 
 	Point.point = float(data.get("point", 0))
+	Point.rebirth_point = int(data.get("rebirth_point", 0))
 	var cam_data:Dictionary=data.get("skill_tree_camera",{
 		"x":0.0,
 		"y":0.0,

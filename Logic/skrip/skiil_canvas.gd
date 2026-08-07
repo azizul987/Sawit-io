@@ -119,8 +119,8 @@ func _on_skill_button_pressedd(skil_id):
 	if targetSkill.level>=targetSkill.cost.size():
 		return
 	#print(skil_id)
-	if targetSkill.cost[targetSkill.level]<=Point.point:
-		Point.remove_point(targetSkill.cost[targetSkill.level])
+	if targetSkill.cost[targetSkill.level]<=Point.rebirth_point:
+		Point.remove_rebirth_point(targetSkill.cost[targetSkill.level])
 		if targetSkill.level < targetSkill.cost.size():
 			targetSkill.level += 1
 			if targetSkill.level >= targetSkill.cost.size():
