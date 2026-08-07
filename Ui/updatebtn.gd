@@ -39,7 +39,7 @@ func refresh() -> void:
 		price_label.text = "MAX LEVEL"
 		disabled = true
 	else:
-		price_label.text = "Harga: %.0f" % data.price
+		price_label.text = "Harga: %.0f" % data.get_discounted_price()
 		disabled = false
 
 

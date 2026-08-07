@@ -23,7 +23,7 @@ func _ready() -> void:
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
 			if u and (u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit"):
-				for i in range(u.current_level): map.spawn_pohon()
+				for i in range(u.current_level): map.spawn_pohon(true)
 
 
 func generate_upgrade_buttons() -> void:
@@ -72,11 +72,12 @@ func _on_purchase_requested(
 	if upgrade_data.is_max_level():
 		return
 
-	if Point.point < upgrade_data.price:
-		#print("Poin Sawit tidak cukup! Butuh: ", upgrade_data.price, " | Poin sekarang: ", Point.point)
+	var current_price = upgrade_data.get_discounted_price()
+	if Point.point < current_price:
+		#print("Poin Sawit tidak cukup! Butuh: ", current_price, " | Poin sekarang: ", Point.point)
 		return
 
-	Point.remove_point(upgrade_data.price)
+	Point.remove_point(current_price)
 
 	var upgrade_success: bool = upgrade_data.upgrade()
 

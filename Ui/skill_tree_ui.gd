@@ -2,8 +2,14 @@ extends Control
 
 
 func _ready() -> void:
-	visibility_changed.connect(func(): Point.is_skill_tree_open = visible)
+	visibility_changed.connect(func():
+		Point.is_skill_tree_open = visible
+		if has_node("CanvasLayer"):
+			$CanvasLayer.visible = visible
+	)
 	Point.is_skill_tree_open = visible
+	if has_node("CanvasLayer"):
+		$CanvasLayer.visible = visible
 
 
 func _on_exit_pressed() -> void:

@@ -11,7 +11,9 @@ var cd = 1
 var skill_tree_camera: Vector3=Vector3(0,0,1.4)
 var main_tree_camera: Vector3
 var is_skill_tree_open: bool = false
-
+var upgrade_discount: float = 0.0
+var magnet_radius: float = 0.0
+var panen_ganda_chance: float = 0.0
 var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
@@ -48,10 +50,21 @@ func remove_rebirth_point(value: int):
 
 # Fungsi raib & sakti untuk menghitung seluruh efek dari Upgrade maupun Skill!
 func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> void:
+	if upgrades_list.is_empty():
+		var up_db = load("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
+		if up_db: upgrades_list = up_db.upgrades
+	if skills_list.is_empty():
+		var sk_db = load("res://Logic/Data Templete/Data/ress/Skill_Database_place.tres")
+		if sk_db: skills_list = sk_db.skills
+
 	var total_click_add: float = base_point_per_click
 	var total_click_mult: float = 1.0
 	var total_auto_add: float = 0.0
 	var total_auto_mult: float = 1.0
+	
+	upgrade_discount = 0.0
+	magnet_radius = 0.0
+	panen_ganda_chance = 0.0
 
 	# 1. Hitung efek dari semua Upgrade yang sudah distop/beli
 	for up in upgrades_list:
@@ -78,6 +91,12 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 				total_auto_add += val
 			elif sk.effect_type == 3:
 				total_auto_mult += (val / 100.0)
+			elif sk.effect_type == 4:
+				upgrade_discount += val
+			elif sk.effect_type == 5:
+				panen_ganda_chance += val
+			elif sk.effect_type == 6:
+				magnet_radius += val
 
 	# 3. Terapkan hasil perhitungan baru ke statistik permainan!
 	point_per_click = total_click_add * total_click_mult

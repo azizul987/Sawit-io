@@ -14,10 +14,10 @@ func _ready() -> void:
 		Point.main_tree_camera.x,
 		Point.main_tree_camera.y
 	)
-	zoom = Vector2(
-		Point.main_tree_camera.z,
-		Point.main_tree_camera.z
-	)
+	var safe_z: float = Point.main_tree_camera.z
+	if safe_z <= 0.0:
+		safe_z = 1.0
+	zoom = Vector2(safe_z, safe_z)
 	make_current()
 
 
@@ -97,4 +97,3 @@ func shake(intensity: float = 8.0, duration: float = 0.25) -> void:
 		tween.tween_property(self, "offset", rand_offset, step)
 		intensity *= 0.6 # getaran mereda secara alami
 	tween.tween_property(self, "offset", Vector2.ZERO, step)
-

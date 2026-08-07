@@ -141,7 +141,7 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		if cam and cam.has_method("shake"):
 			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
 	
-func spawn_pohon() -> void:
+func spawn_pohon(silent: bool = false) -> void:
 	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
 	if wil.is_empty(): return
 	var poly = wil.pick_random().get_node("Polygon2D")
@@ -155,7 +155,7 @@ func spawn_pohon() -> void:
 	get_parent().add_child(pohon)
 	
 	var cam := get_viewport().get_camera_2d()
-	if cam and cam.has_method("shake"):
+	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15) 
 
 func  spawn_buruh():

@@ -40,7 +40,8 @@ tree_position = Vector2(-300, -80)
 required_skill_ids = Array[String](["prod_bibit_unggul"])
 cost = Array[int]([20])
 Icon = ExtResource("5_w66aa")
-effect_value = 1.0
+effect_type = 5
+effect_value = 15.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_efi_diskon_tengkulak"]
@@ -64,7 +65,8 @@ tree_position = Vector2(300, -80)
 required_skill_ids = Array[String](["efi_diskon_tengkulak"])
 cost = Array[int]([5, 10, 15])
 Icon = ExtResource("7_0wu8a")
-effect_value = 20.0
+effect_type = 6
+effect_value = 250.0
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [resource]

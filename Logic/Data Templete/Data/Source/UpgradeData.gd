@@ -35,6 +35,10 @@ enum EffectType {
 func is_unlocked() -> bool:
 	return required_upgrade == null or required_upgrade.current_level >= required_level
 
+func get_discounted_price() -> float:
+	var discounted = price * (1.0 - (Point.upgrade_discount / 100.0))
+	return max(0.0, discounted)
+
 
 func can_upgrade() -> bool:
 	return current_level < max_level
