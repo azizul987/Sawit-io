@@ -6,6 +6,7 @@ var pending_slot_delete: int = -1
 var pending_slot_ui: Control = null
 
 const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn")
+const CLICK_SFX = preload("res://Asset/Audio/sfx/WAV/UI SFX_MENU_Confirm.wav")
 
 @onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer
 @onready var add_button = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer/Add
@@ -17,6 +18,8 @@ const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn"
 
 @onready var settings_menu: Control = $CanvasLayer/SettingsMenu
 @onready var fullscreen_btn: CheckButton = $CanvasLayer/SettingsMenu/VBoxContainer/FullscreenBtn
+@onready var bgm_slider: HSlider = $CanvasLayer/SettingsMenu/VBoxContainer/BGMContainer/BGMSlider
+@onready var sfx_slider: HSlider = $CanvasLayer/SettingsMenu/VBoxContainer/SFXContainer/SFXSlider
 @onready var delete_save_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/DeleteSaveBtn
 @onready var settings_kembali_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/KembaliBtn
 
@@ -35,10 +38,14 @@ func _ready() -> void:
 	keluar_button.pressed.connect(_on_keluar_pressed)
 	
 	fullscreen_btn.toggled.connect(_on_fullscreen_toggled)
+	bgm_slider.value_changed.connect(_on_bgm_slider_changed)
+	sfx_slider.value_changed.connect(_on_sfx_slider_changed)
 	delete_save_btn.pressed.connect(_on_delete_save_pressed)
 	settings_kembali_btn.pressed.connect(_on_settings_kembali_pressed)
 	
 	fullscreen_btn.button_pressed = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	bgm_slider.value = AudioManager.bgm_volume_linear
+	sfx_slider.value = AudioManager.sfx_volume_linear
 	
 	_refresh_slots()
 	$CanvasLayer/SaveMenu.hide()
@@ -81,6 +88,12 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_bgm_slider_changed(value: float) -> void:
+	AudioManager.set_bgm_volume(value)
+
+func _on_sfx_slider_changed(value: float) -> void:
+	AudioManager.set_sfx_volume(value)
 
 func _on_delete_save_pressed() -> void:
 	_animate_button_click(delete_save_btn)
@@ -179,7 +192,7 @@ func _on_confirm_hapus():
 	confirm_mode = ConfirmMode.NONE
 	
 	if mode == ConfirmMode.DELETE_ALL:
-		SaveManager.delete_current_save()
+		SaveManager.delete_all_saves()
 		_refresh_slots()
 		_hide_confirm_menu()
 	elif mode == ConfirmMode.DELETE_SLOT:
@@ -212,6 +225,9 @@ func _on_kembali_pressed() -> void:
 func _animate_button_click(btn: Button) -> void:
 	if not is_instance_valid(btn):
 		return
+	
+	AudioManager.play_sfx(CLICK_SFX)
+	
 	btn.pivot_offset = btn.size / 2.0
 	var tween = create_tween()
 	tween.tween_property(btn, "scale", Vector2(0.9, 0.9), 0.07)

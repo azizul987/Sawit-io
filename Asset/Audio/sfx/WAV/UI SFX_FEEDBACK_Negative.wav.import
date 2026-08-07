@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brok25edg82i3"
+path="res://.godot/imported/UI SFX_FEEDBACK_Negative.wav-de3dc929d397bade98b249750af56f57.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/sfx/WAV/UI SFX_FEEDBACK_Negative.wav"
+dest_files=["res://.godot/imported/UI SFX_FEEDBACK_Negative.wav-de3dc929d397bade98b249750af56f57.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

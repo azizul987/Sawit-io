@@ -219,6 +219,12 @@ func delete_current_save() -> void:
 	else:
 		print("Save slot", current_slot, "memang belum ada")
 
+func delete_all_saves() -> void:
+	var slots := get_all_used_slots()
+	for s in slots:
+		delete_slot(s)
+	print("Semua save data berhasil dihapus.")
+
 func get_all_used_slots() -> Array[int]:
 	var slots: Array[int] = []
 	var dir := DirAccess.open("user://")

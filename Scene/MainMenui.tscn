@@ -397,6 +397,44 @@ theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 text = "Layar Penuh"
 
+[node name="BGMContainer" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/VBoxContainer/BGMContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 20
+text = "BGM"
+
+[node name="BGMSlider" type="HSlider" parent="CanvasLayer/SettingsMenu/VBoxContainer/BGMContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXContainer" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/VBoxContainer/SFXContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/SettingsMenu/VBoxContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
 [node name="DeleteSaveBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=764926146]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4aj7mhgbs70"
+path="res://.godot/imported/UI SFX_FEEDBACK_Woom.wav-ccba49da77abb8d38aae7cb897b422f2.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/sfx/WAV/UI SFX_FEEDBACK_Woom.wav"
+dest_files=["res://.godot/imported/UI SFX_FEEDBACK_Woom.wav-ccba49da77abb8d38aae7cb897b422f2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

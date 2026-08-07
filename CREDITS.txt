@@ -13,3 +13,10 @@ BlueSky: https://bsky.app/profile/jhawk-jhawk.bsky.social
 
 Note from Creator: 
 "Nothing you will EVER see from me will contain generative AI 'content'. 100% Human."
+
+SFX Assets
+----------
+Source: lolurio's FREE Cozy Game UI SFX Pack (https://lolurio.itch.io/lolurios-free-cozy-ui-sfx)
+Creator: lolurio
+License: CC BY 4.0 (Attribution 4.0 International)
+"This audio pack is under (CC BY 4.0) Attribution 4.0 International license. You can edit, remix and use it for commercial or non-commercial purposes, but you must give appropriate credit under my name."

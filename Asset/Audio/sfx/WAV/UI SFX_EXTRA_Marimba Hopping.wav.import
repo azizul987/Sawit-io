@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oclry72qa7mx"
+path="res://.godot/imported/UI SFX_EXTRA_Marimba Hopping.wav-93d8054c7fb35f55dfe826d9d6565892.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/sfx/WAV/UI SFX_EXTRA_Marimba Hopping.wav"
+dest_files=["res://.godot/imported/UI SFX_EXTRA_Marimba Hopping.wav-93d8054c7fb35f55dfe826d9d6565892.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

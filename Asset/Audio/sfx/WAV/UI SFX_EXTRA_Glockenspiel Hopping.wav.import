@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxlk34afj51v0"
+path="res://.godot/imported/UI SFX_EXTRA_Glockenspiel Hopping.wav-36f5097f1b4f3cb1931b07a8e42089f0.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/sfx/WAV/UI SFX_EXTRA_Glockenspiel Hopping.wav"
+dest_files=["res://.godot/imported/UI SFX_EXTRA_Glockenspiel Hopping.wav-36f5097f1b4f3cb1931b07a8e42089f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
