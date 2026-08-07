@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6vgmp5scevx6"]
 
-[ext_resource type="Script" uid="uid://pod5taeb28fy" path="res://buruh.gd" id="1_buruh_scr"]
+[ext_resource type="Script" uid="uid://pod5taeb28fy" path="res://Logic/skrip/buruh.gd" id="1_buruh_scr"]
 [ext_resource type="Texture2D" uid="uid://tmlw2cboo8cw" path="res://Asset/idle.png" id="1_ndl5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wte12"]

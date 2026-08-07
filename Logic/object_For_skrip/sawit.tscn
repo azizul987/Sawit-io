@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rt1bn0tgf0y3"]
 
 [ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="1_kkdw4"]
-[ext_resource type="Script" uid="uid://c42xmdmd6orqj" path="res://sawit.gd" id="1_n3x0p"]
+[ext_resource type="Script" uid="uid://c42xmdmd6orqj" path="res://Logic/skrip/sawit.gd" id="1_n3x0p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3x0p"]
 atlas = ExtResource("1_kkdw4")

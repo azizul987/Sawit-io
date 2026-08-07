@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2lrd72cb72u2" path="res://Scene/main_menui.gd" id="1_0h56x"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_k3gr3"]
 [ext_resource type="Texture2D" uid="uid://d2glovla5olm7" path="res://Asset/backround.png" id="2_3r8ox"]
-[ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://sawit.tscn" id="3_a0ht3"]
+[ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://Logic/object_For_skrip/sawit.tscn" id="3_a0ht3"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
 [ext_resource type="StyleBox" uid="uid://cm3w2qy1pb8xt" path="res://styles/panel_style.tres" id="5_panel_style"]
@@ -15,28 +15,6 @@ texture = ExtResource("2_3r8ox")
 [sub_resource type="FontVariation" id="FontVariation_judul"]
 base_font = ExtResource("1_k3gr3")
 spacing_space = -15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43fsk"]
-content_margin_left = 10.0
-content_margin_top = 8.0
-content_margin_right = 10.0
-content_margin_bottom = 8.0
-bg_color = Color(0.4200751, 0.552707, 0.14945987, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1wp1"]
-content_margin_left = 10.0
-content_margin_top = 8.0
-content_margin_right = 10.0
-content_margin_bottom = 8.0
-bg_color = Color(0.6772847, 0.88244843, 0.25703815, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_k3gr3"]
 length = 0.93333334
@@ -225,6 +203,7 @@ text = "Sawit Io"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363850231]
 
 [node name="SaveMenu" type="Control" parent="CanvasLayer" unique_id=857662195]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -257,7 +236,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -220.0
-offset_top = -260.11581
+offset_top = -260.1158
 offset_right = 168.0
 offset_bottom = 194.98462
 grow_horizontal = 2
@@ -364,7 +343,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")
 text = "Keluar"
 
-[node name="SettingsMenu" type="Control" parent="CanvasLayer"]
+[node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1539513862]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -373,7 +352,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/SettingsMenu"]
+[node name="Panel" type="Panel" parent="CanvasLayer/SettingsMenu" unique_id=235956020]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -388,7 +367,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("5_panel_style")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsMenu" unique_id=253179996]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -404,21 +383,21 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=1840967660]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 36
 text = "PENGATURAN"
 horizontal_alignment = 1
 
-[node name="FullscreenBtn" type="CheckButton" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+[node name="FullscreenBtn" type="CheckButton" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=709042254]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 text = "Layar Penuh"
 
-[node name="DeleteSaveBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+[node name="DeleteSaveBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=764926146]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -427,13 +406,83 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")
 text = "Hapus Semua Data"
 
-[node name="KembaliBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer"]
+[node name="KembaliBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=258974724]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_a0ht3")
 text = "Kembali"
+
+[node name="ConfirmationMenu" type="Control" parent="CanvasLayer" unique_id=1014661286]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ConfirmationMenu" unique_id=578516272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_panel_style")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ConfirmationMenu" unique_id=898460043]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -90.0
+offset_right = 170.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ConfirmLabel" type="Label" parent="CanvasLayer/ConfirmationMenu/VBoxContainer" unique_id=1943306885]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 24
+text = "Apakah kamu yakin?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ConfirmationMenu/VBoxContainer" unique_id=1462676849]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BatalBtn" type="Button" parent="CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer" unique_id=1569458432]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_a0ht3")
+text = "Batal"
+
+[node name="YaHapusBtn" type="Button" parent="CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer" unique_id=436478124]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_k3gr3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_43fsk")
+text = "Ya, Hapus"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1856931493]
 libraries/ = SubResource("AnimationLibrary_w84f2")

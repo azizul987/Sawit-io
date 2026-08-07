@@ -1,5 +1,10 @@
 extends Node2D
 
+enum ConfirmMode { NONE, DELETE_SLOT, DELETE_ALL }
+var confirm_mode: ConfirmMode = ConfirmMode.NONE
+var pending_slot_delete: int = -1
+var pending_slot_ui: Control = null
+
 const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn")
 
 @onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer
@@ -15,8 +20,15 @@ const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn"
 @onready var delete_save_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/DeleteSaveBtn
 @onready var settings_kembali_btn: Button = $CanvasLayer/SettingsMenu/VBoxContainer/KembaliBtn
 
+@onready var confirm_menu: Control = $CanvasLayer/ConfirmationMenu
+@onready var confirm_batal_btn: Button = $CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer/BatalBtn
+@onready var confirm_hapus_btn: Button = $CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer/YaHapusBtn
+@onready var confirm_label: Label = $CanvasLayer/ConfirmationMenu/VBoxContainer/ConfirmLabel
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.play_bgm(preload("res://Asset/Audio/music/Oh My! Beautiful Moon.mp3"))
+	
 	show_menu_awal()
 	add_button.pressed.connect(_on_add_button_pressed)
 	pengaturan_button.pressed.connect(_on_pengaturan_pressed)
@@ -31,6 +43,10 @@ func _ready() -> void:
 	_refresh_slots()
 	$CanvasLayer/SaveMenu.hide()
 	settings_menu.hide()
+	
+	confirm_batal_btn.pressed.connect(_on_confirm_batal)
+	confirm_hapus_btn.pressed.connect(_on_confirm_hapus)
+	confirm_menu.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -68,9 +84,9 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 
 func _on_delete_save_pressed() -> void:
 	_animate_button_click(delete_save_btn)
-	SaveManager.delete_current_save()
-	# Refresh UI save list in case a save was active or just to be clean
-	_refresh_slots()
+	confirm_mode = ConfirmMode.DELETE_ALL
+	confirm_label.text = "Hapus SEMUA data save?\nIni tidak bisa dibatalkan!"
+	_show_confirm_menu()
 
 func _on_settings_kembali_pressed() -> void:
 	_animate_button_click(settings_kembali_btn)
@@ -131,22 +147,60 @@ func _on_slot_load(slot_num: int):
 func _on_slot_delete(slot_num: int, slot_ui: Control):
 	for btn in slot_ui.find_children("", "Button", true, false):
 		btn.disabled = true
-		
-	await get_tree().create_timer(0.1).timeout
-	if not is_instance_valid(slot_ui):
-		return
-	
-	slot_ui.pivot_offset = slot_ui.custom_minimum_size / 2.0
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(slot_ui, "modulate", Color(1, 0.2, 0.2, 0.0), 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(slot_ui, "scale", Vector2(0.1, 0.1), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	pending_slot_delete = slot_num
+	pending_slot_ui = slot_ui
+	confirm_mode = ConfirmMode.DELETE_SLOT
+	confirm_label.text = "Hapus Slot " + str(slot_num) + "?"
+	_show_confirm_menu()
+
+func _show_confirm_menu():
+	confirm_menu.modulate = Color(1, 1, 1, 0)
+	confirm_menu.show()
+	var tween = create_tween()
+	tween.tween_property(confirm_menu, "modulate", Color(1, 1, 1, 1), 0.2)
+
+func _hide_confirm_menu():
+	var tween = create_tween()
+	tween.tween_property(confirm_menu, "modulate", Color(1, 1, 1, 0), 0.2)
 	await tween.finished
+	confirm_menu.hide()
+
+func _on_confirm_batal():
+	_animate_button_click(confirm_batal_btn)
+	if confirm_mode == ConfirmMode.DELETE_SLOT and is_instance_valid(pending_slot_ui):
+		for btn in pending_slot_ui.find_children("", "Button", true, false):
+			btn.disabled = false
+	confirm_mode = ConfirmMode.NONE
+	_hide_confirm_menu()
+
+func _on_confirm_hapus():
+	_animate_button_click(confirm_hapus_btn)
+	var mode = confirm_mode
+	confirm_mode = ConfirmMode.NONE
 	
-	if not is_inside_tree():
-		return
+	if mode == ConfirmMode.DELETE_ALL:
+		SaveManager.delete_current_save()
+		_refresh_slots()
+		_hide_confirm_menu()
+	elif mode == ConfirmMode.DELETE_SLOT:
+		var slot_num = pending_slot_delete
+		var slot_ui = pending_slot_ui
+		_hide_confirm_menu()
 		
-	SaveManager.delete_slot(slot_num)
-	_refresh_slots()
+		if not is_instance_valid(slot_ui):
+			return
+			
+		slot_ui.pivot_offset = slot_ui.custom_minimum_size / 2.0
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(slot_ui, "modulate", Color(1, 0.2, 0.2, 0.0), 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(slot_ui, "scale", Vector2(0.1, 0.1), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+		await tween.finished
+		
+		if not is_inside_tree():
+			return
+			
+		SaveManager.delete_slot(slot_num)
+		_refresh_slots()
 
 func _on_kembali_pressed() -> void:
 	_animate_button_click(kembali_button)
