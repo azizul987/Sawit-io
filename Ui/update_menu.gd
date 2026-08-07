@@ -97,4 +97,5 @@ func _on_purchase_requested(
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)
+	Point.check_missions()
 	SaveManager.save_game()

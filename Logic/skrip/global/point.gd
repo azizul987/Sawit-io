@@ -2,6 +2,7 @@ extends Node
 
 
 var point: float = 0.0
+var total_point_earned: float = 0.0
 var rebirth_point: int = 1
 var base_point_per_click: float = 2.5
 var point_per_click: float = 2.5
@@ -29,6 +30,8 @@ func _process(delta: float) -> void:
 
 func add_point(value):
 	point += value 
+	total_point_earned += value
+	check_missions()
 	#print("Point sekarang: ", point)
 	SaveManager.save_game()
 
@@ -110,6 +113,37 @@ func _input(event: InputEvent) -> void:
 			Point.add_point(10000000)
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
+
+var mission_db: Resource = null
+
+func check_missions() -> void:
+	if mission_db == null:
+		mission_db = load("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
+		if mission_db == null:
+			return
+			
+	# Kita load update db sekalian untuk cek level upgrade jika ada misi upgrade
+	var up_db = load("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
+	
+	for m in mission_db.missions:
+		if m != null and not m.is_completed:
+			var completed = false
+			if m.requirement_type == 0: # TOTAL_POINT_REACHED
+				if total_point_earned >= m.target_value:
+					completed = true
+			elif m.requirement_type == 1: # UPGRADE_LEVEL_REACHED
+				if up_db:
+					for u in up_db.upgrades:
+						if u.upgrade_name == m.target_id and u.current_level >= int(m.target_value):
+							completed = true
+							break
+							
+			if completed:
+				m.is_completed = true
+				add_rebirth_point(m.reward_rebirth_point)
+				print("MISI SELESAI: ", m.mission_name, " | Hadiah: +", m.reward_rebirth_point, " RP")
+				SaveManager.save_game()
+
 
 
 func format_num(val: float) -> String:

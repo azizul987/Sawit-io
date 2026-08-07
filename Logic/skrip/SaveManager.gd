@@ -74,7 +74,14 @@ func write_save_data(data: Dictionary) -> void:
 func save_game() -> void:
 	var data := read_save_data()
 	data["point"] = Point.point
+	data["total_point_earned"] = Point.total_point_earned
 	data["rebirth_point"] = Point.rebirth_point
+	
+	if Point.mission_db:
+		var m_data = {}
+		for m in Point.mission_db.missions:
+			if m: m_data[m.id] = m.is_completed
+		data["missions"] = m_data
 
 	data["skill_tree_camera"]={
 		"x":Point.skill_tree_camera.x,
@@ -100,7 +107,15 @@ func load_game() -> void:
 	var data := read_save_data()
 
 	Point.point = float(data.get("point", 0))
+	Point.total_point_earned = float(data.get("total_point_earned", 0))
 	Point.rebirth_point = int(data.get("rebirth_point", 1))
+	
+	if Point.mission_db == null:
+		Point.mission_db = load("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
+	if Point.mission_db:
+		var m_data = data.get("missions", {})
+		for m in Point.mission_db.missions:
+			if m: m.is_completed = bool(m_data.get(m.id, false))
 	var cam_data:Dictionary=data.get("skill_tree_camera",{
 		"x":0.0,
 		"y":0.0,

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
+[ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
@@ -67,7 +68,6 @@ offset_right = 36.0
 offset_bottom = -253.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 40
 text = "100"
@@ -158,9 +158,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -556.0
-offset_top = 139.0
+offset_top = 51.0
 offset_right = -216.0
-offset_bottom = 308.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -186,5 +186,22 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1605818782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -435.0
+offset_top = 256.0
+offset_right = 173.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_wbkow")
+value = 35.92
+show_percentage = false
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
