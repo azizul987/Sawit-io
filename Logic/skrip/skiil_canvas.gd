@@ -240,17 +240,19 @@ func _start_idle_skill_motion(target: Control, delay_index: int) -> void:
 func _draw_skill_line(start_pos: Vector2, end_pos: Vector2) -> void:
 	var points := PackedVector2Array()
 
+	# Kembali pakai lengkungan lama (agar akurat ke titik tengah)
 	var mid := (start_pos + end_pos) * 0.5
 	var control := mid + Vector2(0, -35)
 
 	for i in range(16):
 		var t := float(i) / 15.0
-
 		var a := start_pos.lerp(control, t)
 		var b := control.lerp(end_pos, t)
 		var p := a.lerp(b, t)
-
 		points.append(p)
 
-	draw_polyline(points, Color(0.0, 0.234, 0.097, 0.55), 7.0, true)
-	draw_polyline(points, Color(0.242, 0.394, 0.139, 0.95), 3.0, true)
+	# Efek Garis HD (Tegas dan Solid, BUKAN Glow Transparan) biar nggak burik
+	# 1. Garis Outline/Tepi (Warna gelap coklat/hitam pekat) ukuran lebih besar
+	draw_polyline(points, Color(0.15, 0.1, 0.05, 1.0), 7.0, true)
+	# 2. Garis Inti (Emas Solid terang) ukuran lebih kecil di tengahnya
+	draw_polyline(points, Color(1.0, 0.85, 0.2, 1.0), 3.0, true)

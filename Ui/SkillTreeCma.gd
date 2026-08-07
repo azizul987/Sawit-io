@@ -37,6 +37,12 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_camera(zoom_speed)
+		
+	if Input.is_action_just_pressed("focus"):
+		position = Vector2.ZERO
+		Point.skill_tree_camera.x = 0
+		Point.skill_tree_camera.y = 0
+		SaveManager.save_game()
 
 func _input(event):
 	if not Point.is_skill_tree_open:
