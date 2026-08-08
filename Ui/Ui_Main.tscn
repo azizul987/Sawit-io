@@ -158,9 +158,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -556.0
-offset_top = 51.0
+offset_top = 83.0
 offset_right = -216.0
-offset_bottom = 220.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -187,21 +187,52 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1605818782]
+[node name="mision" type="Control" parent="." unique_id=438853371]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -435.0
-offset_top = 256.0
-offset_right = 173.0
-offset_bottom = 266.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 214.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="mision" unique_id=1605818782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = 264.0
+offset_right = 304.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_wbkow")
 value = 35.92
 show_percentage = false
+
+[node name="Label" type="Label" parent="mision" unique_id=622296759]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = 236.5
+offset_right = 115.0
+offset_bottom = 259.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Kumpulkan uang:0/100000 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]

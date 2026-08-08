@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://byolg75vm57py"]
+
+[ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_qhlyk"]
+
+[resource]
+default_font = ExtResource("1_qhlyk")
