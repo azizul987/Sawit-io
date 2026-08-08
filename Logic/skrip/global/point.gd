@@ -1,8 +1,11 @@
 extends Node
 
+signal  point_change(point)
 
 var point: float = 0.0
 var total_point_earned: float = 0.0
+
+
 var rebirth_point: int = 1
 var base_point_per_click: float = 2.5
 var point_per_click: float = 2.5
@@ -19,20 +22,20 @@ var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
 
-func _process(delta: float) -> void:
-	if auto_point_per_sec > 0.0:
-		auto_accumulator += auto_point_per_sec * delta
-		if auto_accumulator >= 1.0:
-			var earned: int = int(floor(auto_accumulator))
-			auto_accumulator -= earned
-			point += earned # Tambah poin langsung tanpa save berlebih tiap detik
+#func _process(delta: float) -> void:
+	#if auto_point_per_sec > 0.0:
+		#auto_accumulator += auto_point_per_sec * delta
+		#if auto_accumulator >= 1.0:
+			#var earned: int = int(floor(auto_accumulator))
+			#auto_accumulator -= earned
+			#point += earned # Tambah poin langsung tanpa save berlebih tiap detik
 
 
 func add_point(value):
 	point += value 
 	total_point_earned += value
 	check_missions()
-	#print("Point sekarang: ", point)
+	point_change.emit(point)
 	SaveManager.save_game()
 
 

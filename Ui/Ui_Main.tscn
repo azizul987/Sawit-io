@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
+[ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="9_4a1h5"]
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 
@@ -187,7 +188,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mision" type="Control" parent="." unique_id=438853371]
+[node name="mision_menu" type="Control" parent="." unique_id=438853371]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,8 +201,10 @@ offset_right = 214.0
 offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_4a1h5")
 
-[node name="ProgressBar" type="ProgressBar" parent="mision" unique_id=1605818782]
+[node name="ProgressBar" type="ProgressBar" parent="mision_menu" unique_id=1605818782]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -218,7 +221,7 @@ theme = ExtResource("9_wbkow")
 value = 35.92
 show_percentage = false
 
-[node name="Label" type="Label" parent="mision" unique_id=622296759]
+[node name="Label" type="Label" parent="mision_menu" unique_id=622296759]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

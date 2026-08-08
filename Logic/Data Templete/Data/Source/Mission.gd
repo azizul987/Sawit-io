@@ -3,7 +3,8 @@ extends Resource
 
 enum RequirementType {
 	TOTAL_POINT_REACHED,
-	UPGRADE_LEVEL_REACHED
+	UPGRADE_LEVEL_REACHED,
+	WILAYAH_TERBUKA
 }
 
 @export var id: String = "misi_baru"
