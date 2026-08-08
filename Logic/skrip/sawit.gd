@@ -8,6 +8,56 @@ const FONT_KOSTUM = preload(
 
 func _ready() -> void:
 	add_to_group("sawit")
+	
+	# Simpan posisi akhir
+	var final_position = position
+	
+	# Geser posisi awal ke atas secara acak (180 s/d 300 pixel) biar beda-beda
+	position.y -= randf_range(180.0, 300.0)
+	modulate.a = 0.0
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	# Tambahkan jeda waktu (delay) acak dan durasi jatuh acak
+	var random_delay = randf_range(0.0, 0.25) 
+	var drop_duration = randf_range(0.5, 0.85)
+	
+	# Animasi jatuh dan memantul (ditambah delay & durasi random)
+	tween.tween_property(self, "position", final_position, drop_duration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).set_delay(random_delay)
+	# Animasi pudar perlahan menjadi jelas (fade in)
+	tween.tween_property(self, "modulate:a", 1.0, drop_duration * 0.8).set_delay(random_delay)
+	
+	# Munculkan efek debu saat pertama kali menyentuh tanah (kira-kira 30% dari durasi jatuhnya karena EASE_OUT BOUNCE)
+	await get_tree().create_timer(random_delay + (drop_duration * 0.35)).timeout
+	if is_instance_valid(self):
+		create_dust_effect(final_position)
+
+func create_dust_effect(spawn_pos: Vector2) -> void:
+	var dust = CPUParticles2D.new()
+	dust.emitting = false
+	dust.one_shot = true
+	dust.explosiveness = 0.95
+	dust.lifetime = 0.6
+	dust.amount = 15
+	dust.direction = Vector2(0, -1)
+	dust.spread = 80.0
+	dust.gravity = Vector2(0, 150.0)
+	dust.initial_velocity_min = 40.0
+	dust.initial_velocity_max = 90.0
+	dust.scale_amount_min = 3.0
+	dust.scale_amount_max = 8.0
+	dust.color = Color(0.85, 0.85, 0.85, 0.7) # Putih asap / debu transparan
+	
+	# Tambahkan partikel ke scene utama supaya tidak ikut mantul dengan pohonnya
+	get_tree().current_scene.add_child(dust)
+	dust.global_position = spawn_pos + Vector2(0, 25) # Posisi debu di bagian akar/bawah pohon
+	dust.emitting = true
+	
+	# Bersihkan partikel setelah selesai
+	await get_tree().create_timer(1.0).timeout
+	if is_instance_valid(dust):
+		dust.queue_free()
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
