@@ -151,6 +151,7 @@ func spawn_pohon(silent: bool = false) -> void:
 		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
 		if Geometry2D.is_point_in_polygon(pt, pts) and Geometry2D.is_point_in_polygon(pt+Vector2(3,3), pts) and Geometry2D.is_point_in_polygon(pt-Vector2(3,3), pts): break
 	var pohon = preload("res://Logic/object_For_skrip/sawit.tscn").instantiate()
+	pohon.is_new_spawn = not silent
 	pohon.position = poly.global_transform * (pt + poly.offset)
 	get_parent().add_child(pohon)
 	

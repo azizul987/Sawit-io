@@ -2,12 +2,17 @@ extends Area2D
 
 @onready var sprite2d = $AnimatedSprite2D
 
+var is_new_spawn: bool = true
+
 const FONT_KOSTUM = preload(
 	"res://temp tekture/font/BPdotsSquareBold.otf"
 )
 
 func _ready() -> void:
 	add_to_group("sawit")
+	
+	if not is_new_spawn:
+		return
 	
 	# Simpan posisi akhir
 	var final_position = position
