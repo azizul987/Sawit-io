@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var is_new_spawn: bool = true
+
 var target_sawit: Node2D = null
 var sawit_sebelumnya: Node2D = null
 var sedang_panen: bool = false

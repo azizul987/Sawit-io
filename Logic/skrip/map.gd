@@ -145,11 +145,9 @@ func spawn_pohon(silent: bool = false) -> void:
 	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
 	if wil.is_empty(): return
 	var poly = wil.pick_random().get_node("Polygon2D")
-	var pts = poly.polygon; var pt = pts[0]; var rect = Rect2(pt, Vector2.ZERO)
-	for p in pts: rect = rect.expand(p)
-	for i in 100:
-		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
-		if Geometry2D.is_point_in_polygon(pt, pts) and Geometry2D.is_point_in_polygon(pt+Vector2(3,3), pts) and Geometry2D.is_point_in_polygon(pt-Vector2(3,3), pts): break
+	
+	var pt = get_random_point_in_polygon(poly)
+	
 	var pohon = preload("res://Logic/object_For_skrip/sawit.tscn").instantiate()
 	pohon.is_new_spawn = not silent
 	pohon.position = poly.global_transform * (pt + poly.offset)
@@ -159,5 +157,27 @@ func spawn_pohon(silent: bool = false) -> void:
 	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15) 
 
-func  spawn_buruh():
-	print("testes")
+func get_random_point_in_polygon(poly: Polygon2D) -> Vector2:
+	var pts = poly.polygon
+	var pt = pts[0]
+	var rect = Rect2(pt, Vector2.ZERO)
+	for p in pts: rect = rect.expand(p)
+	for i in 100:
+		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
+		if Geometry2D.is_point_in_polygon(pt, pts) and Geometry2D.is_point_in_polygon(pt+Vector2(3,3), pts) and Geometry2D.is_point_in_polygon(pt-Vector2(3,3), pts):
+			return pt
+	return rect.get_center()
+
+func  spawn_buruh(silent: bool = false):
+	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
+	if wil.is_empty(): return
+	var poly = wil.pick_random().get_node("Polygon2D")
+	
+	var pt = get_random_point_in_polygon(poly)
+	var buruh=preload("uid://c6vgmp5scevx6").instantiate()
+	buruh.is_new_spawn=not silent
+	buruh.position = poly.global_transform * (pt + poly.offset)
+	get_parent().add_child(buruh)
+	var cam := get_viewport().get_camera_2d()
+	if not silent and cam and cam.has_method("shake"):
+		cam.shake(5.0, 0.15) 
