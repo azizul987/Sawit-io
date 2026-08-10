@@ -12,14 +12,20 @@ extends Control
 
 
 func _ready() -> void:
+	add_to_group("upgrade_ui")
 	if desc_panel:
 		desc_panel.hide()
 	if upgrade_database:
 		SaveManager.load_upgrades(upgrade_database)
 		Point.recalculate_stats(upgrade_database.upgrades)
 	generate_upgrade_buttons()
-	await get_tree().process_frame; await get_tree().process_frame
+	# Tunggu sebentar sampai Map 100% termuat
+	await get_tree().create_timer(0.2).timeout
 	var map = get_tree().current_scene.get_node_or_null("map")
+	if map:
+		if map.has_method("get_current_max_capacity"):
+			_on_max_capacity_changed(map.get_current_max_capacity())
+			
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
 			if u and (u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit"):
@@ -108,3 +114,12 @@ func _on_purchase_requested(
 	SaveManager.save_upgrades(upgrade_database)
 	Point.check_missions()
 	SaveManager.save_game()
+
+func _on_max_capacity_changed(new_max: int) -> void:
+	if upgrade_database == null: return
+	for u in upgrade_database.upgrades:
+		if u and (u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit" or u.upgrade_name == "Rekrut"):
+			u.max_level = new_max
+	
+	# Reload display buttons to reflect new max level
+	generate_upgrade_buttons()

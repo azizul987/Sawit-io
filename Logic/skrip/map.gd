@@ -24,6 +24,7 @@ func _ready() -> void:
 	SaveManager.load_status_wilayah(daftar_wilayah)
 	cek_syarat_buka()
 	buat_semua_button_wilayah() 
+	update_max_capacity_by_area()
 
 func ambil_semua_wilayah() -> void:
 	daftar_wilayah = get_tree().get_nodes_in_group("wilayah")
@@ -140,6 +141,45 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		var cam := get_viewport().get_camera_2d()
 		if cam and cam.has_method("shake"):
 			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
+			
+		update_max_capacity_by_area()
+
+func hitung_luas_polygon(titik: PackedVector2Array) -> float:
+	if titik.size() < 3: return 0.0
+	var luas = 0.0
+	for i in range(titik.size()):
+		var p0 = titik[i]
+		var p1 = titik[(i + 1) % titik.size()]
+		luas += p0.cross(p1)
+	return absf(luas * 0.5)
+
+func hitung_total_luas_terbuka() -> float:
+	var total = 0.0
+	for w in daftar_wilayah:
+		if w.data and w.data.terbuka_default:
+			var poly = w.get_node_or_null("Polygon2D")
+			if poly:
+				total += hitung_luas_polygon(poly.polygon)
+	return total
+
+func get_current_max_capacity() -> int:
+	var total_luas = hitung_total_luas_terbuka()
+	# Misal 1 pohon butuh 25 area lokal. (Bisa di-tweak)
+	# Semakin luas, semakin banyak kapasitas pohon dan buruh.
+	return max(10, int(total_luas / 1.0))
+
+func update_max_capacity_by_area() -> void:
+	var max_cap = get_current_max_capacity()
+	
+	# Cari upgrade_database, yang di-load di update_menu
+	# Bisa di-broadcast via group atau langsung loop
+	for u in SaveManager.read_save_data().get("upgrades", []):
+		# Sayangnya kita harus mengubah Resource langsung.
+		pass
+	
+	# Karena UpgradeDatabase dipegang oleh Ui, kita update langsung via group jika ada
+	get_tree().call_group("upgrade_ui", "_on_max_capacity_changed", max_cap)
+
 	
 var _recent_spawned_positions: Array[Vector2] = []
 
