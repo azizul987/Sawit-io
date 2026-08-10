@@ -98,7 +98,7 @@ func _input(event: InputEvent) -> void:
 	if Debug.is_active():
 		if event.is_action_pressed("add_coin"):
 			# Gunakan penulisan .0 atau e supaya dibaca float. Jika tidak, akan dianggap Integer 64-bit yang limitnya cuma 9.22e18 dan otomatis minus (overflow)
-			Point.add_point(1e10000) 
+			Point.add_point(1e70) 
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
 
@@ -134,14 +134,33 @@ func check_missions() -> void:
 
 
 
+func get_suffix(i: int) -> String:
+	var s: Array[String] = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
+	if i < s.size():
+		return s[i]
+	
+	var alpha_idx = i - s.size()
+	# Generate a, b, c... z, aa, ab, ac... (mendukung sampai 1e300 ke atas)
+	var a_val = 97 # 'a' in ASCII
+	if alpha_idx < 26:
+		return String.chr(a_val + alpha_idx)
+	else:
+		var first = alpha_idx / 26 - 1
+		var second = alpha_idx % 26
+		return String.chr(a_val + first) + String.chr(a_val + second)
+
+
 func format_num(val: float) -> String:
 	var n: float = val
-	var s: Array[String] = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
 	var i: int = 0
-	while n >= 1000.0 and i < s.size() - 1:
-		n /= 1000.0; i += 1
+	
+	while n >= 1000.0:
+		n /= 1000.0
+		i += 1
+		
 	if i == 0: return "%.0f" % floor(n)
+	var suffix = get_suffix(i)
 	var t: String = "%.1f" % n
 	if t.ends_with(".0"):
-		return ("%.0f" % n) + s[i]
-	return t + s[i]
+		return ("%.0f" % n) + suffix
+	return t + suffix
