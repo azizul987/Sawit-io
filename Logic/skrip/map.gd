@@ -128,6 +128,7 @@ func eksekusi_naik_tingkat(tipe_baru: int):
 	Point.tipe_wilayah_terbuka = tipe_baru
 	buat_semua_button_wilayah()
 	refresh_visual_sprites(old_tipe, tipe_baru)
+	update_max_capacity_by_area()
 
 func cek_status_tipe_wilayah(tipe):
 	if tipe==0:
