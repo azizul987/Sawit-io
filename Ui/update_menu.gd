@@ -23,8 +23,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.2).timeout
 	var map = get_tree().current_scene.get_node_or_null("map")
 	if map:
-		if map.has_method("get_current_max_capacity"):
-			_on_max_capacity_changed(map.get_current_max_capacity())
+		if map.has_method("get_current_max_capacity") and map.has_method("get_current_max_capacity_buruh"):
+			_on_max_capacity_changed_multi(map.get_current_max_capacity(), map.get_current_max_capacity_buruh())
 			
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
@@ -115,11 +115,14 @@ func _on_purchase_requested(
 	Point.check_missions()
 	SaveManager.save_game()
 
-func _on_max_capacity_changed(new_max: int) -> void:
+func _on_max_capacity_changed_multi(max_pohon: int, max_buruh: int) -> void:
 	if upgrade_database == null: return
 	for u in upgrade_database.upgrades:
-		if u and (u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit" or u.upgrade_name == "Rekrut"):
-			u.max_level = new_max
+		if u:
+			if u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit":
+				u.max_level = max_pohon
+			elif u.upgrade_name == "Rekrut":
+				u.max_level = max_buruh
 	
 	# Reload display buttons to reflect new max level
 	generate_upgrade_buttons()

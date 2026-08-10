@@ -47,12 +47,16 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	if data.terbuka_default:
 		return
 		
+	# Sembunyikan button jika tingkatannya (enum) tidak sesuai dengan settingan kamera/zoom saat ini
+	if data.tipe_wilayah != Point.tipe_wilayah_terbuka:
+		return
+		
 	var button := btn_templete.instantiate() as Button
 	wilayah.add_child(button)
 
 	var skala: float = data.skala_button if data != null else 1.0
 
-	button.text =str(wilayah.data.harga)
+	button.text = Point.format_num(float(wilayah.data.harga))
 	button.top_level = true
 	button.clip_text = false
 	button.focus_mode = Control.FOCUS_NONE
@@ -172,25 +176,77 @@ func get_current_max_capacity() -> int:
 	# 1 pohon kira-kira butuh area 1500-2000 piksel persegi di layar
 	return max(10, int(total_luas / 1755.0))
 
+func get_current_max_capacity_buruh() -> int:
+	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default)
+	return wil_terbuka.size() * 15
+
 func update_max_capacity_by_area() -> void:
 	var max_cap = get_current_max_capacity()
+	var max_cap_buruh = get_current_max_capacity_buruh()
 	
 	# Cari upgrade_database, yang di-load di update_menu
-	# Bisa di-broadcast via group atau langsung loop
 	for u in SaveManager.read_save_data().get("upgrades", []):
-		# Sayangnya kita harus mengubah Resource langsung.
 		pass
 	
-	# Karena UpgradeDatabase dipegang oleh Ui, kita update langsung via group jika ada
-	get_tree().call_group("upgrade_ui", "_on_max_capacity_changed", max_cap)
+	get_tree().call_group("upgrade_ui", "_on_max_capacity_changed_multi", max_cap, max_cap_buruh)
 
 	
 var _recent_spawned_positions: Array[Vector2] = []
+var _pohon_per_wilayah: Dictionary = {}
+var _buruh_per_wilayah: Dictionary = {}
+
+func get_kapasitas_wilayah(poly: Polygon2D) -> int:
+	var luas = hitung_luas_polygon(poly)
+	return max(1, int(luas / 1755.0))
+
+func pick_weighted_wilayah(is_pohon: bool) -> Polygon2D:
+	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
+	if wil_terbuka.is_empty(): return null
+	
+	var weights = []
+	var total_weight = 0.0
+	
+	for w in wil_terbuka:
+		var poly = w.get_node("Polygon2D")
+		var cap = 0
+		var current = 0
+		if is_pohon:
+			cap = get_kapasitas_wilayah(poly)
+			current = _pohon_per_wilayah.get(w, 0)
+		else:
+			cap = 15
+			current = _buruh_per_wilayah.get(w, 0)
+			
+		var rem = cap - current
+		if rem < 0: rem = 0
+		
+		# Jika sisa kapasitas 0 (penuh), kasih bobot super kecil agar wilayah yang masih kosong 
+		# jauh lebih diprioritaskan, namun mencegah game stuck jika *semua* wilayah penuh.
+		var w_val = float(max(rem, 0.1))
+		weights.append({ "poly": poly, "wil": w, "w": w_val })
+		total_weight += w_val
+		
+	var r = randf() * total_weight
+	var acc = 0.0
+	for item in weights:
+		acc += item["w"]
+		if r <= acc:
+			if is_pohon:
+				_pohon_per_wilayah[item["wil"]] = _pohon_per_wilayah.get(item["wil"], 0) + 1
+			else:
+				_buruh_per_wilayah[item["wil"]] = _buruh_per_wilayah.get(item["wil"], 0) + 1
+			return item["poly"]
+			
+	var fallback_item = weights.pick_random()
+	if is_pohon:
+		_pohon_per_wilayah[fallback_item["wil"]] = _pohon_per_wilayah.get(fallback_item["wil"], 0) + 1
+	else:
+		_buruh_per_wilayah[fallback_item["wil"]] = _buruh_per_wilayah.get(fallback_item["wil"], 0) + 1
+	return fallback_item["poly"]
 
 func spawn_pohon(silent: bool = false) -> void:
-	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
-	if wil.is_empty(): return
-	var poly = wil.pick_random().get_node("Polygon2D")
+	var poly = pick_weighted_wilayah(true)
+	if poly == null: return
 	
 	var pt = get_random_point_in_polygon(poly, "sawit", 25.0)
 	
@@ -201,7 +257,7 @@ func spawn_pohon(silent: bool = false) -> void:
 	
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
-		cam.shake(5.0, 0.15) 
+		cam.shake(5.0, 0.15)
 
 func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", min_dist: float = 25.0) -> Vector2:
 	var pts = poly.polygon
@@ -223,9 +279,9 @@ func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", m
 	for i in 150: # Iterasi lebih banyak untuk polygon sempit
 		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
 		
-		# Cek margin agar pohon tidak terlalu ke pinggir (spill out)
-		# 1.2 local units = ~36 global pixels, pas untuk ukuran sprite pohon
-		var m = 1.2
+		# Kurangi margin menjadi sangat tipis agar pohon di pinggir batas wilayah bisa menempel
+		# dan bersatu dengan pohon di wilayah sebelahnya (menghilangkan garis kosong)
+		var m = 0.2
 		var is_inside = Geometry2D.is_point_in_polygon(pt, pts) and \
 						Geometry2D.is_point_in_polygon(pt + Vector2(m, 0), pts) and \
 						Geometry2D.is_point_in_polygon(pt - Vector2(m, 0), pts) and \
@@ -264,9 +320,8 @@ func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", m
 	return fallback_pt
 
 func spawn_buruh(silent: bool = false):
-	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
-	if wil.is_empty(): return
-	var poly = wil.pick_random().get_node("Polygon2D")
+	var poly = pick_weighted_wilayah(false)
+	if poly == null: return
 	
 	# Buruh tidak perlu di-jarakin seketat pohon
 	var pt = get_random_point_in_polygon(poly, "", 0.0)
