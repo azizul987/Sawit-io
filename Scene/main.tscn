@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bo64klwetfcw" path="res://Scene/pause.tscn" id="pause_scene"]
 
 [node name="Main" type="Node2D" unique_id=457701414]
+y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [2677.7537]
 
 [node name="map" type="Node2D" parent="." unique_id=539465666]
@@ -483,6 +484,7 @@ offset_bottom = -104.255005
 layer = 10
 
 [node name="Pause" parent="CanvasLayerPause" unique_id=1963674684 instance=ExtResource("pause_scene")]
+visible = false
 
 [node name="Buruh" parent="." unique_id=339722709 instance=ExtResource("27_xw8bv")]
 position = Vector2(7247.5186, 8091.838)

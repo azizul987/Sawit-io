@@ -40,11 +40,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndl5l"]
-radius = 2.3374195
-height = 10.103352
+radius = 4.0
+height = 14.0
 
 [node name="Buruh" type="CharacterBody2D" unique_id=339722709]
+collision_layer = 2
 script = ExtResource("1_buruh_scr")
+jarak_panen = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182272681]
 sprite_frames = SubResource("SpriteFrames_e0b7r")
@@ -53,8 +55,9 @@ frame_progress = 0.86208844
 [node name="Area2D" type="Area2D" parent="." unique_id=988995808]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=815192366]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ndl5l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1869664008]
-position = Vector2(-0.67006874, 2.1218843)
-shape = SubResource("CapsuleShape2D_ndl5l")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=262140528]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(5, -2, 3, 0, 5, 4, 3, 8, -4, 8, -6, 3, -3, 0, -6, -4, -4, -7, 0, -9, 3, -8, 5, -5)

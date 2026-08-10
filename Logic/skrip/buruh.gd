@@ -13,6 +13,11 @@ var target_sawit: Node2D = null
 var sawit_sebelumnya: Node2D = null
 var sedang_panen: bool = false
 
+# --- Variabel Anti-Nyangkut ---
+var waktu_stuck: float = 0.0
+var batas_waktu_stuck: float = 2.0
+var posisi_sebelumnya: Vector2 = Vector2.ZERO
+
 func _physics_process(delta: float) -> void:
 	if sedang_panen:
 		return
@@ -29,11 +34,27 @@ func _physics_process(delta: float) -> void:
 
 	if jarak <= jarak_panen:
 		lakukan_panen()
+		waktu_stuck = 0.0 # Reset
 	else:
 		# Berjalan menuju sawit terdekat
 		var arah := (target_sawit.global_position - global_position).normalized()
 		velocity = arah * kecepatan_jalan
 		move_and_slide()
+		
+		# --- Sistem Deteksi Nyangkut (Stuck) ---
+		var jarak_gerak = global_position.distance_to(posisi_sebelumnya)
+		# Jika bergeraknya sangat lambat (kurang dari setengah kecepatan wajar per frame)
+		if jarak_gerak < (kecepatan_jalan * delta * 0.5):
+			waktu_stuck += delta
+			if waktu_stuck >= batas_waktu_stuck:
+				# TELEPORT! Pindahkan buruh paksa ke dekat pohon target
+				global_position = target_sawit.global_position + Vector2(randf_range(-15, 15), randf_range(10, 20))
+				waktu_stuck = 0.0 # Reset
+		else:
+			waktu_stuck = 0.0 # Reset karena jalan lancar
+			
+		posisi_sebelumnya = global_position
+		# --------------------------------------
 		
 		# Animasi berjalan & balik badan menghadap ke arah jalan
 		if not sprite.is_playing():
