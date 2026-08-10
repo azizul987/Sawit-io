@@ -21,8 +21,12 @@ var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
 
 func add_point(value):
-	point += value 
+	point += value
+	if point > 1e300:
+		point = 1e300
 	total_point_earned += value
+	if total_point_earned > 1e300:
+		total_point_earned = 1e300
 	check_missions()
 	point_change.emit(point)
 	SaveManager.save_game()
@@ -30,8 +34,10 @@ func add_point(value):
 
 func remove_point(value): 
 	point -= value
-	if point < 0:
+	if point < 0 or is_nan(point):
 		point = 0
+	if point > 1e300:
+		point = 1e300
 	#print("Point sekarang: ", point)
 
 func add_rebirth_point(value: int):
@@ -91,7 +97,8 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 func _input(event: InputEvent) -> void:
 	if Debug.is_active():
 		if event.is_action_pressed("add_coin"):
-			Point.add_point(100000000000000)
+			# Gunakan penulisan .0 atau e supaya dibaca float. Jika tidak, akan dianggap Integer 64-bit yang limitnya cuma 9.22e18 dan otomatis minus (overflow)
+			Point.add_point(1e10000) 
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
 
@@ -128,11 +135,13 @@ func check_missions() -> void:
 
 
 func format_num(val: float) -> String:
-	var n: float = float(int(val))
+	var n: float = val
 	var s: Array[String] = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
 	var i: int = 0
 	while n >= 1000.0 and i < s.size() - 1:
 		n /= 1000.0; i += 1
-	if i == 0: return str(int(n))
+	if i == 0: return "%.0f" % floor(n)
 	var t: String = "%.1f" % n
-	return (str(int(n)) if t.ends_with(".0") else t) + s[i]
+	if t.ends_with(".0"):
+		return ("%.0f" % n) + s[i]
+	return t + s[i]

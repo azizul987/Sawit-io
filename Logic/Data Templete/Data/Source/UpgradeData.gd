@@ -50,7 +50,11 @@ func upgrade() -> bool:
 
 	current_level += 1
 	# Naikkan harga untuk pembelian berikutnya
-	price = round(price * price_multiplier)
+	price = price * price_multiplier
+	if price > 1e300:
+		price = 1e300
+	else:
+		price = round(price)
 	return true
 
 

@@ -9,7 +9,7 @@ var btn_templete = preload("res://Logic/object_For_skrip/button.tscn")
 
 var daftar_wilayah: Array = []
 
-# Dipakai HANYA kalau wilayah tidak punya data Resource sama sekali (fallback darurat)
+# Dipakai HANYA kalau wilayah tidak punya data Resource sama sek-ali (fallback darurat)
 @export var font_size_default: int = 12
 
 enum TipeWilayah_dibuka_list  {
@@ -144,14 +144,18 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 			
 		update_max_capacity_by_area()
 
-func hitung_luas_polygon(titik: PackedVector2Array) -> float:
+func hitung_luas_polygon(poly: Polygon2D) -> float:
+	var titik = poly.polygon
 	if titik.size() < 3: return 0.0
 	var luas = 0.0
 	for i in range(titik.size()):
 		var p0 = titik[i]
 		var p1 = titik[(i + 1) % titik.size()]
 		luas += p0.cross(p1)
-	return absf(luas * 0.5)
+	
+	# Ambil nilai skala global untuk menghitung luas sesungguhnya di layar
+	var scale = poly.global_scale
+	return absf(luas * 0.5) * scale.x * scale.y
 
 func hitung_total_luas_terbuka() -> float:
 	var total = 0.0
@@ -159,14 +163,14 @@ func hitung_total_luas_terbuka() -> float:
 		if w.data and w.data.terbuka_default:
 			var poly = w.get_node_or_null("Polygon2D")
 			if poly:
-				total += hitung_luas_polygon(poly.polygon)
+				total += hitung_luas_polygon(poly)
 	return total
 
 func get_current_max_capacity() -> int:
 	var total_luas = hitung_total_luas_terbuka()
-	# Misal 1 pohon butuh 25 area lokal. (Bisa di-tweak)
-	# Semakin luas, semakin banyak kapasitas pohon dan buruh.
-	return max(10, int(total_luas / 1.0))
+	# Karena luas sekarang sudah dikali skala (menjadi ratusan ribu), kita bagi dengan ukuran ruang per 1 pohon di layar
+	# 1 pohon kira-kira butuh area 1500-2000 piksel persegi di layar
+	return max(10, int(total_luas / 1755.0))
 
 func update_max_capacity_by_area() -> void:
 	var max_cap = get_current_max_capacity()
