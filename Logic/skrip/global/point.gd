@@ -7,8 +7,8 @@ var total_point_earned: float = 0.0
 
 
 var rebirth_point: int = 1
-var base_point_per_click: float = 2.5
-var point_per_click: float = 2.5
+var base_point_per_click: float = 0.0
+var point_per_click: float = 0.0
 var cd = 1
 var skill_tree_camera: Vector3=Vector3(0,0,1.4)
 var main_tree_camera: Vector3

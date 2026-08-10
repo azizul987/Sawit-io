@@ -66,9 +66,9 @@ func create_dust_effect(spawn_pos: Vector2) -> void:
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		panen()
+		panen(false, get_global_mouse_position())
 
-func panen(is_magnet_harvest: bool = false) -> void:
+func panen(is_magnet_harvest: bool = false, custom_pos: Vector2 = Vector2.INF) -> void:
 	var point_to_add = Point.point_per_click
 	var is_double = false
 	
@@ -81,9 +81,9 @@ func panen(is_magnet_harvest: bool = false) -> void:
 	goyang_pohon()
 	
 	if is_double:
-		show_double_harvest_effect(point_to_add)
+		show_double_harvest_effect(point_to_add, custom_pos)
 	else:
-		show_plus_effect(point_to_add)
+		show_plus_effect(point_to_add, custom_pos)
 
 	if not is_magnet_harvest and Point.magnet_radius > 0.0:
 		var all_sawit = get_tree().get_nodes_in_group("sawit")
@@ -99,7 +99,7 @@ func goyang_pohon():
 	tween.tween_property(sprite2d, "scale", Vector2(1.2, 0.8), 0.05)
 	tween.tween_property(sprite2d, "scale", Vector2(1.0, 1.0), 0.1)
 
-func show_plus_effect(jumlah_poin: float) -> void:
+func show_plus_effect(jumlah_poin: float, custom_pos: Vector2 = Vector2.INF) -> void:
 	var label := Label.new()
 
 	label.text = "+%.1f" % jumlah_poin
@@ -119,7 +119,11 @@ func show_plus_effect(jumlah_poin: float) -> void:
 
 	get_tree().current_scene.add_child(label)
 
-	label.global_position = global_position + Vector2(randf_range(-15, 15), randf_range(-10, 5)) * z
+	var base_pos = global_position + Vector2(0, -60)
+	if custom_pos != Vector2.INF:
+		base_pos = custom_pos
+
+	label.global_position = base_pos + Vector2(randf_range(-35, 35), randf_range(-25, 10)) * z
 	var arah_gerak := Vector2(
 	randf_range(-35.0, 35.0),
 	randf_range(-80.0, -40.0)
@@ -154,7 +158,7 @@ func show_plus_effect(jumlah_poin: float) -> void:
 	await tween.finished
 	label.queue_free()
 
-func show_double_harvest_effect(jumlah_poin: float) -> void:
+func show_double_harvest_effect(jumlah_poin: float, custom_pos: Vector2 = Vector2.INF) -> void:
 	var label := Label.new()
 
 	label.text = "DOUBLE! +%.1f" % jumlah_poin
@@ -174,7 +178,11 @@ func show_double_harvest_effect(jumlah_poin: float) -> void:
 
 	get_tree().current_scene.add_child(label)
 
-	label.global_position = global_position + Vector2(randf_range(-15, 15), randf_range(-20, 0)) * z
+	var base_pos = global_position + Vector2(0, -60)
+	if custom_pos != Vector2.INF:
+		base_pos = custom_pos
+
+	label.global_position = base_pos + Vector2(randf_range(-45, 45), randf_range(-35, 5)) * z
 	var arah_gerak := Vector2(
 	randf_range(-35.0, 35.0),
 	randf_range(-100.0, -60.0)
