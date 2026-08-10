@@ -28,6 +28,15 @@ const CLICK_SFX = preload("res://Asset/Audio/sfx/WAV/UI SFX_MENU_Confirm.wav")
 @onready var confirm_hapus_btn: Button = $CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer/YaHapusBtn
 @onready var confirm_label: Label = $CanvasLayer/ConfirmationMenu/VBoxContainer/ConfirmLabel
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if confirm_menu.visible:
+			_on_confirm_batal()
+		elif settings_menu.visible:
+			_on_settings_kembali_pressed()
+		elif $CanvasLayer/SaveMenu.visible:
+			_on_kembali_pressed()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.play_bgm(preload("res://Asset/Audio/music/Oh My! Beautiful Moon.mp3"))
