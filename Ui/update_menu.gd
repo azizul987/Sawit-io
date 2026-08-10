@@ -79,23 +79,30 @@ func _on_purchase_requested(
 		#print("Poin Sawit tidak cukup! Butuh: ", current_price, " | Poin sekarang: ", Point.point)
 		return
 
-	Point.remove_point(current_price)
+	var max_buys = 1
+	if Input.is_key_pressed(KEY_CTRL):
+		max_buys = 9999
 
-	var upgrade_success: bool = upgrade_data.upgrade()
+	var bought = 0
+	while not upgrade_data.is_max_level() and Point.point >= upgrade_data.get_discounted_price() and bought < max_buys:
+		Point.remove_point(upgrade_data.get_discounted_price())
+		upgrade_data.upgrade()
+		bought += 1
 
-	if not upgrade_success:
+	if bought == 0:
 		return
 
 	button.refresh()
 	var total_unlocked := 0
 	for u in upgrade_database.upgrades: if u and u.is_unlocked(): total_unlocked += 1
 	if total_unlocked != upgrade_container.get_child_count(): generate_upgrade_buttons()
-	if upgrade_data.upgrade_name == "Jumlah Sawit":
-		var map = get_tree().current_scene.get_node_or_null("map")
-		if map: map.spawn_pohon()
-	if  upgrade_data.upgrade_name=="Rekrut":
-		var map=get_tree().current_scene.get_node_or_null("map")
-		if map: map.spawn_buruh()
+	
+	var map = get_tree().current_scene.get_node_or_null("map")
+	if map:
+		for i in bought:
+			if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit": map.spawn_pohon()
+			if upgrade_data.upgrade_name == "Rekrut": map.spawn_buruh()
+			
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)

@@ -166,22 +166,22 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_w84f2")
 
 [node name="sawit" parent="CanvasLayer2" unique_id=471696647 instance=ExtResource("3_a0ht3")]
-position = Vector2(1021.4305, 514.3623)
+position = Vector2(1018.1305, 558.3623)
 
 [node name="sawit2" parent="CanvasLayer2" unique_id=1617112919 instance=ExtResource("3_a0ht3")]
-position = Vector2(987.33044, 436.26227)
+position = Vector2(984.03046, 480.26227)
 
 [node name="sawit3" parent="CanvasLayer2" unique_id=1692125915 instance=ExtResource("3_a0ht3")]
-position = Vector2(987.33044, 436.26227)
+position = Vector2(984.03046, 480.26227)
 
 [node name="sawit4" parent="CanvasLayer2" unique_id=364316824 instance=ExtResource("3_a0ht3")]
-position = Vector2(927.9305, 390.0623)
+position = Vector2(924.6305, 434.0623)
 
 [node name="sawit5" parent="CanvasLayer2" unique_id=462797899 instance=ExtResource("3_a0ht3")]
-position = Vector2(910.3305, 314.1623)
+position = Vector2(907.0305, 358.1623)
 
 [node name="sawit6" parent="CanvasLayer2" unique_id=859531573 instance=ExtResource("3_a0ht3")]
-position = Vector2(898.918, 242.83435)
+position = Vector2(895.61804, 286.83435)
 
 [node name="Label" type="Label" parent="CanvasLayer2" unique_id=587695198]
 anchors_preset = 8

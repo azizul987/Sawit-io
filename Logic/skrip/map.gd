@@ -141,12 +141,14 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		if cam and cam.has_method("shake"):
 			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
 	
+var _recent_spawned_positions: Array[Vector2] = []
+
 func spawn_pohon(silent: bool = false) -> void:
 	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
 	if wil.is_empty(): return
 	var poly = wil.pick_random().get_node("Polygon2D")
 	
-	var pt = get_random_point_in_polygon(poly)
+	var pt = get_random_point_in_polygon(poly, "sawit", 25.0)
 	
 	var pohon = preload("res://Logic/object_For_skrip/sawit.tscn").instantiate()
 	pohon.is_new_spawn = not silent
@@ -157,25 +159,75 @@ func spawn_pohon(silent: bool = false) -> void:
 	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15) 
 
-func get_random_point_in_polygon(poly: Polygon2D) -> Vector2:
+func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", min_dist: float = 25.0) -> Vector2:
 	var pts = poly.polygon
+	if pts.is_empty(): return Vector2.ZERO
 	var pt = pts[0]
 	var rect = Rect2(pt, Vector2.ZERO)
 	for p in pts: rect = rect.expand(p)
-	for i in 100:
+	
+	var nodes_to_avoid = []
+	if group_to_avoid != "":
+		nodes_to_avoid = get_tree().get_nodes_in_group(group_to_avoid)
+		
+	var poly_transform = poly.global_transform
+	var poly_offset = poly.offset
+	
+	var fallback_pt = rect.get_center()
+	var found_any = false
+	
+	for i in 150: # Iterasi lebih banyak untuk polygon sempit
 		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
-		if Geometry2D.is_point_in_polygon(pt, pts) and Geometry2D.is_point_in_polygon(pt+Vector2(3,3), pts) and Geometry2D.is_point_in_polygon(pt-Vector2(3,3), pts):
-			return pt
-	return rect.get_center()
+		
+		# Cek margin agar pohon tidak terlalu ke pinggir (spill out)
+		# 1.2 local units = ~36 global pixels, pas untuk ukuran sprite pohon
+		var m = 1.2
+		var is_inside = Geometry2D.is_point_in_polygon(pt, pts) and \
+						Geometry2D.is_point_in_polygon(pt + Vector2(m, 0), pts) and \
+						Geometry2D.is_point_in_polygon(pt - Vector2(m, 0), pts) and \
+						Geometry2D.is_point_in_polygon(pt + Vector2(0, m), pts) and \
+						Geometry2D.is_point_in_polygon(pt - Vector2(0, m), pts)
+						
+		if is_inside:
+			if not found_any:
+				fallback_pt = pt
+				found_any = true
+				
+			var terlalu_dekat = false
+			var posisi_global_calon = poly_transform * (pt + poly_offset)
+			
+			# Cek terhadap node yang sudah ada di tree
+			if nodes_to_avoid.size() > 0:
+				for n in nodes_to_avoid:
+					if is_instance_valid(n) and n.global_position.distance_to(posisi_global_calon) < min_dist:
+						terlalu_dekat = true
+						break
+			
+			# Cek terhadap pohon yang di-spawn di frame ini
+			if not terlalu_dekat:
+				for pos in _recent_spawned_positions:
+					if pos.distance_to(posisi_global_calon) < min_dist:
+						terlalu_dekat = true
+						break
+						
+			if not terlalu_dekat:
+				_recent_spawned_positions.append(posisi_global_calon)
+				return pt
+				
+	# Jika 150 iterasi tidak nemu yang jaraknya jauh, fallback ke titik APAPUN yang valid di dalam polygon
+	var final_global = poly_transform * (fallback_pt + poly_offset)
+	_recent_spawned_positions.append(final_global)
+	return fallback_pt
 
-func  spawn_buruh(silent: bool = false):
+func spawn_buruh(silent: bool = false):
 	var wil = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
 	if wil.is_empty(): return
 	var poly = wil.pick_random().get_node("Polygon2D")
 	
-	var pt = get_random_point_in_polygon(poly)
-	var buruh=preload("uid://c6vgmp5scevx6").instantiate()
-	buruh.is_new_spawn=not silent
+	# Buruh tidak perlu di-jarakin seketat pohon
+	var pt = get_random_point_in_polygon(poly, "", 0.0)
+	var buruh = preload("uid://c6vgmp5scevx6").instantiate()
+	buruh.is_new_spawn = not silent
 	buruh.position = poly.global_transform * (pt + poly.offset)
 	get_parent().add_child(buruh)
 	var cam := get_viewport().get_camera_2d()

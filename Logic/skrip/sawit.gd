@@ -29,7 +29,7 @@ func _ready() -> void:
 	var drop_duration = randf_range(0.5, 0.85)
 	
 	# Animasi jatuh dan memantul (ditambah delay & durasi random)
-	tween.tween_property(self, "position", final_position, drop_duration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).set_delay(random_delay)
+	tween.tween_property(self, "position", final_position, drop_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_delay(random_delay)
 	# Animasi pudar perlahan menjadi jelas (fade in)
 	tween.tween_property(self, "modulate:a", 1.0, drop_duration * 0.8).set_delay(random_delay)
 	
