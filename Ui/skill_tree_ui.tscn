@@ -82,6 +82,13 @@ text = "Rebirth Point: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Rebirth" type="Button" parent="CanvasLayer" unique_id=1089049639]
+offset_left = 499.0
+offset_top = 480.0
+offset_right = 705.0
+offset_bottom = 525.0
+text = "Rebirth"
+
 [node name="Exit" type="TextureButton" parent="." unique_id=293348174]
 layout_mode = 1
 anchors_preset = 8
@@ -98,4 +105,5 @@ grow_vertical = 2
 texture_normal = ExtResource("3_dwmuj")
 stretch_mode = 0
 
+[connection signal="pressed" from="CanvasLayer/Rebirth" to="." method="eksekusi_rebirth"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

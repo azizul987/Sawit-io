@@ -11,7 +11,7 @@ func set_slot(slot: int) -> void:
 
 func create_new_slot(slot: int) -> void:
 	current_slot = slot
-	write_save_data({"point": 20})
+	write_save_data({"point": 1})
 
 
 func get_save_path() -> String:

@@ -54,7 +54,7 @@ func upgrade() -> bool:
 	if price > 1e300:
 		price = 1e300
 	else:
-		price = round(price)
+		price = ceil(price)
 	return true
 
 

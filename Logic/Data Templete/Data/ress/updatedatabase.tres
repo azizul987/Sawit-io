@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 script = ExtResource("2_own6j")
 upgrade_name = "Jumlah Sawit"
 description = "Menanam bibit sawit baru di lahan terbuka. Menambah [color=yellow]+1 Pendapatan Klik[/color] dan menaikkan kepadatan pohon di perkebunanmu!"
-price = 15.0
+price = 1.0
 icon = ExtResource("8_pohon")
 max_level = 100
 metadata/_custom_type_script = "uid://g1tewc4pomil"
