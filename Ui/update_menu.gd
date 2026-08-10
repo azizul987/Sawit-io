@@ -33,6 +33,16 @@ func _ready() -> void:
 			elif u and u.upgrade_name == "Rekrut":
 				for i in range(u.current_level): map.spawn_buruh(true)
 
+func sync_visuals():
+	var map = get_tree().current_scene.get_node_or_null("map")
+	if not map: return
+	for u in upgrade_database.upgrades:
+		if u:
+			if u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit":
+				for i in range(u.current_level): map.spawn_pohon(true)
+			elif u.upgrade_name == "Rekrut":
+				for i in range(u.current_level): map.spawn_buruh(true)
+
 
 func generate_upgrade_buttons() -> void:
 	clear_upgrade_buttons()

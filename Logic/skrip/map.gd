@@ -1,5 +1,5 @@
 #@tool
-extends Node
+extends Node2D
 
 @export var warna_border: Color = Color.WHITE
 @export var tebal_border: float = 2
@@ -18,7 +18,9 @@ enum TipeWilayah_dibuka_list  {
 	KECAMATAN
 }
 var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMATAN
+
 func _ready() -> void:
+	z_index = -1
 	await get_tree().process_frame
 	ambil_semua_wilayah()
 	SaveManager.load_status_wilayah(daftar_wilayah)
@@ -126,6 +128,7 @@ func cek_syarat_buka():
 	
 	if old_tipe != tipe_wilayah_terbuka:
 		buat_semua_button_wilayah()
+		refresh_visual_sprites(old_tipe, tipe_wilayah_terbuka)
 func cek_status_tipe_wilayah(tipe):
 	if tipe==0:
 		Point.TipeWilayahArray.x+=1
@@ -176,9 +179,8 @@ func hitung_total_luas_terbuka() -> float:
 
 func get_current_max_capacity() -> int:
 	var total_luas = hitung_total_luas_terbuka()
-	# Karena luas sekarang sudah dikali skala (menjadi ratusan ribu), kita bagi dengan ukuran ruang per 1 pohon di layar
-	# 1 pohon kira-kira butuh area 1500-2000 piksel persegi di layar
-	return max(10, int(total_luas / 1755.0))
+	var area_per_tree = 2800.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
+	return max(10, int(total_luas / area_per_tree))
 
 func get_current_max_capacity_buruh() -> int:
 	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default)
@@ -199,9 +201,59 @@ var _recent_spawned_positions: Array[Vector2] = []
 var _pohon_per_wilayah: Dictionary = {}
 var _buruh_per_wilayah: Dictionary = {}
 
+func refresh_visual_sprites(old_tipe: int, new_tipe: int):
+	# Hapus semua sprite visual
+	for p in get_tree().get_nodes_in_group("sawit_visual"): p.queue_free()
+	for b in get_tree().get_nodes_in_group("buruh_visual"): b.queue_free()
+	_pohon_per_wilayah.clear()
+	_buruh_per_wilayah.clear()
+	_recent_spawned_positions.clear()
+	
+	# Jalankan kompresi level upgrade agar harga menjadi murah kembali
+	compress_upgrades(old_tipe, new_tipe)
+	
+	# Panggil update_menu untuk spawn ulang sesuai level baru yang sudah dikompres
+	get_tree().call_group("upgrade_ui", "sync_visuals")
+
+func get_area_multiplier(tipe: int) -> float:
+	if tipe == 1: return 6.25
+	if tipe == 0: return 25.0
+	return 1.0
+
+func compress_upgrades(old_tipe: int, new_tipe: int):
+	var ui = get_tree().get_first_node_in_group("upgrade_ui")
+	if not ui or not ui.get("upgrade_database"): return
+	
+	var db = ui.upgrade_database
+	# Load database default (murni) untuk mendapatkan base_price asli
+	var pristine_db = ResourceLoader.load(db.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as UpgradeDatabase
+	
+	var div = get_area_multiplier(new_tipe) / get_area_multiplier(old_tipe)
+	if div <= 1.0: return
+	
+	for i in db.upgrades.size():
+		var up = db.upgrades[i]
+		if not up: continue
+		if up.upgrade_name == "Jumlah Sawit" or up.upgrade_name == "Pohon Sawit" or up.upgrade_name == "Rekrut":
+			var old_level = up.current_level
+			up.current_level = int(old_level / div)
+			
+			var base_price = pristine_db.upgrades[i].price
+			# Hitung ulang harga sesuai level baru
+			up.price = base_price * pow(up.price_multiplier, up.current_level)
+			# Lipat gandakan efek dari base asli sesuai multiplier tier baru
+			up.effect_value = pristine_db.upgrades[i].effect_value * get_area_multiplier(new_tipe)
+	
+	# Simpan perubahan ini ke file save
+	SaveManager.save_upgrades(db)
+	# Update point stats
+	Point.recalculate_stats(db.upgrades)
+
 func get_kapasitas_wilayah(poly: Polygon2D) -> int:
 	var luas = hitung_luas_polygon(poly)
-	return max(1, int(luas / 1755.0))
+	# Menggunakan 2800 sebagai base kompromi
+	var area_per_tree = 2800.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
+	return max(1, int(luas / area_per_tree))
 
 func pick_weighted_wilayah(is_pohon: bool) -> Polygon2D:
 	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
@@ -252,11 +304,22 @@ func spawn_pohon(silent: bool = false) -> void:
 	var poly = pick_weighted_wilayah(true)
 	if poly == null: return
 	
-	var pt = get_random_point_in_polygon(poly, "sawit", 25.0)
+	var scale_factor = 2.0
+	if Point.tipe_wilayah_terbuka == 1:
+		scale_factor = 5.0
+	elif Point.tipe_wilayah_terbuka == 0:
+		scale_factor = 12.0
+	
+	# Jarak asli 25.0 itu disetel saat skala pohon 2.0, jadi kita kalikan rasio skalanya
+	var pt = get_random_point_in_polygon(poly, "sawit", 25.0 * (scale_factor / 2.0))
 	
 	var pohon = preload("res://Logic/object_For_skrip/sawit.tscn").instantiate()
 	pohon.is_new_spawn = not silent
 	pohon.position = poly.global_transform * (pt + poly.offset)
+	pohon.add_to_group("sawit_visual")
+	
+	pohon.scale = Vector2(scale_factor, scale_factor)
+		
 	get_parent().add_child(pohon)
 	
 	var cam := get_viewport().get_camera_2d()
@@ -332,6 +395,13 @@ func spawn_buruh(silent: bool = false):
 	var buruh = preload("uid://c6vgmp5scevx6").instantiate()
 	buruh.is_new_spawn = not silent
 	buruh.position = poly.global_transform * (pt + poly.offset)
+	buruh.add_to_group("buruh_visual")
+	
+	if Point.tipe_wilayah_terbuka == 1:
+		buruh.scale = Vector2(2.5, 2.5)
+	elif Point.tipe_wilayah_terbuka == 0:
+		buruh.scale = Vector2(5.0, 5.0)
+		
 	get_parent().add_child(buruh)
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
