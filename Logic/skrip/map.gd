@@ -22,6 +22,7 @@ var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMAT
 func _ready() -> void:
 	z_index = -1
 	await get_tree().process_frame
+	tipe_wilayah_terbuka = Point.tipe_wilayah_terbuka as TipeWilayah_dibuka_list
 	ambil_semua_wilayah()
 	SaveManager.load_status_wilayah(daftar_wilayah)
 	cek_syarat_buka()
@@ -119,16 +120,15 @@ func ambil_rata_rata_polygon_global(polygon: Polygon2D) -> Vector2:
 	return polygon.global_transform * center_local
 
 func cek_syarat_buka():
+	get_tree().call_group("upgrade_ui", "generate_upgrade_buttons")
+
+func eksekusi_naik_tingkat(tipe_baru: int):
 	var old_tipe = tipe_wilayah_terbuka
-	if(Point.TipeWilayahArray.y>=3):
-		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.PROVINSI
-	elif(Point.TipeWilayahArray.z>=7):
-		tipe_wilayah_terbuka=TipeWilayah_dibuka_list.KABUPATEN
-	Point.tipe_wilayah_terbuka = int(tipe_wilayah_terbuka)
-	
-	if old_tipe != tipe_wilayah_terbuka:
-		buat_semua_button_wilayah()
-		refresh_visual_sprites(old_tipe, tipe_wilayah_terbuka)
+	tipe_wilayah_terbuka = tipe_baru as TipeWilayah_dibuka_list
+	Point.tipe_wilayah_terbuka = tipe_baru
+	buat_semua_button_wilayah()
+	refresh_visual_sprites(old_tipe, tipe_baru)
+
 func cek_status_tipe_wilayah(tipe):
 	if tipe==0:
 		Point.TipeWilayahArray.x+=1
@@ -178,9 +178,15 @@ func hitung_total_luas_terbuka() -> float:
 	return total
 
 func get_current_max_capacity() -> int:
-	var total_luas = hitung_total_luas_terbuka()
+	var total_cap = 0
 	var area_per_tree = 2800.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
-	return max(10, int(total_luas / area_per_tree))
+	for w in daftar_wilayah:
+		if w.data and w.data.terbuka_default:
+			var poly = w.get_node_or_null("Polygon2D")
+			if poly:
+				var luas = hitung_luas_polygon(poly)
+				total_cap += max(1, int(luas / area_per_tree))
+	return max(10, total_cap)
 
 func get_current_max_capacity_buruh() -> int:
 	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default)

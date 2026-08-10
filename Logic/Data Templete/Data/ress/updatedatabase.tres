@@ -9,6 +9,28 @@
 [ext_resource type="Texture2D" uid="uid://luaruaa52acv" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons4.png" id="7_mandor"]
 [ext_resource type="Texture2D" uid="uid://cn836tqwbkocd" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons3.png" id="8_pohon"]
 
+[sub_resource type="Resource" id="Resource_naik_provinsi"]
+script = ExtResource("2_own6j")
+upgrade_name = "Tingkat: Provinsi"
+description = "Meningkatkan status wilayah menjadi Provinsi. Membuka potensi penuh perkebunan skala masif!"
+price = 250000.0
+price_multiplier = 1.0
+icon = ExtResource("6_traktor")
+effect_value = 0.0
+max_level = 1
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
+[sub_resource type="Resource" id="Resource_naik_kabupaten"]
+script = ExtResource("2_own6j")
+upgrade_name = "Tingkat: Kabupaten"
+description = "Meningkatkan status wilayah menjadi Kabupaten. Pohon akan dikompres menjadi lebih besar dan harga bibit menjadi lebih murah!"
+price = 50000.0
+price_multiplier = 1.0
+icon = ExtResource("6_traktor")
+effect_value = 0.0
+max_level = 1
+metadata/_custom_type_script = "uid://g1tewc4pomil"
+
 [sub_resource type="Resource" id="Resource_jumlahsawit"]
 script = ExtResource("2_own6j")
 upgrade_name = "Jumlah Sawit"
@@ -87,5 +109,5 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [resource]
 script = ExtResource("1_erwtg")
-upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_jumlahsawit"), SubResource("Resource_rekrut"), SubResource("Resource_wlb"), SubResource("Resource_eskalasi"), SubResource("Resource_agregat"), SubResource("Resource_super")])
+upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_naik_provinsi"), SubResource("Resource_naik_kabupaten"), SubResource("Resource_jumlahsawit"), SubResource("Resource_rekrut"), SubResource("Resource_wlb"), SubResource("Resource_eskalasi"), SubResource("Resource_agregat"), SubResource("Resource_super")])
 metadata/_custom_type_script = "uid://b2qs3ham6ojqe"

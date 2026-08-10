@@ -93,6 +93,7 @@ func save_game() -> void:
 		"y":Point.main_tree_camera.y,
 		"z":Point.main_tree_camera.z
 	}
+	data["tipe_wilayah_terbuka"]=Point.tipe_wilayah_terbuka
 	data["tipe_wilayah"]={
 		"x":Point.TipeWilayahArray.x,
 		"y":Point.TipeWilayahArray.y,
@@ -137,6 +138,7 @@ func load_game() -> void:
 		float(cam_data1.get("z"))
 	)
 	
+	Point.tipe_wilayah_terbuka=int(data.get("tipe_wilayah_terbuka", 2))
 	var tipewilayah=data.get("tipe_wilayah",{
 		"x":0,
 		"y":0,

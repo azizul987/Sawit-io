@@ -55,10 +55,26 @@ func generate_upgrade_buttons() -> void:
 		push_error("Upgrade Button Scene belum dipasang.")
 		return
 
+	var active_upgrades = []
+	var maxed_upgrades = []
+
 	for upgrade_data: UpgradeData in upgrade_database.upgrades:
 		if upgrade_data == null or not upgrade_data.is_unlocked():
 			continue
 
+		if upgrade_data.upgrade_name == "Tingkat: Kabupaten" and Point.TipeWilayahArray.z < 7:
+			continue
+		if upgrade_data.upgrade_name == "Tingkat: Provinsi" and Point.TipeWilayahArray.y < 3:
+			continue
+
+		if upgrade_data.is_max_level():
+			maxed_upgrades.append(upgrade_data)
+		else:
+			active_upgrades.append(upgrade_data)
+
+	var final_upgrades = active_upgrades + maxed_upgrades
+
+	for upgrade_data in final_upgrades:
 		var button: UpgradeButton = upgrade_button_scene.instantiate()
 
 		upgrade_container.add_child(button)
@@ -109,15 +125,19 @@ func _on_purchase_requested(
 		return
 
 	button.refresh()
-	var total_unlocked := 0
-	for u in upgrade_database.upgrades: if u and u.is_unlocked(): total_unlocked += 1
-	if total_unlocked != upgrade_container.get_child_count(): generate_upgrade_buttons()
 	
 	var map = get_tree().current_scene.get_node_or_null("map")
 	if map:
 		for i in bought:
 			if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit": map.spawn_pohon()
 			if upgrade_data.upgrade_name == "Rekrut": map.spawn_buruh()
+			
+		if upgrade_data.upgrade_name == "Tingkat: Kabupaten":
+			map.eksekusi_naik_tingkat(1) # KABUPATEN
+		elif upgrade_data.upgrade_name == "Tingkat: Provinsi":
+			map.eksekusi_naik_tingkat(0) # PROVINSI
+
+	generate_upgrade_buttons()
 			
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
