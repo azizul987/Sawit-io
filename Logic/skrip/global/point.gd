@@ -1,10 +1,9 @@
 extends Node
 
-signal  point_change(point)
+signal  point_change(point_per_click)
 
 var point: float = 0.0
 var total_point_earned: float = 0.0
-
 
 var rebirth_point: int = 1
 var base_point_per_click: float = 0.0
@@ -29,8 +28,7 @@ func add_point(value):
 	total_point_earned += value
 	if total_point_earned > 1e300:
 		total_point_earned = 1e300
-	check_missions()
-	point_change.emit(point)
+	point_change.emit(point_per_click)
 	SaveManager.save_game()
 
 
@@ -106,8 +104,7 @@ func _input(event: InputEvent) -> void:
 
 
 
-func check_missions() -> void:
-	var up_db = load("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
+
 	
 
 

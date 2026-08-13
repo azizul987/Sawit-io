@@ -14,6 +14,4 @@ enum RequirementType {
 @export var is_completed: bool = false
 
 @export_category("Requirements")
-@export var requirement_type: RequirementType = RequirementType.TOTAL_POINT_REACHED
 @export var target_value: float = 1000.0
-@export var target_id: String = "" # Dipakai kalau butuh ngecek id upgrade tertentu

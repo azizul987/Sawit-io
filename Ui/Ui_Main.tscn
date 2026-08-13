@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="9_4a1h5"]
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
+[ext_resource type="Resource" uid="uid://bb5unjgwar24h" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="10_8awwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
 bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
@@ -203,6 +204,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("9_4a1h5")
+mision = ExtResource("10_8awwg")
 
 [node name="ProgressBar" type="ProgressBar" parent="mision_menu" unique_id=1605818782]
 layout_mode = 1
@@ -218,7 +220,6 @@ offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_wbkow")
-value = 35.92
 show_percentage = false
 
 [node name="Label" type="Label" parent="mision_menu" unique_id=622296759]

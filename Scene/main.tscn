@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://cxvneabfihjsg" path="res://Ui/skill_tree_ui.tscn" id="11_7y4ci"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="11_wimqa"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
-[ext_resource type="PackedScene" uid="uid://c6vgmp5scevx6" path="res://Logic/object_For_skrip/buruh.tscn" id="27_xw8bv"]
 [ext_resource type="Resource" uid="uid://d1a2b3c4d5e61" path="res://Logic/Data Templete/Data/ress/wilayah/riau.tres" id="30_riau"]
 [ext_resource type="Resource" uid="uid://dbk1ltwbk7q2o" path="res://Logic/Data Templete/Data/ress/wilayah/aceh.tres" id="31_aceh"]
 [ext_resource type="Resource" uid="uid://t6i0ny27kqco" path="res://Logic/Data Templete/Data/ress/wilayah/bengkulu.tres" id="32_bengkulu"]
@@ -485,6 +484,3 @@ layer = 10
 
 [node name="Pause" parent="CanvasLayerPause" unique_id=1963674684 instance=ExtResource("pause_scene")]
 visible = false
-
-[node name="Buruh" parent="." unique_id=339722709 instance=ExtResource("27_xw8bv")]
-position = Vector2(7247.5186, 8091.838)

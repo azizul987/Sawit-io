@@ -142,7 +142,7 @@ func _on_purchase_requested(
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
 	SaveManager.save_upgrades(upgrade_database)
-	Point.check_missions()
+
 	SaveManager.save_game()
 
 func _on_max_capacity_changed_multi(max_pohon: int, max_buruh: int) -> void:
