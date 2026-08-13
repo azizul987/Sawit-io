@@ -20,6 +20,8 @@ var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
 
+var idx_mision_now:int=0
+
 func add_point(value):
 	point += value
 	if point > 1e300:
@@ -102,35 +104,11 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
 
-var mission_db: Resource = null
+
 
 func check_missions() -> void:
-	if mission_db == null:
-		mission_db = load("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
-		if mission_db == null:
-			return
-			
-	# Kita load update db sekalian untuk cek level upgrade jika ada misi upgrade
 	var up_db = load("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
 	
-	for m in mission_db.missions:
-		if m != null and not m.is_completed:
-			var completed = false
-			if m.requirement_type == 0: # TOTAL_POINT_REACHED
-				if total_point_earned >= m.target_value:
-					completed = true
-			elif m.requirement_type == 1: # UPGRADE_LEVEL_REACHED
-				if up_db:
-					for u in up_db.upgrades:
-						if u.upgrade_name == m.target_id and u.current_level >= int(m.target_value):
-							completed = true
-							break
-							
-			if completed:
-				m.is_completed = true
-				add_rebirth_point(m.reward_rebirth_point)
-				print("MISI SELESAI: ", m.mission_name, " | Hadiah: +", m.reward_rebirth_point, " RP")
-				SaveManager.save_game()
 
 
 
