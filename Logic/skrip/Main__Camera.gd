@@ -6,7 +6,7 @@ extends Camera2D
 @export var max_zoom := 10.0
 
 var is_dragging := false
-
+var  sawit
 
 func _ready() -> void:
 	SaveManager.load_game()
