@@ -1,6 +1,8 @@
 extends Control
 
 @onready var rebirth_point_label: Label = $CanvasLayer/MarginContainer/RebirthPointLabel
+@onready var deskripsi_skill_perlevel: Label = $CanvasLayer/Deskripsi_Skill_Perlevel
+
 func _ready() -> void:
 	visibility_changed.connect(func():
 		Point.is_skill_tree_open = visible
@@ -10,6 +12,15 @@ func _ready() -> void:
 	Point.is_skill_tree_open = visible
 	if has_node("CanvasLayer"):
 		$CanvasLayer.visible = visible
+
+	# Sambungkan signal hover dari SkiilCanvas ke label deskripsi
+	var canvas = $"SubViewportContainer/SubViewport/Skill Tree/Canvas/SkiilCanvas"
+	canvas.skill_hovered.connect(func(teks: String):
+		deskripsi_skill_perlevel.text = teks
+	)
+	canvas.skill_unhovered.connect(func():
+		deskripsi_skill_perlevel.text = ""
+	)
 
 func eksekusi_rebirth() -> void:
 	Point.point = 1.0

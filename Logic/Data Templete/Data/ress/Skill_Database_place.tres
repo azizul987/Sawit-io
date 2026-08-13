@@ -11,12 +11,13 @@
 [sub_resource type="Resource" id="Resource_center_benih_pertama"]
 script = ExtResource("2_ambdn")
 id = "center_benih_pertama"
-skill_name = "Benih Pertama"
-max_level = 1
+skill_name = "Modal Awal"
+max_level = 4
 is_open = true
 cost = Array[int]([1, 2, 3, 4])
 Icon = ExtResource("3_nqfhb")
-effect_value = 1.0
+effect_value = 25.0
+level_descriptions = Array[String](["Poin per klik bertambah +25", "Poin per klik bertambah +50", "Poin per klik bertambah +75", "Poin per klik bertambah +100"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_prod_bibit_unggul"]
@@ -29,6 +30,7 @@ required_skill_ids = Array[String](["center_benih_pertama"])
 cost = Array[int]([1, 2, 4, 8, 16])
 Icon = ExtResource("4_pope5")
 effect_value = 10.0
+level_descriptions = Array[String](["Poin per klik bertambah +10", "Poin per klik bertambah +20", "Poin per klik bertambah +30", "Poin per klik bertambah +40", "Poin per klik bertambah +50"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_prod_panen_ganda"]
@@ -42,6 +44,7 @@ cost = Array[int]([20])
 Icon = ExtResource("5_w66aa")
 effect_type = 5
 effect_value = 15.0
+level_descriptions = Array[String](["15% peluang mendapat 2x poin setiap panen"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_efi_diskon_tengkulak"]
@@ -54,6 +57,7 @@ required_skill_ids = Array[String](["center_benih_pertama"])
 cost = Array[int]([1, 2, 4, 8, 16])
 Icon = ExtResource("6_37qqy")
 effect_type = 4
+level_descriptions = Array[String](["Diskon harga upgrade 5%", "Diskon harga upgrade 10%", "Diskon harga upgrade 15%", "Diskon harga upgrade 20%", "Diskon harga upgrade 25%"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_efi_magnet_jangkauan"]
@@ -67,6 +71,7 @@ cost = Array[int]([5, 10, 15])
 Icon = ExtResource("7_0wu8a")
 effect_type = 6
 effect_value = 250.0
+level_descriptions = Array[String](["Klik 1 sawit ikut memanen pohon dalam radius +250", "Klik 1 sawit ikut memanen pohon dalam radius +500", "Klik 1 sawit ikut memanen pohon dalam radius +750"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [resource]

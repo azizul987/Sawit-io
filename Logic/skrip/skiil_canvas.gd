@@ -1,6 +1,9 @@
 #@tool
 extends Control
 
+signal skill_hovered(teks: String)
+signal skill_unhovered
+
 @onready var templete_button=preload("res://Logic/object_For_skrip/tempelete_button.tscn")
 @export var  skill_database:skill_obj
 
@@ -65,6 +68,19 @@ func generate_skill_buttons():
 			line_progress_by_id[data.id] = 0.0
 
 		new_btn.get_node("Buy").pressed.connect(_on_skill_button_pressedd.bind(data.id))
+
+		# Hover: sambungkan signal masuk/keluar mouse ke func tooltip
+		image_btn.mouse_entered.connect(_on_skill_hovered.bind(data, new_btn))
+		image_btn.mouse_exited.connect(_on_skill_unhovered)
+		buy_btn.mouse_entered.connect(_on_skill_hovered.bind(data, new_btn))
+		buy_btn.mouse_exited.connect(_on_skill_unhovered)
+
+func _on_skill_hovered(data: skill, btn: Control) -> void:
+	skill_hovered.emit(data.skill_name + "\n" + data.get_current_description())
+
+func _on_skill_unhovered() -> void:
+	skill_unhovered.emit()
+
 func _draw() -> void	:
 	if skill_database == null:
 		return
@@ -144,6 +160,7 @@ func _on_skill_button_pressedd(skil_id):
 				opened_skill_ids.append(data.id)
 				unlock_skill_animated(data.id, new_btn)
 		queue_redraw()
+		Point.recalculate_stats()
 		SaveManager.save_skill_level(skill_database)
 		SaveManager.save_game()
 	else:

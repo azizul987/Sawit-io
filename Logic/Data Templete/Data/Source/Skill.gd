@@ -13,6 +13,7 @@ enum EffectType {
 
 @export var id: String
 @export var skill_name: String
+@export var Description:String
 @export var max_level: int
 @export var tree_position: Vector2
 @export var required_skill_ids: Array[String] = []
@@ -24,3 +25,14 @@ enum EffectType {
 @export_category("Skill Effect")
 @export var effect_type: EffectType = EffectType.CLICK_POWER_ADD
 @export var effect_value: float = 5.0 # Efek bonus dari skill ini
+@export var level_descriptions: Array[String] = [] # Deskripsi per level (index 0 = level 1)
+
+# Kembalikan deskripsi sesuai level sekarang.
+# Kalau level 0 (belum dibeli) → pakai deskripsi level 1 sebagai preview.
+# Kalau sudah MAX → pakai deskripsi level terakhir.
+# Kalau level_descriptions kosong → kembalikan string kosong.
+func get_current_description() -> String:
+	if level_descriptions.is_empty():
+		return ""
+	var idx := clampi(level - 1, 0, level_descriptions.size() - 1)
+	return level_descriptions[idx]

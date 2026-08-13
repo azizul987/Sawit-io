@@ -13,7 +13,7 @@ func update_ui(add_poin: int):
 	var Mision_Type = misi_database.get_mision(Point.idx_mision_now)
 	if mision_comparator(Mision_Type)&&!is_max():
 		Point.idx_mision_now+=1
-		Point.rebirth_point+=1
+		Point.rebirth_point+=Mision_Type.reward_rebirth_point
 		progress_bar.max_value=mision.get_mision(Point.idx_mision_now).target_value
 	progress_bar.value=Point.total_point_earned
 	update_label(mision.get_mision(Point.idx_mision_now))

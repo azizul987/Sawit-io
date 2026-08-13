@@ -89,6 +89,14 @@ offset_right = 705.0
 offset_bottom = 525.0
 text = "Rebirth"
 
+[node name="Deskripsi_Skill_Perlevel" type="Label" parent="CanvasLayer" unique_id=725906494]
+offset_left = 448.0
+offset_top = 436.0
+offset_right = 488.0
+offset_bottom = 451.0
+text = "sdsddsddsds"
+horizontal_alignment = 1
+
 [node name="Exit" type="TextureButton" parent="." unique_id=293348174]
 layout_mode = 1
 anchors_preset = 8

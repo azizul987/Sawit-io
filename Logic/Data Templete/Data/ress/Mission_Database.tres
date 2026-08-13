@@ -17,6 +17,13 @@ mission_name = "Kebun Lebih Luas"
 description = "Tingkatkan Jumlah Sawit hingga level 5."
 target_value = 20.0
 
+[sub_resource type="Resource" id="Resource_svw8c"]
+script = ExtResource("1_missi")
+id = "next"
+reward_rebirth_point = 100
+target_value = 100.0
+metadata/_custom_type_script = "uid://bmq653g1ew6ah"
+
 [resource]
 script = ExtResource("2_db")
-missions = Array[ExtResource("1_missi")]([SubResource("Resource_m1"), SubResource("Resource_m2")])
+missions = Array[ExtResource("1_missi")]([SubResource("Resource_m1"), SubResource("Resource_m2"), SubResource("Resource_svw8c")])
