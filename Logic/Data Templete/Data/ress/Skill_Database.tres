@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc3i1ec0fxv2t" path="res://Logic/Data Templete/Data/Source/SkillObj.gd" id="1_ib4hv"]
 [ext_resource type="Script" uid="uid://dmslmeqer2n8d" path="res://Logic/Data Templete/Data/Source/Skill.gd" id="2_ambdn"]
+[ext_resource type="Texture2D" uid="uid://djoaahgypiibf" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png" id="3_ambdn"]
 
 [sub_resource type="Resource" id="Resource_ib4hv"]
 script = ExtResource("2_ambdn")
