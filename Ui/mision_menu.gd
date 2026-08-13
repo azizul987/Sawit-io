@@ -22,4 +22,6 @@ func update_ui(add_poin: int):
 func mision_comparator(misi:Mission):
 	return  Point.total_point_earned>=misi.target_value
 func update_label(misi:Mission):
-	label.text="Kumpulkan uang:{0}/{1} ".format([Point.format_num(Point.total_point_earned),Point.format_num(misi.target_value)])
+	if(Point.idx_mision_now<len(misi_database.missions)):
+		label.text="Kumpulkan uang:{0}/{1} ".format([Point.format_num(Point.total_point_earned),Point.format_num(misi.target_value)])
+	label.text="Kumpulkan uang:{0}/{1} ".format(["MAX","MAX"])
