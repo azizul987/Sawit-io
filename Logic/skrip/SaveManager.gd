@@ -105,7 +105,7 @@ func load_game() -> void:
 
 	Point.point = float(data.get("point", 0))
 	Point.total_point_earned = float(data.get("total_point_earned", 0))
-	Point.rebirth_point = int(data.get("rebirth_point", 1))
+	Point.rebirth_point = int(data.get("rebirth_point", 0))
 	
 	Point.idx_mision_now=int(data.get("var idx_mision_now",0))
 	

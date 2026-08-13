@@ -1,6 +1,6 @@
 extends Control
 
-
+@onready var rebirth_point_label: Label = $CanvasLayer/MarginContainer/RebirthPointLabel
 func _ready() -> void:
 	visibility_changed.connect(func():
 		Point.is_skill_tree_open = visible
@@ -36,6 +36,8 @@ func eksekusi_rebirth() -> void:
 	
 	get_tree().reload_current_scene()
 
+func _process(delta: float) -> void:
+	rebirth_point_label.text=str(Point.rebirth_point)
 
 func _on_exit_pressed() -> void:
 	$".".hide()
