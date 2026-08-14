@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://hint_display_scratch"]
+[gd_scene format=3 uid="uid://b8jyimggvnuit"]
 
-[ext_resource type="Script" path="res://Ui/hint_display.gd" id="1_hint"]
+[ext_resource type="Script" uid="uid://dmdoetvnwlw1a" path="res://Ui/hint_display.gd" id="1_hint"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hint"]
 bg_color = Color(0.1, 0.1, 0.1, 0.85)
@@ -9,7 +9,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[node name="HintDisplay" type="Control"]
+[node name="HintDisplay" type="Control" unique_id=319939269]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,8 +18,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hint")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=433820650]
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -32,14 +33,14 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hint")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1772859545]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=1952189720]
 layout_mode = 2
 text = "Contoh hint muncul di sini"
 horizontal_alignment = 1

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cxv7ow360bpqu"]
 
 [ext_resource type="Script" uid="uid://blbpjm0f72dxi" path="res://Ui/label.gd" id="1_vcfie"]
-[ext_resource type="PackedScene" path="res://Ui/help_panel.tscn" id="help_panel"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_lr6hm"]
 [ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
 [ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
@@ -12,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 [ext_resource type="Resource" uid="uid://bb5unjgwar24h" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="10_8awwg"]
+[ext_resource type="PackedScene" uid="uid://j6sn5v1jemgv" path="res://Ui/help_panel.tscn" id="help_panel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
 bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
@@ -76,6 +76,23 @@ theme_override_font_sizes/font_size = 40
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BtnHelp" type="Button" parent="CanvasLayer" unique_id=777100001]
+offset_left = 25.0
+offset_top = 140.0
+offset_right = 75.0
+offset_bottom = 165.0
+text = "?"
+
+[node name="HelpPanel" parent="CanvasLayer" unique_id=969403741 instance=ExtResource("help_panel")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
@@ -240,18 +257,12 @@ text = "Kumpulkan uang:0/100000 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BtnHelp" type="Button" parent="CanvasLayer" unique_id=777100001]
+[node name="pps_label" type="Label" parent="." unique_id=1506495359]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 140.0
-offset_right = 75.0
-offset_bottom = 165.0
-text = "?"
-
-[node name="HelpPanel" parent="CanvasLayer" instance=ExtResource("help_panel")]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 721.0
+offset_top = 41.0
+offset_right = 761.0
+offset_bottom = 56.0
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]

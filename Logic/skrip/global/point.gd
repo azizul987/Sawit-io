@@ -21,8 +21,19 @@ var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
 var idx_mision_now:int=0
 
+
+signal pps_updated(new_pps)
+var points_per_second: float = 0.0
+var _pps_buffer: float = 0.0 
+var _pps_interval: float = 1.0 
+var _pps_timer: float = 0.0 
+
+func _process(delta: float) -> void:
+	_update_pps(delta)
+
 func add_point(value):
 	point += value
+	_pps_buffer += value
 	if point > 1e300:
 		point = 1e300
 	total_point_earned += value
@@ -139,3 +150,13 @@ func format_num(val: float) -> String:
 	if t.ends_with(".0"):
 		return ("%.0f" % n) + suffix
 	return t + suffix
+
+
+func _update_pps(delta: float) -> void:
+	_pps_timer += delta
+	# Setiap timer mencapai 1 detik (_pps_interval), hitung ulang laju point/detik
+	if _pps_timer >= _pps_interval:
+		points_per_second = _pps_buffer / _pps_timer
+		pps_updated.emit(points_per_second)
+		_pps_buffer = 0.0
+		_pps_timer = 0.0
