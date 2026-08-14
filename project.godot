@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Point="*uid://cx0xu5apa8db3"
+BalanceLogger="*uid://fgrca7n5hgea"
 Debug="*uid://ckwrku1l76rkv"
 SaveManager="*uid://dbxybk6q0cit3"
 AudioManager="*res://Logic/skrip/global/AudioManager.gd"
