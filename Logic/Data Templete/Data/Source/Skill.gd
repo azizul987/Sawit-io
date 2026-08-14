@@ -20,6 +20,7 @@ enum EffectType {
 @export var is_open: bool
 @export var cost: Array[int] = []
 @export var level: int = 0
+@export var locked_level: int = 0 # level yang sudah terkunci permanen setelah rebirth
 @export var Icon: Texture2D = preload("res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png")
 
 @export_category("Skill Effect")

@@ -146,14 +146,17 @@ func load_game() -> void:
 func save_skill_level(skill_database: skill_obj) -> void:
 	var data := read_save_data()
 	var skill_levels := {}
-	var skill_isopens :={}
+	var skill_isopens := {}
+	var skill_locked := {}
 	for skill_data in skill_database.skills:
 		if skill_data == null:
 			continue
 		skill_levels[skill_data.id] = skill_data.level
-		skill_isopens[skill_data.id]=skill_data.is_open
+		skill_isopens[skill_data.id] = skill_data.is_open
+		skill_locked[skill_data.id] = skill_data.locked_level
 	data["skills"] = skill_levels
-	data["isopens"]=skill_isopens
+	data["isopens"] = skill_isopens
+	data["skills_locked"] = skill_locked
 	write_save_data(data)
 	#print("Skill level saved")
 	
@@ -212,6 +215,7 @@ func load_skill_level(skill_database: skill_obj) -> void:
 	var data := read_save_data()
 	var skill_levels: Dictionary = data.get("skills", {})
 	var skill_isopen: Dictionary = data.get("isopens", {})
+	var skill_locked: Dictionary = data.get("skills_locked", {})
 
 	for skill_data in skill_database.skills:
 		if skill_data == null:
@@ -219,6 +223,7 @@ func load_skill_level(skill_database: skill_obj) -> void:
 
 		skill_data.level = int(skill_levels.get(skill_data.id, 0))
 		skill_data.is_open = bool(skill_isopen.get(skill_data.id, skill_data.required_skill_ids.is_empty()))
+		skill_data.locked_level = int(skill_locked.get(skill_data.id, 0))
 	#print("Skill level loaded")
 	
 func delete_current_save() -> void:

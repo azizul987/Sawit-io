@@ -75,6 +75,41 @@ func generate_skill_buttons():
 		buy_btn.mouse_entered.connect(_on_skill_hovered.bind(data, new_btn))
 		buy_btn.mouse_exited.connect(_on_skill_unhovered)
 
+		# Klik kiri icon / buy → beli, klik kanan icon / buy → refund
+		image_btn.pressed.connect(_on_skill_button_pressedd.bind(data.id))
+		image_btn.gui_input.connect(_on_skill_gui_input.bind(data.id))
+		buy_btn.gui_input.connect(_on_skill_gui_input.bind(data.id))
+
+func _on_skill_gui_input(event: InputEvent, skill_id: String) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		_refund_skill(skill_id)
+
+func _refund_skill(skill_id: String) -> void:
+	var target_skill: skill = skill_database.get_skill_by_id(skill_id)
+	if target_skill == null:
+		return
+	# Tidak bisa refund kalau level sudah di batas terkunci
+	if target_skill.level <= target_skill.locked_level:
+		return
+
+	# Kembalikan cost level yang di-refund ke rebirth point
+	var refund_cost: int = target_skill.cost[target_skill.level - 1]
+	target_skill.level -= 1
+	Point.add_rebirth_point(refund_cost)
+
+	# Update teks tombol Buy
+	var btn = buttons_by_id.get(skill_id) as Control
+	if btn:
+		var buy_btn = btn.get_node("Buy") as Button
+		if target_skill.level >= target_skill.cost.size():
+			buy_btn.text = "MAX"
+		else:
+			buy_btn.text = str(target_skill.cost[target_skill.level])
+
+	Point.recalculate_stats()
+	SaveManager.save_skill_level(skill_database)
+	SaveManager.save_game()
+
 func _on_skill_hovered(data: skill, btn: Control) -> void:
 	skill_hovered.emit(data.skill_name + "\n" + data.get_current_description())
 

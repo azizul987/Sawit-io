@@ -29,6 +29,13 @@ func _ready() -> void:
 
 
 func eksekusi_rebirth() -> void:
+	# Kunci semua level skill yang sudah dialokasikan jadi permanen
+	if _skill_canvas and _skill_canvas.skill_database:
+		for sk in _skill_canvas.skill_database.skills:
+			if sk != null:
+				sk.locked_level = sk.level
+		SaveManager.save_skill_level(_skill_canvas.skill_database)
+
 	Point.point = 1.0
 	Point.total_point_earned = 1.0
 	Point.tipe_wilayah_terbuka = 2
