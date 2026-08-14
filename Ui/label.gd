@@ -2,6 +2,7 @@ extends Control
 
 @onready var  skor=$CanvasLayer/Control/Point
 @onready var skillshow=$"CanvasLayer/SkillTree/Change _Mode"
+@onready var help_panel = $CanvasLayer/HelpPanel
 # Called when the node enters the scene tree for the first time.
 
 
@@ -39,9 +40,13 @@ func _on_texture_button_pressed() -> void:
 	SaveManager.save_game()
 	skillshow.hide()
 	$UpdateMenu.hide()
+	HintManager.show_hint("skill_tree_open", "Klik kiri untuk beli skill.\nKlik kanan untuk refund skill.")
 
 	
 	
+
+func _on_help_btn_pressed() -> void:
+	help_panel.toggle()
 
 func _on_exit_pressed() -> void:
 	SaveManager.save_game()

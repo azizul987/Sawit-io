@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cxv7ow360bpqu"]
 
 [ext_resource type="Script" uid="uid://blbpjm0f72dxi" path="res://Ui/label.gd" id="1_vcfie"]
+[ext_resource type="PackedScene" path="res://Ui/help_panel.tscn" id="help_panel"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_lr6hm"]
 [ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
 [ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
@@ -239,4 +240,18 @@ text = "Kumpulkan uang:0/100000 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BtnHelp" type="Button" parent="CanvasLayer" unique_id=777100001]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 140.0
+offset_right = 75.0
+offset_bottom = 165.0
+text = "?"
+
+[node name="HelpPanel" parent="CanvasLayer" instance=ExtResource("help_panel")]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]

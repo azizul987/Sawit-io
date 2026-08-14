@@ -124,6 +124,7 @@ func _on_purchase_requested(
 	if bought == 0:
 		return
 
+	HintManager.show_hint("upgrade_ctrl", "Tahan Ctrl + Klik upgrade\nuntuk beli sebanyak mungkin sekaligus!")
 	button.refresh()
 	
 	var map = get_tree().current_scene.get_node_or_null("map")

@@ -80,7 +80,10 @@ func _on_konfirmasi_ya() -> void:
 
 func _process(delta: float) -> void:
 	rebirth_point_label.text = str(Point.rebirth_point)
-	rebirth_btn.disabled = not _ada_skill_teralokasi()
+	var bisa_rebirth := _ada_skill_teralokasi()
+	if bisa_rebirth and rebirth_btn.disabled:
+		HintManager.show_hint("rebirth_ready", "Rebirth tersedia!\nProgress reset, skill tetap tersimpan.")
+	rebirth_btn.disabled = not bisa_rebirth
 
 func _input(event: InputEvent) -> void:
 	if not visible:

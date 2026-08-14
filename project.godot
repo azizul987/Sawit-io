@@ -21,6 +21,7 @@ Point="*uid://cx0xu5apa8db3"
 Debug="*uid://ckwrku1l76rkv"
 SaveManager="*uid://dbxybk6q0cit3"
 AudioManager="*res://Logic/skrip/global/AudioManager.gd"
+HintManager="*res://Logic/skrip/global/HintManager.gd"
 
 [display]
 
