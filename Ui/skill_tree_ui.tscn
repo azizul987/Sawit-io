@@ -94,7 +94,6 @@ offset_left = 448.0
 offset_top = 436.0
 offset_right = 488.0
 offset_bottom = 451.0
-text = "sdsddsddsds"
 horizontal_alignment = 1
 
 [node name="Exit" type="TextureButton" parent="." unique_id=293348174]

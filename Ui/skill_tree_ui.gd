@@ -50,6 +50,15 @@ func eksekusi_rebirth() -> void:
 func _process(delta: float) -> void:
 	rebirth_point_label.text=str(Point.rebirth_point)
 
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var panel_rect = $NinePatchRect.get_global_rect()
+		if not panel_rect.has_point(event.global_position):
+			_on_exit_pressed()
+			get_viewport().set_input_as_handled()
+
 func _on_exit_pressed() -> void:
 	$".".hide()
 	var ui_main = $"../../CanvasLayer/UiMain"
