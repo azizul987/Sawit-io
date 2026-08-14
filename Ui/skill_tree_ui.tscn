@@ -83,10 +83,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Rebirth" type="Button" parent="CanvasLayer" unique_id=1089049639]
-offset_left = 499.0
-offset_top = 480.0
-offset_right = 705.0
-offset_bottom = 525.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 137.5
+offset_right = 103.0
+offset_bottom = 182.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Rebirth"
 
 [node name="Deskripsi_Skill_Perlevel" type="Label" parent="CanvasLayer" unique_id=725906494]
@@ -95,6 +102,45 @@ offset_top = 436.0
 offset_right = 488.0
 offset_bottom = 451.0
 horizontal_alignment = 1
+
+[node name="KonfirmasiPanel" type="PanelContainer" parent="CanvasLayer" unique_id=111000001]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -90.0
+offset_right = 180.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/KonfirmasiPanel" unique_id=111000002]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/KonfirmasiPanel/VBoxContainer" unique_id=111000003]
+layout_mode = 2
+theme_override_constants/outline_size = 0
+text = "Apakah kamu yakin?
+Semua progress akan direset kecuali skill."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/KonfirmasiPanel/VBoxContainer" unique_id=111000004]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnBatal" type="Button" parent="CanvasLayer/KonfirmasiPanel/VBoxContainer/HBoxContainer" unique_id=111000005]
+layout_mode = 2
+text = "Batal"
+
+[node name="BtnYa" type="Button" parent="CanvasLayer/KonfirmasiPanel/VBoxContainer/HBoxContainer" unique_id=111000006]
+layout_mode = 2
+text = "Ya, Rebirth!"
 
 [node name="Exit" type="TextureButton" parent="." unique_id=293348174]
 layout_mode = 1
@@ -112,5 +158,7 @@ grow_vertical = 2
 texture_normal = ExtResource("3_dwmuj")
 stretch_mode = 0
 
-[connection signal="pressed" from="CanvasLayer/Rebirth" to="." method="eksekusi_rebirth"]
+[connection signal="pressed" from="CanvasLayer/Rebirth" to="." method="_on_rebirth_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/KonfirmasiPanel/VBoxContainer/HBoxContainer/BtnBatal" to="." method="_on_konfirmasi_batal"]
+[connection signal="pressed" from="CanvasLayer/KonfirmasiPanel/VBoxContainer/HBoxContainer/BtnYa" to="." method="_on_konfirmasi_ya"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

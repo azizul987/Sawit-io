@@ -2,6 +2,10 @@ extends Control
 
 @onready var rebirth_point_label: Label = $CanvasLayer/MarginContainer/RebirthPointLabel
 @onready var deskripsi_skill_perlevel: Label = $CanvasLayer/Deskripsi_Skill_Perlevel
+@onready var rebirth_btn: Button = $CanvasLayer/Rebirth
+
+var _skill_canvas: Control
+@onready var _konfirmasi_panel: PanelContainer = $CanvasLayer/KonfirmasiPanel
 
 func _ready() -> void:
 	visibility_changed.connect(func():
@@ -14,13 +18,15 @@ func _ready() -> void:
 		$CanvasLayer.visible = visible
 
 	# Sambungkan signal hover dari SkiilCanvas ke label deskripsi
-	var canvas = $"SubViewportContainer/SubViewport/Skill Tree/Canvas/SkiilCanvas"
-	canvas.skill_hovered.connect(func(teks: String):
+	_skill_canvas = $"SubViewportContainer/SubViewport/Skill Tree/Canvas/SkiilCanvas"
+	_skill_canvas.skill_hovered.connect(func(teks: String):
 		deskripsi_skill_perlevel.text = teks
 	)
-	canvas.skill_unhovered.connect(func():
+	_skill_canvas.skill_unhovered.connect(func():
 		deskripsi_skill_perlevel.text = ""
 	)
+
+
 
 func eksekusi_rebirth() -> void:
 	Point.point = 1.0
@@ -47,13 +53,40 @@ func eksekusi_rebirth() -> void:
 	
 	get_tree().reload_current_scene()
 
+func _ada_skill_teralokasi() -> bool:
+	if _skill_canvas == null or _skill_canvas.skill_database == null:
+		return false
+	for sk in _skill_canvas.skill_database.skills:
+		if sk != null and sk.level > 0:
+			return true
+	return false
+
+func _on_rebirth_btn_pressed() -> void:
+	_konfirmasi_panel.visible = true
+
+func _on_konfirmasi_batal() -> void:
+	_konfirmasi_panel.visible = false
+
+func _on_konfirmasi_ya() -> void:
+	_konfirmasi_panel.visible = false
+	eksekusi_rebirth()
+
 func _process(delta: float) -> void:
-	rebirth_point_label.text=str(Point.rebirth_point)
+	rebirth_point_label.text = str(Point.rebirth_point)
+	rebirth_btn.disabled = not _ada_skill_teralokasi()
 
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Kalau panel konfirmasi lagi terbuka, klik di luar panel → tutup konfirmasi
+		if _konfirmasi_panel.visible:
+			var konfirmasi_rect = _konfirmasi_panel.get_global_rect()
+			if not konfirmasi_rect.has_point(event.global_position):
+				_on_konfirmasi_batal()
+				get_viewport().set_input_as_handled()
+			return
+		# Kalau panel konfirmasi tutup, klik di luar skill tree → tutup skill tree
 		var panel_rect = $NinePatchRect.get_global_rect()
 		if not panel_rect.has_point(event.global_position):
 			_on_exit_pressed()
