@@ -484,3 +484,15 @@ layer = 10
 
 [node name="Pause" parent="CanvasLayerPause" unique_id=1963674684 instance=ExtResource("pause_scene")]
 visible = false
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1837010826]
+layer = -8
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer3" unique_id=1085422259]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.30581245, 0.5859944, 0.70159626, 1)
