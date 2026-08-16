@@ -57,7 +57,3 @@ frame_progress = 0.86208844
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=815192366]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ndl5l")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=262140528]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(5, -2, 3, 0, 5, 4, 3, 8, -4, 8, -6, 3, -3, 0, -6, -4, -4, -7, 0, -9, 3, -8, 5, -5)

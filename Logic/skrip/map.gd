@@ -320,11 +320,11 @@ func spawn_pohon(silent: bool = false) -> void:
 	var poly = pick_weighted_wilayah(true)
 	if poly == null: return
 	
-	var scale_factor = 2.0
+	var scale_factor = 2.01
 	if Point.tipe_wilayah_terbuka == 1:
-		scale_factor = 5.0
+		scale_factor = 7
 	elif Point.tipe_wilayah_terbuka == 0:
-		scale_factor = 12.0
+		scale_factor = 14.0
 	
 	# Jarak asli 25.0 itu disetel saat skala pohon 2.0, jadi kita kalikan rasio skalanya
 	var pt = get_random_point_in_polygon(poly, "sawit", 25.0 * (scale_factor / 2.0))
@@ -341,6 +341,7 @@ func spawn_pohon(silent: bool = false) -> void:
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
+		AudioManager.play_sfx()
 	
 
 func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", min_dist: float = 25.0) -> Vector2:
@@ -407,6 +408,12 @@ func spawn_buruh(silent: bool = false):
 	var poly = pick_weighted_wilayah(false)
 	if poly == null: return
 	
+	var scale_factor = 2.01
+	if Point.tipe_wilayah_terbuka == 1:
+		scale_factor = 7.0
+	elif Point.tipe_wilayah_terbuka == 0:
+		scale_factor = 14.0
+	
 	# Buruh tidak perlu di-jarakin seketat pohon
 	var pt = get_random_point_in_polygon(poly, "", 0.0)
 	var buruh = preload("uid://c6vgmp5scevx6").instantiate()
@@ -414,12 +421,9 @@ func spawn_buruh(silent: bool = false):
 	buruh.position = poly.global_transform * (pt + poly.offset)
 	buruh.add_to_group("buruh_visual")
 	
-	if Point.tipe_wilayah_terbuka == 1:
-		buruh.scale = Vector2(2.5, 2.5)
-	elif Point.tipe_wilayah_terbuka == 0:
-		buruh.scale = Vector2(5.0, 5.0)
+	buruh.scale = Vector2(scale_factor, scale_factor)
 		
 	get_parent().add_child(buruh)
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
-		cam.shake(5.0, 0.15) 
+		cam.shake(5.0, 0.15)

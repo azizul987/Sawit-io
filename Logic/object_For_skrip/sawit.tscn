@@ -47,7 +47,7 @@ height = 26.0
 radius = 2.5
 height = 15.997564
 
-[node name="sawit" type="Area2D" unique_id=471696647]
+[node name="sawit" type="Area2D" unique_id=1898845812]
 scale = Vector2(2, 2)
 script = ExtResource("1_n3x0p")
 
