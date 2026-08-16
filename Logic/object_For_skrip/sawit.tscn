@@ -67,3 +67,6 @@ shape = SubResource("CapsuleShape2D_sfyop")
 position = Vector2(2.9802322e-08, -1.0000001)
 rotation = -1.553343
 shape = SubResource("CapsuleShape2D_4xwex")
+
+[node name="Klik Rd" type="Marker2D" parent="." unique_id=13019076]
+position = Vector2(-0.5, -11.5)

@@ -150,6 +150,8 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 		cek_syarat_buka()
 		button.queue_free()
 		
+		BalanceLogger.log_wilayah_purchase(data_wilayah, data_wilayah.harga)
+		
 		var cam := get_viewport().get_camera_2d()
 		if cam and cam.has_method("shake"):
 			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
@@ -190,9 +192,16 @@ func get_current_max_capacity() -> int:
 	return max(10, total_cap)
 
 func get_current_max_capacity_buruh() -> int:
-	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default)
-	return wil_terbuka.size() * 15
-
+	var total_cap=0
+	var area_perburuh=6000*get_area_multiplier(Point.tipe_wilayah_terbuka)
+	for w in daftar_wilayah:
+		if w.data and w.data.terbuka_default:
+			var poly=w.get_node_or_null("Polygon2D")
+			if poly:
+				var luas = hitung_luas_polygon(poly)
+				total_cap += max(1, int(luas / area_perburuh))
+	return max(10, total_cap)
+	
 func update_max_capacity_by_area() -> void:
 	var max_cap = get_current_max_capacity()
 	var max_cap_buruh = get_current_max_capacity_buruh()
@@ -332,6 +341,7 @@ func spawn_pohon(silent: bool = false) -> void:
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
+	
 
 func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", min_dist: float = 25.0) -> Vector2:
 	var pts = poly.polygon

@@ -115,10 +115,15 @@ func _on_purchase_requested(
 	if Input.is_key_pressed(KEY_CTRL):
 		max_buys = 9999
 
+	var total_dibayar := 0.0                                    
+	var point_per_click_sebelum := Point.point_per_click         
+
 	var bought = 0
 	while not upgrade_data.is_max_level() and Point.point >= upgrade_data.get_discounted_price() and bought < max_buys:
+		var harga_kali_ini = upgrade_data.get_discounted_price()
 		Point.remove_point(upgrade_data.get_discounted_price())
 		upgrade_data.upgrade()
+		total_dibayar += harga_kali_ini                            
 		bought += 1
 
 	if bought == 0:
@@ -142,6 +147,14 @@ func _on_purchase_requested(
 			
 	# Hitung ulang seluruh stats efek pasca upgrade!
 	Point.recalculate_stats(upgrade_database.upgrades)
+
+	BalanceLogger.log_upgrade_purchase(                          # BARU
+		upgrade_data,
+		total_dibayar,
+		point_per_click_sebelum,
+		Point.point_per_click
+	)
+	
 	SaveManager.save_upgrades(upgrade_database)
 
 	SaveManager.save_game()

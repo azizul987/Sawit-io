@@ -171,6 +171,8 @@ func _on_skill_button_pressedd(skil_id):
 		return
 	#print(skil_id)
 	if targetSkill.cost[targetSkill.level]<=Point.rebirth_point:
+		var harga_dibayar = targetSkill.cost[targetSkill.level]
+		var stat_sebelum = targetSkill.effect_value * targetSkill.level  
 		Point.remove_rebirth_point(targetSkill.cost[targetSkill.level])
 		if targetSkill.level < targetSkill.cost.size():
 			targetSkill.level += 1
@@ -178,6 +180,11 @@ func _on_skill_button_pressedd(skil_id):
 				select_btn.get_node("Buy").text = "MAX"
 			else:
 				select_btn.get_node("Buy").text = str(targetSkill.cost[targetSkill.level])
+				
+		var stat_sesudah = targetSkill.effect_value * targetSkill.level  # BARU
+		BalanceLogger.log_skill_purchase(                                # BARU
+			targetSkill, harga_dibayar, stat_sebelum, stat_sesudah
+		)
 		#SaveManager.save_skill_level(skill_database)
 		for data in skill_database.skills:
 			if data == null:

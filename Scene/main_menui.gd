@@ -6,7 +6,7 @@ var pending_slot_delete: int = -1
 var pending_slot_ui: Control = null
 
 const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn")
-const CLICK_SFX = preload("res://Asset/Audio/sfx/WAV/UI SFX_MENU_Confirm.wav")
+
 
 @onready var slot_container = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer
 @onready var add_button = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer/Add
@@ -235,7 +235,7 @@ func _animate_button_click(btn: Button) -> void:
 	if not is_instance_valid(btn):
 		return
 	
-	AudioManager.play_sfx(CLICK_SFX)
+	AudioManager.play_sfx()
 	
 	btn.pivot_offset = btn.size / 2.0
 	var tween = create_tween()
