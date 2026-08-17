@@ -39,8 +39,6 @@ func add_point(value):
 	total_point_earned += value
 	if total_point_earned > 1e300:
 		total_point_earned = 1e300
-	point_change.emit(point_per_click)
-	SaveManager.save_game()
 
 
 func remove_point(value): 
@@ -154,9 +152,12 @@ func format_num(val: float) -> String:
 
 func _update_pps(delta: float) -> void:
 	_pps_timer += delta
-	# Setiap timer mencapai 1 detik (_pps_interval), hitung ulang laju point/detik
+
 	if _pps_timer >= _pps_interval:
 		points_per_second = _pps_buffer / _pps_timer
 		pps_updated.emit(points_per_second)
+
+		point_change.emit(point_per_click)
+
 		_pps_buffer = 0.0
 		_pps_timer = 0.0

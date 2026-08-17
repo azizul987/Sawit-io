@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 @export var kecepatan_jalan: float = 75.0
 @export var jarak_panen: float = 25.0
@@ -18,11 +18,12 @@ var waktu_stuck: float = 0.0
 var batas_waktu_stuck: float = 2.0
 var posisi_sebelumnya: Vector2 = Vector2.ZERO
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	posisi_sebelumnya = global_position
+
+func _process(delta: float) -> void:
 	if sedang_panen:
 		return
-
-	# Jika belum punya target atau target hilang dari scene
 	if target_sawit == null or not is_instance_valid(target_sawit):
 		cari_sawit_terdekat()
 		if target_sawit == null:
@@ -38,13 +39,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Berjalan menuju sawit terdekat
 		var arah := (target_sawit.global_position - global_position).normalized()
-		velocity = arah * kecepatan_jalan
-		move_and_slide()
+		global_position += arah * kecepatan_jalan * delta
 		
 		# --- Sistem Deteksi Nyangkut (Stuck) ---
-		var jarak_gerak = global_position.distance_to(posisi_sebelumnya)
+		var jarak_gerak_sq := global_position.distance_squared_to(posisi_sebelumnya)
 		# Jika bergeraknya sangat lambat (kurang dari setengah kecepatan wajar per frame)
-		if jarak_gerak < (kecepatan_jalan * delta * 0.5):
+		var batas_gerak := kecepatan_jalan * delta * 0.5
+		if jarak_gerak_sq < batas_gerak * batas_gerak:
 			waktu_stuck += delta
 			if waktu_stuck >= batas_waktu_stuck:
 				# TELEPORT! Pindahkan buruh paksa ke dekat pohon target
@@ -52,7 +53,7 @@ func _physics_process(delta: float) -> void:
 				waktu_stuck = 0.0 # Reset
 		else:
 			waktu_stuck = 0.0 # Reset karena jalan lancar
-			
+		
 		posisi_sebelumnya = global_position
 		# --------------------------------------
 		
@@ -64,45 +65,62 @@ func _physics_process(delta: float) -> void:
 
 func cari_sawit_terdekat() -> void:
 	var semua_sawit := get_tree().get_nodes_in_group("sawit")
+
 	if semua_sawit.is_empty():
 		target_sawit = null
 		return
 
-	# Buat salinan daftar dan hindari memilih pohon yang baru saja dipanen (jika ada pilihan lain)
-	var kandidat := semua_sawit.duplicate()
-	if kandidat.size() > 1 and sawit_sebelumnya in kandidat:
-		kandidat.erase(sawit_sebelumnya)
+	if semua_sawit.size() == 1:
+		target_sawit = semua_sawit[0]
+		return
 
-	# Mekanisme Kepintaran (Bisa di-upgrade lewat menu):
-	# Jika hasil random di bawah angka kepintaran, buruh jadi cerdas & mengambil sawit terdekat.
-	# Jika di atas kepintaran (masih level awal/kurang efektif), buruh memilih sawit secara ACAK!
 	if randf() <= kepintaran:
-		var jarak_terdekat: float = INF
-		for pohon in kandidat:
-			var jarak := global_position.distance_to(pohon.global_position)
-			if jarak < jarak_terdekat:
-				jarak_terdekat = jarak
+		var jarak_terdekat_sq := INF
+		target_sawit = null
+
+		for pohon in semua_sawit:
+			if pohon == sawit_sebelumnya:
+				continue
+
+			var jarak_sq := global_position.distance_squared_to(
+				pohon.global_position
+			)
+
+			if jarak_sq < jarak_terdekat_sq:
+				jarak_terdekat_sq = jarak_sq
 				target_sawit = pohon
+
 	else:
-		target_sawit = kandidat[randi() % kandidat.size()]
+		target_sawit = semua_sawit.pick_random()
+
+		while target_sawit == sawit_sebelumnya:
+			target_sawit = semua_sawit.pick_random()
 
 func lakukan_panen() -> void:
 	sedang_panen = true
-	velocity = Vector2.ZERO
 	sprite.stop()
 
-	# Efek lompat kecil (Game Juice!) pada buruh saat mengeksekusi panen
+	# Efek lompat kecil
 	var tween := create_tween()
-	tween.tween_property(sprite, "position:y", sprite.position.y - 8.0, 0.15).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(sprite, "position:y", sprite.position.y, 0.15).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(
+		sprite,
+		"position:y",
+		sprite.position.y - 8.0,
+		0.15
+	).set_trans(Tween.TRANS_SINE)
 
-	# Trigger fungsi panen di sawit (sama persis seperti efek saat pemain mengeklik)
+	tween.tween_property(
+		sprite,
+		"position:y",
+		sprite.position.y,
+		0.15
+	).set_trans(Tween.TRANS_SINE)
+
 	if is_instance_valid(target_sawit) and target_sawit.has_method("panen"):
-		target_sawit.panen()
+		target_sawit.panen(true)
 
 	sawit_sebelumnya = target_sawit
 	target_sawit = null
 
-	# Beri jeda sebentar sebelum mencari sawit berikutnya
 	await get_tree().create_timer(waktu_jeda).timeout
 	sedang_panen = false

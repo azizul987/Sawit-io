@@ -120,14 +120,12 @@ animations = [{
 radius = 4.0
 height = 14.0
 
-[node name="Buruh" type="CharacterBody2D" unique_id=339722709]
-collision_layer = 2
+[node name="Buruh" type="Node2D" unique_id=737804513]
 script = ExtResource("1_buruh_scr")
-jarak_panen = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182272681]
 sprite_frames = SubResource("SpriteFrames_e0b7r")
-frame_progress = 0.24470963
+frame_progress = 0.066986784
 
 [node name="Area2D" type="Area2D" parent="." unique_id=988995808]
 

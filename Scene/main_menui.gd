@@ -39,6 +39,8 @@ func _input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Main menu tidak boleh menjalankan autosave gameplay.
+	SaveManager.set_autosave_enabled(false)
 	AudioManager.play_bgm(preload("res://Asset/Audio/music/Oh My! Beautiful Moon.mp3"))
 	
 	show_menu_awal()
@@ -164,6 +166,7 @@ func _on_add_button_pressed():
 func _on_slot_load(slot_num: int):
 	SaveManager.set_slot(slot_num)
 	SaveManager.load_game()
+	SaveManager.set_autosave_enabled(true)
 	get_tree().change_scene_to_file("res://Scene/main.tscn")  
 
 func _on_slot_delete(slot_num: int, slot_ui: Control):

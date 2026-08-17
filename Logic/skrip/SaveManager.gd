@@ -1,17 +1,54 @@
 extends Node
 
-var current_slot := 1
+var current_slot := -1
 var default_slot := 1
+var autosave_enabled := false
 
+func _ready() -> void:
+	var timer := Timer.new()
+	timer.wait_time = 5.0
+	timer.autostart = true
+	timer.one_shot = false
+	timer.timeout.connect(_on_autosave_timeout)
+	add_child(timer)
 
+func _on_autosave_timeout() -> void:
+	# Jangan pernah membuat save baru dari state global saat berada di menu.
+	if not autosave_enabled or current_slot < 1:
+		return
+	if not FileAccess.file_exists(get_save_path()):
+		return
+	save_game()
+
+func set_autosave_enabled(enabled: bool) -> void:
+	autosave_enabled = enabled
+
+func clear_active_slot() -> void:
+	autosave_enabled = false
+	current_slot = -1
+	
 func set_slot(slot: int) -> void:
 	current_slot = slot
 	#print("Slot aktif:", current_slot)
 
 
 func create_new_slot(slot: int) -> void:
-	current_slot = slot
-	write_save_data({"point": 1})
+	# Membuat slot tidak boleh mengganti slot aktif. Kalau tidak, autosave dapat
+	# menimpa slot baru memakai state Point dari game/slot sebelumnya.
+	var path := "user://save_slot_%d.json" % slot
+	var data := {
+		"point": 1.0,
+		"total_point_earned": 0.0,
+		"rebirth_point": 0,
+		"var idx_mision_now": 0,
+		"skill_tree_camera": {"x": 0.0, "y": 0.0, "z": 1.4},
+		"main_camera": {"x": 7347.983, "y": 8094.0, "z": 1.0},
+		"tipe_wilayah_terbuka": 2,
+		"tipe_wilayah": {"x": 0, "y": 0, "z": 1}
+	}
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file != null:
+		file.store_string(JSON.stringify(data))
 
 
 func get_save_path() -> String:
@@ -52,6 +89,8 @@ func get_active_slot_display_text() -> String:
 
 
 func read_save_data() -> Dictionary:
+	if current_slot < 1:
+		return {}
 	var path := get_save_path()
 
 	if not FileAccess.file_exists(path):
@@ -67,11 +106,16 @@ func read_save_data() -> Dictionary:
 
 
 func write_save_data(data: Dictionary) -> void:
+	if current_slot < 1:
+		return
 	var file := FileAccess.open(get_save_path(), FileAccess.WRITE)
-	file.store_string(JSON.stringify(data))
+	if file != null:
+		file.store_string(JSON.stringify(data))
 
 
 func save_game() -> void:
+	if current_slot < 1:
+		return
 	var data := read_save_data()
 	data["point"] = Point.point
 	data["total_point_earned"] = Point.total_point_earned
@@ -101,6 +145,8 @@ func save_game() -> void:
 
 
 func load_game() -> void:
+	if current_slot < 1:
+		return
 	var data := read_save_data()
 
 	Point.point = float(data.get("point", 0))
@@ -236,9 +282,14 @@ func delete_current_save() -> void:
 		print("Save slot", current_slot, "memang belum ada")
 
 func delete_all_saves() -> void:
+	# Matikan autosave dulu agar file yang baru dihapus tidak dibuat ulang.
+	autosave_enabled = false
 	var slots := get_all_used_slots()
 	for s in slots:
-		delete_slot(s)
+		var path := "user://save_slot_%d.json" % s
+		if FileAccess.file_exists(path):
+			DirAccess.remove_absolute(path)
+	current_slot = -1
 	print("Semua save data berhasil dihapus.")
 
 func get_all_used_slots() -> Array[int]:
@@ -269,6 +320,8 @@ func delete_slot(slot: int) -> void:
 	var path := "user://save_slot_%d.json" % slot
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+	if slot == current_slot:
+		clear_active_slot()
 
 func save_upgrades(db: UpgradeDatabase) -> void:
 	var d := read_save_data(); var u := {}
