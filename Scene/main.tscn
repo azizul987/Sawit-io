@@ -130,6 +130,7 @@ data = ExtResource("5_3pt4j")
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-15.758724, -1.7891316)
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 antialiased = true
 texture = ExtResource("11_wimqa")
 polygon = PackedVector2Array(1.2769, 13.0164, 3.2426, 8.9867, 6.1759, 5.9534, 6.0992, 2.7993, 5.399, 1.9992, 6.0992, 2.7993, 11.649, 6.8492, 18.1117, 11.0131, 21.4372, 13.641, 22.7686, 14.7205, 19.2808, 17.9865, 15.6775, 22.3038)
@@ -509,7 +510,7 @@ mouse_filter = 2
 color = Color(0.30581245, 0.5859944, 0.70159626, 1)
 
 [node name="Batas Atas" type="Marker2D" parent="." unique_id=1211933659]
-position = Vector2(-13275, -9563)
+position = Vector2(-17108, -12466)
 
 [node name="Batas Bawah" type="Marker2D" parent="." unique_id=770132660]
-position = Vector2(18448, 14831)
+position = Vector2(31911, 19726)
