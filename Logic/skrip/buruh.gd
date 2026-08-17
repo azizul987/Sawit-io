@@ -20,6 +20,9 @@ var posisi_sebelumnya: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	posisi_sebelumnya = global_position
+	var tween=create_tween()
+	tween.set_parallel()
+	tween.tween_property(self,"modulate:a",randf_range(0.1,0.4),1.0)
 
 func _process(delta: float) -> void:
 	if sedang_panen:

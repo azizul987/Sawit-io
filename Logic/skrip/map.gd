@@ -52,7 +52,9 @@ func buat_button_wilayah(wilayah: Node) -> void:
 		
 	# Sembunyikan button jika tingkatannya (enum) tidak sesuai dengan settingan kamera/zoom saat ini
 	if data.tipe_wilayah != Point.tipe_wilayah_terbuka:
-		return
+		if data.tipe_wilayah == 0 and Point.tipe_wilayah_terbuka !=0:
+			polygon.color=Color(0.0, 0.0, 0.0, 1)
+			
 		
 	var button := btn_templete.instantiate() as Button
 	wilayah.add_child(button)

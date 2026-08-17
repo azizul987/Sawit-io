@@ -18,7 +18,6 @@ var panen_ganda_chance: float = 0.0
 var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
-
 var idx_mision_now:int=0
 
 
