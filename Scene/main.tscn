@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cxvneabfihjsg" path="res://Ui/skill_tree_ui.tscn" id="11_7y4ci"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="11_wimqa"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
-[ext_resource type="Shader" uid="uid://c0fjavk8ep52t" path="res://Scene/main.gdshader" id="28_wimqa"]
+[ext_resource type="Shader" path="res://Scene/main.gdshader" id="28_wimqa"]
 [ext_resource type="Resource" uid="uid://d1a2b3c4d5e61" path="res://Logic/Data Templete/Data/ress/wilayah/riau.tres" id="30_riau"]
 [ext_resource type="Resource" uid="uid://dbk1ltwbk7q2o" path="res://Logic/Data Templete/Data/ress/wilayah/aceh.tres" id="31_aceh"]
 [ext_resource type="Resource" uid="uid://t6i0ny27kqco" path="res://Logic/Data Templete/Data/ress/wilayah/bengkulu.tres" id="32_bengkulu"]
@@ -33,7 +33,7 @@
 shader = ExtResource("28_wimqa")
 shader_parameter/intensity = 0.0
 shader_parameter/base_water_color = Color(0.35255685, 0.55586404, 0.6599506, 1)
-shader_parameter/highlight_scale = 1.9900000912651201
+shader_parameter/highlight_scale = 1.99000009126512
 shader_parameter/clarity = 0.65
 
 [node name="Main" type="Node2D" unique_id=457701414]
@@ -455,11 +455,13 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1589938649 node_paths=PackedStringArray("titik_kiri_atas", "titik_kanan_bawah")]
 position = Vector2(7347.9834, 8093.9995)
 zoom = Vector2(5, 5)
 script = ExtResource("6_ow1sv")
 batas_zoom_out = Array[float]([0.03, 0.25, 0.5])
+titik_kiri_atas = NodePath("../Batas Atas")
+titik_kanan_bawah = NodePath("../Batas Bawah")
 
 [node name="Button" parent="." unique_id=2045411329 instance=ExtResource("12_mxd2g")]
 visible = false
@@ -505,3 +507,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.30581245, 0.5859944, 0.70159626, 1)
+
+[node name="Batas Atas" type="Marker2D" parent="." unique_id=1211933659]
+position = Vector2(-13275, -9563)
+
+[node name="Batas Bawah" type="Marker2D" parent="." unique_id=770132660]
+position = Vector2(18448, 14831)

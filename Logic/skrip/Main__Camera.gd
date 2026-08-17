@@ -7,6 +7,8 @@ extends Camera2D
 
 var is_dragging := false
 var  sawit
+@export var titik_kiri_atas: Node2D
+@export var titik_kanan_bawah: Node2D
 
 func _ready() -> void:
 	SaveManager.load_game()
@@ -80,8 +82,20 @@ func zoom_camera(value: float) -> void:
 
 	simpan_posisi_camera()
 
-
 func simpan_posisi_camera() -> void:
+	if Point.tipe_wilayah_terbuka == 0 and titik_kiri_atas and titik_kanan_bawah:
+		var kiri := titik_kiri_atas.global_position.x
+		var kanan := titik_kanan_bawah.global_position.x
+		var atas := titik_kiri_atas.global_position.y
+		var bawah := titik_kanan_bawah.global_position.y
+
+		var half := get_viewport_rect().size / 2.0 / zoom
+		half.x = min(half.x, (kanan - kiri) / 2.0)
+		half.y = min(half.y, (bawah - atas) / 2.0)
+
+		position.x = clamp(position.x, kiri + half.x, kanan - half.x)
+		position.y = clamp(position.y, atas + half.y, bawah - half.y)
+
 	Point.main_tree_camera.x = position.x
 	Point.main_tree_camera.y = position.y
 	Point.main_tree_camera.z = zoom.x

@@ -7,8 +7,12 @@ var is_new_spawn: bool = true
 const FONT_KOSTUM = preload(
 	"res://temp tekture/font/BPdotsSquareBold.otf"
 )
-
 func _ready() -> void:
+	monitoring = false
+	monitorable = false
+	collision_mask = 0
+	input_pickable = true
+
 	add_to_group("sawit")
 	
 	if not is_new_spawn:
