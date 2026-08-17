@@ -56,6 +56,3 @@ frame_progress = 0.20006245
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53657342]
 position = Vector2(-0.5, -12)
 shape = SubResource("CapsuleShape2D_sfyop")
-
-[node name="Klik Rd" type="Marker2D" parent="." unique_id=13019076]
-position = Vector2(-0.5, -11.5)

@@ -42,7 +42,7 @@ func create_new_slot(slot: int) -> void:
 		"rebirth_point": 0,
 		"var idx_mision_now": 0,
 		"skill_tree_camera": {"x": 0.0, "y": 0.0, "z": 1.4},
-		"main_camera": {"x": 7347.983, "y": 8094.0, "z": 1.0},
+		"main_camera": {"x": 7508.0, "y": 8765.0, "z": 1.0},
 		"tipe_wilayah_terbuka": 2,
 		"tipe_wilayah": {"x": 0, "y": 0, "z": 1}
 	}
@@ -166,8 +166,8 @@ func load_game() -> void:
 		float(cam_data.get("z"))
 	)
 	var cam_data1=data.get("main_camera",{
-		"x":7347.983,
-		"y":8094.0,
+		"x":7508.0,
+		"y":8765.0,
 		"z":1
 	})
 	Point.main_tree_camera=Vector3(

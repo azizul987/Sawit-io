@@ -69,12 +69,12 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 [sub_resource type="Resource" id="Resource_eskalasi"]
 script = ExtResource("2_own6j")
 upgrade_name = "Eskalasi Harga"
-description = "Menjalin kontrak dagang dengan Pabrik Kelapa Sawit (PKS). Mengatrol nilai jual pasaran buah sawitmu sebesar [color=yellow]+15%[/color] per tingkat!"
+description = "Menjalin kontrak dagang dengan Pabrik Kelapa Sawit (PKS). Mengatrol nilai jual pasaran buah sawitmu sebesar [color=yellow]+40%[/color] per tingkat!"
 price = 1500.0
 price_multiplier = 1.4
 icon = ExtResource("5_pupuk")
 effect_type = 1
-effect_value = 15.0
+effect_value = 40.0
 max_level = 50
 required_upgrade = SubResource("Resource_wlb")
 required_level = 2
@@ -88,6 +88,7 @@ price = 5000.0
 price_multiplier = 1.5
 icon = ExtResource("6_traktor")
 effect_type = 6
+effect_value = 2.0
 max_level = 25
 required_upgrade = SubResource("Resource_eskalasi")
 required_level = 3
@@ -96,12 +97,12 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 [sub_resource type="Resource" id="Resource_super"]
 script = ExtResource("2_own6j")
 upgrade_name = "Sawit Super"
-description = "Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]5% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
+description = "Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]10% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
 price = 15000.0
 price_multiplier = 1.6
 icon = ExtResource("3_sabit")
 effect_type = 7
-effect_value = 5.0
+effect_value = 10.0
 max_level = 20
 required_upgrade = SubResource("Resource_agregat")
 required_level = 2

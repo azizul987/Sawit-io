@@ -105,7 +105,7 @@ func goyang_pohon():
 
 func show_plus_effect(jumlah_poin: float, custom_pos: Vector2 = Vector2.INF) -> void:
 	var label := Label.new()
-
+	label.add_to_group("pointlabel")
 	label.text = "+%.1f" % jumlah_poin
 	label.z_index = 100
 	label.modulate = Color.from_hsv(

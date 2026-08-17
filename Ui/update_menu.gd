@@ -140,8 +140,14 @@ func _on_purchase_requested(
 			
 		if upgrade_data.upgrade_name == "Tingkat: Kabupaten":
 			map.eksekusi_naik_tingkat(1) # KABUPATEN
+			var la=get_tree().get_nodes_in_group("pointlabel")
+			for l in la:
+				l.queue_free()
 		elif upgrade_data.upgrade_name == "Tingkat: Provinsi":
 			map.eksekusi_naik_tingkat(0) # PROVINSI
+			var la=get_tree().get_nodes_in_group("pointlabel")
+			for l in la:
+				l.queue_free()
 
 	generate_upgrade_buttons()
 			
