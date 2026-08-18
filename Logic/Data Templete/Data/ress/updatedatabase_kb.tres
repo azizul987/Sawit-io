@@ -1,53 +1,52 @@
-[gd_resource type="Resource" script_class="UpgradeDatabase" format=3 uid="uid://dg02w7l0srhat"]
+[gd_resource type="Resource" script_class="UpgradeDatabase" format=3 uid="uid://ktfp3v8g4a0u"]
 
-[ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_erwtg"]
-[ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_own6j"]
-[ext_resource type="Texture2D" uid="uid://di7306qdx6x05" path="res://Asset/Icon/CoinUpgrade.png" id="3_xjqgb"]
-[ext_resource type="Texture2D" uid="uid://rb1jgp5rw10v" path="res://Asset/Icon/CoinDouble.png" id="4_go5j7"]
-[ext_resource type="Texture2D" uid="uid://ccjpm86biu06x" path="res://Asset/Icon/BuahSawitUpgrade.png" id="5_e0wu4"]
-[ext_resource type="Texture2D" uid="uid://c0ekquxd0yqnq" path="res://Asset/Icon/Recruit.png" id="6_8dm5v"]
-[ext_resource type="Texture2D" uid="uid://dvoo0punixylp" path="res://Asset/Icon/RecruitDuplication.png" id="7_vu0kr"]
-[ext_resource type="Texture2D" uid="uid://crb2dgdh0kjr5" path="res://Asset/Icon/BuahSawitEmasUpgrade.png" id="8_ckt2c"]
-[ext_resource type="Texture2D" uid="uid://bk0cltjco0g5i" path="res://Asset/Icon/BuahSawitDouble.png" id="9_t7q0m"]
-[ext_resource type="Texture2D" uid="uid://dmlp7sudve8fr" path="res://Asset/Icon/Time.png" id="10_765jk"]
+[ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_i8hpj"]
+[ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_7gnc6"]
+[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="3_msbrg"]
+[ext_resource type="Texture2D" uid="uid://d24auogqsff7d" path="res://Asset/Icon/BuahSawitUpgrade.png" id="4_4nvhy"]
+[ext_resource type="Texture2D" uid="uid://ei21cvf5h2ve" path="res://Asset/Icon/RecruitDuplication.png" id="5_cosn4"]
+[ext_resource type="Texture2D" uid="uid://bckm8rkmeklb7" path="res://Asset/Icon/Recruit.png" id="6_cj7n6"]
+[ext_resource type="Texture2D" uid="uid://b3ch0dn8xh5ux" path="res://Asset/Icon/Time.png" id="7_hh0cp"]
+[ext_resource type="Texture2D" uid="uid://3of23js48ehs" path="res://Asset/Icon/BuahSawitDouble.png" id="8_ht7tb"]
+[ext_resource type="Texture2D" uid="uid://tklmcs6737sm" path="res://Asset/Icon/BuahSawitEmasUpgrade.png" id="9_2itvn"]
 
 [sub_resource type="Resource" id="Resource_naik_provinsi"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Tingkat: Provinsi"
 description = "Meningkatkan status wilayah menjadi Provinsi. Membuka potensi penuh perkebunan skala masif!"
 price = 250000.0
 price_multiplier = 1.0
-icon = ExtResource("3_xjqgb")
+icon = ExtResource("3_msbrg")
 effect_value = 0.0
 max_level = 1
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_naik_kabupaten"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Tingkat: Kabupaten"
 description = "Meningkatkan status wilayah menjadi Kabupaten. Pohon akan dikompres menjadi lebih besar dan harga bibit menjadi lebih murah!"
 price = 50000.0
 price_multiplier = 1.0
-icon = ExtResource("4_go5j7")
+icon = ExtResource("3_msbrg")
 effect_value = 0.0
 max_level = 1
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_jumlahsawit"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Jumlah Sawit"
 description = "Menanam bibit sawit baru di lahan terbuka. Menambah [color=yellow]+1 Pendapatan Klik[/color] dan menaikkan kepadatan pohon di perkebunanmu!"
 price = 1.0
-icon = ExtResource("5_e0wu4")
+icon = ExtResource("4_4nvhy")
 max_level = 100
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_rekrut"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Rekrut"
 description = "Mempekerjakan buruh panen otomatis yang rajin keliling lahan dengan sistem upah bersih: [color=yellow]Harga Sawit − (Harga Sawit × 10%)[/color]!"
 price = 100.0
-icon = ExtResource("6_8dm5v")
+icon = ExtResource("5_cosn4")
 effect_type = 2
 max_level = 50
 required_upgrade = SubResource("Resource_jumlahsawit")
@@ -55,12 +54,12 @@ required_level = 10
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_wlb"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Work Life Balance"
 description = "Memberikan liburan dan es teh manis porseling. Buruh bahagia bertransformasi lebih gesit serta [color=yellow]Kepintaran AI[/color]-nya melesat pesat!"
 price = 450.0
 price_multiplier = 1.35
-icon = ExtResource("7_vu0kr")
+icon = ExtResource("6_cj7n6")
 effect_type = 5
 effect_value = 15.0
 max_level = 30
@@ -69,12 +68,12 @@ required_level = 3
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_eskalasi"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Eskalasi Harga"
 description = "Menjalin kontrak dagang dengan Pabrik Kelapa Sawit (PKS). Mengatrol nilai jual pasaran buah sawitmu sebesar [color=yellow]+40%[/color] per tingkat!"
 price = 1500.0
 price_multiplier = 1.4
-icon = ExtResource("8_ckt2c")
+icon = ExtResource("7_hh0cp")
 effect_type = 1
 effect_value = 40.0
 max_level = 50
@@ -83,12 +82,12 @@ required_level = 2
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_agregat"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Agregat Harga"
 description = "Menguasai rantai ekspor komoditas Sumatera. Memberikan multiplier harga lipatan berdasarkan [color=yellow]Jumlah Wilayah[/color] yang kamu miliki!"
 price = 5000.0
 price_multiplier = 1.5
-icon = ExtResource("9_t7q0m")
+icon = ExtResource("8_ht7tb")
 effect_type = 6
 effect_value = 2.0
 max_level = 25
@@ -97,12 +96,12 @@ required_level = 3
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [sub_resource type="Resource" id="Resource_super"]
-script = ExtResource("2_own6j")
+script = ExtResource("2_7gnc6")
 upgrade_name = "Sawit Super"
 description = "Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]10% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
 price = 15000.0
 price_multiplier = 1.6
-icon = ExtResource("10_765jk")
+icon = ExtResource("9_2itvn")
 effect_type = 7
 effect_value = 10.0
 max_level = 20
@@ -111,6 +110,6 @@ required_level = 2
 metadata/_custom_type_script = "uid://g1tewc4pomil"
 
 [resource]
-script = ExtResource("1_erwtg")
-upgrades = Array[ExtResource("2_own6j")]([SubResource("Resource_naik_provinsi"), SubResource("Resource_naik_kabupaten"), SubResource("Resource_jumlahsawit"), SubResource("Resource_rekrut"), SubResource("Resource_wlb"), SubResource("Resource_eskalasi"), SubResource("Resource_agregat"), SubResource("Resource_super")])
+script = ExtResource("1_i8hpj")
+upgrades = Array[ExtResource("2_7gnc6")]([SubResource("Resource_naik_provinsi"), SubResource("Resource_naik_kabupaten"), SubResource("Resource_jumlahsawit"), SubResource("Resource_rekrut"), SubResource("Resource_wlb"), SubResource("Resource_eskalasi"), SubResource("Resource_agregat"), SubResource("Resource_super")])
 metadata/_custom_type_script = "uid://b2qs3ham6ojqe"

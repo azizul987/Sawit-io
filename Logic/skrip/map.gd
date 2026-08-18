@@ -243,7 +243,6 @@ func compress_upgrades(old_tipe: int, new_tipe: int):
 	if not ui or not ui.get("upgrade_database"): return
 	
 	var db = ui.upgrade_database
-	# Load database default (murni) untuk mendapatkan base_price asli
 	var pristine_db = ResourceLoader.load(db.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as UpgradeDatabase
 	
 	var div = get_area_multiplier(new_tipe) / get_area_multiplier(old_tipe)
@@ -253,18 +252,14 @@ func compress_upgrades(old_tipe: int, new_tipe: int):
 		var up = db.upgrades[i]
 		if not up: continue
 		if up.upgrade_name == "Jumlah Sawit" or up.upgrade_name == "Pohon Sawit" or up.upgrade_name == "Rekrut":
+			var harga_lama = up.price          # <- simpan harga NYATA sebelum apapun diubah
 			var old_level = up.current_level
-			up.current_level = int(old_level / div)
 			
-			var base_price = pristine_db.upgrades[i].price
-			# Hitung ulang harga sesuai level baru
-			up.price = base_price * pow(up.price_multiplier, up.current_level)
-			# Lipat gandakan efek dari base asli sesuai multiplier tier baru
+			up.current_level = int(old_level / div)
+			up.price = ceil(harga_lama * div)  # <- turunan dari harga real, bukan rekonstruksi rumus
 			up.effect_value = pristine_db.upgrades[i].effect_value * get_area_multiplier(new_tipe)
 	
-	# Simpan perubahan ini ke file save
 	SaveManager.save_upgrades(db)
-	# Update point stats
 	Point.recalculate_stats(db.upgrades)
 
 func get_kapasitas_wilayah(poly: Polygon2D) -> int:

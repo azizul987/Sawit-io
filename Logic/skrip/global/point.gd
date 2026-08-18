@@ -106,7 +106,7 @@ func _input(event: InputEvent) -> void:
 	if Debug.is_active():
 		if event.is_action_pressed("add_coin"):
 			# Gunakan penulisan .0 atau e supaya dibaca float. Jika tidak, akan dianggap Integer 64-bit yang limitnya cuma 9.22e18 dan otomatis minus (overflow)
-			Point.add_point(1e120) 
+			Point.add_point(1e240) 
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
 
