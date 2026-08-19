@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		simpan_posisi_camera()
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if Point.is_skill_tree_open:
 		is_dragging = false
 		return
