@@ -254,7 +254,6 @@ offset_right = -149.0
 offset_bottom = -253.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
 theme_override_fonts/font = ExtResource("2_lr6hm")
 theme_override_font_sizes/font_size = 40
 text = "100"
