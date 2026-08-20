@@ -41,6 +41,10 @@ folder_colors={
 "res://Logic/Data Templete/Data/ress/wilayah/": "red"
 }
 
+[global_group]
+
+hint_display=""
+
 [gui]
 
 theme/custom="uid://byolg75vm57py"

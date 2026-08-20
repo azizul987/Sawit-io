@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4pvsgxfo61ay" path="res://Ui/skill_tree_ui.gd" id="1_621cv"]
 [ext_resource type="PackedScene" uid="uid://dyxdkyunbknd3" path="res://Ui/skill_tree.tscn" id="1_dqm5e"]
+[ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="4_4puff"]
 [ext_resource type="Texture2D" uid="uid://7pvf00ca8mpf" path="res://Asset/close.png" id="4_dwmuj"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 
@@ -94,6 +95,7 @@ offset_right = 103.0
 offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = ExtResource("4_4puff")
 text = "Rebirth"
 
 [node name="Deskripsi_Skill_Perlevel" type="Label" parent="CanvasLayer" unique_id=725906494]
