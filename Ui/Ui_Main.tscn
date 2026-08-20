@@ -6,8 +6,11 @@
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
+[ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="9_4a1h5"]
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
+[ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="11_8awwg"]
+[ext_resource type="Resource" uid="uid://bb5unjgwar24h" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="12_iim0d"]
 [ext_resource type="PackedScene" uid="uid://j6sn5v1jemgv" path="res://Ui/help_panel.tscn" id="help_panel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbkow"]
@@ -24,19 +27,6 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
-bg_color = Color(0.02745098, 0.09411765, 0.12941177, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8784314, 0.972549, 0.8117647, 1)
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8awwg"]
 bg_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
 
 [node name="UiMain" type="Control" unique_id=1805602719]
@@ -60,15 +50,6 @@ offset_right = 172.0
 offset_bottom = 185.0
 mouse_filter = 2
 
-[node name="Change _Mode" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 17.0
-offset_right = 126.63635
-offset_bottom = 120.63635
-texture_normal = ExtResource("2_wbkow")
-stretch_mode = 0
-
 [node name="BtnHelp" type="Button" parent="CanvasLayer" unique_id=777100001]
 offset_left = 726.0
 offset_top = 42.0
@@ -77,6 +58,14 @@ offset_bottom = 67.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wbkow")
 text = "?"
+
+[node name="Change _Mode" type="TextureButton" parent="CanvasLayer" unique_id=671338521]
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 126.63635
+offset_bottom = 120.63635
+texture_normal = ExtResource("2_wbkow")
+stretch_mode = 0
 
 [node name="HelpPanel" parent="CanvasLayer" unique_id=969403741 instance=ExtResource("help_panel")]
 visible = false
@@ -93,7 +82,6 @@ offset_left = 31.0
 offset_top = 119.0
 offset_right = 106.0
 offset_bottom = 141.0
-theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
 theme_override_font_sizes/font_size = 25
 text = "Skill"
 
@@ -102,7 +90,6 @@ offset_left = 121.0
 offset_top = 13.0
 offset_right = 146.0
 offset_bottom = 51.0
-theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
 theme_override_font_sizes/font_size = 42
 text = "0"
 horizontal_alignment = 1
@@ -204,7 +191,7 @@ grow_vertical = 2
 
 [node name="Desc" type="PanelContainer" parent="CenterContainer" unique_id=415056165]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4a1h5")
+theme_override_styles/panel = ExtResource("9_4a1h5")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Desc" unique_id=327196860]
 layout_mode = 2
@@ -288,8 +275,10 @@ offset_bottom = 274.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_wbkow")
-theme_override_styles/background = SubResource("StyleBoxFlat_8awwg")
+theme_override_styles/background = SubResource("StyleBoxFlat_4a1h5")
 show_percentage = false
+script = ExtResource("11_8awwg")
+mision = ExtResource("12_iim0d")
 
-[connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Change _Mode" to="." method="_on_texture_button_pressed"]

@@ -1,7 +1,7 @@
 extends Control
 
-@onready var progress_bar: ProgressBar = $ProgressBar
-@onready var label: Label = $Label
+@onready var progress_bar: ProgressBar = $"."
+@onready var label: Label = 	$"../Label"
 var misi_database=preload("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
 @export var mision:MissionDatabase
 
