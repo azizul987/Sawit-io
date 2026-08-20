@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="sawit io"
+config/name="Pocong Sawit"
+config/description="i want to take all that island"
+config/version="0.1.0"
 run/main_scene="uid://c8jqomxx4ldm0"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+boot_splash/stretch_mode=0
+boot_splash/use_filter=false
+boot_splash/image="uid://bk0cltjco0g5i"
+config/icon="uid://crb2dgdh0kjr5"
 
 [autoload]
 

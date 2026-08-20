@@ -2,23 +2,42 @@
 
 [ext_resource type="Script" uid="uid://blbpjm0f72dxi" path="res://Ui/label.gd" id="1_vcfie"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="2_lr6hm"]
-[ext_resource type="Texture2D" uid="uid://cj5pek6qteonq" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons46.png" id="3_k7e2i"]
-[ext_resource type="Texture2D" uid="uid://ka5qstdt47mc" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons47.png" id="4_6dpwe"]
+[ext_resource type="Texture2D" uid="uid://nnidytp7fikl" path="res://Asset/BuahSawitEmas.png" id="2_wbkow"]
 [ext_resource type="Script" uid="uid://cnueueyqy02aq" path="res://Ui/update_menu.gd" id="6_wbkow"]
 [ext_resource type="PackedScene" uid="uid://yafkb03mfrdh" path="res://Logic/object_For_skrip/updatebtn.tscn" id="7_raqhj"]
 [ext_resource type="Resource" uid="uid://dg02w7l0srhat" path="res://Logic/Data Templete/Data/ress/updatedatabase.tres" id="7_wbkow"]
-[ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="9_4a1h5"]
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
-[ext_resource type="Resource" uid="uid://bb5unjgwar24h" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="10_8awwg"]
 [ext_resource type="PackedScene" uid="uid://j6sn5v1jemgv" path="res://Ui/help_panel.tscn" id="help_panel"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
-bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbkow"]
+bg_color = Color(0.02745098, 0.09411765, 0.12941177, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8784314, 0.972549, 0.8117647, 1)
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1h5"]
+bg_color = Color(0.02745098, 0.09411765, 0.12941177, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8784314, 0.972549, 0.8117647, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8awwg"]
+bg_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
 
 [node name="UiMain" type="Control" unique_id=1805602719]
 layout_mode = 3
@@ -37,53 +56,26 @@ script = ExtResource("1_vcfie")
 [node name="SkillTree" type="Control" parent="CanvasLayer" unique_id=1328300958]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 172.0
+offset_bottom = 185.0
 mouse_filter = 2
 
 [node name="Change _Mode" type="TextureButton" parent="CanvasLayer/SkillTree" unique_id=671338521]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 23.0
-offset_right = 128.63635
-offset_bottom = 126.63635
-texture_normal = ExtResource("3_k7e2i")
-texture_pressed = ExtResource("4_6dpwe")
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 126.63635
+offset_bottom = 120.63635
+texture_normal = ExtResource("2_wbkow")
 stretch_mode = 0
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=2053636521]
-layout_mode = 3
-anchor_right = 0.6857639
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Point" type="Label" parent="CanvasLayer/Control" unique_id=1156495602]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -288.5
-offset_right = 36.0
-offset_bottom = -253.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_lr6hm")
-theme_override_font_sizes/font_size = 40
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="BtnHelp" type="Button" parent="CanvasLayer" unique_id=777100001]
-offset_left = 25.0
-offset_top = 140.0
-offset_right = 75.0
-offset_bottom = 165.0
+offset_left = 726.0
+offset_top = 42.0
+offset_right = 776.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wbkow")
 text = "?"
 
 [node name="HelpPanel" parent="CanvasLayer" unique_id=969403741 instance=ExtResource("help_panel")]
@@ -95,6 +87,26 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1276037154]
+offset_left = 31.0
+offset_top = 119.0
+offset_right = 106.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
+theme_override_font_sizes/font_size = 25
+text = "Skill"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1713695764]
+offset_left = 121.0
+offset_top = 13.0
+offset_right = 146.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
+theme_override_font_sizes/font_size = 42
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
@@ -204,6 +216,7 @@ theme_override_constants/margin_bottom = 12
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Desc/MarginContainer" unique_id=1029098873]
 custom_minimum_size = Vector2(316, 0)
 layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_lr6hm")
 theme_override_fonts/bold_font = ExtResource("2_lr6hm")
 bbcode_enabled = true
@@ -213,62 +226,70 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mision_menu" type="Control" parent="." unique_id=438853371]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 214.0
-offset_bottom = 325.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("9_4a1h5")
-mision = ExtResource("10_8awwg")
+[node name="pps_label" type="Label" parent="." unique_id=1506495359]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 77.0
+offset_right = 414.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(1, 0.9019608, 0.4, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="mision_menu" unique_id=1605818782]
+[node name="Label" type="Label" parent="." unique_id=622296759]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -304.0
-offset_top = 264.0
-offset_right = 304.0
-offset_bottom = 274.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_wbkow")
-show_percentage = false
-
-[node name="Label" type="Label" parent="mision_menu" unique_id=622296759]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.0
-offset_top = 236.5
-offset_right = 115.0
-offset_bottom = 259.5
+offset_left = -296.0
+offset_top = 237.0
+offset_right = -66.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Kumpulkan uang:0/100000 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pps_label" type="Label" parent="." unique_id=1506495359]
-layout_mode = 0
-offset_left = 721.0
-offset_top = 41.0
-offset_right = 761.0
-offset_bottom = 56.0
+[node name="Point" type="Label" parent="." unique_id=1156495602]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -288.0
+offset_right = -149.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
+theme_override_fonts/font = ExtResource("2_lr6hm")
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1605818782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = 264.5
+offset_right = 123.0
+offset_bottom = 274.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_wbkow")
+theme_override_styles/background = SubResource("StyleBoxFlat_8awwg")
+show_percentage = false
 
 [connection signal="pressed" from="CanvasLayer/SkillTree/Change _Mode" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
