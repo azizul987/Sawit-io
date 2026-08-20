@@ -54,7 +54,7 @@ func buat_button_wilayah(wilayah: Node) -> void:
 	if data.tipe_wilayah != Point.tipe_wilayah_terbuka:
 		if data.tipe_wilayah == 0 and Point.tipe_wilayah_terbuka !=0:
 			polygon.color=Color(0.0, 0.0, 0.0, 1)
-			
+		return
 		
 	var button := btn_templete.instantiate() as Button
 	wilayah.add_child(button)
