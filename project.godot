@@ -29,10 +29,16 @@ Debug="*uid://ckwrku1l76rkv"
 SaveManager="*uid://dbxybk6q0cit3"
 AudioManager="*res://Logic/skrip/global/AudioManager.gd"
 HintManager="*res://Logic/skrip/global/HintManager.gd"
+sp="*uid://cxmb1j6o5lray"
+gd="*uid://2juixsd1cldy"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
 
 [file_customization]
 

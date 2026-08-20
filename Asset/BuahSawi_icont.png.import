@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mtrovqbh3pb6"
-path="res://.godot/imported/splash_screen_icon.png-964cab2fa98769b5dc235cbd1b404d5d.ctex"
+uid="uid://c77b3rovxldjp"
+path="res://.godot/imported/BuahSawi_icont.png-19278e0265ec2e006204a557ddcedc06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addon/awesome_splash/assets/icon/splash_screen_icon.png"
-dest_files=["res://.godot/imported/splash_screen_icon.png-964cab2fa98769b5dc235cbd1b404d5d.ctex"]
+source_file="res://Asset/BuahSawi_icont.png"
+dest_files=["res://.godot/imported/BuahSawi_icont.png-19278e0265ec2e006204a557ddcedc06.ctex"]
 
 [params]
 

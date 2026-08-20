@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck8cswltm5nwy"
-path="res://.godot/imported/text_node_icon.png-c9ecffaea37ee8c79c93f4d6dfd82f03.ctex"
+uid="uid://b8axhtw3htuyw"
+path="res://.godot/imported/icon_color.png-3995e19df103a3a06b4461273a1c9ba1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addon/awesome_splash/assets/icon/text_node_icon.png"
-dest_files=["res://.godot/imported/text_node_icon.png-c9ecffaea37ee8c79c93f4d6dfd82f03.ctex"]
+source_file="res://src/demo_collection/slide/icon_color.png"
+dest_files=["res://.godot/imported/icon_color.png-3995e19df103a3a06b4461273a1c9ba1.ctex"]
 
 [params]
 

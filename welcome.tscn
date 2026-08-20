@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://k43i8v8drvo8"]
+
+[ext_resource type="Script" uid="uid://ca5gh6nv811en" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_odedu"]
+[ext_resource type="PackedScene" uid="uid://c8jqomxx4ldm0" path="res://Scene/MainMenui.tscn" id="2_f0t8f"]
+[ext_resource type="PackedScene" uid="uid://bwa14s3vjfgng" path="res://src/demo_collection/circle_jump_01/splash_screen.tscn" id="4_f0t8f"]
+
+[node name="SplashContainer" type="Node2D" unique_id=652664969]
+script = ExtResource("1_odedu")
+custom_node/type = 0
+custom_node/default_time = 1.0
+skip/type = 0
+move_to_scene = ExtResource("2_f0t8f")
+transition_time = 1.0
+fade_color = Color(1, 1, 1, 1)
+
+[node name="SplashCircleJump01" parent="." unique_id=646834745 instance=ExtResource("4_f0t8f")]
+texture_filter = 1
+logo_path = "uid://c77b3rovxldjp"
+title = "Pocong Sawit"
+description = "Infokan Pulau"
