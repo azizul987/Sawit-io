@@ -17,6 +17,28 @@ texture = ExtResource("2_3r8ox")
 base_font = ExtResource("1_k3gr3")
 spacing_space = -15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vxnv"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16427457, 0.006422519, 0.014960911, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27w4a"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16427457, 0.006422519, 0.014960911, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="Animation" id="Animation_k3gr3"]
 length = 0.93333334
 tracks/0/type = "value"
@@ -264,7 +286,6 @@ alignment = 1
 
 [node name="SaveSlot" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1419727540 instance=ExtResource("5_y1wp1")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("10_27w4a")
 
 [node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1660065971]
 custom_minimum_size = Vector2(336.145, 31)
@@ -292,10 +313,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5vxnv")
 text = "Kembali"
 
 [node name="Menu_Awal" type="Control" parent="CanvasLayer" unique_id=370296056]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 8
@@ -347,6 +368,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27w4a")
 text = "Keluar"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1539513862]
@@ -445,7 +467,6 @@ value = 1.0
 [node name="DeleteSaveBtn" type="Button" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=764926146]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("5_43fsk")

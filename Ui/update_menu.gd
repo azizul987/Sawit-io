@@ -10,7 +10,6 @@ extends Control
 @onready var desc_panel: PanelContainer = $"../CenterContainer/Desc"
 @onready var desc_label: RichTextLabel = $"../CenterContainer/Desc/MarginContainer/RichTextLabel"
 
-@onready var hint_text : Label=$"../Hint"
 func _ready() -> void:
 	add_to_group("upgrade_ui")
 	if desc_panel:

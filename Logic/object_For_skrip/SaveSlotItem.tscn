@@ -9,6 +9,17 @@
 
 [sub_resource type="Theme" id="Theme_q5v11"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtimm"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16427457, 0.006422519, 0.014960911, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtimm"]
 atlas = ExtResource("5_8adp4")
 region = Rect2(0, 0, 32, 32)
@@ -62,6 +73,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6whm3")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("3_q5v11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dtimm")
 text = "Delete"
 
 [node name="Load" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=1075046711]

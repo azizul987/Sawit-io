@@ -40,7 +40,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_vcfie")
-hint_skill_tree_open = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=318238762]
 
@@ -281,13 +280,36 @@ show_percentage = false
 script = ExtResource("11_8awwg")
 mision = ExtResource("12_iim0d")
 
-[node name="Hint" type="Label" parent="." unique_id=826872695 groups=["hint_display"]]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 262.0
-offset_top = 511.0
-offset_right = 510.0
-offset_bottom = 557.0
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1268914766]
+layer = 2
+
+[node name="Desc" type="PanelContainer" parent="CanvasLayer2" unique_id=874342891 groups=["hint_display"]]
+visible = false
+offset_left = 20.0
+offset_top = 470.0
+offset_right = 49.0
+offset_bottom = 513.0
+theme_override_styles/panel = ExtResource("9_4a1h5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Desc" unique_id=657535321]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/Desc/MarginContainer" unique_id=1906313430]
+custom_minimum_size = Vector2(316, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_lr6hm")
+theme_override_fonts/bold_font = ExtResource("2_lr6hm")
+bbcode_enabled = true
+text = "`"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Change _Mode" to="." method="_on_texture_button_pressed"]

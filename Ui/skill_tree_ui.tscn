@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_621cv")
+hint_rebirth_ready = null
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1286608618]
 layout_mode = 1
