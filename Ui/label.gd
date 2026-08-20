@@ -4,8 +4,9 @@ extends Control
 @onready var skillshow=$"CanvasLayer/Change _Mode"
 @onready var help_panel = $CanvasLayer/HelpPanel
 # Called when the node enters the scene tree for the first time.
-@onready var pps_label: Label = $pps_label
+@onready var pps_label: Label = %pps_label
 
+@onready var rebirth_point: Label = %"rebirth point"
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -14,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	skor.text=Point.format_num(Point.point)
 	pps_label.text = Point.format_num(Point.points_per_second) + "/dtk"
-	
+	rebirth_point.text=Point.format_num(Point.rebirth_point)
 
 func print_scene_name() -> void:
 	if not is_inside_tree():
