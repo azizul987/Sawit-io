@@ -23,7 +23,10 @@ func _ready() -> void:
 	var map = get_tree().current_scene.get_node_or_null("map")
 	if map:
 		if map.has_method("get_current_max_capacity") and map.has_method("get_current_max_capacity_buruh"):
-			_on_max_capacity_changed_multi(map.get_current_max_capacity(), map.get_current_max_capacity_buruh(),50)
+			var total_bonus = 0
+			if map.has_method("get_total_bonus_upgrade"):
+				total_bonus = map.get_total_bonus_upgrade()
+			_on_max_capacity_changed_multi(map.get_current_max_capacity(), map.get_current_max_capacity_buruh(), total_bonus)
 			
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
@@ -185,8 +188,9 @@ func _on_max_capacity_changed_multi(
 		elif u.upgrade_name=="Tingkat: Provinsi" or u.upgrade_name=="Tingkat: Kabupaten":
 			continue
 		else:
-			
-			u.max_level += bonus_upgrade
+			if u.base_max_level < 0:
+				u.base_max_level = u.max_level
+			u.max_level = u.base_max_level + bonus_upgrade
 
 
 	generate_upgrade_buttons()

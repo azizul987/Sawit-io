@@ -7,5 +7,5 @@ script = ExtResource("1_hxgrw")
 id_wilayah = &"2"
 nama_wilayah = "Wilayah_2"
 tipe_wilayah = 2
-harga = 100
+harga = 100000
 metadata/_custom_type_script = "uid://b231hp4nl4apw"

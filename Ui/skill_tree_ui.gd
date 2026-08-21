@@ -26,8 +26,6 @@ func _ready() -> void:
 		deskripsi_skill_perlevel.text = ""
 	)
 
-
-
 func eksekusi_rebirth() -> void:
 	# Kunci semua level skill yang sudah dialokasikan jadi permanen
 	if _skill_canvas and _skill_canvas.skill_database:

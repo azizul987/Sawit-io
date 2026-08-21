@@ -12,10 +12,10 @@ target_value = 20000.0
 
 [sub_resource type="Resource" id="Resource_m2"]
 script = ExtResource("1_missi")
-id = "upgrade_sawit_5"
+id = "kumpul_50K_poin"
 mission_name = "Kebun Lebih Luas"
-description = "Tingkatkan Jumlah Sawit hingga level 5."
-target_value = 20.0
+description = "Kumpulkan total 50.000 poin."
+target_value = 50000.0
 
 [sub_resource type="Resource" id="Resource_svw8c"]
 script = ExtResource("1_missi")

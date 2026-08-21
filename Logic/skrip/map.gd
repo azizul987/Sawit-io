@@ -217,7 +217,7 @@ func update_max_capacity_by_area() -> void:
 	"_on_max_capacity_changed_multi",
 	max_cap,
 	max_cap_buruh,
-	50
+	get_total_bonus_upgrade()	
 )
 
 	
@@ -430,3 +430,10 @@ func spawn_buruh(silent: bool = false):
 	var cam := get_viewport().get_camera_2d()
 	if not silent and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
+		
+func get_total_bonus_upgrade() -> int:
+	var total_bonus = 0
+	for w in daftar_wilayah:
+		if w.data and w.data.terbuka_default:
+			total_bonus += 50 # Misalnya tiap wilayah menambah max level 50
+	return total_bonus

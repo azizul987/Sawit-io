@@ -26,6 +26,7 @@ enum EffectType {
 @export_category("Level")
 @export var current_level: int = 0
 @export var max_level: int = 10
+@export var base_max_level: int = -1
 
 @export_category("Requirement")
 @export var required_upgrade: UpgradeData
