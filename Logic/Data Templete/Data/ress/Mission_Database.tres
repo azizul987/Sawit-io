@@ -5,10 +5,10 @@
 
 [sub_resource type="Resource" id="Resource_m1"]
 script = ExtResource("1_missi")
-id = "kumpul_1M_poin"
+id = "kumpul_20K_poin"
 mission_name = "1"
-description = "Kumpulkan total 1.000 poin."
-target_value = 10.0
+description = "Kumpulkan total 20.000 poin."
+target_value = 20000.0
 
 [sub_resource type="Resource" id="Resource_m2"]
 script = ExtResource("1_missi")

@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://j6sn5v1jemgv"]
 
 [ext_resource type="Script" uid="uid://b38plidlqqo4e" path="res://Ui/help_panel.gd" id="1_help"]
-[ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="2_8003a"]
 [ext_resource type="Texture2D" uid="uid://7pvf00ca8mpf" path="res://Asset/close.png" id="4_ojius"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aodl"]
+bg_color = Color(0.02745098, 0.09411765, 0.12941177, 0.827451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8784314, 0.972549, 0.8117647, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="HelpPanel" type="Control" unique_id=813547591]
 layout_mode = 3
@@ -35,7 +47,7 @@ offset_right = 200.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("2_8003a")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2aodl")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=484408580]
 layout_mode = 2

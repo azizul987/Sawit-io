@@ -4,9 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://dyxdkyunbknd3" path="res://Ui/skill_tree.tscn" id="1_dqm5e"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="4_4puff"]
 [ext_resource type="Texture2D" uid="uid://7pvf00ca8mpf" path="res://Asset/close.png" id="4_dwmuj"]
-[ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="5_wgsdx"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="6_owclc"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c7mi"]
+bg_color = Color(0.02745098, 0.09411765, 0.12941177, 0.827451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8784314, 0.972549, 0.8117647, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="SkillTreeUi" type="Control" unique_id=1429291990]
 layout_mode = 3
@@ -120,7 +132,7 @@ offset_right = 180.0
 offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("5_wgsdx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c7mi")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/KonfirmasiPanel" unique_id=979755881]
 layout_mode = 2
