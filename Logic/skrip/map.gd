@@ -212,7 +212,13 @@ func update_max_capacity_by_area() -> void:
 	for u in SaveManager.read_save_data().get("upgrades", []):
 		pass
 	
-	get_tree().call_group("upgrade_ui", "_on_max_capacity_changed_multi", max_cap, max_cap_buruh)
+	get_tree().call_group(
+	"upgrade_ui",
+	"_on_max_capacity_changed_multi",
+	max_cap,
+	max_cap_buruh,
+	50
+)
 
 	
 var _recent_spawned_positions: Array[Vector2] = []

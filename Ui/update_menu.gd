@@ -23,7 +23,7 @@ func _ready() -> void:
 	var map = get_tree().current_scene.get_node_or_null("map")
 	if map:
 		if map.has_method("get_current_max_capacity") and map.has_method("get_current_max_capacity_buruh"):
-			_on_max_capacity_changed_multi(map.get_current_max_capacity(), map.get_current_max_capacity_buruh())
+			_on_max_capacity_changed_multi(map.get_current_max_capacity(), map.get_current_max_capacity_buruh(),50)
 			
 	if upgrade_database and map:
 		for u in upgrade_database.upgrades:
@@ -164,14 +164,29 @@ func _on_purchase_requested(
 
 	SaveManager.save_game()
 
-func _on_max_capacity_changed_multi(max_pohon: int, max_buruh: int) -> void:
-	if upgrade_database == null: return
+func _on_max_capacity_changed_multi(
+	max_pohon:int,
+	max_buruh:int,
+	bonus_upgrade:int
+) -> void:
+
+	if upgrade_database == null:
+		return
+
 	for u in upgrade_database.upgrades:
-		if u:
-			if u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit":
-				u.max_level = max_pohon
-			elif u.upgrade_name == "Rekrut":
-				u.max_level = max_buruh
-	
-	# Reload display buttons to reflect new max level
+		if u == null:
+			continue
+
+		if u.upgrade_name == "Jumlah Sawit" or u.upgrade_name == "Pohon Sawit":
+			u.max_level = max_pohon
+
+		elif u.upgrade_name == "Rekrut":
+			u.max_level = max_buruh
+		elif u.upgrade_name=="Tingkat: Provinsi" or u.upgrade_name=="Tingkat: Kabupaten":
+			continue
+		else:
+			
+			u.max_level += bonus_upgrade
+
+
 	generate_upgrade_buttons()
