@@ -226,6 +226,8 @@ func _on_confirm_hapus():
 			
 		SaveManager.delete_slot(slot_num)
 		_refresh_slots()
+	_on_settings_kembali_pressed()
+		
 
 func _on_kembali_pressed() -> void:
 	_animate_button_click(kembali_button)
