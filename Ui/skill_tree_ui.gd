@@ -64,7 +64,7 @@ func _ada_skill_teralokasi() -> bool:
 	if _skill_canvas == null or _skill_canvas.skill_database == null:
 		return false
 	for sk in _skill_canvas.skill_database.skills:
-		if sk != null and sk.level > 0:
+		if sk != null and sk.level > sk.locked_level:
 			return true
 	return false
 
