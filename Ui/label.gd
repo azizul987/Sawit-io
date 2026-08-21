@@ -1,7 +1,7 @@
 extends Control
 
 @onready var  skor=%Point
-@onready var skillshow=$"CanvasLayer/Change _Mode"
+@onready var skillshow=$CanvasLayer/Skill_Buttun
 @onready var help_panel = $CanvasLayer/HelpPanel
 # Called when the node enters the scene tree for the first time.
 @onready var pps_label: Label = %pps_label

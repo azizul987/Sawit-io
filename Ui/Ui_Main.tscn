@@ -59,13 +59,43 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wbkow")
 text = "?"
 
-[node name="Change _Mode" type="TextureButton" parent="CanvasLayer" unique_id=671338521]
-offset_left = 23.0
+[node name="Skill_Buttun" type="Control" parent="CanvasLayer" unique_id=780988443]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_right = 165.0
+offset_bottom = 156.0
+mouse_filter = 2
+
+[node name="Change _Mode" type="TextureButton" parent="CanvasLayer/Skill_Buttun" unique_id=671338521]
+layout_mode = 0
+offset_left = 21.0
 offset_top = 17.0
-offset_right = 126.63635
+offset_right = 124.63635
 offset_bottom = 120.63635
 texture_normal = ExtResource("2_wbkow")
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Skill_Buttun" unique_id=1276037154]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 119.0
+offset_right = 104.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 25
+text = "Skill"
+
+[node name="rebirth point" type="Label" parent="CanvasLayer/Skill_Buttun" unique_id=1713695764]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 119.0
+offset_top = 13.0
+offset_right = 147.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 23
+text = "93"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pps_label" type="Label" parent="CanvasLayer" unique_id=1506495359]
 unique_name_in_owner = true
@@ -105,25 +135,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1276037154]
-offset_left = 31.0
-offset_top = 119.0
-offset_right = 106.0
-offset_bottom = 141.0
-theme_override_font_sizes/font_size = 25
-text = "Skill"
-
-[node name="rebirth point" type="Label" parent="CanvasLayer" unique_id=1713695764]
-unique_name_in_owner = true
-offset_left = 121.0
-offset_top = 13.0
-offset_right = 146.0
-offset_bottom = 51.0
-theme_override_font_sizes/font_size = 23
-text = "93"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="UpdateMenu" type="Control" parent="." unique_id=1103348269]
 layout_mode = 1
@@ -311,4 +322,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Change _Mode" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Skill_Buttun/Change _Mode" to="." method="_on_texture_button_pressed"]
