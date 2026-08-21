@@ -35,6 +35,7 @@ y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [2677.7537]
 
 [node name="map" type="Node2D" parent="." unique_id=539465666]
+position = Vector2(-6, 6)
 scale = Vector2(30, 30)
 script = ExtResource("1_75buv")
 
