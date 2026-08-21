@@ -28,6 +28,8 @@ const SAVE_SLOT_SCENE = preload("res://Logic/object_For_skrip/SaveSlotItem.tscn"
 @onready var confirm_hapus_btn: Button = $CanvasLayer/ConfirmationMenu/VBoxContainer/HBoxContainer/YaHapusBtn
 @onready var confirm_label: Label = $CanvasLayer/ConfirmationMenu/VBoxContainer/ConfirmLabel
 
+@onready var empty_hint: Label = $CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer/EmptyHint
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if confirm_menu.visible:
@@ -127,7 +129,7 @@ func _on_keluar_pressed() -> void:
 
 func _refresh_slots(animated_slot: int = -1) -> void:
 	for child in slot_container.get_children():
-		if child == add_button:
+		if child == add_button or child == empty_hint:
 			continue
 
 		slot_container.remove_child(child)
@@ -135,7 +137,9 @@ func _refresh_slots(animated_slot: int = -1) -> void:
 
 	for slot_num in SaveManager.get_all_used_slots():
 		_create_slot_ui(slot_num, slot_num == animated_slot)
-
+	
+	empty_hint.visible = SaveManager.get_all_used_slots().is_empty()
+	
 	# Pindahkan tombol Add ke posisi paling bawah.
 	slot_container.move_child(
 		add_button,
@@ -207,6 +211,7 @@ func _on_confirm_hapus():
 		SaveManager.delete_all_saves()
 		_refresh_slots()
 		_hide_confirm_menu()
+		_on_settings_kembali_pressed()
 	elif mode == ConfirmMode.DELETE_SLOT:
 		var slot_num = pending_slot_delete
 		var slot_ui = pending_slot_ui
@@ -226,7 +231,6 @@ func _on_confirm_hapus():
 			
 		SaveManager.delete_slot(slot_num)
 		_refresh_slots()
-	_on_settings_kembali_pressed()
 		
 
 func _on_kembali_pressed() -> void:

@@ -7,7 +7,6 @@
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
 [ext_resource type="Texture2D" uid="uid://c77b3rovxldjp" path="res://Asset/BuahSawi_icont.png" id="5_ds8l8"]
-[ext_resource type="PackedScene" uid="uid://ixfjwv7jcibd" path="res://Logic/object_For_skrip/SaveSlotItem.tscn" id="5_y1wp1"]
 [ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="10_27w4a"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="11_nmxhb"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="12_2kd5r"]
@@ -238,7 +237,6 @@ scale = Vector2(2.459525, 2.459525)
 texture = ExtResource("5_ds8l8")
 
 [node name="SaveMenu" type="Control" parent="CanvasLayer" unique_id=857662195]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -293,8 +291,13 @@ size_flags_vertical = 3
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="SaveSlot" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1419727540 instance=ExtResource("5_y1wp1")]
+[node name="EmptyHint" type="Label" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1056546836]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+text = "Slotnya Kosong Wok, Pencet tombol dibawah biar ada slot baru dan jangan lupa beli dan klik klik sawitnya"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Add" type="Button" parent="CanvasLayer/SaveMenu/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1660065971]
 custom_minimum_size = Vector2(336.145, 31)
@@ -381,6 +384,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_27w4a")
 text = "Keluar"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1539513862]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
