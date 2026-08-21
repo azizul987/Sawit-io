@@ -4,6 +4,8 @@ extends Control
 @onready var label: Label = 	$"../Label"
 var misi_database=preload("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
 var upgrade_database = preload("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
+var confetti_scene = preload("res://Ui/EffectConfetti.tscn")
+
 @export var mision:MissionDatabase
 
 func _ready() -> void:
@@ -31,6 +33,7 @@ func get_current_progress(misi: Mission) -> float:
 func update_ui(_add_poin: int):
 	var Mision_Type = misi_database.get_mision(Point.idx_mision_now)
 	if mision_comparator(Mision_Type) && !is_max():
+		spawn_confetti()
 		Point.idx_mision_now += 1
 		Point.rebirth_point += Mision_Type.reward_rebirth_point
 		progress_bar.max_value = mision.get_mision(Point.idx_mision_now).target_value
@@ -59,3 +62,10 @@ func update_label(misi: Mission):
 
 func is_max():
 	return Point.idx_mision_now >= len(misi_database.missions)
+
+func spawn_confetti():
+	var particles = confetti_scene.instantiate()
+	
+	# Posisikan ledakan di tengah-tengah layar agar lebih heboh dan memenuhi layar
+	particles.position = get_viewport_rect().size / 2
+	add_child(particles)

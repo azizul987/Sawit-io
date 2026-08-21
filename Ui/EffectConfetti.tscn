@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://be5eixv83v150"]
+
+[ext_resource type="Texture2D" uid="uid://m3sd1ehe7nf1" path="res://Asset/ssawit tunggal1.png" id="1_tex"]
+
+[sub_resource type="GDScript" id="GDScript_auto_free"]
+script/source = "extends CPUParticles2D
+
+func _ready() -> void:
+	emitting = true
+	finished.connect(queue_free)
+"
+
+[node name="EffectConfetti" type="CPUParticles2D" unique_id=1017543286]
+emitting = false
+amount = 50
+texture = ExtResource("1_tex")
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.95
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 800)
+initial_velocity_min = 400.0
+initial_velocity_max = 1200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_max = 2.5
+script = SubResource("GDScript_auto_free")

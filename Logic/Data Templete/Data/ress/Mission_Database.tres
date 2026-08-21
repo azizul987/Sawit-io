@@ -9,8 +9,6 @@ id = "kumpul_20K_poin"
 mission_name = "Awal Mula"
 description = "Kumpulkan total 20.000 poin. Panen pertamamu dimulai dari sini."
 reward_rebirth_point = 2
-requirement_type = 0
-target_upgrade_name = ""
 target_value = 20000.0
 
 [sub_resource type="Resource" id="Resource_m2"]
@@ -40,7 +38,6 @@ mission_name = "Ekspansi Bisnis"
 description = "Buka wilayah baru hingga kamu memiliki 2 wilayah terbuka."
 reward_rebirth_point = 15
 requirement_type = 2
-target_upgrade_name = ""
 target_value = 2.0
 
 [sub_resource type="Resource" id="Resource_m5"]
