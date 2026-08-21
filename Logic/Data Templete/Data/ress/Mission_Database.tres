@@ -5,33 +5,43 @@
 
 [sub_resource type="Resource" id="Resource_m1"]
 script = ExtResource("1_missi")
-id = "kumpul_1K_poin"
+id = "kumpul_20K_poin"
 mission_name = "Awal Mula"
-description = "Kumpulkan total 1.000 poin. Panen pertamamu dimulai dari sini."
+description = "Kumpulkan total 20.000 poin. Panen pertamamu dimulai dari sini."
+reward_rebirth_point = 2
+requirement_type = 0
+target_upgrade_name = ""
+target_value = 20000.0
 
 [sub_resource type="Resource" id="Resource_m2"]
 script = ExtResource("1_missi")
-id = "kumpul_5K_poin"
-mission_name = "Bibit Pertama"
-description = "Kumpulkan total 5.000 poin dari hasil kebun sawitmu."
-reward_rebirth_point = 2
-target_value = 5000.0
+id = "rekrut_20"
+mission_name = "Mandor Andalan"
+description = "Tingkatkan level 'Rekrut' hingga 20 untuk otomatisasi panen yang lebih kencang."
+reward_rebirth_point = 5
+requirement_type = 1
+target_upgrade_name = "Rekrut"
+target_value = 20.0
 
 [sub_resource type="Resource" id="Resource_m3"]
 script = ExtResource("1_missi")
-id = "kumpul_20K_poin"
-mission_name = "Panen Pertama"
-description = "Kumpulkan total 20.000 poin."
-reward_rebirth_point = 3
-target_value = 20000.0
+id = "sawit_45"
+mission_name = "Hutan Sawit"
+description = "Tingkatkan 'Jumlah Sawit' hingga level 45."
+reward_rebirth_point = 10
+requirement_type = 1
+target_upgrade_name = "Jumlah Sawit"
+target_value = 45.0
 
 [sub_resource type="Resource" id="Resource_m4"]
 script = ExtResource("1_missi")
-id = "kumpul_50K_poin"
-mission_name = "Kebun Lebih Luas"
-description = "Kumpulkan total 50.000 poin."
-reward_rebirth_point = 5
-target_value = 50000.0
+id = "buka_wilayah_2"
+mission_name = "Ekspansi Bisnis"
+description = "Buka wilayah baru hingga kamu memiliki 2 wilayah terbuka."
+reward_rebirth_point = 15
+requirement_type = 2
+target_upgrade_name = ""
+target_value = 2.0
 
 [sub_resource type="Resource" id="Resource_m5"]
 script = ExtResource("1_missi")
