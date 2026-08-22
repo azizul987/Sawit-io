@@ -64,7 +64,7 @@ func update_label(misi: Mission):
 func is_max():
 	return Point.idx_mision_now >= len(misi_database.missions)
 
-func spawn_confetti():
+func spawn_confetti():	
 	var particles = confetti_scene.instantiate()
 	
 	add_child(particles)

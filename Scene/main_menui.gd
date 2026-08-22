@@ -131,13 +131,13 @@ func _refresh_slots(animated_slot: int = -1) -> void:
 	for child in slot_container.get_children():
 		if child == add_button or child == empty_hint:
 			continue
-
 		slot_container.remove_child(child)
 		child.queue_free()
 
 	for slot_num in SaveManager.get_all_used_slots():
 		_create_slot_ui(slot_num, slot_num == animated_slot)
 	
+	add_button.visible = len(SaveManager.get_all_used_slots())<5
 	empty_hint.visible = SaveManager.get_all_used_slots().is_empty()
 	
 	# Pindahkan tombol Add ke posisi paling bawah.
