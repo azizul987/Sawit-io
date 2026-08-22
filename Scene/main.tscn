@@ -20,7 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://cxvneabfihjsg" path="res://Ui/skill_tree_ui.tscn" id="11_7y4ci"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="11_wimqa"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
+[ext_resource type="Shader" uid="uid://8hlmm4owiiy8" path="res://addons/awesome_splash/assets/shader/transition_texture_mask.gdshader" id="28_uctnp"]
+[ext_resource type="Texture2D" uid="uid://bxtwq10etpda1" path="res://src/demo_collection/circle_jump_01/logo.png" id="29_uctnp"]
 [ext_resource type="Resource" uid="uid://d1a2b3c4d5e61" path="res://Logic/Data Templete/Data/ress/wilayah/riau.tres" id="30_riau"]
+[ext_resource type="Script" uid="uid://fkhk8cl34j1w" path="res://Logic/skrip/transition_texture_mask.gd" id="30_yoaul"]
 [ext_resource type="Resource" uid="uid://dbk1ltwbk7q2o" path="res://Logic/Data Templete/Data/ress/wilayah/aceh.tres" id="31_aceh"]
 [ext_resource type="Resource" uid="uid://t6i0ny27kqco" path="res://Logic/Data Templete/Data/ress/wilayah/bengkulu.tres" id="32_bengkulu"]
 [ext_resource type="Resource" uid="uid://df0iacdokym61" path="res://Logic/Data Templete/Data/ress/wilayah/lampung.tres" id="33_lampung"]
@@ -29,6 +32,13 @@
 [ext_resource type="PackedScene" uid="uid://bo64klwetfcw" path="res://Scene/pause.tscn" id="pause_scene"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t372l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mepbf"]
+shader = ExtResource("28_uctnp")
+shader_parameter/mask_texture = ExtResource("29_uctnp")
+shader_parameter/zoom = 1.0
+shader_parameter/strength = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node2D" unique_id=457701414]
 y_sort_enabled = true
@@ -508,3 +518,14 @@ position = Vector2(-17108, -12466)
 
 [node name="Batas Bawah" type="Marker2D" parent="." unique_id=770132660]
 position = Vector2(31911, 19726)
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=407810335]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer4" unique_id=31837495]
+material = SubResource("ShaderMaterial_mepbf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("30_yoaul")

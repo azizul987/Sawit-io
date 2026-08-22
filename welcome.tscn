@@ -15,6 +15,6 @@ fade_color = Color(1, 1, 1, 1)
 
 [node name="SplashCircleJump01" parent="." unique_id=646834745 instance=ExtResource("4_f0t8f")]
 texture_filter = 1
-logo_path = "uid://c77b3rovxldjp"
+logo_path = "uid://bocf2vs5p0gxe"
 title = "Pocong Sawit"
 description = "Infokan Pulau"

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b2lrd72cb72u2" path="res://Scene/main_menui.gd" id="1_0h56x"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_k3gr3"]
+[ext_resource type="Texture2D" uid="uid://bocf2vs5p0gxe" path="res://Asset/BuahSawit_putih.png" id="3_7lg63"]
 [ext_resource type="PackedScene" uid="uid://rt1bn0tgf0y3" path="res://Logic/object_For_skrip/sawit.tscn" id="3_a0ht3"]
 [ext_resource type="FontFile" uid="uid://cutl8y5rc6e1o" path="res://addons/awesome_splash/assets/font/LilitaOne-Regular.ttf" id="4_27w4a"]
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
-[ext_resource type="Texture2D" uid="uid://c77b3rovxldjp" path="res://Asset/BuahSawi_icont.png" id="5_ds8l8"]
 [ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="10_27w4a"]
 [ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="11_nmxhb"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="12_2kd5r"]
@@ -234,7 +234,7 @@ metadata/_edit_use_anchors_ = true
 [node name="BuahSawiIcont" type="Sprite2D" parent="CanvasLayer/Label" unique_id=1745563676]
 position = Vector2(-21.811142, 121.00804)
 scale = Vector2(2.459525, 2.459525)
-texture = ExtResource("5_ds8l8")
+texture = ExtResource("3_7lg63")
 
 [node name="SaveMenu" type="Control" parent="CanvasLayer" unique_id=857662195]
 layout_mode = 3

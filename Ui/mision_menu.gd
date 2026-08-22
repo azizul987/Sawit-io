@@ -66,6 +66,6 @@ func is_max():
 func spawn_confetti():
 	var particles = confetti_scene.instantiate()
 	
-	# Posisikan ledakan di tengah-tengah layar agar lebih heboh dan memenuhi layar
-	particles.position = get_viewport_rect().size / 2
 	add_child(particles)
+	# Set global_position sesudah add_child agar koordinatnya benar-benar di tengah layar
+	particles.global_position = get_viewport_rect().size / 2
