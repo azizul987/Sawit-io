@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="11_wimqa"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
 [ext_resource type="Shader" uid="uid://8hlmm4owiiy8" path="res://addons/awesome_splash/assets/shader/transition_texture_mask.gdshader" id="28_uctnp"]
-[ext_resource type="Texture2D" uid="uid://bxtwq10etpda1" path="res://src/demo_collection/circle_jump_01/logo.png" id="29_uctnp"]
+[ext_resource type="Texture2D" uid="uid://b7bs5l4rpcv6h" path="res://Asset/BuahSawit_polos.png" id="29_uctnp"]
 [ext_resource type="Resource" uid="uid://d1a2b3c4d5e61" path="res://Logic/Data Templete/Data/ress/wilayah/riau.tres" id="30_riau"]
 [ext_resource type="Script" uid="uid://fkhk8cl34j1w" path="res://Logic/skrip/transition_texture_mask.gd" id="30_yoaul"]
 [ext_resource type="Resource" uid="uid://dbk1ltwbk7q2o" path="res://Logic/Data Templete/Data/ress/wilayah/aceh.tres" id="31_aceh"]
@@ -36,7 +36,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mepbf"]
 shader = ExtResource("28_uctnp")
 shader_parameter/mask_texture = ExtResource("29_uctnp")
-shader_parameter/zoom = 1.0
+shader_parameter/zoom = 1.4000000665
 shader_parameter/strength = 0.0
 shader_parameter/center = Vector2(0.5, 0.5)
 

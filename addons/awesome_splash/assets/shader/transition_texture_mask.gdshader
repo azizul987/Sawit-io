@@ -9,7 +9,7 @@
 shader_type canvas_item;
 render_mode blend_mix;
 
-uniform sampler2D mask_texture : source_color, filter_linear;
+uniform sampler2D mask_texture : source_color,  filter_nearest;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 uniform float zoom : hint_range(0.0, 2.0) = 1.0;
