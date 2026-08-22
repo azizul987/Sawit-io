@@ -521,7 +521,7 @@ position = Vector2(31911, 19726)
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=407810335]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer4" unique_id=31837495]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer4" unique_id=31837495 groups=["transi"]]
 material = SubResource("ShaderMaterial_mepbf")
 anchors_preset = 15
 anchor_right = 1.0

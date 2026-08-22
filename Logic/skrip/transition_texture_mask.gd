@@ -45,8 +45,8 @@ func _ready() -> void:
 	mouse_filter = MOUSE_FILTER_IGNORE # Ignore mouse input so it doesn't block other UI elements
 	visible = true
 	_set_shader_values(strength_start, zoom_start, center_start)
-	await get_tree().create_timer(3.0).timeout
-	fade_in()
+	#await get_tree().create_timer(3.0).timeout
+	#fade_in()
 
 # ===================================================
 # TWEENING IN AND OUT
@@ -54,14 +54,21 @@ func _ready() -> void:
 ## Start the tweening in for the texture mask
 func fade_in() -> void:
 	_set_shader_values(strength_start, zoom_start, center_start)
+
 	if _tween:
 		_tween.kill()
+
 	_tween = create_tween()
-	_tween.parallel().tween_method(_shader_value_progress, strength_start, strength_end, duration_in).set_trans(strength_tween_type).set_ease(strength_ease_type)
-	_tween.parallel().tween_method(_shader_value_zoom, zoom_start, zoom_end, duration_in).set_trans(zoom_tween_type).set_ease(zoom_ease_type)
-	_tween.parallel().tween_method(_shader_value_center, center_start, center_end, duration_in).set_trans(center_tween_type).set_ease(center_ease_type)
-	_tween.tween_callback(fade_out)
+
+	_tween.parallel().tween_method(_shader_value_progress, strength_start, strength_end, duration_in)
+	_tween.parallel().tween_method(_shader_value_zoom, zoom_start, zoom_end, duration_in)
+	_tween.parallel().tween_method(_shader_value_center, center_start, center_end, duration_in)
+
 	_tween.play()
+
+	await _tween.finished
+
+	fade_out()
 
 ## Start the tweening out for the texture mask
 func fade_out() -> void:

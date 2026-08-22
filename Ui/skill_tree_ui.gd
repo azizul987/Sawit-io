@@ -74,6 +74,12 @@ func _on_konfirmasi_batal() -> void:
 
 func _on_konfirmasi_ya() -> void:
 	_konfirmasi_panel.visible = false
+
+	var transisi = get_tree().get_nodes_in_group("transi")
+
+	for tra in transisi:
+		await tra.fade_in()
+
 	eksekusi_rebirth()
 
 func _process(delta: float) -> void:
