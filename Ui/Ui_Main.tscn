@@ -10,7 +10,7 @@
 [ext_resource type="Theme" uid="uid://cdpurfr55ssjl" path="res://Ui/mission_progressbar_theme.tres" id="9_wbkow"]
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 [ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="11_8awwg"]
-[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="12_iim0d"]
+[ext_resource type="Resource" uid="uid://bh8brledvessy" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="12_iim0d"]
 [ext_resource type="PackedScene" uid="uid://j6sn5v1jemgv" path="res://Ui/help_panel.tscn" id="help_panel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbkow"]

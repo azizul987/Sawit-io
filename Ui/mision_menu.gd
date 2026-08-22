@@ -11,6 +11,7 @@ var confetti_scene = preload("res://Ui/EffectConfetti.tscn")
 func _ready() -> void:
 	Point.point_change.connect(update_ui)
 	progress_bar.max_value=mision.get_mision(Point.idx_mision_now).target_value
+	progress_bar.value=get_current_progress(mision.get_mision(Point.idx_mision_now))
 	update_label(mision.get_mision(Point.idx_mision_now))
 
 func get_current_progress(misi: Mission) -> float:
