@@ -31,12 +31,10 @@ func set_slot(slot: int) -> void:
 	current_slot = slot
 	#print("Slot aktif:", current_slot)
 
-
 func create_new_slot(slot: int) -> void:
-	# Membuat slot tidak boleh mengganti slot aktif. Kalau tidak, autosave dapat
-	# menimpa slot baru memakai state Point dari game/slot sebelumnya.
 	var path := "user://save_slot_%d.json" % slot
 	var data := {
+		"slot_name": "Slot %d" % slot,   # <-- BARU
 		"point": 1.0,
 		"total_point_earned": 0.0,
 		"rebirth_point": 0,
@@ -339,3 +337,18 @@ func load_upgrades(db: UpgradeDatabase) -> void:
 		elif c and c.upgrades[i]:
 			up.current_level = c.upgrades[i].current_level
 			up.price = c.upgrades[i].price
+			
+
+func get_slot_name(slot: int) -> String:
+	var data := get_save_data(slot)
+	return data.get("slot_name", "Slot %d" % slot)
+
+func set_slot_name(slot: int, new_name: String) -> void:
+	var path := "user://save_slot_%d.json" % slot
+	if not FileAccess.file_exists(path):
+		return
+	var data := get_save_data(slot)
+	data["slot_name"] = new_name
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file != null:
+		file.store_string(JSON.stringify(data))

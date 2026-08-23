@@ -149,9 +149,11 @@ func _refresh_slots(animated_slot: int = -1) -> void:
 func _create_slot_ui(slot_num: int, animate: bool = false):
 	var slot_ui = SAVE_SLOT_SCENE.instantiate()
 	slot_container.add_child(slot_ui)
-	slot_ui.set_slot_number(slot_num)  # cuma buat nampilin "Slot 1" dsb
+	slot_ui.set_slot_number(slot_num)
+	slot_ui.set_slot_name(SaveManager.get_slot_name(slot_num))   # <-- BARU, load nama tersimpan
 	slot_ui.load_requested.connect(_on_slot_load.bind(slot_num))
 	slot_ui.delete_requested.connect(_on_slot_delete.bind(slot_num, slot_ui))
+	slot_ui.slot_renamed.connect(_on_slot_renamed.bind(slot_num))   # <-- BARU
 	
 	if animate:
 		slot_ui.modulate = Color(1, 1, 1, 0)
@@ -250,3 +252,6 @@ func _animate_button_click(btn: Button) -> void:
 	var tween = create_tween()
 	tween.tween_property(btn, "scale", Vector2(0.9, 0.9), 0.07)
 	tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
+
+func _on_slot_renamed(new_name: String, slot_num: int):
+	SaveManager.set_slot_name(slot_num, new_name)
