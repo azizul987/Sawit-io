@@ -1,28 +1,39 @@
 extends Node2D
 
-@export var kecepatan_jalan: float = 75.0
+@export var kecepatan_jalan_dasar: float = 75.0
 @export var jarak_panen: float = 25.0
 @export var waktu_jeda: float = 1.5
-@export var kepintaran: float = 0.2 # 0.0 = jalan acak/santuy, 1.0 = selalu cari sawit paling dekat (bisa diupgrade via menu)
+@export var kepintaran_dasar: float = 0.2 # 0.0 = jalan acak/santuy, 1.0 = selalu cari sawit paling dekat
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var is_new_spawn: bool = true
 
+var kecepatan_jalan: float
+var kepintaran: float
+
 var target_sawit: Node2D = null
 var sawit_sebelumnya: Node2D = null
 var sedang_panen: bool = false
 
-# --- Variabel Anti-Nyangkut ---
 var waktu_stuck: float = 0.0
 var batas_waktu_stuck: float = 2.0
 var posisi_sebelumnya: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	_terapkan_upgrade()
+	Point.worker_stats_updated.connect(_terapkan_upgrade)
+
 	posisi_sebelumnya = global_position
 	var tween=create_tween()
 	tween.set_parallel()
 	tween.tween_property(self,"modulate:a",randf_range(0.1,0.4),1.0)
+
+func _terapkan_upgrade() -> void:
+	kecepatan_jalan = kecepatan_jalan_dasar * Point.worker_speed_mult
+	kepintaran = clamp(kepintaran_dasar + Point.worker_intel_bonus, 0.0, 1.0)
+
+
 
 func _process(delta: float) -> void:
 	if sedang_panen:

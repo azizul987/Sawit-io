@@ -1,6 +1,7 @@
 extends Node
 
 signal  point_change(point_per_click)
+signal worker_stats_updated
 
 var point: float = 0.0
 var total_point_earned: float = 0.0
@@ -26,6 +27,11 @@ var points_per_second: float = 0.0
 var _pps_buffer: float = 0.0 
 var _pps_interval: float = 1.0 
 var _pps_timer: float = 0.0 
+
+
+var worker_speed_mult: float = 1.0
+var worker_intel_bonus: float = 0.0
+
 
 func _process(delta: float) -> void:
 	_update_pps(delta)
@@ -72,6 +78,8 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 	upgrade_discount = 0.0
 	magnet_radius = 0.0
 	panen_ganda_chance = 0.0
+	worker_speed_mult = 1.0      
+	worker_intel_bonus = 0.0     
 
 	# 1. Hitung efek dari semua Upgrade yang sudah distop/beli
 	for up in upgrades_list:
@@ -81,7 +89,9 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 				total_click_add += val
 			elif up.effect_type == 1: # CLICK_POWER_MULT
 				total_click_mult += (val / 100.0) # Kalau misal isi 20, berarti +20%
-
+			elif up.effect_type == 5:
+				worker_speed_mult += (val / 100.0)
+				worker_intel_bonus += (val / 100.0)
 	# 2. Hitung juga efek dari Skill Tree yang aktif/terbuka
 	for sk in skills_list:
 		if sk != null and sk.level > 0:
@@ -99,6 +109,7 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 
 	# 3. Terapkan hasil perhitungan baru ke statistik permainan!
 	point_per_click = total_click_add * total_click_mult
+	worker_stats_updated.emit()
 
 
 
