@@ -23,6 +23,14 @@ func _ready():
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	label.gui_input.connect(_on_label_gui_input)
 	$MarginContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.mouse_default_cursor_shape = Control.CURSOR_IBEAM
+	
+	label.clip_text = true
+	label.clip_text = true
+	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	line_edit.max_length = 18
+	  
 func _on_load_pressed():
 	_animate_button_click(load_button)
 	load_requested.emit()
@@ -47,9 +55,9 @@ func set_slot_name(display_name: String):
 
 func _on_label_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed and event.double_click:
-		_start_rename()
+		start_rename()
 
-func _start_rename():
+func start_rename():
 	is_renaming = true
 	line_edit.text = label.text
 	label.hide()

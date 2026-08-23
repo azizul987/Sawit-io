@@ -150,11 +150,22 @@ func _create_slot_ui(slot_num: int, animate: bool = false):
 	var slot_ui = SAVE_SLOT_SCENE.instantiate()
 	slot_container.add_child(slot_ui)
 	slot_ui.set_slot_number(slot_num)
-	slot_ui.set_slot_name(SaveManager.get_slot_name(slot_num))   # <-- BARU, load nama tersimpan
+	slot_ui.set_slot_name(SaveManager.get_slot_name(slot_num))
 	slot_ui.load_requested.connect(_on_slot_load.bind(slot_num))
 	slot_ui.delete_requested.connect(_on_slot_delete.bind(slot_num, slot_ui))
-	slot_ui.slot_renamed.connect(_on_slot_renamed.bind(slot_num))   # <-- BARU
+	slot_ui.slot_renamed.connect(_on_slot_renamed.bind(slot_num))
 	
+	if animate:
+		slot_ui.modulate = Color(1, 1, 1, 0)
+		slot_ui.scale = Vector2(0.3, 0.3)
+		slot_ui.pivot_offset = slot_ui.custom_minimum_size / 2.0
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(slot_ui, "modulate", Color(1, 1, 1, 1), 0.35)
+		tween.tween_property(slot_ui, "scale", Vector2(1.0, 1.0), 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		if is_instance_valid(slot_ui):
+			slot_ui.start_rename()  
+
 	if animate:
 		slot_ui.modulate = Color(1, 1, 1, 0)
 		slot_ui.scale = Vector2(0.3, 0.3)

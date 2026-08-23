@@ -49,11 +49,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LineEdit" type="LineEdit" parent="." unique_id=1734517587]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.7647059, 0.9607843, 0.41960785, 1)
+theme_override_colors/selection_color = Color(0.1764706, 0.29411766, 0.2784314, 1)
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Nama Slot"
+alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=266519427]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.765652, 0.959401, 0.419124, 1)
-theme_override_fonts/font = ExtResource("1_6whm3")
 theme_override_font_sizes/font_size = 32
 text = "Nama Slot"
 horizontal_alignment = 1
