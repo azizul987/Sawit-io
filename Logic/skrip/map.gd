@@ -320,7 +320,7 @@ func pick_weighted_wilayah(is_pohon: bool) -> Polygon2D:
 		_buruh_per_wilayah[fallback_item["wil"]] = _buruh_per_wilayah.get(fallback_item["wil"], 0) + 1
 	return fallback_item["poly"]
 
-func spawn_pohon(silent: bool = false) -> void:
+func spawn_pohon(silent: bool = false, skip_fx: bool = false) -> void:
 	var poly = pick_weighted_wilayah(true)
 	if poly == null: return
 	
@@ -343,7 +343,7 @@ func spawn_pohon(silent: bool = false) -> void:
 	get_parent().add_child(pohon)
 	
 	var cam := get_viewport().get_camera_2d()
-	if not silent and cam and cam.has_method("shake"):
+	if not silent and not skip_fx and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
 		AudioManager.play_sfx()
 	
@@ -408,7 +408,7 @@ func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", m
 	_recent_spawned_positions.append(final_global)
 	return fallback_pt
 
-func spawn_buruh(silent: bool = false):
+func spawn_buruh(silent: bool = false, skip_fx: bool = false):
 	var poly = pick_weighted_wilayah(false)
 	if poly == null: return
 	
@@ -429,7 +429,7 @@ func spawn_buruh(silent: bool = false):
 		
 	get_parent().add_child(buruh)
 	var cam := get_viewport().get_camera_2d()
-	if not silent and cam and cam.has_method("shake"):
+	if not silent and not skip_fx and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
 		
 func get_total_bonus_upgrade() -> int:

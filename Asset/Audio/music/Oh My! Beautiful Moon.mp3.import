@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Oh My! Beautiful Moon.mp3-6217e5e5f6ab30ac00c
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

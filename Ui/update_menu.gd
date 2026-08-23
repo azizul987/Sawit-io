@@ -137,8 +137,9 @@ func _on_purchase_requested(
 	var map = get_tree().current_scene.get_node_or_null("map")
 	if map:
 		for i in bought:
-			if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit": map.spawn_pohon()
-			if upgrade_data.upgrade_name == "Rekrut": map.spawn_buruh()
+			var skip_fx = (i > 0)
+			if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit": map.spawn_pohon(false, skip_fx)
+			if upgrade_data.upgrade_name == "Rekrut": map.spawn_buruh(false, skip_fx)
 			
 		if upgrade_data.upgrade_name == "Tingkat: Kabupaten":
 			map.eksekusi_naik_tingkat(1) # KABUPATEN
@@ -185,7 +186,7 @@ func _on_max_capacity_changed_multi(
 
 		elif u.upgrade_name == "Rekrut":
 			u.max_level = max_buruh
-		elif u.upgrade_name=="Tingkat: Provinsi" or u.upgrade_name=="Tingkat: Kabupaten":
+		elif u.upgrade_name == "Tingkat: Provinsi" or u.upgrade_name == "Tingkat: Kabupaten" or u.upgrade_name == "Work Life Balance":
 			continue
 		else:
 			if u.base_max_level < 0:
