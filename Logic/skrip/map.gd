@@ -144,6 +144,7 @@ func cek_status_tipe_wilayah(tipe):
 func _on_skill_button_pressedd(wilayah:Node,button:Button):
 	var data_wilayah: Wilayah = wilayah.data
 	if  data_wilayah.harga<=Point.point:
+		Point.remove_point(data_wilayah.harga)
 		var tipe=data_wilayah.tipe_wilayah
 		cek_status_tipe_wilayah(tipe)
 		data_wilayah.terbuka_default = true

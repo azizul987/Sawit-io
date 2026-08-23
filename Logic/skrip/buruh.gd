@@ -2,7 +2,7 @@ extends Node2D
 
 @export var kecepatan_jalan_dasar: float = 75.0
 @export var jarak_panen: float = 25.0
-@export var waktu_jeda: float = 1.5
+@export var waktu_jeda_dasar: float = 1.5
 @export var kepintaran_dasar: float = 0.2 # 0.0 = jalan acak/santuy, 1.0 = selalu cari sawit paling dekat
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -11,6 +11,7 @@ var is_new_spawn: bool = true
 
 var kecepatan_jalan: float
 var kepintaran: float
+var waktu_jeda: float
 
 var target_sawit: Node2D = null
 var sawit_sebelumnya: Node2D = null
@@ -32,6 +33,7 @@ func _ready() -> void:
 func _terapkan_upgrade() -> void:
 	kecepatan_jalan = kecepatan_jalan_dasar * Point.worker_speed_mult
 	kepintaran = clamp(kepintaran_dasar + Point.worker_intel_bonus, 0.0, 1.0)
+	waktu_jeda = waktu_jeda_dasar / Point.worker_speed_mult
 
 
 
