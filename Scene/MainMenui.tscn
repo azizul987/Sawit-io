@@ -237,6 +237,7 @@ scale = Vector2(2.459525, 2.459525)
 texture = ExtResource("3_7lg63")
 
 [node name="SaveMenu" type="Control" parent="CanvasLayer" unique_id=857662195]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

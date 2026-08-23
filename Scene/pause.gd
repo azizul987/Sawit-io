@@ -45,10 +45,12 @@ func _on_resume_pressed() -> void:
 	_animate_button_click(resume_button)
 	await get_tree().create_timer(0.15, true).timeout
 	get_tree().paused = false
+	AudioManager.play_sfx()
 	hide()
 
 func _on_save_pressed() -> void:
 	_animate_button_click(save_button)
+	AudioManager.play_sfx()
 	SaveManager.save_game()
 	
 	# Ubah teks tombol sementara agar pemain tahu data sukses tersimpan
@@ -63,6 +65,7 @@ func _on_save_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	_animate_button_click(main_menu_button)
+	AudioManager.play_sfx()
 	await get_tree().create_timer(0.15, true).timeout
 	
 	# Simpan otomatis dan lepas status pause sebelum ganti scene ke menu utama

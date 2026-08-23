@@ -107,7 +107,7 @@ func _on_purchase_requested(
 ) -> void:
 	if upgrade_data.is_max_level():
 		return
-
+	AudioManager.play_sfx()
 	var current_price = upgrade_data.get_discounted_price()
 	if Point.point < current_price:
 		#print("Poin Sawit tidak cukup! Butuh: ", current_price, " | Poin sekarang: ", Point.point)

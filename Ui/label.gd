@@ -49,6 +49,7 @@ func _on_texture_button_pressed() -> void:
 	
 
 func _on_help_btn_pressed() -> void:
+	AudioManager.play_sfx()
 	help_panel.toggle()
 
 func _on_exit_pressed() -> void:
