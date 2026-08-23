@@ -94,7 +94,13 @@ func cari_sawit_terdekat() -> void:
 		var jarak_terdekat_sq := INF
 		target_sawit = null
 
-		for pohon in semua_sawit:
+		# OPTIMALISASI:
+		# Jangan hitung jarak ke SEMUA pohon (bisa ratusan).
+		# Cukup ambil sampel 15 pohon acak, lalu pilih yang paling dekat dari sampel tersebut.
+		# Ini mencegah game freeze/stutter yang bikin suara audio BGM jadi putus-putus.
+		var jumlah_cek = min(semua_sawit.size(), 15)
+		for i in range(jumlah_cek):
+			var pohon = semua_sawit.pick_random()
 			if pohon == sawit_sebelumnya:
 				continue
 
@@ -108,9 +114,10 @@ func cari_sawit_terdekat() -> void:
 
 	else:
 		target_sawit = semua_sawit.pick_random()
-
-		while target_sawit == sawit_sebelumnya:
-			target_sawit = semua_sawit.pick_random()
+		# Tambahan aman: Pastikan gak infinite loop kalau sawit cuma 1
+		if semua_sawit.size() > 1:
+			while target_sawit == sawit_sebelumnya:
+				target_sawit = semua_sawit.pick_random()
 
 func lakukan_panen() -> void:
 	sedang_panen = true
