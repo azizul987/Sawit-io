@@ -14,6 +14,8 @@ func _ready() -> void:
 	input_pickable = true
 
 	add_to_group("sawit")
+	if sprite2d.material:
+		sprite2d.material = sprite2d.material.duplicate()
 	
 	if not is_new_spawn:
 		return
@@ -41,15 +43,7 @@ func _ready() -> void:
 	await get_tree().create_timer(random_delay + (drop_duration * 0.35)).timeout
 	if is_instance_valid(self):
 		create_dust_effect(final_position)
-	flash_white()
 
-
-# panggil ini pas sprite kena hit
-func flash_white():
-	material.set_shader_parameter("is_hit", true)
-	await get_tree().create_timer(0.1).timeout
-	material.set_shader_parameter("is_hit", false)
-	
 	
 func create_dust_effect(spawn_pos: Vector2) -> void:
 	var dust = CPUParticles2D.new()
@@ -111,7 +105,9 @@ func goyang_pohon():
 	var tween = create_tween()
 	tween.tween_property(sprite2d, "scale", Vector2(1.2, 0.8), 0.05)
 	tween.tween_property(sprite2d, "scale", Vector2(1.0, 1.0), 0.1)
-
+	tween.tween_method(set_shader,1.0,0.0,0.5)
+func set_shader(newv:float):
+	sprite2d.material.set_shader_parameter("blink_intens",newv)
 func show_plus_effect(jumlah_poin: float, custom_pos: Vector2 = Vector2.INF) -> void:
 	var label := Label.new()
 	label.add_to_group("pointlabel")
