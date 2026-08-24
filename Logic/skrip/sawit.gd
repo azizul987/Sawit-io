@@ -41,7 +41,16 @@ func _ready() -> void:
 	await get_tree().create_timer(random_delay + (drop_duration * 0.35)).timeout
 	if is_instance_valid(self):
 		create_dust_effect(final_position)
+	flash_white()
 
+
+# panggil ini pas sprite kena hit
+func flash_white():
+	material.set_shader_parameter("is_hit", true)
+	await get_tree().create_timer(0.1).timeout
+	material.set_shader_parameter("is_hit", false)
+	
+	
 func create_dust_effect(spawn_pos: Vector2) -> void:
 	var dust = CPUParticles2D.new()
 	dust.emitting = false

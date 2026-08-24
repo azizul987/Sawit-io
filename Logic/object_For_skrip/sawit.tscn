@@ -3,6 +3,33 @@
 [ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="1_kkdw4"]
 [ext_resource type="Script" uid="uid://c42xmdmd6orqj" path="res://Logic/skrip/sawit.gd" id="1_n3x0p"]
 
+[sub_resource type="Shader" id="Shader_4xwex"]
+code = "shader_type canvas_item;
+
+
+uniform vec4 blink_color:source_color;
+uniform float blink_intens=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color=mix(color,blink_color,blink_intens*color.a);
+	COLOR=color;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7f30y"]
+shader = SubResource("Shader_4xwex")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intens = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3x0p"]
 atlas = ExtResource("1_kkdw4")
 region = Rect2(0, 0, 32, 32)
@@ -48,6 +75,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_n3x0p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358429148]
+material = SubResource("ShaderMaterial_7f30y")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_lnuuc")
 autoplay = "default"
