@@ -101,7 +101,7 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
+	AudioManager.play_sfx()
 func _on_bgm_slider_changed(value: float) -> void:
 	AudioManager.set_bgm_volume(value)
 

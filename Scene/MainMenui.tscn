@@ -61,6 +61,21 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lg63"]
+bg_color = Color(0.46551508, 0.32502115, 0.15784997, 0.3647059)
+border_width_left = 15
+border_width_top = 15
+border_color = Color(0.36862746, 0.02745098, 0.06666667, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7us0"]
+bg_color = Color(1, 0.8509804, 0.2, 1)
+
 [sub_resource type="Animation" id="Animation_k3gr3"]
 length = 0.93333334
 tracks/0/type = "value"
@@ -385,7 +400,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_27w4a")
 text = "Keluar"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1539513862]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -435,7 +449,6 @@ horizontal_alignment = 1
 [node name="FullscreenBtn" type="CheckButton" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=709042254]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_k3gr3")
 theme_override_font_sizes/font_size = 24
 text = "Layar Penuh"
 
@@ -454,9 +467,11 @@ text = "BGM"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxFlat_7lg63")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_h7us0")
 max_value = 1.0
 step = 0.05
-value = 1.0
+value = 0.5
 
 [node name="SFXContainer" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/VBoxContainer" unique_id=679257807]
 layout_mode = 2
@@ -473,6 +488,8 @@ text = "SFX"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxFlat_7lg63")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_h7us0")
 max_value = 1.0
 step = 0.05
 value = 1.0
