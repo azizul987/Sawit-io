@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://gppi7vu38hr3" path="res://Asset/Sawit-2.png" id="1_kkdw4"]
 [ext_resource type="Script" uid="uid://c42xmdmd6orqj" path="res://Logic/skrip/sawit.gd" id="1_n3x0p"]
+[ext_resource type="Texture2D" uid="uid://dhjhj1bw34fbo" path="res://Asset/Sawit.png" id="2_7f30y"]
+[ext_resource type="Texture2D" uid="uid://cmjnfyes3jh1t" path="res://Asset/Sawit-3.png" id="4_ok8yu"]
 
 [sub_resource type="Shader" id="Shader_4xwex"]
 code = "shader_type canvas_item;
@@ -30,6 +32,22 @@ shader = SubResource("Shader_4xwex")
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_intens = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8yu"]
+atlas = ExtResource("2_7f30y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6hwy"]
+atlas = ExtResource("2_7f30y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqefc"]
+atlas = ExtResource("2_7f30y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66owx"]
+atlas = ExtResource("2_7f30y")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3x0p"]
 atlas = ExtResource("1_kkdw4")
 region = Rect2(0, 0, 32, 32)
@@ -46,8 +64,41 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_kkdw4")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a62jb"]
+atlas = ExtResource("4_ok8yu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfp52"]
+atlas = ExtResource("4_ok8yu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00gg3"]
+atlas = ExtResource("4_ok8yu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjsy0"]
+atlas = ExtResource("4_ok8yu")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lnuuc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6hwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqefc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66owx")
+}],
+"loop": true,
+"name": &"Sawit1",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n3x0p")
@@ -62,7 +113,24 @@ animations = [{
 "texture": SubResource("AtlasTexture_0lu4n")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Sawit2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a62jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfp52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00gg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjsy0")
+}],
+"loop": true,
+"name": &"Sawit3",
 "speed": 5.0
 }]
 
@@ -76,10 +144,10 @@ script = ExtResource("1_n3x0p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358429148]
 material = SubResource("ShaderMaterial_7f30y")
-position = Vector2(0, -14)
+position = Vector2(0, -13.995)
 sprite_frames = SubResource("SpriteFrames_lnuuc")
-autoplay = "default"
-frame_progress = 0.20006245
+animation = &"Sawit3"
+autoplay = "Sawit1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53657342]
 position = Vector2(-0.5, -12)

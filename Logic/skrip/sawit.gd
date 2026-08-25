@@ -8,6 +8,15 @@ const FONT_KOSTUM = preload(
 	"res://temp tekture/font/BPdotsSquareBold.otf"
 )
 func _ready() -> void:
+	match Point.tipe_wilayah_terbuka:
+		2:
+			$AnimatedSprite2D.play("Sawit1")
+		1:
+			$AnimatedSprite2D.play("Sawit2")
+		0:
+			$AnimatedSprite2D.play("Sawit3")
+			$AnimatedSprite2D.position.y=-28
+		
 	monitoring = false
 	monitorable = false
 	collision_mask = 0
@@ -225,3 +234,5 @@ func show_double_harvest_effect(jumlah_poin: float, custom_pos: Vector2 = Vector
 
 	await tween.finished
 	label.queue_free()
+	
+	
