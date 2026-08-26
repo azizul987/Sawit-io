@@ -34,8 +34,8 @@ func eksekusi_rebirth() -> void:
 				sk.locked_level = sk.level
 		SaveManager.save_skill_level(_skill_canvas.skill_database)
 
-	Point.point = 1.0
-	Point.total_point_earned = 1.0
+	Point.point = max(1.0, Point.modal_awal)
+	Point.total_point_earned =max(1.0, Point.modal_awal)
 	Point.tipe_wilayah_terbuka = 2
 	Point.TipeWilayahArray = Vector3i(0, 0, 1)
 	Point.main_tree_camera = Vector3(7347.983, 8094.0, 1)

@@ -16,6 +16,7 @@ var is_skill_tree_open: bool = false
 var upgrade_discount: float = 0.0
 var magnet_radius: float = 0.0
 var panen_ganda_chance: float = 0.0
+var modal_awal:float = 0.0
 var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
 
@@ -80,7 +81,7 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 	panen_ganda_chance = 0.0
 	worker_speed_mult = 1.0      
 	worker_intel_bonus = 0.0     
-
+	modal_awal=0
 	# 1. Hitung efek dari semua Upgrade yang sudah distop/beli
 	for up in upgrades_list:
 		if up != null and up.current_level > 0:
@@ -106,6 +107,8 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 				panen_ganda_chance += val
 			elif sk.effect_type == 6:
 				magnet_radius += val
+			elif sk.effect_type == 7:
+				modal_awal += val
 
 	# 3. Terapkan hasil perhitungan baru ke statistik permainan!
 	point_per_click = total_click_add * total_click_mult
