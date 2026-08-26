@@ -19,6 +19,8 @@ enum TipeWilayah_dibuka_list  {
 }
 var tipe_wilayah_terbuka:TipeWilayah_dibuka_list=TipeWilayah_dibuka_list.KECAMATAN
 
+@export var jarak_pohon_provinsi: float = 175.0
+
 func _ready() -> void:
 	z_index = -1
 	await get_tree().process_frame
@@ -242,7 +244,7 @@ func refresh_visual_sprites(old_tipe: int, new_tipe: int):
 
 func get_area_multiplier(tipe: int) -> float:
 	if tipe == 1: return 6.25
-	if tipe == 0: return 25.0
+	if tipe == 0: return 40
 	return 1.0
 
 func compress_upgrades(old_tipe: int, new_tipe: int):
@@ -330,8 +332,10 @@ func spawn_pohon(silent: bool = false, skip_fx: bool = false) -> void:
 	elif Point.tipe_wilayah_terbuka == 0:
 		scale_factor = 14.0
 	
-	# Jarak asli 25.0 itu disetel saat skala pohon 2.0, jadi kita kalikan rasio skalanya
-	var pt = get_random_point_in_polygon(poly, "sawit", 25.0 * (scale_factor / 2.0))
+	var jarak_spawn_pohon = 25.0 * (scale_factor / 2.0)
+	if Point.tipe_wilayah_terbuka == 0: # PROVINSI: pakai jarak custom sendiri, gak ikut rumus skala
+		jarak_spawn_pohon = jarak_pohon_provinsi
+	var pt = get_random_point_in_polygon(poly, "sawit", jarak_spawn_pohon)
 	
 	var pohon = preload("res://Logic/object_For_skrip/sawit.tscn").instantiate()
 	pohon.is_new_spawn = not silent
@@ -365,7 +369,7 @@ func get_random_point_in_polygon(poly: Polygon2D, group_to_avoid: String = "", m
 	var fallback_pt = rect.get_center()
 	var found_any = false
 	
-	for i in 150: # Iterasi lebih banyak untuk polygon sempit
+	for i in 75: # Iterasi lebih banyak untuk polygon sempit
 		pt = Vector2(randf_range(rect.position.x, rect.end.x), randf_range(rect.position.y, rect.end.y))
 		
 		# Kurangi margin menjadi sangat tipis agar pohon di pinggir batas wilayah bisa menempel
