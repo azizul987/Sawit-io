@@ -8,7 +8,6 @@ script = ExtResource("1_missi")
 id = "kumpul_20K_poin"
 mission_name = "Awal Mula"
 description = "Kumpulkan total 20.000 poin. Panen pertamamu dimulai dari sini."
-reward_rebirth_point = 2
 target_value = 20000.0
 
 [sub_resource type="Resource" id="Resource_m2"]
@@ -16,7 +15,6 @@ script = ExtResource("1_missi")
 id = "rekrut_20"
 mission_name = "Mandor Andalan"
 description = "Tingkatkan level 'Rekrut' hingga 20 untuk otomatisasi panen yang lebih kencang."
-reward_rebirth_point = 5
 requirement_type = 1
 target_upgrade_name = "Rekrut"
 target_value = 20.0

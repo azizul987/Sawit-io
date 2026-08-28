@@ -16,6 +16,7 @@ max_level = 4
 is_open = true
 cost = Array[int]([1, 2, 3, 4])
 Icon = ExtResource("3_nqfhb")
+effect_type = 7
 effect_value = 25.0
 level_descriptions = Array[String](["Poin per klik bertambah +25", "Poin per klik bertambah +50", "Poin per klik bertambah +75", "Poin per klik bertambah +100"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"

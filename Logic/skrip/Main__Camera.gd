@@ -2,7 +2,7 @@ extends Camera2D
 
 @export var move_speed := 500.0
 @export var zoom_speed := 0.12
-@export var batas_zoom_out: Array[float] = [0.1, 0.25, 0.5] # [0: Provinsi, 1: Kabupaten, 2: Kecamatan]
+@export var batas_zoom_out: Array[float] = [0.1, 0.25, 0.1] # [0: Provinsi, 1: Kabupaten, 2: Kecamatan]
 @export var max_zoom := 10.0
 
 var is_dragging := false

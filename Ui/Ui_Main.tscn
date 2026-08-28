@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cxfbrmrvjdrf1" path="res://temp tekture/dark frame 03.png" id="10_4a1h5"]
 [ext_resource type="Script" uid="uid://cv0i15wfd3scu" path="res://Ui/mision_menu.gd" id="11_8awwg"]
 [ext_resource type="Resource" uid="uid://bh8brledvessy" path="res://Logic/Data Templete/Data/ress/Mission_Database.tres" id="12_iim0d"]
+[ext_resource type="Script" uid="uid://nd8ys0f1wnmv" path="res://Ui/color_rect.gd" id="13_v3duq"]
 [ext_resource type="PackedScene" uid="uid://j6sn5v1jemgv" path="res://Ui/help_panel.tscn" id="help_panel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbkow"]
@@ -295,6 +296,7 @@ layer = 2
 
 [node name="Desc" type="PanelContainer" parent="CanvasLayer2" unique_id=874342891 groups=["hint_display"]]
 visible = false
+z_index = 6
 offset_left = 20.0
 offset_top = 470.0
 offset_right = 49.0
@@ -321,5 +323,17 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DimOverlay" type="ColorRect" parent="CanvasLayer2" unique_id=1916668547]
+process_mode = 3
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4745098)
+script = ExtResource("13_v3duq")
+
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Skill_Buttun/Change _Mode" to="." method="_on_texture_button_pressed"]
+[connection signal="gui_input" from="CanvasLayer2/DimOverlay" to="CanvasLayer2/DimOverlay" method="_on_dim_overlay_gui_input"]

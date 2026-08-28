@@ -115,6 +115,7 @@ func save_game() -> void:
 	if current_slot < 1:
 		return
 	var data := read_save_data()
+	data["modal_awal"]=Point.modal_awal
 	data["point"] = Point.point
 	data["total_point_earned"] = Point.total_point_earned
 	data["rebirth_point"] = Point.rebirth_point
@@ -146,8 +147,8 @@ func load_game() -> void:
 	if current_slot < 1:
 		return
 	var data := read_save_data()
-
-	Point.point = float(data.get("point", 0))
+	Point.modal_awal=float(data.get("modal_awal",1))
+	Point.point = float(data.get("point", Point.modal_awal))
 	Point.total_point_earned = float(data.get("total_point_earned", 0))
 	Point.rebirth_point = int(data.get("rebirth_point", 0))
 	
