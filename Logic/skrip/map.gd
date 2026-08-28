@@ -436,9 +436,11 @@ func spawn_buruh(silent: bool = false, skip_fx: bool = false):
 	if not silent and not skip_fx and cam and cam.has_method("shake"):
 		cam.shake(5.0, 0.15)
 		
+		
+		
 func get_total_bonus_upgrade() -> int:
 	var total_bonus = 0
 	for w in daftar_wilayah:
 		if w.data and w.data.terbuka_default:
-			total_bonus += 50 # Misalnya tiap wilayah menambah max level 50
+			total_bonus += 30 # Misalnya tiap wilayah menambah max level 50
 	return total_bonus

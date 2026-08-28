@@ -1,10 +1,8 @@
 extends Node
 
-# Baca hints_shown langsung dari save aktif (tanpa cache)
-# supaya otomatis ikut slot yang sedang aktif
+var _waiting_for_dismiss := false
 
 # Panggil ini dari mana saja untuk tampilkan hint sekali
-# Contoh: HintManager.show_hint("skill_tree_open", "Klik kiri beli skill, klik kanan refund!")
 func show_hint(id: String, text: String) -> void:
 	var data := SaveManager.read_save_data()
 	var hints_shown: Dictionary = data.get("hints_shown", {})
@@ -15,7 +13,6 @@ func show_hint(id: String, text: String) -> void:
 	SaveManager.write_save_data(data)
 	_display(text)
 
-# Reset semua hint (misal saat new game / delete save)
 func reset_hints() -> void:
 	var data := SaveManager.read_save_data()
 	data["hints_shown"] = {}
@@ -27,13 +24,37 @@ func _display(text: String) -> void:
 		var label = node.get_child(0).get_child(0)
 		label.bbcode_enabled = true
 		label.text = text
-		label.fit_content =true	
-		
-		# Pastikan Label terlihat (reset alpha jadi 1)
+		label.fit_content = true
+
+		node.process_mode = Node.PROCESS_MODE_ALWAYS
 		node.modulate.a = 1.0
 		node.show()
-		# Animasi fade out
-		var tween := create_tween()
-		tween.tween_interval(2.0)
-		tween.tween_property(node, "modulate:a", 0.0, 1.0)
+	SaveManager.save_game()
+
+	# overlay gelap juga harus ditampilkan, kalau nggak dia gak bisa nerima klik
+	for overlay in get_tree().get_nodes_in_group("hint_dim_overlay"):
+		overlay.process_mode = Node.PROCESS_MODE_ALWAYS
+		overlay.show()
+
+	get_tree().paused = true
+	_waiting_for_dismiss = true
+
+func dismiss_hint() -> void:
+	if not _waiting_for_dismiss:
 		return
+	_waiting_for_dismiss = false
+
+	var nodes := get_tree().get_nodes_in_group("hint_display")
+	for node in nodes:
+		var tween := create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.tween_property(node, "modulate:a", 0.0, 0.3)
+		tween.tween_callback(node.hide)
+
+	for overlay in get_tree().get_nodes_in_group("hint_dim_overlay"):
+		var tween := create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.tween_property(overlay, "color:a", 0.0, 0.3)
+		tween.tween_callback(overlay.hide)
+
+	get_tree().paused = false

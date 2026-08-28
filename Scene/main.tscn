@@ -464,7 +464,7 @@ antialiased = true
 position = Vector2(7508, 8765)
 zoom = Vector2(5, 5)
 script = ExtResource("6_ow1sv")
-batas_zoom_out = Array[float]([0.03, 0.25, 0.5])
+batas_zoom_out = Array[float]([0.03, 0.25, 1.0])
 titik_kiri_atas = NodePath("../Batas Atas")
 titik_kanan_bawah = NodePath("../Batas Bawah")
 
