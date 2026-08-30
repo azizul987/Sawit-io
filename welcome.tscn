@@ -8,7 +8,7 @@
 script = ExtResource("1_odedu")
 custom_node/type = 0
 custom_node/default_time = 1.0
-skip/type = 0
+skip/type = 1
 move_to_scene = ExtResource("2_f0t8f")
 transition_time = 1.0
 fade_color = Color(1, 1, 1, 1)

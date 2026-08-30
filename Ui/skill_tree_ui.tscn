@@ -90,7 +90,7 @@ theme_override_constants/margin_top = 20
 [node name="RebirthPointLabel" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1149707638]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 28
 text = "Rebirth Point: 1"
@@ -112,11 +112,12 @@ grow_vertical = 2
 theme_override_styles/normal = ExtResource("4_4puff")
 text = "Rebirth"
 
-[node name="Deskripsi_Skill_Perlevel" type="Label" parent="CanvasLayer" unique_id=725906494]
+[node name="Deskripsi_Skill_Perlevel" type="RichTextLabel" parent="CanvasLayer" unique_id=2079201157]
 offset_left = 448.0
-offset_top = 436.0
-offset_right = 488.0
-offset_bottom = 451.0
+offset_top = 387.0
+offset_right = 726.0
+offset_bottom = 456.0
+bbcode_enabled = true
 horizontal_alignment = 1
 
 [node name="KonfirmasiPanel" type="PanelContainer" parent="CanvasLayer" unique_id=111000001]

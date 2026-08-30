@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dle7jsg7svhob"]
+
+[ext_resource type="PackedScene" uid="uid://be5eixv83v150" path="res://Ui/EffectConfetti.tscn" id="1_au013"]
+[ext_resource type="Texture2D" uid="uid://ca28oeq0oc1wq" path="res://Asset/Sawit_gede1.png" id="2_gede"]
+[ext_resource type="Texture2D" uid="uid://d3wr7syslt7av" path="res://Asset/Sawittunggal_kecil1.png" id="3_kecil"]
+
+[sub_resource type="GDScript" id="GDScript_particles_effect"]
+script/source = "extends Node2D
+
+# Nunggu SEMUA child (masing2 instance EffectConfetti) beres sendiri baru
+# node ini ikut queue_free. Gak perlu tau apa2 soal isi children-nya,
+# jadi biar mau nambah/kurang child, script ini gak perlu diubah.
+
+var _remaining := 0
+
+func _ready() -> void:
+	_remaining = get_child_count()
+	for child in get_children():
+		child.tree_exited.connect(_on_child_gone)
+
+func _on_child_gone() -> void:
+	_remaining -= 1
+	if _remaining <= 0:
+		queue_free()
+"
+
+[node name="Particles_effect" type="Node2D" unique_id=723044321]
+script = SubResource("GDScript_particles_effect")
+
+[node name="EffectConfetti" parent="." unique_id=1069398921 instance=ExtResource("1_au013")]
+
+[node name="EffectConfetti2" parent="." unique_id=501798902 instance=ExtResource("1_au013")]
+amount = 15
+texture = ExtResource("2_gede")
+
+[node name="EffectConfetti3" parent="." unique_id=1223006531 instance=ExtResource("1_au013")]
+texture = ExtResource("3_kecil")

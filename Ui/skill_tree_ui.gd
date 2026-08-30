@@ -1,7 +1,7 @@
 extends Control
 
 @onready var rebirth_point_label: Label = $CanvasLayer/MarginContainer/RebirthPointLabel
-@onready var deskripsi_skill_perlevel: Label = $CanvasLayer/Deskripsi_Skill_Perlevel
+@onready var deskripsi_skill_perlevel: RichTextLabel = $CanvasLayer/Deskripsi_Skill_Perlevel
 @onready var rebirth_btn: Button = $CanvasLayer/Rebirth
 
 var _skill_canvas: Control
@@ -38,7 +38,7 @@ func eksekusi_rebirth() -> void:
 	Point.total_point_earned =max(1.0, Point.modal_awal)
 	Point.tipe_wilayah_terbuka = 2
 	Point.TipeWilayahArray = Vector3i(0, 0, 1)
-	Point.main_tree_camera = Vector3(7347.983, 8094.0, 1)
+	Point.main_tree_camera = Vector3(7508.00, 8765.0, 1.0)
 	Point.skill_tree_camera = Vector3(0, 0, 1.4)
 	
 	var save_data = SaveManager.read_save_data()
@@ -82,7 +82,7 @@ func _on_konfirmasi_ya() -> void:
 
 	eksekusi_rebirth()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	rebirth_point_label.text = str(Point.rebirth_point)
 	var bisa_rebirth := _ada_skill_teralokasi()
 	if bisa_rebirth and rebirth_btn.disabled:

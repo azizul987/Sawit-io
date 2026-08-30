@@ -12,7 +12,7 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	SaveManager.load_game()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	skor.text=Point.format_num(Point.point)
 	pps_label.text = Point.format_num(Point.points_per_second) + "/dtk"
 	rebirth_point.text=Point.format_num(Point.rebirth_point)

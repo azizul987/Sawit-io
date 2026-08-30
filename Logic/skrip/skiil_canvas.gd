@@ -18,7 +18,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	queue_redraw()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if buttons_by_id.is_empty():
 		return
 
@@ -110,8 +110,12 @@ func _refund_skill(skill_id: String) -> void:
 	SaveManager.save_skill_level(skill_database)
 	SaveManager.save_game()
 
-func _on_skill_hovered(data: skill, btn: Control) -> void:
-	skill_hovered.emit(data.skill_name + "\n" + data.get_current_description())
+func _on_skill_hovered(data: skill, _btn: Control) -> void:
+	var teks := "[center][color=#ffd700]%s[/color]\n[color=#ffffff]%s[/color][/center]" % [
+		data.skill_name,
+		data.get_current_description()
+	]
+	skill_hovered.emit(teks)
 
 func _on_skill_unhovered() -> void:
 	skill_unhovered.emit()

@@ -4,8 +4,7 @@ extends Control
 @onready var label: Label = 	$"../Label"
 var misi_database=preload("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
 var upgrade_database = preload("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
-var confetti_scene = preload("res://Ui/EffectConfetti.tscn")
-
+var confetti_scene = preload("uid://dle7jsg7svhob")
 @export var mision:MissionDatabase
 
 func _ready() -> void:

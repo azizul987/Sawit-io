@@ -1,3 +1,4 @@
+@tool
 extends AweSplashScreen
 
 @onready var logo_container := $AspectNode/LogoContainer
