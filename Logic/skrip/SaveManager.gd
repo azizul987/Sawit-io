@@ -120,6 +120,7 @@ func save_game() -> void:
 	data["total_point_earned"] = Point.total_point_earned
 	data["rebirth_point"] = Point.rebirth_point
 	data['var idx_mision_now']=Point.idx_mision_now
+	data["pps_default"] = Point.pps_default
 	
 
 	data["skill_tree_camera"]={
@@ -186,6 +187,12 @@ func load_game() -> void:
 		int(tipewilayah.get("y")),
 		int(tipewilayah.get("z"))
 		)
+	
+	var raw_pps = data.get("pps_default", [0,0,0])
+	var arr: Array[int] = []
+	for v in raw_pps:
+		arr.append(int(v))
+	Point.pps_default = arr
 
 
 func save_skill_level(skill_database: skill_obj) -> void:

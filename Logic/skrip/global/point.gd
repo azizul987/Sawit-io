@@ -33,8 +33,12 @@ var _pps_timer: float = 0.0
 var worker_speed_mult: float = 1.0
 var worker_intel_bonus: float = 0.0
 
+var pps_default:Array[int]=[0,0,0]#kec,kab,prov
 
 func _process(delta: float) -> void:
+	var floor_income: float = get_carried_pps_floor() * delta
+	if floor_income > 0.0:
+		add_point(floor_income)
 	_update_pps(delta)
 
 func add_point(value):
@@ -167,10 +171,30 @@ func _update_pps(delta: float) -> void:
 	_pps_timer += delta
 
 	if _pps_timer >= _pps_interval:
-		points_per_second = _pps_buffer / _pps_timer
-		pps_updated.emit(points_per_second)
+		# _pps_buffer sudah termasuk floor_income (dari add_point di _process),
+		# jadi max() di sini cuma jaga-jaga di detik pertama setelah naik tingkat.
+		points_per_second = max(_pps_buffer / _pps_timer, get_carried_pps_floor())
 
+		var idx := _tier_to_pps_index(tipe_wilayah_terbuka)
+		if points_per_second > pps_default[idx]:
+			pps_default[idx] = int(points_per_second)
+
+		pps_updated.emit(points_per_second)
 		point_change.emit(point_per_click)
 
 		_pps_buffer = 0.0
 		_pps_timer = 0.0
+
+
+func _tier_to_pps_index(tier: int) -> int:
+	# pps_default urutannya [kec, kab, prov] (index 0,1,2)
+	# sedangkan tier enum: 0=PROVINSI, 1=KABUPATEN, 2=KECAMATAN -> jadi dibalik
+	return 2 - tier
+
+
+func get_carried_pps_floor() -> float:
+	var idx := _tier_to_pps_index(tipe_wilayah_terbuka)
+	var floor_val: float = 0.0
+	for i in range(idx): # jumlahkan rekor pps dari semua tier DI BAWAH tier sekarang
+		floor_val += pps_default[i]
+	return floor_val
