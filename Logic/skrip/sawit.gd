@@ -87,16 +87,24 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 func panen(is_magnet_harvest: bool = false, custom_pos: Vector2 = Vector2.INF) -> void:
 	var point_to_add = Point.point_per_click
 	var is_double = false
+	var is_critical = false
 	
 	if Point.panen_ganda_chance > 0.0:
 		if randf() * 100.0 < Point.panen_ganda_chance:
 			point_to_add *= 2.0
 			is_double = true
 			
+	if Point.critical_harvest_chance > 0.0:
+		if randf() * 100.0 < Point.critical_harvest_chance:
+			point_to_add *= 10.0
+			is_critical = true
+			
 	Point.add_point(point_to_add)
 	goyang_pohon()
 	
-	if is_double:
+	if is_critical:
+		show_critical_harvest_effect(point_to_add, custom_pos)
+	elif is_double:
 		show_double_harvest_effect(point_to_add, custom_pos)
 	else:
 		show_plus_effect(point_to_add, custom_pos)
@@ -234,5 +242,63 @@ func show_double_harvest_effect(jumlah_poin: float, custom_pos: Vector2 = Vector
 
 	await tween.finished
 	label.queue_free()
-	
-	
+
+
+func show_critical_harvest_effect(jumlah_poin: float, custom_pos: Vector2 = Vector2.INF) -> void:
+	var label := Label.new()
+
+	label.text = "+" + Point.format_num(jumlah_poin)
+	label.z_index = 102
+	label.modulate = Color.from_hsv(
+		0.05, # Warna merah-oranye terang
+		1.0,
+		1.0,
+		1.0
+	)
+	label.rotation = deg_to_rad(randf_range(-10.0, 10.0))
+	label.add_theme_font_override("font", FONT_KOSTUM)
+	label.add_theme_font_size_override("font_size", randi_range(55, 85))
+
+	var z: float = 1.0 / get_viewport().get_camera_2d().zoom.x
+	label.scale = Vector2(z, z)
+
+	get_tree().current_scene.add_child(label)
+
+	var base_pos = global_position + Vector2(0, -60)
+	if custom_pos != Vector2.INF:
+		base_pos = custom_pos
+
+	label.global_position = base_pos + Vector2(randf_range(-50, 50), randf_range(-40, 0)) * z
+	var arah_gerak := Vector2(
+	randf_range(-40.0, 40.0),
+	randf_range(-120.0, -70.0)
+	) * z
+
+	var durasi: float = randf_range(0.8, 1.4)
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property(
+	label,
+	"global_position",
+	label.global_position + arah_gerak,
+	durasi
+	)
+
+	tween.tween_property(
+		label,
+		"modulate:a",
+		0.0,
+		durasi
+	)
+
+	tween.tween_property(
+		label,
+		"scale",
+		label.scale * randf_range(1.5, 2.0),
+		durasi
+	)
+
+	await tween.finished
+	label.queue_free()

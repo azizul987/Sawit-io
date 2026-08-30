@@ -16,6 +16,8 @@ var is_skill_tree_open: bool = false
 var upgrade_discount: float = 0.0
 var magnet_radius: float = 0.0
 var panen_ganda_chance: float = 0.0
+var critical_harvest_chance: float = 0.0
+var territory_click_mult: float = 1.0
 var modal_awal:float = 0.0
 var TipeWilayahArray:Vector3i#[prov,kab,kec]
 var tipe_wilayah_terbuka: int = 2 # 0: PROVINSI, 1: KABUPATEN, 2: KECAMATAN
@@ -83,6 +85,8 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 	upgrade_discount = 0.0
 	magnet_radius = 0.0
 	panen_ganda_chance = 0.0
+	critical_harvest_chance = 0.0
+	territory_click_mult = 1.0
 	worker_speed_mult = 1.0      
 	worker_intel_bonus = 0.0     
 	modal_awal=0
@@ -97,6 +101,11 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 			elif up.effect_type == 5:
 				worker_speed_mult += (val / 100.0)
 				worker_intel_bonus += (val / 100.0)
+			elif up.effect_type == 6: # TERRITORY_MULTIPLIER (Agregat Harga)
+				var jumlah_wilayah = Point.TipeWilayahArray.x + Point.TipeWilayahArray.y + Point.TipeWilayahArray.z
+				territory_click_mult += (val * jumlah_wilayah) / 100.0
+			elif up.effect_type == 7: # CRITICAL_HARVEST (Sawit Super)
+				critical_harvest_chance += val
 	# 2. Hitung juga efek dari Skill Tree yang aktif/terbuka
 	for sk in skills_list:
 		if sk != null and sk.level > 0:
@@ -115,7 +124,7 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 				modal_awal += val
 
 	# 3. Terapkan hasil perhitungan baru ke statistik permainan!
-	point_per_click = total_click_add * total_click_mult
+	point_per_click = total_click_add * total_click_mult * territory_click_mult
 	worker_stats_updated.emit()
 
 

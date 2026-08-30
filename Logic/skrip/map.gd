@@ -30,6 +30,12 @@ func _ready() -> void:
 	cek_syarat_buka()
 	buat_semua_button_wilayah() 
 	update_max_capacity_by_area()
+	
+	# Inisialisasi Bonus Wilayah
+	var bonus_node = Node2D.new()
+	bonus_node.name = "BonusWilayah"
+	bonus_node.set_script(preload("res://Logic/skrip/bonus_wilayah.gd"))
+	add_child(bonus_node)
 
 func ambil_semua_wilayah() -> void:
 	daftar_wilayah = get_tree().get_nodes_in_group("wilayah")
@@ -187,7 +193,7 @@ func hitung_total_luas_terbuka() -> float:
 
 func get_current_max_capacity() -> int:
 	var total_cap = 0
-	var area_per_tree = 2800.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
+	var area_per_tree = 3200.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
 	for w in daftar_wilayah:
 		if w.data and w.data.terbuka_default:
 			var poly = w.get_node_or_null("Polygon2D")

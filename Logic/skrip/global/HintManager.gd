@@ -34,6 +34,7 @@ func _display(text: String) -> void:
 	# overlay gelap juga harus ditampilkan, kalau nggak dia gak bisa nerima klik
 	for overlay in get_tree().get_nodes_in_group("hint_dim_overlay"):
 		overlay.process_mode = Node.PROCESS_MODE_ALWAYS
+		overlay.color.a = 0.475 # Reset alpha (bug fix)
 		overlay.show()
 
 	get_tree().paused = true
