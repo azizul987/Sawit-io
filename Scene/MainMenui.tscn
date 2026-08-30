@@ -8,7 +8,6 @@
 [ext_resource type="StyleBox" uid="uid://b6bgi5wq8fg25" path="res://styles/warning_btn.tres" id="5_43fsk"]
 [ext_resource type="StyleBox" uid="uid://bxc7x675qpy2t" path="res://styles/default_btn.tres" id="5_a0ht3"]
 [ext_resource type="StyleBox" uid="uid://ckdcoi27smkbr" path="res://styles/simple btn_bcround.tres" id="10_27w4a"]
-[ext_resource type="Texture2D" uid="uid://waqgwxuccu6e" path="res://temp tekture/peta-sumatera.jpeg" id="11_nmxhb"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="12_2kd5r"]
 [ext_resource type="PackedScene" uid="uid://c6vgmp5scevx6" path="res://Logic/object_For_skrip/buruh.tscn" id="24_2kd5r"]
 [ext_resource type="Theme" uid="uid://cx6yq3a2b1c0d" path="res://styles/main_theme.tres" id="99_maintheme"]
@@ -247,7 +246,7 @@ text = "Pocong Sawit"
 metadata/_edit_use_anchors_ = true
 
 [node name="BuahSawiIcont" type="Sprite2D" parent="CanvasLayer/Label" unique_id=1745563676]
-position = Vector2(-21.811142, 121.00804)
+position = Vector2(730.3131, 138.62703)
 scale = Vector2(2.459525, 2.459525)
 texture = ExtResource("3_7lg63")
 
@@ -400,6 +399,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_27w4a")
 text = "Keluar"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1539513862]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -586,11 +586,7 @@ libraries/ = SubResource("AnimationLibrary_w84f2")
 [node name="map" type="Node2D" parent="." unique_id=71965967]
 modulate = Color(0.8381909, 0.8897197, 0.968111, 1)
 position = Vector2(212.45789, 263.8842)
-
-[node name="PetaSumatera" type="Sprite2D" parent="map" unique_id=1599203708]
-visible = false
-position = Vector2(178, 111)
-texture = ExtResource("11_nmxhb")
+metadata/_edit_lock_ = true
 
 [node name="Sumatera Selatan" type="Area2D" parent="map" unique_id=23020314]
 scale = Vector2(0.99999994, 0.99999994)
@@ -748,6 +744,7 @@ antialiased = true
 texture = ExtResource("12_2kd5r")
 polygon = PackedVector2Array(-19.8, 13.7, -26.4, 7.7, -30, 1.2, -33.6, -3.1, -40.4, -8.7, -44.1, -11.3, -47.4, -15.2, -59.6, -27.2, -65.2, -30.4, -70.9, -40, -77.3, -56, -77.7, -58.7, -30.6, -59.4, -22.4, -56.9, -14.2, -56.7, -10.7, -57.2, -9.7, -59, -3.7769, -59.0001, -5.0269, -54.4501, -6.7539, -52.5002, -8.7269, -50.5501, -10.0769, -46.9001, -10.4, -44.4, -10.2269, -42.3001, -7.5269, -40.0501, 1.7, -40.7, 3.2461, -40.7002, 11.1231, -40.6501, 16.0154, -35.9667, 21.3231, -26.6001, 28.9461, -26.7002, 37.5731, -26.6501, 38, -22.6, 39.0308, -11.7335, 40.2461, -8.5002, 40.8, -5.9, 41.3461, -4.7002, 43.2731, -2.0001, 42.0461, 1.4998, 40.1731, 4.3499, 41.0731, 10.0999, 43.9231, 14.4999, 26.5731, 24.1499, 28.1731, 32.6499, 31.6231, 36.6999, 40.3731, 42.0499, 48.0231, 48.1499, 44.2731, 53.6499, 39.5731, 57.2499, 34.2731, 59.2499, 33.9, 57.1, 28.3, 53.9, 22.5, 48.7, 17.8, 41, 4.9, 25.8, -4.5, 13.7)
 uv = PackedVector2Array(-235.422, 162.893, -313.896, 91.553, -356.7, 14.268001, -399.504, -36.859, -480.35602, -103.443, -524.349, -134.35701, -563.58606, -180.728, -708.644, -323.40802, -775.22797, -361.456, -843.00104, -475.6, -919.09705, -665.84, -923.85297, -697.94305, -363.834, -706.26605, -266.336, -676.541, -168.838, -674.163, -127.223, -680.10803, -115.333, -701.51, -44.907345, -701.51117, -59.76984, -647.4117, -80.30387, -624.22736, -103.76285, -601.0407, -119.81434, -557.6422, -123.656, -527.916, -121.59785, -502.94818, -89.49484, -476.19568, 20.213001, -483.92303, 38.59613, -483.92538, 132.25366, -483.3297, 190.42311, -427.6441, 253.53166, -316.2752, 344.16913, -317.46536, 446.74417, -316.86972, 451.82, -268.71402, 464.07623, -139.5113, 478.52615, -101.06738, 485.112, -70.151, 491.60513, -55.88538, 514.5172, -23.781189, 499.92816, 17.832623, 477.65817, 51.72031, 488.3592, 120.087814, 522.24567, 172.40381, 315.95416, 287.14233, 334.97815, 388.2073, 375.9987, 436.36185, 480.03616, 499.97333, 570.9947, 572.5023, 526.40717, 637.89734, 470.52417, 680.70135, 407.5072, 704.4813, 403.07104, 678.919, 336.487, 640.87103, 267.525, 579.043, 211.642, 487.49002, 58.261, 306.762, -53.505, 162.893)
+metadata/_edit_lock_ = true
 
 [node name="Sumatera Utara" type="Area2D" parent="map" unique_id=1117689153]
 position = Vector2(49.173233, 44.35005)

@@ -17,8 +17,8 @@ is_open = true
 cost = Array[int]([1, 2, 3, 4])
 Icon = ExtResource("3_akrx4")
 effect_type = 7
-effect_value = 25.0
-level_descriptions = Array[String](["Poin per klik bertambah +25", "Poin per klik bertambah +50", "Poin per klik bertambah +75", "Poin per klik bertambah +100"])
+effect_value = 75.0
+level_descriptions = Array[String](["poin awal bertambah +75", "poin awal bertambah +150", "poin awal bertambah +225", "poin awal bertambah +300"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [sub_resource type="Resource" id="Resource_prod_bibit_unggul"]
