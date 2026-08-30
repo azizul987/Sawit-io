@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _on_child_gone() -> void:
 	_remaining -= 1
-	if _remaining <= 0:
+	if _remaining <= 0:	
 		queue_free()
 		
 		

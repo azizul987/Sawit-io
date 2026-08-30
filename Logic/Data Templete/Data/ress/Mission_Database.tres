@@ -25,10 +25,10 @@ script = ExtResource("1_missi")
 id = "sawit_45"
 mission_name = "Hutan Sawit"
 description = "Tingkatkan 'Jumlah Sawit' hingga level 45."
-reward_rebirth_point = 10
+reward_rebirth_point = 2
 requirement_type = 1
 target_upgrade_name = "Jumlah Sawit"
-target_value = 45.0
+target_value = 35.0
 
 [sub_resource type="Resource" id="Resource_m4"]
 script = ExtResource("1_missi")

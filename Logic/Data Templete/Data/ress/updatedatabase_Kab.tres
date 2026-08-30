@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="UpgradeDatabase" format=3 uid="uid://c4gw07r3ub5as"]
-
-[ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_bubfa"]
-[ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_rekm2"]
-
-[resource]
-script = ExtResource("1_bubfa")
-metadata/_custom_type_script = "uid://b2qs3ham6ojqe"
