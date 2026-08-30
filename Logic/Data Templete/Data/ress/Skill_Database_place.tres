@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bc3i1ec0fxv2t" path="res://Logic/Data Templete/Data/Source/SkillObj.gd" id="1_ib4hv"]
 [ext_resource type="Script" uid="uid://dmslmeqer2n8d" path="res://Logic/Data Templete/Data/Source/Skill.gd" id="2_ambdn"]
-[ext_resource type="Texture2D" uid="uid://c0xhqcmcbti51" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons1.png" id="3_nqfhb"]
-[ext_resource type="Texture2D" uid="uid://pg3lumyfvw84" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons5.png" id="4_pope5"]
-[ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="5_w66aa"]
-[ext_resource type="Texture2D" uid="uid://cu44coj7x3hy2" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons13.png" id="6_37qqy"]
-[ext_resource type="Texture2D" uid="uid://c8ddcn0pq7267" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons18.png" id="7_0wu8a"]
+[ext_resource type="Texture2D" uid="uid://di7306qdx6x05" path="res://Asset/Icon/CoinUpgrade.png" id="3_akrx4"]
+[ext_resource type="Texture2D" uid="uid://rb1jgp5rw10v" path="res://Asset/Icon/CoinDouble.png" id="4_48xdg"]
+[ext_resource type="Texture2D" uid="uid://bk0cltjco0g5i" path="res://Asset/Icon/BuahSawitDouble.png" id="5_wwcy3"]
+[ext_resource type="Texture2D" uid="uid://bx3cjjixbrue2" path="res://Asset/Icon/Discount.png" id="6_8yvro"]
+[ext_resource type="Texture2D" uid="uid://c8jirvj5tdi7m" path="res://Asset/Icon/HandUpgrade.png" id="7_tsxex"]
 
 [sub_resource type="Resource" id="Resource_center_benih_pertama"]
 script = ExtResource("2_ambdn")
@@ -15,7 +15,7 @@ skill_name = "Modal Awal"
 max_level = 4
 is_open = true
 cost = Array[int]([1, 2, 3, 4])
-Icon = ExtResource("3_nqfhb")
+Icon = ExtResource("3_akrx4")
 effect_type = 7
 effect_value = 25.0
 level_descriptions = Array[String](["Poin per klik bertambah +25", "Poin per klik bertambah +50", "Poin per klik bertambah +75", "Poin per klik bertambah +100"])
@@ -29,7 +29,7 @@ max_level = 5
 tree_position = Vector2(-150, -80)
 required_skill_ids = Array[String](["center_benih_pertama"])
 cost = Array[int]([1, 2, 4, 8, 16])
-Icon = ExtResource("4_pope5")
+Icon = ExtResource("4_48xdg")
 effect_value = 10.0
 level_descriptions = Array[String](["Poin per klik bertambah +10", "Poin per klik bertambah +20", "Poin per klik bertambah +30", "Poin per klik bertambah +40", "Poin per klik bertambah +50"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
@@ -42,7 +42,7 @@ max_level = 1
 tree_position = Vector2(-300, -80)
 required_skill_ids = Array[String](["prod_bibit_unggul"])
 cost = Array[int]([20])
-Icon = ExtResource("5_w66aa")
+Icon = ExtResource("5_wwcy3")
 effect_type = 5
 effect_value = 15.0
 level_descriptions = Array[String](["15% peluang mendapat 2x poin setiap panen"])
@@ -56,7 +56,7 @@ max_level = 5
 tree_position = Vector2(150, -80)
 required_skill_ids = Array[String](["center_benih_pertama"])
 cost = Array[int]([1, 2, 4, 8, 16])
-Icon = ExtResource("6_37qqy")
+Icon = ExtResource("6_8yvro")
 effect_type = 4
 level_descriptions = Array[String](["Diskon harga upgrade 5%", "Diskon harga upgrade 10%", "Diskon harga upgrade 15%", "Diskon harga upgrade 20%", "Diskon harga upgrade 25%"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
@@ -69,7 +69,7 @@ max_level = 3
 tree_position = Vector2(300, -80)
 required_skill_ids = Array[String](["efi_diskon_tengkulak"])
 cost = Array[int]([5, 10, 15])
-Icon = ExtResource("7_0wu8a")
+Icon = ExtResource("7_tsxex")
 effect_type = 6
 effect_value = 250.0
 level_descriptions = Array[String](["Klik 1 sawit ikut memanen pohon dalam radius +250", "Klik 1 sawit ikut memanen pohon dalam radius +500", "Klik 1 sawit ikut memanen pohon dalam radius +750"])

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bevyfhtavokcv"]
 
-[ext_resource type="Texture2D" uid="uid://djoaahgypiibf" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons7.png" id="1_2fr6c"]
 [ext_resource type="FontFile" uid="uid://bgj0m7o0vpyqi" path="res://temp tekture/font/BPdotsSquareBold.otf" id="1_tcc8u"]
+[ext_resource type="Texture2D" uid="uid://rb1jgp5rw10v" path="res://Asset/Icon/CoinDouble.png" id="2_tcc8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fr6c"]
 bg_color = Color(0, 0, 0, 1)
@@ -35,7 +35,9 @@ text = "1"
 [node name="Image" type="TextureButton" parent="." unique_id=1743989087]
 material = SubResource("ShaderMaterial_40n5u")
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
-texture_normal = ExtResource("1_2fr6c")
+offset_top = -5.9999995
+offset_right = 64.0
+offset_bottom = 58.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("2_tcc8u")
 stretch_mode = 0

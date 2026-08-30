@@ -314,6 +314,7 @@ theme_override_constants/margin_bottom = 12
 custom_minimum_size = Vector2(316, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_fonts/normal_font = ExtResource("2_lr6hm")
 theme_override_fonts/bold_font = ExtResource("2_lr6hm")
 bbcode_enabled = true
@@ -333,6 +334,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4745098)
 script = ExtResource("13_v3duq")
+
+[node name="Label" type="Label" parent="CanvasLayer2/DimOverlay" unique_id=1192920909]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 252.0
+offset_right = 733.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 0.9019608, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+text = "Klik berkali kali untuk melewati petunjuk"
 
 [connection signal="pressed" from="CanvasLayer/BtnHelp" to="." method="_on_help_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Skill_Buttun/Change _Mode" to="." method="_on_texture_button_pressed"]

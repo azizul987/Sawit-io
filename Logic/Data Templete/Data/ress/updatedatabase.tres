@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_erwtg"]
 [ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_own6j"]
-[ext_resource type="Texture2D" uid="uid://di7306qdx6x05" path="res://Asset/Icon/CoinUpgrade.png" id="3_xjqgb"]
-[ext_resource type="Texture2D" uid="uid://rb1jgp5rw10v" path="res://Asset/Icon/CoinDouble.png" id="4_go5j7"]
+[ext_resource type="Texture2D" uid="uid://cjfe2ume638" path="res://Asset/Icon/MapUpgrade.png" id="3_3bb6v"]
 [ext_resource type="Texture2D" uid="uid://ccjpm86biu06x" path="res://Asset/Icon/BuahSawitUpgrade.png" id="5_e0wu4"]
 [ext_resource type="Texture2D" uid="uid://c0ekquxd0yqnq" path="res://Asset/Icon/Recruit.png" id="6_8dm5v"]
 [ext_resource type="Texture2D" uid="uid://dvoo0punixylp" path="res://Asset/Icon/RecruitDuplication.png" id="7_vu0kr"]
@@ -17,7 +16,7 @@ upgrade_name = "Tingkat: Provinsi"
 description = "Meningkatkan status wilayah menjadi Provinsi. Membuka potensi penuh perkebunan skala masif!"
 price = 250000.0
 price_multiplier = 1.0
-icon = ExtResource("3_xjqgb")
+icon = ExtResource("3_3bb6v")
 effect_value = 0.0
 max_level = 1
 metadata/_custom_type_script = "uid://g1tewc4pomil"
@@ -28,7 +27,7 @@ upgrade_name = "Tingkat: Kabupaten"
 description = "Meningkatkan status wilayah menjadi Kabupaten. Pohon akan dikompres menjadi lebih besar dan harga bibit menjadi lebih murah!"
 price = 50000.0
 price_multiplier = 1.0
-icon = ExtResource("4_go5j7")
+icon = ExtResource("3_3bb6v")
 effect_value = 0.0
 max_level = 1
 metadata/_custom_type_script = "uid://g1tewc4pomil"
