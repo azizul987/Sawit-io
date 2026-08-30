@@ -14,6 +14,7 @@ var line_progress_by_id: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveManager.load_skill_level(skill_database)
+	Point.recalculate_stats([], skill_database.skills)
 	generate_skill_buttons()
 	await get_tree().process_frame
 	queue_redraw()
