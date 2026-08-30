@@ -22,6 +22,14 @@ func _on_child_gone() -> void:
 	_remaining -= 1
 	if _remaining <= 0:
 		queue_free()
+		
+		
+func check_if_finish_all():
+	for child in get_children():
+		if child is CPUParticles2D:
+			while child.emitting:
+				await get_tree().process_frame
+	HintManager.show_hint(\"After mision\", \"Pencet Tombol Skill di kiri atas\")
 "
 
 [node name="Particles_effect" type="Node2D" unique_id=723044321]

@@ -15,6 +15,7 @@ script = ExtResource("1_missi")
 id = "rekrut_20"
 mission_name = "Mandor Andalan"
 description = "Tingkatkan level 'Rekrut' hingga 20 untuk otomatisasi panen yang lebih kencang."
+reward_rebirth_point = 2
 requirement_type = 1
 target_upgrade_name = "Rekrut"
 target_value = 20.0

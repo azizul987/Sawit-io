@@ -69,3 +69,4 @@ func spawn_confetti():
 	add_child(particles)
 	# Set global_position sesudah add_child agar koordinatnya benar-benar di tengah layar
 	particles.global_position = get_viewport_rect().size / 2
+	particles.check_if_finish_all()
