@@ -18,10 +18,45 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd1ne"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krmrq"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
 [node name="Button" type="Button" unique_id=2045411329]
 offset_right = 29.0
 offset_bottom = 15.0
+theme_override_colors/font_hover_color = Color(1, 0.9019608, 0.4, 1)
 theme_override_fonts/font = ExtResource("1_hd1ne")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_7y4ci")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hd1ne")
+theme_override_styles/hover = SubResource("StyleBoxFlat_krmrq")
 text = "100"

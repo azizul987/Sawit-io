@@ -326,6 +326,7 @@ vertical_alignment = 1
 
 [node name="DimOverlay" type="ColorRect" parent="CanvasLayer2" unique_id=1916668547]
 process_mode = 3
+visible = false
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
