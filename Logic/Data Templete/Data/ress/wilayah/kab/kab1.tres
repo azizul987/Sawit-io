@@ -7,6 +7,6 @@ script = ExtResource("1_wiodv")
 id_wilayah = &"kab1"
 nama_wilayah = "kab1"
 tipe_wilayah = 1
-harga = 29000
+harga = 14000000
 skala_button = 7.0
 metadata/_custom_type_script = "uid://b231hp4nl4apw"

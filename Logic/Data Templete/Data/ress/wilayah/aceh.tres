@@ -6,6 +6,6 @@
 script = ExtResource("1_4li0b")
 id_wilayah = &"aceh"
 nama_wilayah = "Aceh"
-harga = 10000000
+harga = 200000000
 skala_button = 10.0
 metadata/_custom_type_script = "uid://b231hp4nl4apw"

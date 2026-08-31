@@ -14,7 +14,7 @@
 script = ExtResource("2_own6j")
 upgrade_name = "Tingkat: Provinsi"
 description = "Meningkatkan status wilayah menjadi Provinsi. Membuka potensi penuh perkebunan skala masif!"
-price = 250000.0
+price = 20000000.0
 price_multiplier = 1.0
 icon = ExtResource("3_3bb6v")
 effect_value = 0.0
@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 script = ExtResource("2_own6j")
 upgrade_name = "Tingkat: Kabupaten"
 description = "Meningkatkan status wilayah menjadi Kabupaten. Pohon akan dikompres menjadi lebih besar dan harga bibit menjadi lebih murah!"
-price = 50000.0
+price = 12000000.0
 price_multiplier = 1.0
 icon = ExtResource("3_3bb6v")
 effect_value = 0.0
