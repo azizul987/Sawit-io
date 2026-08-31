@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://b2qs3ham6ojqe" path="res://Logic/Data Templete/Data/Source/updatedatabase.gd" id="1_i8hpj"]
 [ext_resource type="Script" uid="uid://g1tewc4pomil" path="res://Logic/Data Templete/Data/Source/UpgradeData.gd" id="2_7gnc6"]
 [ext_resource type="Texture2D" uid="uid://dkn5k3fjed8dy" path="res://temp tekture/skill_icons_by_quintino_pixels/24x24/skill_icons8.png" id="3_msbrg"]
-[ext_resource type="Texture2D" uid="uid://d24auogqsff7d" path="res://Asset/Icon/BuahSawitUpgrade.png" id="4_4nvhy"]
-[ext_resource type="Texture2D" uid="uid://ei21cvf5h2ve" path="res://Asset/Icon/RecruitDuplication.png" id="5_cosn4"]
-[ext_resource type="Texture2D" uid="uid://bckm8rkmeklb7" path="res://Asset/Icon/Recruit.png" id="6_cj7n6"]
-[ext_resource type="Texture2D" uid="uid://b3ch0dn8xh5ux" path="res://Asset/Icon/Time.png" id="7_hh0cp"]
-[ext_resource type="Texture2D" uid="uid://3of23js48ehs" path="res://Asset/Icon/BuahSawitDouble.png" id="8_ht7tb"]
-[ext_resource type="Texture2D" uid="uid://tklmcs6737sm" path="res://Asset/Icon/BuahSawitEmasUpgrade.png" id="9_2itvn"]
+[ext_resource type="Texture2D" uid="uid://ccjpm86biu06x" path="res://Asset/Icon/BuahSawitUpgrade.png" id="4_4nvhy"]
+[ext_resource type="Texture2D" uid="uid://dvoo0punixylp" path="res://Asset/Icon/RecruitDuplication.png" id="5_cosn4"]
+[ext_resource type="Texture2D" uid="uid://c0ekquxd0yqnq" path="res://Asset/Icon/Recruit.png" id="6_cj7n6"]
+[ext_resource type="Texture2D" uid="uid://dmlp7sudve8fr" path="res://Asset/Icon/Time.png" id="7_hh0cp"]
+[ext_resource type="Texture2D" uid="uid://bk0cltjco0g5i" path="res://Asset/Icon/BuahSawitDouble.png" id="8_ht7tb"]
+[ext_resource type="Texture2D" uid="uid://crb2dgdh0kjr5" path="res://Asset/Icon/BuahSawitEmasUpgrade.png" id="9_2itvn"]
 
 [sub_resource type="Resource" id="Resource_naik_provinsi"]
 script = ExtResource("2_7gnc6")
@@ -100,7 +100,6 @@ script = ExtResource("2_7gnc6")
 upgrade_name = "Sawit Super"
 description = "Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]10% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
 price = 15000.0
-price_multiplier = 1.3
 icon = ExtResource("9_2itvn")
 effect_type = 7
 effect_value = 10.0
