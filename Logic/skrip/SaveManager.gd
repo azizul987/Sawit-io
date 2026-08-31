@@ -42,7 +42,8 @@ func create_new_slot(slot: int) -> void:
 		"skill_tree_camera": {"x": 0.0, "y": 0.0, "z": 1.4},
 		"main_camera": {"x": 7508.0, "y": 8765.0, "z": 1.0},
 		"tipe_wilayah_terbuka": 2,
-		"tipe_wilayah": {"x": 0, "y": 0, "z": 1}
+		"tipe_wilayah": {"x": 0, "y": 0, "z": 1},
+		"win_progress_percent": 2.0
 	}
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file != null:
@@ -139,6 +140,11 @@ func save_game() -> void:
 		"y":Point.TipeWilayahArray.y,
 		"z":Point.TipeWilayahArray.z
 	}
+
+	# Simpan progress menuju kondisi menang agar bisa langsung ditampilkan di menu slot.
+	var win_progress := _calculate_runtime_win_progress()
+	if win_progress >= 0.0:
+		data["win_progress_percent"] = win_progress
 	
 	write_save_data(data)
 	#print("Point saved")
@@ -360,3 +366,90 @@ func set_slot_name(slot: int, new_name: String) -> void:
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file != null:
 		file.store_string(JSON.stringify(data))
+
+
+func get_slot_win_progress(slot: int) -> float:
+	var data := get_save_data(slot)
+	if data.is_empty():
+		return 0.0
+
+	if data.has("win_progress_percent"):
+		return clampf(float(data["win_progress_percent"]), 0.0, 100.0)
+
+	# Fallback untuk save lama yang belum pernah menyimpan progress menang.
+	# Bagian wilayah + tier masih bisa dihitung dari data save; bagian pohon
+	# akan terisi akurat setelah save tersebut dimainkan dan tersimpan lagi.
+	var tipe_data: Dictionary = data.get("tipe_wilayah", {})
+	var opened_regions := (
+		int(tipe_data.get("x", 0))
+		+ int(tipe_data.get("y", 0))
+		+ int(tipe_data.get("z", 1))
+	)
+	var territory_progress := clampf(float(opened_regions) / 17.0, 0.0, 1.0)
+	var tier := int(data.get("tipe_wilayah_terbuka", 2))
+	var tier_progress := clampf(float(2 - tier) / 2.0, 0.0, 1.0)
+
+	return clampf((territory_progress + tier_progress) / 3.0 * 100.0, 0.0, 100.0)
+
+
+func _calculate_runtime_win_progress() -> float:
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		return -1.0
+
+	var map_node := current_scene.get_node_or_null("map")
+	var upgrade_ui := get_tree().get_first_node_in_group("upgrade_ui")
+	if map_node == null or upgrade_ui == null:
+		return -1.0
+
+	var regions = map_node.get("daftar_wilayah")
+	if not regions is Array:
+		return -1.0
+
+	var valid_regions := 0
+	var opened_regions := 0
+	for wilayah in regions:
+		if not is_instance_valid(wilayah):
+			continue
+
+		var data_wilayah = wilayah.get("data")
+		if data_wilayah == null:
+			continue
+
+		valid_regions += 1
+		if data_wilayah.terbuka_default:
+			opened_regions += 1
+
+	if valid_regions <= 0:
+		return -1.0
+
+	var upgrade_database = upgrade_ui.get("upgrade_database")
+	if upgrade_database == null:
+		return -1.0
+
+	var palm_progress := 0.0
+	var found_palm_upgrade := false
+	for upgrade_data in upgrade_database.upgrades:
+		if upgrade_data == null:
+			continue
+		if upgrade_data.upgrade_name == "Jumlah Sawit" or upgrade_data.upgrade_name == "Pohon Sawit":
+			found_palm_upgrade = true
+			if upgrade_data.max_level > 0:
+				palm_progress = clampf(
+					float(upgrade_data.current_level) / float(upgrade_data.max_level),
+					0.0,
+					1.0
+				)
+			break
+
+	if not found_palm_upgrade:
+		return -1.0
+
+	var territory_progress := float(opened_regions) / float(valid_regions)
+	# 2=Kecamatan (0%), 1=Kabupaten (50%), 0=Provinsi (100%).
+	var tier_progress := clampf(float(2 - Point.tipe_wilayah_terbuka) / 2.0, 0.0, 1.0)
+
+	# Tiga syarat utama kondisi menang diberi bobot sama:
+	# tier Provinsi, seluruh wilayah terbuka, dan pohon sawit mencapai maksimum.
+	var progress := (territory_progress + tier_progress + palm_progress) / 3.0
+	return clampf(round(progress * 1000.0) / 10.0, 0.0, 100.0)

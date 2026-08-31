@@ -151,6 +151,7 @@ func _create_slot_ui(slot_num: int, animate: bool = false):
 	slot_container.add_child(slot_ui)
 	slot_ui.set_slot_number(slot_num)
 	slot_ui.set_slot_name(SaveManager.get_slot_name(slot_num))
+	slot_ui.set_win_progress(SaveManager.get_slot_win_progress(slot_num))
 	slot_ui.load_requested.connect(_on_slot_load.bind(slot_num))
 	slot_ui.delete_requested.connect(_on_slot_delete.bind(slot_num, slot_ui))
 	slot_ui.slot_renamed.connect(_on_slot_renamed.bind(slot_num))

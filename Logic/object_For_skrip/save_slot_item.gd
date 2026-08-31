@@ -6,6 +6,7 @@ signal slot_renamed(new_name: String)   # diganti dari "renamed"
 
 @onready var label = $Label
 @onready var line_edit = $LineEdit
+@onready var progress_label: Label = $ProgressLabel
 @onready var load_button = $MarginContainer/CenterContainer/HBoxContainer/Load
 @onready var delete_button = $MarginContainer/CenterContainer/HBoxContainer/Delete
 
@@ -50,6 +51,10 @@ func set_slot_number(num: int):
 
 func set_slot_name(display_name: String):
 	label.text = display_name
+
+func set_win_progress(percent: float) -> void:
+	var rounded_percent := int(round(clampf(percent, 0.0, 100.0)))
+	progress_label.text = "%d%%" % rounded_percent
 
 # --- BAGIAN RENAME ---
 
