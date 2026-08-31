@@ -585,6 +585,7 @@ libraries/ = SubResource("AnimationLibrary_w84f2")
 
 [node name="map" type="Node2D" parent="." unique_id=71965967]
 modulate = Color(0.8381909, 0.8897197, 0.968111, 1)
+y_sort_enabled = true
 position = Vector2(212.45789, 263.8842)
 metadata/_edit_lock_ = true
 
@@ -808,32 +809,41 @@ uv = PackedVector2Array(176.21219, 66.51861, 347.43533, 176.9458, 463.73856, 254
 metadata/_edit_lock_ = true
 
 [node name="sawit" parent="map" unique_id=471696647 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(258.8327, 317.05084)
 
 [node name="sawit2" parent="map" unique_id=1617112919 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(224.73267, 238.9508)
 
 [node name="sawit3" parent="map" unique_id=1692125915 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(224.73267, 123.286896)
 
 [node name="sawit4" parent="map" unique_id=364316824 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(165.3327, 192.75082)
 
 [node name="sawit5" parent="map" unique_id=462797899 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(147.73273, 116.85083)
 
 [node name="sawit6" parent="map" unique_id=859531573 instance=ExtResource("3_a0ht3")]
+z_index = 4
 position = Vector2(136.32025, 45.52289)
 
 [node name="Buruh" parent="map" unique_id=737804513 instance=ExtResource("24_2kd5r")]
+z_index = 4
 position = Vector2(58.88733, 78.86267)
 scale = Vector2(2, 2)
 
 [node name="Buruh2" parent="map" unique_id=2096999745 instance=ExtResource("24_2kd5r")]
+z_index = 4
 position = Vector2(92.37537, 135.9874)
 scale = Vector2(2, 2)
 
 [node name="Buruh3" parent="map" unique_id=947936607 instance=ExtResource("24_2kd5r")]
+z_index = 4
 position = Vector2(273.60614, 178.85916)
 scale = Vector2(2, 2)
 

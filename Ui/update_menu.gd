@@ -167,6 +167,7 @@ func _on_purchase_requested(
 	SaveManager.save_upgrades(upgrade_database)
 
 	SaveManager.save_game()
+	get_tree().call_group("win_condition", "check_win_condition")
 
 func _on_max_capacity_changed_multi(
 	max_pohon:int,
@@ -195,3 +196,4 @@ func _on_max_capacity_changed_multi(
 
 
 	generate_upgrade_buttons()
+	get_tree().call_group("win_condition", "check_win_condition")

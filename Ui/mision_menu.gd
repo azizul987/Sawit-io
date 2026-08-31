@@ -5,14 +5,13 @@ extends Control
 var misi_database=preload("res://Logic/Data Templete/Data/ress/Mission_Database.tres")
 var upgrade_database = preload("res://Logic/Data Templete/Data/ress/updatedatabase.tres")
 var confetti_scene = preload("uid://dle7jsg7svhob")
-@export var mision:MissionDatabase
 
 func _ready() -> void:
 	Point.point_change.connect(update_ui)
-	progress_bar.max_value=mision.get_mision(Point.idx_mision_now).target_value
-	progress_bar.value=get_current_progress(mision.get_mision(Point.idx_mision_now))
-	update_label(mision.get_mision(Point.idx_mision_now))
-
+	var current_mission = misi_database.get_mision(Point.idx_mision_now)
+	progress_bar.max_value = current_mission.target_value
+	progress_bar.value = get_current_progress(current_mission)
+	update_label(current_mission)
 func get_current_progress(misi: Mission) -> float:
 	match misi.requirement_type:
 		Mission.RequirementType.TOTAL_POINT_REACHED:
@@ -31,17 +30,25 @@ func get_current_progress(misi: Mission) -> float:
 	return 0.0
 
 func update_ui(_add_poin: int):
-	var Mision_Type = misi_database.get_mision(Point.idx_mision_now)
-	if mision_comparator(Mision_Type) && !is_max():
-		spawn_confetti()
-		Point.idx_mision_now += 1
-		Point.rebirth_point += Mision_Type.reward_rebirth_point
-		progress_bar.max_value = mision.get_mision(Point.idx_mision_now).target_value
-	
-	progress_bar.value = get_current_progress(mision.get_mision(Point.idx_mision_now))
-	update_label(mision.get_mision(Point.idx_mision_now))
-	SaveManager.save_game()
+	if is_max():
+		update_label(null)
+		return
 
+	var current_mission = misi_database.get_mision(Point.idx_mision_now)
+	if mision_comparator(current_mission):
+		spawn_confetti()
+		Point.rebirth_point += current_mission.reward_rebirth_point
+		Point.idx_mision_now += 1
+	if is_max():
+		label.text = "Semua Misi Selesai:MAX/MAX "
+		SaveManager.save_game()
+		return
+
+	current_mission = misi_database.get_mision(Point.idx_mision_now)
+	progress_bar.max_value = current_mission.target_value
+	progress_bar.value = get_current_progress(current_mission)
+	update_label(current_mission)
+	SaveManager.save_game()
 func mision_comparator(misi: Mission):
 	return get_current_progress(misi) >= misi.target_value
 

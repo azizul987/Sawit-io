@@ -7,19 +7,19 @@
 [ext_resource type="Resource" uid="uid://d3o6h533paj6p" path="res://Logic/Data Templete/Data/ress/wilayah/kab/palembang.tres" id="4_2ix4a"]
 [ext_resource type="Resource" uid="uid://cc2wbyqa5anoy" path="res://Logic/Data Templete/Data/ress/wilayah/kab/kab2.tres" id="5_0y2cb"]
 [ext_resource type="PackedScene" uid="uid://cxv7ow360bpqu" path="res://Ui/Ui_Main.tscn" id="5_3amdw"]
-[ext_resource type="Resource" uid="uid://n1ai2teu4848" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah1.tres" id="5_3pt4j"]
-[ext_resource type="Resource" uid="uid://bro64h6u8ho16" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah3.tres" id="5_mxd2g"]
-[ext_resource type="Resource" uid="uid://7xqdmxfx278f" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah2.tres" id="6_7y4ci"]
 [ext_resource type="Resource" uid="uid://2m4jgjk5pa36" path="res://Logic/Data Templete/Data/ress/wilayah/kab/kab1.tres" id="6_jbas8"]
 [ext_resource type="Script" uid="uid://dwkfvo7lurs2s" path="res://Logic/skrip/Main__Camera.gd" id="6_ow1sv"]
-[ext_resource type="Resource" uid="uid://cshnyv0v3va0d" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/Wilayah4.tres" id="8_0sxm5"]
-[ext_resource type="Resource" uid="uid://b2p08dyoiykop" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/wilayah5.tres" id="9_6njx3"]
 [ext_resource type="Resource" uid="uid://bnskm3qucgb6k" path="res://Logic/Data Templete/Data/ress/wilayah/jambi.tres" id="9_7y4ci"]
-[ext_resource type="Resource" uid="uid://buu8q68cfnc4t" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/wilayah6.tres" id="10_0y2cb"]
-[ext_resource type="Resource" uid="uid://cvatssn43ip5n" path="res://Logic/Data Templete/Data/ress/wilayah/Kecamatan/wilayah7.tres" id="11_2ix4a"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/Wilayah1.tres" id="9_uctnp"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/Wilayah2.tres" id="10_m37ut"]
 [ext_resource type="PackedScene" uid="uid://cxvneabfihjsg" path="res://Ui/skill_tree_ui.tscn" id="11_7y4ci"]
 [ext_resource type="Texture2D" uid="uid://defc75sp40v02" path="res://Asset/wilayah_open.png" id="11_wimqa"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/Wilayah3.tres" id="11_yoaul"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/Wilayah4.tres" id="12_mepbf"]
 [ext_resource type="PackedScene" uid="uid://bt3fmc0j87d68" path="res://Logic/object_For_skrip/button.tscn" id="12_mxd2g"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/wilayah5.tres" id="13_dvq1j"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/wilayah6.tres" id="14_50v0s"]
+[ext_resource type="Resource" path="res://Logic/Data Templete/Data/ress/wilayah/wilayah7.tres" id="15_mu7ye"]
 [ext_resource type="Shader" uid="uid://8hlmm4owiiy8" path="res://addons/awesome_splash/assets/shader/transition_texture_mask.gdshader" id="28_uctnp"]
 [ext_resource type="Texture2D" uid="uid://b7bs5l4rpcv6h" path="res://Asset/BuahSawit_polos.png" id="29_uctnp"]
 [ext_resource type="Resource" uid="uid://d1a2b3c4d5e61" path="res://Logic/Data Templete/Data/ress/wilayah/riau.tres" id="30_riau"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://doj6xhgi4ckgs" path="res://Logic/Data Templete/Data/ress/wilayah/sumatera_barat.tres" id="34_sumbar"]
 [ext_resource type="Resource" uid="uid://x4tlbc2kf3ow" path="res://Logic/Data Templete/Data/ress/wilayah/sumatera_utara.tres" id="36_sumut"]
 [ext_resource type="PackedScene" uid="uid://bo64klwetfcw" path="res://Scene/pause.tscn" id="pause_scene"]
+[ext_resource type="PackedScene" path="res://Ui/win_panel.tscn" id="win_panel_scene"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t372l"]
 
@@ -129,7 +130,7 @@ uv = PackedVector2Array(12, 10, 12, -2, 18, -8, 23, -11, 23, -20, 44, -22, 53, -
 
 [node name="wilayah1" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=2091517361]
 script = ExtResource("1_f6udf")
-data = ExtResource("5_3pt4j")
+data = ExtResource("9_uctnp")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah1" unique_id=739170342]
 texture_filter = 1
@@ -147,7 +148,7 @@ script = ExtResource("2_2wwxx")
 [node name="wilayah2" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=828479247]
 position = Vector2(2.498001, -11.301666)
 script = ExtResource("1_f6udf")
-data = ExtResource("6_7y4ci")
+data = ExtResource("10_m37ut")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah2" unique_id=1428092699]
 texture_filter = 1
@@ -166,7 +167,7 @@ script = ExtResource("2_2wwxx")
 
 [node name="wilayah3" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=1038290269]
 script = ExtResource("1_f6udf")
-data = ExtResource("5_mxd2g")
+data = ExtResource("11_yoaul")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah3" unique_id=1278172691]
 texture_filter = 1
@@ -184,7 +185,7 @@ script = ExtResource("2_2wwxx")
 
 [node name="wilayah4" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=1790428628]
 script = ExtResource("1_f6udf")
-data = ExtResource("8_0sxm5")
+data = ExtResource("12_mepbf")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah4" unique_id=1048262155]
 texture_filter = 1
@@ -202,7 +203,7 @@ script = ExtResource("2_2wwxx")
 
 [node name="wilayah5" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=616659808]
 script = ExtResource("1_f6udf")
-data = ExtResource("9_6njx3")
+data = ExtResource("13_dvq1j")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah5" unique_id=1791644703]
 texture_filter = 1
@@ -221,7 +222,7 @@ script = ExtResource("2_2wwxx")
 [node name="wilayah6" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=2029491909]
 position = Vector2(2.498001, -11.301636)
 script = ExtResource("1_f6udf")
-data = ExtResource("10_0y2cb")
+data = ExtResource("14_50v0s")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah6" unique_id=375787169]
 texture_filter = 1
@@ -240,7 +241,7 @@ script = ExtResource("2_2wwxx")
 [node name="wilayah7" type="Area2D" parent="map/Sumatera Selatan/Kab3" unique_id=972782883]
 position = Vector2(2.498001, -11.301636)
 script = ExtResource("1_f6udf")
-data = ExtResource("11_2ix4a")
+data = ExtResource("15_mu7ye")
 
 [node name="Polygon2D" type="Polygon2D" parent="map/Sumatera Selatan/Kab3/wilayah7" unique_id=632158147]
 texture_filter = 1
@@ -499,6 +500,8 @@ layer = 10
 
 [node name="Pause" parent="CanvasLayerPause" unique_id=1963674684 instance=ExtResource("pause_scene")]
 visible = false
+
+[node name="WinPanel" parent="." instance=ExtResource("win_panel_scene")]
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1837010826]
 layer = -8
