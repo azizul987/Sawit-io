@@ -20,22 +20,19 @@ var _active_bonus: Area2D = null
 var _is_bonus_active: bool = false
 
 func _ready() -> void:
-	# Cari node map (parent-nya harusnya map)
 	_map_node = get_parent()
-	
-	# Timer spawn (interval random)
+
 	_spawn_timer = Timer.new()
 	_spawn_timer.one_shot = true
 	_spawn_timer.timeout.connect(_on_spawn_timer)
 	add_child(_spawn_timer)
-	
-	# Timer despawn (batas waktu klik)
+
 	_despawn_timer = Timer.new()
 	_despawn_timer.one_shot = true
 	_despawn_timer.timeout.connect(_on_despawn_timer)
 	add_child(_despawn_timer)
-	
-	# Mulai timer pertama
+
+	# Mode normal: tunggu interval random sebelum bonus pertama muncul
 	_start_spawn_timer()
 
 
@@ -96,7 +93,7 @@ func _spawn_bonus() -> void:
 	
 	# Sprite (pakai icon sawit emas)
 	var sprite = Sprite2D.new()
-	var icon_tex = load("res://Asset/Icon/BuahSawitEmasUpgrade.png")
+	var icon_tex = load("uid://nnidytp7fikl")
 	if icon_tex:
 		sprite.texture = icon_tex
 	sprite.scale = Vector2(2.5, 2.5)
@@ -160,7 +157,7 @@ func _on_bonus_clicked(_viewport: Viewport, event: InputEvent, _shape_idx: int) 
 	if cam and cam.has_method("shake"):
 		cam.shake(20.0, 0.45)
 	
-	# Hapus bonus
+	# Hapus bonus, lalu mulai jeda random sebelum bonus berikutnya
 	_remove_bonus()
 	_start_spawn_timer()
 
