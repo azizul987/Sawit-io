@@ -30,6 +30,7 @@ func _ready() -> void:
 	cek_syarat_buka()
 	buat_semua_button_wilayah() 
 	update_max_capacity_by_area()
+	get_tree().call_group("win_condition", "check_win_condition")
 	
 	# Inisialisasi Bonus Wilayah
 	var bonus_node = Node2D.new()
@@ -169,6 +170,7 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 			
 		update_max_capacity_by_area()
 		Point.recalculate_stats()
+		get_tree().call_group("win_condition", "check_win_condition")
 
 func hitung_luas_polygon(poly: Polygon2D) -> float:
 	var titik = poly.polygon
