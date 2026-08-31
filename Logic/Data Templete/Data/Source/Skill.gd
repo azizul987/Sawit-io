@@ -9,7 +9,8 @@ enum EffectType {
 	DISCOUNT_UPGRADE,
 	DOUBLE_HARVEST_CHANCE,
 	MAGNET_RADIUS,
-	INITIAL_CAPITAL
+	INITIAL_CAPITAL,
+	WORKER_SYNERGY_CLICK_MULT # 8: Klik manual dapat % bonus berdasarkan jumlah buruh (biar klik gak keok lawan buruh di late game)
 }
 
 @export var id: String

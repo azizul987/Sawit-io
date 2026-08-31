@@ -47,6 +47,7 @@ script = ExtResource("2_own6j")
 upgrade_name = "Rekrut"
 description = "Mempekerjakan buruh panen otomatis yang rajin keliling lahan dengan sistem upah bersih: [color=yellow]Harga Sawit − (Harga Sawit × 10%)[/color]!"
 price = 100.0
+price_multiplier = 1.2
 icon = ExtResource("6_8dm5v")
 effect_type = 2
 max_level = 50
@@ -58,7 +59,7 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 script = ExtResource("2_own6j")
 upgrade_name = "Work Life Balance"
 description = "Memberikan liburan dan es teh manis porseling. Buruh bahagia bertransformasi lebih gesit serta [color=yellow]Kepintaran AI[/color]-nya melesat pesat!"
-price = 450.0
+price = 200.0
 price_multiplier = 1.18
 icon = ExtResource("7_vu0kr")
 effect_type = 5
@@ -72,7 +73,7 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 script = ExtResource("2_own6j")
 upgrade_name = "Eskalasi Harga"
 description = "Menjalin kontrak dagang dengan Pabrik Kelapa Sawit (PKS). Mengatrol nilai jual pasaran buah sawitmu sebesar [color=yellow]+40%[/color] per tingkat!"
-price = 1500.0
+price = 600.0
 price_multiplier = 1.22
 icon = ExtResource("8_ckt2c")
 effect_type = 1
@@ -86,11 +87,11 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 script = ExtResource("2_own6j")
 upgrade_name = "Agregat Harga"
 description = "Menguasai rantai ekspor komoditas Sumatera. Memberikan multiplier harga lipatan berdasarkan [color=yellow]Jumlah Wilayah[/color] yang kamu miliki!"
-price = 20000.0
+price = 2000.0
 price_multiplier = 1.25
 icon = ExtResource("9_t7q0m")
 effect_type = 6
-effect_value = 2.0
+effect_value = 8.0
 max_level = 25
 required_upgrade = SubResource("Resource_eskalasi")
 required_level = 10
@@ -99,8 +100,8 @@ metadata/_custom_type_script = "uid://g1tewc4pomil"
 [sub_resource type="Resource" id="Resource_super"]
 script = ExtResource("2_own6j")
 upgrade_name = "Sawit Super"
-description = "Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]10% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
-price = 15000.0
+description = "	Bioteknologi pupuk mukjizat! Memberikan peluang [color=yellow]10% Critical Chance[/color] setiap panen untuk memetik Sawit Emas bernilai [color=orange]10x LIPAT[/color]!"
+price = 3500.0
 icon = ExtResource("10_765jk")
 effect_type = 7
 effect_value = 10.0

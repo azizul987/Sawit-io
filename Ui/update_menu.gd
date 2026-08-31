@@ -186,7 +186,7 @@ func _on_max_capacity_changed_multi(
 
 		elif u.upgrade_name == "Rekrut":
 			u.max_level = max_buruh
-		elif u.upgrade_name == "Tingkat: Provinsi" or u.upgrade_name == "Tingkat: Kabupaten" or u.upgrade_name == "Work Life Balance":
+		elif u.upgrade_name == "Tingkat: Provinsi" or u.upgrade_name == "Tingkat: Kabupaten" or u.upgrade_name == "Work Life Balance" or u.upgrade_name == "Agregat Harga" or u.upgrade_name == "Sawit Super":
 			continue
 		else:
 			if u.base_max_level < 0:

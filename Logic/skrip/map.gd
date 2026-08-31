@@ -168,6 +168,7 @@ func _on_skill_button_pressedd(wilayah:Node,button:Button):
 			cam.shake(15.0, 0.35) # Getaran kuat saat berhasil buka wilayah baru
 			
 		update_max_capacity_by_area()
+		Point.recalculate_stats()
 
 func hitung_luas_polygon(poly: Polygon2D) -> float:
 	var titik = poly.polygon
@@ -282,7 +283,7 @@ func get_kapasitas_wilayah(poly: Polygon2D) -> int:
 	# Menggunakan 2800 sebagai base kompromi
 	var area_per_tree = 2800.0 * get_area_multiplier(Point.tipe_wilayah_terbuka)
 	return max(1, int(luas / area_per_tree))
-
+	
 func pick_weighted_wilayah(is_pohon: bool) -> Polygon2D:
 	var wil_terbuka = daftar_wilayah.filter(func(w): return w.data and w.data.terbuka_default and w.has_node("Polygon2D"))
 	if wil_terbuka.is_empty(): return null

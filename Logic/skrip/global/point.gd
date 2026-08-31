@@ -40,6 +40,8 @@ var pps_default:Array[int]=[0,0,0]#kec,kab,prov
 func _process(delta: float) -> void:
 	var floor_income: float = get_carried_pps_floor() * delta
 	if floor_income > 0.0:
+		if critical_harvest_chance > 0.0 and randf() * 100.0 < critical_harvest_chance * delta:
+			floor_income *= 10.0
 		add_point(floor_income)
 	_update_pps(delta)
 
@@ -122,6 +124,13 @@ func recalculate_stats(upgrades_list: Array = [], skills_list: Array = []) -> vo
 				magnet_radius += val
 			elif sk.effect_type == 7:
 				modal_awal += val
+			elif sk.effect_type == 8: # WORKER_SYNERGY_CLICK_MULT (skill "Setara")
+				var jumlah_buruh: int = 0
+				for up2 in upgrades_list:
+					if up2 != null and up2.upgrade_name == "Rekrut":
+						jumlah_buruh = up2.current_level
+						break
+				total_click_mult += (val * jumlah_buruh) / 100.0
 
 	# 3. Terapkan hasil perhitungan baru ke statistik permainan!
 	point_per_click = total_click_add * total_click_mult * territory_click_mult
@@ -136,12 +145,6 @@ func _input(event: InputEvent) -> void:
 			Point.add_point(1e155) 
 		if event.is_action("delete_save"):
 			SaveManager.delete_current_save()
-
-
-
-
-	
-
 
 
 func get_suffix(i: int) -> String:
@@ -176,23 +179,19 @@ func format_num(val: float) -> String:
 	return t + suffix
 
 
-func _update_pps(delta: float) -> void:
+func _update_pps(delta: float) -> void:	
 	_pps_timer += delta
-
 	if _pps_timer >= _pps_interval:
-		# _pps_buffer sudah termasuk floor_income (dari add_point di _process),
-		# jadi max() di sini cuma jaga-jaga di detik pertama setelah naik tingkat.
 		points_per_second = max(_pps_buffer / _pps_timer, get_carried_pps_floor())
-
 		var idx := _tier_to_pps_index(tipe_wilayah_terbuka)
 		if points_per_second > pps_default[idx]:
 			pps_default[idx] = int(points_per_second)
 
 		pps_updated.emit(points_per_second)
 		point_change.emit(point_per_click)
-
 		_pps_buffer = 0.0
 		_pps_timer = 0.0
+		
 
 
 func _tier_to_pps_index(tier: int) -> int:

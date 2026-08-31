@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bk0cltjco0g5i" path="res://Asset/Icon/BuahSawitDouble.png" id="5_wwcy3"]
 [ext_resource type="Texture2D" uid="uid://bx3cjjixbrue2" path="res://Asset/Icon/Discount.png" id="6_8yvro"]
 [ext_resource type="Texture2D" uid="uid://c8jirvj5tdi7m" path="res://Asset/Icon/HandUpgrade.png" id="7_tsxex"]
+[ext_resource type="Texture2D" uid="uid://c0ekquxd0yqnq" path="res://Asset/Icon/Recruit.png" id="8_setara"]
 
 [sub_resource type="Resource" id="Resource_center_benih_pertama"]
 script = ExtResource("2_ambdn")
@@ -34,13 +35,28 @@ effect_value = 10.0
 level_descriptions = Array[String](["Poin per klik bertambah +10", "Poin per klik bertambah +20", "Poin per klik bertambah +30", "Poin per klik bertambah +40", "Poin per klik bertambah +50"])
 metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
+[sub_resource type="Resource" id="Resource_setara"]
+script = ExtResource("2_ambdn")
+id = "Setara"
+skill_name = "Setara"
+Description = "Melatih insting tanganmu biar klik manual gak kalah jauh sama buruh pas kebun udah rame. Tiap level nambah persentase bonus poin per klik, dihitung dari jumlah buruh yang sudah kamu rekrut."
+max_level = 5
+tree_position = Vector2(-225, -80)
+required_skill_ids = Array[String](["prod_bibit_unggul"])
+cost = Array[int]([2, 4, 7, 11, 16])
+Icon = ExtResource("8_setara")
+effect_type = 8
+effect_value = 1.0
+level_descriptions = Array[String](["Poin per klik +1% dari jumlah buruh yang direkrut", "Poin per klik +2% dari jumlah buruh yang direkrut", "Poin per klik +3% dari jumlah buruh yang direkrut", "Poin per klik +4% dari jumlah buruh yang direkrut", "Poin per klik +5% dari jumlah buruh yang direkrut"])
+metadata/_custom_type_script = "uid://dmslmeqer2n8d"
+
 [sub_resource type="Resource" id="Resource_prod_panen_ganda"]
 script = ExtResource("2_ambdn")
 id = "prod_panen_ganda"
 skill_name = "Panen Ganda"
 max_level = 1
 tree_position = Vector2(-300, -80)
-required_skill_ids = Array[String](["prod_bibit_unggul"])
+required_skill_ids = Array[String](["Setara"])
 cost = Array[int]([20])
 Icon = ExtResource("5_wwcy3")
 effect_type = 5
@@ -78,5 +94,5 @@ metadata/_custom_type_script = "uid://dmslmeqer2n8d"
 
 [resource]
 script = ExtResource("1_ib4hv")
-skills = Array[ExtResource("2_ambdn")]([SubResource("Resource_center_benih_pertama"), SubResource("Resource_prod_bibit_unggul"), SubResource("Resource_prod_panen_ganda"), SubResource("Resource_efi_diskon_tengkulak"), SubResource("Resource_efi_magnet_jangkauan")])
+skills = Array[ExtResource("2_ambdn")]([SubResource("Resource_center_benih_pertama"), SubResource("Resource_prod_bibit_unggul"), SubResource("Resource_setara"), SubResource("Resource_prod_panen_ganda"), SubResource("Resource_efi_diskon_tengkulak"), SubResource("Resource_efi_magnet_jangkauan")])
 metadata/_custom_type_script = "uid://bc3i1ec0fxv2t"
