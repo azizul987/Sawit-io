@@ -21,7 +21,7 @@ boot_splash/show_image=false
 boot_splash/stretch_mode=0
 boot_splash/use_filter=false
 boot_splash/image="uid://bk0cltjco0g5i"
-config/icon="uid://crb2dgdh0kjr5"
+config/icon="uid://ca08rjktu6wag"
 
 [autoload]
 
